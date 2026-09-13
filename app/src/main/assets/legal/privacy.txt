@@ -1,0 +1,44 @@
+Auralift — Privacy policy
+Personal and pre-release editions · 13 September 2026
+
+1. About this preview
+Auralift is an audio utility developed by Jamie Wardle. This notice describes version 0.5.0. It does not describe another volume booster or its advertising partners. A public publisher contact and privacy-policy web address will be supplied before a public release. For this preview, use the existing channel through which you received the app to contact the developer.
+
+2. Audio stays on your device
+Boosting and equalization use Android audio effects on your device. Auralift does not upload audio, open the microphone for recording, save recordings or examine what you say. The audio features do not read contacts, browsing history, notifications or precise location. The optional advertising service has separate data handling described below, including approximate location derived from an IP address.
+
+The optional Music spectrum uses Android's Visualizer interface. Android requires the permission called “microphone” or RECORD_AUDIO for this interface, even though it provides low-resolution playback data rather than microphone recording. Frequency data is used in memory to draw the spectrum only while the Listen screen is visible. It is released when you leave that screen or the app. This data is not saved or transmitted. You can use boosting without enabling spectrum or granting this permission.
+
+3. Local preferences and files
+Auralift stores your chosen gain, EQ, appearance, language, preferences, saved sound names and Ad Pass state and local reward identifiers in private app storage. Android's automatic app backup is disabled. The Ad Pass clock uses the device's boot count and clocks locally; these values are not sent anywhere and are not persistent tracking identifiers.
+
+Sound import reads only a file you choose in Android's file picker. Export writes only to the destination you choose, which may be a cloud provider if you select one. Exported files contain sound names, gain and EQ values. Auralift itself has no cloud synchronization. Removing a named sound deletes it from the app; previously exported copies remain wherever you saved them.
+
+4. Optional permissions
+Notifications show active audio controls and a Stop action. Display over other apps permits the floating player while a listening session is active. One permission for Auralift allows display over eligible apps; Android and protected screens may block it. Auralift does not monitor which app is foreground or maintain a per-app exclusion list. That player does not read the contents of other apps and is hidden on the lock screen. Vibration supplies optional control feedback. Audio-settings and foreground-service permissions maintain effects while you listen. The receive-boot permission supports an optional reminder notification after a phone restart. It never starts the audio service or changes gain. The audio service does not automatically restart after Android stops it. Battery settings buttons open Android settings without requesting a direct battery-exemption permission.
+
+You can turn optional features off in Auralift and revoke permissions in Android settings. Some phone manufacturers restrict background work or floating windows.
+
+5. Purchases and the owner edition
+The Owner edition contains no billing or advertising SDK, has no internet permission and cannot charge you. All owner features are unlocked, with optional local simulations for testing.
+
+The Google Play edition contains Google Play Billing integration for two one-time Pro products with the same entitlement. Purchases remain unavailable in this pre-release build until the products and verification key are configured. When enabled, Google Play processes checkout and associates purchases with your Google account under Google's policies. Auralift receives product and purchase-state information, a purchase token and signed receipt, and stores the verified receipt privately for restoration and offline access. Auralift does not receive payment-card details. Google Play may need an internet connection to purchase or restore access. The app has no separate account or developer-operated purchase server in this version.
+
+The Play edition includes internet and network-state permissions contributed by the billing SDK and its Google data-transport dependencies. When billing is configured and used, the SDK can send Google billing diagnostics, such as API success/failure and service-connection information, to improve billing reliability. The unconfigured preview does not initialize the billing client. The Owner edition excludes these dependencies and network permissions. Google's privacy policy applies to its services (https://policies.google.com/privacy).
+
+The Play edition also includes Google Mobile Ads (GMA Next-Gen) and User Messaging Platform (UMP) for optional rewarded Ad Passes. There are no forced opening ads, banners or recurring advertising interruptions. The supplied Owner edition simulates rewards without advertising. Play debug builds use Google test ads; an unconfigured release does not initialize the advertising SDK or load ads.
+
+When you choose Prepare Ad Pass, UMP checks the applicable privacy choices and displays a form when required. The advertising SDK initializes only after the consent flow permits an ad request. Subsequent app launches can refresh previously requested privacy information without showing an unsolicited ad. Ad privacy choices remains available in Settings and the Pro screen when UMP requires it. Refusing or changing choices never blocks core free audio; ad availability may differ.
+
+When active, Google's advertising SDK collects and shares network addresses (which can indicate approximate location), ad and app interactions, diagnostic information, and device/account identifiers such as advertising ID and app set ID for serving ads, measurement and fraud prevention. SDK traffic is encrypted in transit. Its manifest includes network, advertising-ID, basic-phone-state and wake-lock permissions. Auralift does not send it audio, spectrum buffers, saved sound names or hearing information. We add no separate audience analytics or crash-reporting service. Google handles its data under https://policies.google.com/privacy and its advertising policies. See https://developers.google.com/admob/android/next-gen/privacy/play-data-disclosure for the current SDK disclosure.
+
+An earned pass is stored locally with device clock information and a random reward identifier to prevent duplicate callbacks. No developer-operated reward server or user account is used. Clearing local data removes the pass; it does not erase data already processed by Google. You can reset or delete your advertising ID in Android settings. Buying either Pro product removes the need to request further ads, but does not retroactively erase Google's records or remove the SDK from the installed Play binary.
+
+6. Feedback is your choice
+The feedback form does not send anything automatically. If you choose Share, Android lets you select a receiving app or recipient. You may include a screenshot you select and, separately, opt into connection details such as your phone model, Android version, audio output types and effect settings. No audio or purchase token is included in connection details. Review the content before sharing. The receiving app or service handles that communication under its own privacy practices. This preview has no hosted support form or support database.
+
+7. Your controls
+Delete saved sounds in Auralift, disable optional features, revoke permissions in Android settings, or clear app storage/uninstall to remove the app's local data. These actions do not delete exported files, messages already shared, or Google's purchase and advertising records. Use the relevant storage, messaging or Google account controls for those. A completed Play purchase may be restored through the same Google Play account when that edition is available.
+
+8. Changes and contact
+Changes to the app's data handling will be reflected in an updated notice with a new date. Any future accounts, backend verification or hosted support would need an updated notice before introduction. Questions about this preview can be sent to the developer through the channel where the preview was shared with you. Public contact and support details must be finalized before launch.

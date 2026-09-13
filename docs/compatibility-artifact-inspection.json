@@ -1,0 +1,64 @@
+{
+  "apk": "Auralift-0.2.0-preview.apk",
+  "sha256": "80ff49044d69f3a729043cc3fa43a57946125deb600815a74d585b2e4c57da1b",
+  "sizeBytes": 17551536,
+  "nativeLibraries": [
+    {
+      "path": "lib/arm64-v8a/libandroidx.graphics.path.so",
+      "bits": 64,
+      "loadAlignment": [
+        16384,
+        16384,
+        16384
+      ],
+      "relro16K": [
+        false
+      ],
+      "storedUncompressed": true,
+      "zip16K": true
+    },
+    {
+      "path": "lib/armeabi-v7a/libandroidx.graphics.path.so",
+      "bits": 32,
+      "loadAlignment": [
+        16384,
+        16384,
+        16384
+      ],
+      "relro16K": [
+        false
+      ],
+      "storedUncompressed": true,
+      "zip16K": true
+    },
+    {
+      "path": "lib/x86/libandroidx.graphics.path.so",
+      "bits": 32,
+      "loadAlignment": [
+        16384,
+        16384,
+        16384
+      ],
+      "relro16K": [
+        false
+      ],
+      "storedUncompressed": true,
+      "zip16K": true
+    },
+    {
+      "path": "lib/x86_64/libandroidx.graphics.path.so",
+      "bits": 64,
+      "loadAlignment": [
+        16384,
+        16384,
+        16384
+      ],
+      "relro16K": [
+        false
+      ],
+      "storedUncompressed": true,
+      "zip16K": true
+    }
+  ],
+  "scope": "Static artifact inspection; no new runtime or acoustic tests"
+}

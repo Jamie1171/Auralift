@@ -1,0 +1,39 @@
+Auralift — Terms of use
+Personal and pre-release editions · 13 September 2026
+
+1. This app
+Auralift is an audio utility developed by Jamie Wardle. These preview terms describe the app supplied for personal testing. The permanent publisher details, public contact and store offering will be finalized before a public launch. Use the channel where you received this preview to contact the developer. The Privacy policy explains its current data handling.
+
+2. What Auralift does
+The app controls Android media volume, audio gain and equalization using supported Android interfaces. Its minimum installation requirement is Android 8.0. Effect availability and audible results depend on the phone, media app and output route. Some apps bypass these effects. A setting of +35 dB is requested digital gain, not a promise of a measured 35 dB increase at your ears. Calls, alarms and ringtones are not supported targets. Auralift is not a hearing aid, a calibrated sound meter or a medical treatment.
+
+3. Listening controls
+Start at low volume and increase gradually. High volume and distortion can harm hearing or speakers. Lower the gain or stop if listening becomes uncomfortable or harsh. Compare original temporarily removes Auralift's boost and EQ; Stop releases its effects. These controls do not stop your media player or mute other sounds. The sleep timer and its optional fade reduce or end extra boost; media continues at its normal volume. Android may delay timers when idle.
+
+These explanations do not waive your statutory rights or exclude liability where the law does not allow it, including liability for death or personal injury caused by negligence, fraud or fraudulent misrepresentation.
+
+4. Using this preview
+You may install and use the supplied preview for its intended audio-control purpose. Do not use it unlawfully, misrepresent it as another developer's product, interfere with other people's devices or infringe others' rights. The original Auralift code, name and artwork belong to their respective rights holders. Third-party components retain their own licenses. Nothing here removes rights granted to you by applicable law or those component licenses.
+
+The Owner edition is for the owner's testing and includes all features. It is separate from the public distribution and should not be uploaded as a paid store release.
+
+5. Free and Pro features
+Free includes up to +15 dB of requested gain, media volume, EQ, original-sound comparison and essential stop/reset controls. Pro includes up to +35 dB, the floating player, additional full interface themes, named sound profiles with import/export and sleep fade. Availability still depends on Android capabilities.
+
+An optional Ad Pass unlocks Pro for one hour after a rewarded advertisement confirms completion. It requires no payment method and does not automatically charge you. Passes run in real time, including time outside the app, and do not stack. After expiry you may earn another when an ad is available. Installing or reinstalling alone does not grant a pass. A pass is tied to this installation and is lost if its local data is deleted. It normally survives a phone restart; changing the clock backwards can end it. On expiry, Pro conveniences become unavailable, the theme returns to Mint and the floating player closes. Active gain above +15 dB reduces to +15 dB. Lower gain and EQ stay as chosen, and your media continues. Saved named profiles stay stored and can be deleted. Unlocking Pro again does not increase gain automatically. This local reward mechanism is not designed as tamper-proof licensing. Ad loading, an impression, a click or early dismissal does not by itself earn a pass. Skipping an ad leaves the free app usable. No reward depends on buying an advertised product. Auralift releases its effects during an ad and restores the saved listening setup gradually afterwards if the session is still running.
+
+6. Purchases
+The supplied owner and unconfigured pre-release builds do not accept payments. The Google Play offering has two one-time options, Lifetime Pro and Supporter Pro. Both unlock exactly the same Pro features. Supporter Pro is an optional higher-priced way to support development, not an additional feature tier. You only need one. The exact localized price is shown from Google Play before checkout. Lifetime refers to the Pro entitlement for this product, subject to these terms and applicable law, not a promise of perpetual Android compatibility. There is no recurring subscription in this version. Do not interpret an illustrative price in project notes as an offer for sale.
+
+When purchases are enabled, Google Play's checkout and account terms also apply. Pending payments do not unlock Pro, and someone who already owns either product is not offered a second purchase of the same access. A completed purchase can be restored using the same Play account on supported devices; purchases are not consumed when restored. Refunds and cancellations are handled through the relevant Google Play process and any rights available under applicable law. A refunded or revoked entitlement can become unavailable after verification. Offline access and restoration depend on a previously verified purchase and Play availability.
+
+7. Availability and updates
+This is a development preview and may contain defects. Test compatibility before relying on it. Updates may change features and device support, and Android or a phone manufacturer can stop background services. Any future paid offering must explain its scope and update arrangements at the point of sale. These terms do not promise unlimited future products, perpetual platform compatibility or uninterrupted service.
+
+Nothing in these terms limits rights or remedies that cannot lawfully be excluded, including applicable consumer rights concerning digital content. No blanket release of developer responsibility is required to use the app.
+
+8. External apps and ending use
+Opening Android settings, Google Play, an advertisement or its destination, a music player or a sharing destination uses a separate app or service with its own terms and privacy practices. You can stop Auralift at any time and uninstall it to end use. Uninstalling does not remove exported files or cancel any rights you may hold in a completed purchase.
+
+9. Changes and questions
+Material changes should be clearly explained before they take effect. A revised date will identify updated terms. If a clause cannot lawfully be enforced, the remaining terms continue to the extent permitted by law. Questions about this preview should be sent through your existing developer contact channel. These documents require final publisher/contact details and review before public distribution.

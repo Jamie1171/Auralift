@@ -1,0 +1,853 @@
+{
+  "date": "2026-09-13",
+  "version": "0.3.0",
+  "tests": {
+    "api35-testPlayDebugUnitTest": {
+      "totals": {
+        "tests": 30,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "suites": [
+        {
+          "name": "com.jamiewardle.auralift.InterfaceTest",
+          "tests": "3",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.AccessAndProfilesTest",
+          "tests": "6",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.SettingsStoreTest",
+          "tests": "5",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.PlayReceiptVerifierTest",
+          "tests": "3",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.GainControllerTest",
+          "tests": "5",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.CompatibilitySmokeTest",
+          "tests": "1",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.GainMathTest",
+          "tests": "6",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.LocalizationTest",
+          "tests": "1",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        }
+      ]
+    },
+    "api35-testOwnerDebugUnitTest": {
+      "totals": {
+        "tests": 29,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "suites": [
+        {
+          "name": "com.jamiewardle.auralift.InterfaceTest",
+          "tests": "3",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.OwnerInterfaceTest",
+          "tests": "2",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.AccessAndProfilesTest",
+          "tests": "6",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.SettingsStoreTest",
+          "tests": "5",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.GainControllerTest",
+          "tests": "5",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.CompatibilitySmokeTest",
+          "tests": "1",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.GainMathTest",
+          "tests": "6",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.LocalizationTest",
+          "tests": "1",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        }
+      ]
+    },
+    "api26-testPlayDebugUnitTest": {
+      "totals": {
+        "tests": 19,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "suites": [
+        {
+          "name": "com.jamiewardle.auralift.InterfaceTest",
+          "tests": "0",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.AccessAndProfilesTest",
+          "tests": "6",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.SettingsStoreTest",
+          "tests": "0",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.PlayReceiptVerifierTest",
+          "tests": "0",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.GainControllerTest",
+          "tests": "5",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.CompatibilitySmokeTest",
+          "tests": "1",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.GainMathTest",
+          "tests": "6",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.LocalizationTest",
+          "tests": "1",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        }
+      ]
+    },
+    "api26-testOwnerDebugUnitTest": {
+      "totals": {
+        "tests": 19,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "suites": [
+        {
+          "name": "com.jamiewardle.auralift.InterfaceTest",
+          "tests": "0",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.OwnerInterfaceTest",
+          "tests": "0",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.AccessAndProfilesTest",
+          "tests": "6",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.SettingsStoreTest",
+          "tests": "0",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.GainControllerTest",
+          "tests": "5",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.CompatibilitySmokeTest",
+          "tests": "1",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.GainMathTest",
+          "tests": "6",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        },
+        {
+          "name": "com.jamiewardle.auralift.LocalizationTest",
+          "tests": "1",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        }
+      ]
+    }
+  },
+  "lint": {
+    "lint-results-ownerDebug": {
+      "severityCounts": {
+        "Warning": 18
+      },
+      "issueIds": {
+        "UnusedAttribute": 1,
+        "PluralsCandidate": 2,
+        "ObsoleteSdkInt": 1,
+        "UnusedResources": 8,
+        "UseKtx": 5,
+        "RtlHardcoded": 1
+      }
+    },
+    "lint-results-playRelease": {
+      "severityCounts": {
+        "Warning": 18
+      },
+      "issueIds": {
+        "UnusedAttribute": 1,
+        "NewerVersionAvailable": 1,
+        "PluralsCandidate": 2,
+        "ObsoleteSdkInt": 1,
+        "UnusedResources": 7,
+        "UseKtx": 5,
+        "RtlHardcoded": 1
+      }
+    }
+  },
+  "artifacts": {
+    "owner": {
+      "filename": "app-owner-debug.apk",
+      "bytes": 19733605,
+      "sha256": "5f1093870cc21e303d73ef96da3ae3b4ffc17a4430ecd163f093906ebc0dc4b9",
+      "badging": [
+        "package: name='com.jamiewardle.auralift.owner' versionCode='3' versionName='0.3.0-owner' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+        "sdkVersion:'26'",
+        "targetSdkVersion:'36'",
+        "application-label:'Auralift Owner'",
+        "native-code: 'arm64-v8a' 'armeabi-v7a' 'x86' 'x86_64'"
+      ],
+      "permissions": [
+        "package: com.jamiewardle.auralift.owner",
+        "uses-permission: name='android.permission.MODIFY_AUDIO_SETTINGS'",
+        "uses-permission: name='android.permission.FOREGROUND_SERVICE'",
+        "uses-permission: name='android.permission.FOREGROUND_SERVICE_SPECIAL_USE'",
+        "uses-permission: name='android.permission.POST_NOTIFICATIONS'",
+        "uses-permission: name='android.permission.SYSTEM_ALERT_WINDOW'",
+        "uses-permission: name='android.permission.VIBRATE'",
+        "uses-permission: name='android.permission.RECORD_AUDIO'",
+        "permission: com.jamiewardle.auralift.owner.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+        "uses-permission: name='com.jamiewardle.auralift.owner.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'"
+      ],
+      "zipalign16k": {
+        "passed": true,
+        "output": ""
+      },
+      "signature": [
+        "Verifies",
+        "Verified using v1 scheme (JAR signing): false",
+        "Verified using v2 scheme (APK Signature Scheme v2): true",
+        "Verified using v3 scheme (APK Signature Scheme v3): false",
+        "Verified using v3.1 scheme (APK Signature Scheme v3.1): false",
+        "Verified using v4 scheme (APK Signature Scheme v4): false",
+        "Verified for SourceStamp: false",
+        "Number of signers: 1",
+        "Signer #1 certificate DN: C=US, O=Android, CN=Android Debug",
+        "Signer #1 certificate SHA-256 digest: 7ba0540911fe9b3208e119d82a5710079d9ad982ea1c4259c500e0047a8f8f36",
+        "Signer #1 certificate SHA-1 digest: b5fe25063fd4c206ad11b6be8bb7b1eece05705b",
+        "Signer #1 certificate MD5 digest: 641c7a195b11e8eb562b608f56bd198d",
+        "Signer #1 key algorithm: RSA",
+        "Signer #1 key size (bits): 2048",
+        "Signer #1 public key SHA-256 digest: 2a4f447f502332f6928a7bca2d66fa61756299261599748188bb0ff175e09be5",
+        "Signer #1 public key SHA-1 digest: eb9614fe23bec0fb47912c31e224521ada1f9eda",
+        "Signer #1 public key MD5 digest: fe55f747ce07fc8e130aaa998e487d3d"
+      ],
+      "duplicate_zip_entries": 0,
+      "unexpected_temp_entries": [],
+      "dex_count": 9,
+      "billing_package_in_dex": false,
+      "native_libraries": [
+        {
+          "path": "lib/arm64-v8a/libandroidx.graphics.path.so",
+          "compression": 0,
+          "zip_offset": 17825792,
+          "zip_aligned_16k": true,
+          "load_alignment_16k": true,
+          "headers": [
+            {
+              "type": "LOAD",
+              "offset": 0,
+              "vaddr": 0,
+              "filesz": 6976,
+              "memsz": 6976,
+              "align": 16384,
+              "end": 6976,
+              "end_mod_16k": 6976
+            },
+            {
+              "type": "LOAD",
+              "offset": 6976,
+              "vaddr": 23360,
+              "filesz": 920,
+              "memsz": 1216,
+              "align": 16384,
+              "end": 24576,
+              "end_mod_16k": 8192
+            },
+            {
+              "type": "LOAD",
+              "offset": 7896,
+              "vaddr": 40664,
+              "filesz": 0,
+              "memsz": 16,
+              "align": 16384,
+              "end": 40680,
+              "end_mod_16k": 7912
+            },
+            {
+              "type": "GNU_RELRO",
+              "offset": 6976,
+              "vaddr": 23360,
+              "filesz": 920,
+              "memsz": 1216,
+              "align": 1,
+              "end": 24576,
+              "end_mod_16k": 8192
+            }
+          ]
+        },
+        {
+          "path": "lib/armeabi-v7a/libandroidx.graphics.path.so",
+          "compression": 0,
+          "zip_offset": 17842176,
+          "zip_aligned_16k": true,
+          "load_alignment_16k": true,
+          "headers": [
+            {
+              "type": "LOAD",
+              "offset": 0,
+              "vaddr": 0,
+              "filesz": 5200,
+              "memsz": 5200,
+              "align": 16384,
+              "end": 5200,
+              "end_mod_16k": 5200
+            },
+            {
+              "type": "LOAD",
+              "offset": 5200,
+              "vaddr": 21584,
+              "filesz": 464,
+              "memsz": 2992,
+              "align": 16384,
+              "end": 24576,
+              "end_mod_16k": 8192
+            },
+            {
+              "type": "LOAD",
+              "offset": 5664,
+              "vaddr": 38432,
+              "filesz": 0,
+              "memsz": 8,
+              "align": 16384,
+              "end": 38440,
+              "end_mod_16k": 5672
+            },
+            {
+              "type": "GNU_RELRO",
+              "offset": 5200,
+              "vaddr": 21584,
+              "filesz": 464,
+              "memsz": 2992,
+              "align": 1,
+              "end": 24576,
+              "end_mod_16k": 8192
+            }
+          ]
+        },
+        {
+          "path": "lib/x86/libandroidx.graphics.path.so",
+          "compression": 0,
+          "zip_offset": 17858560,
+          "zip_aligned_16k": true,
+          "load_alignment_16k": true,
+          "headers": [
+            {
+              "type": "LOAD",
+              "offset": 0,
+              "vaddr": 0,
+              "filesz": 6400,
+              "memsz": 6400,
+              "align": 16384,
+              "end": 6400,
+              "end_mod_16k": 6400
+            },
+            {
+              "type": "LOAD",
+              "offset": 6400,
+              "vaddr": 22784,
+              "filesz": 460,
+              "memsz": 1792,
+              "align": 16384,
+              "end": 24576,
+              "end_mod_16k": 8192
+            },
+            {
+              "type": "LOAD",
+              "offset": 6860,
+              "vaddr": 39628,
+              "filesz": 0,
+              "memsz": 8,
+              "align": 16384,
+              "end": 39636,
+              "end_mod_16k": 6868
+            },
+            {
+              "type": "GNU_RELRO",
+              "offset": 6400,
+              "vaddr": 22784,
+              "filesz": 460,
+              "memsz": 1792,
+              "align": 1,
+              "end": 24576,
+              "end_mod_16k": 8192
+            }
+          ]
+        },
+        {
+          "path": "lib/x86_64/libandroidx.graphics.path.so",
+          "compression": 0,
+          "zip_offset": 17874944,
+          "zip_aligned_16k": true,
+          "load_alignment_16k": true,
+          "headers": [
+            {
+              "type": "LOAD",
+              "offset": 0,
+              "vaddr": 0,
+              "filesz": 7104,
+              "memsz": 7104,
+              "align": 16384,
+              "end": 7104,
+              "end_mod_16k": 7104
+            },
+            {
+              "type": "LOAD",
+              "offset": 7104,
+              "vaddr": 23488,
+              "filesz": 944,
+              "memsz": 1088,
+              "align": 16384,
+              "end": 24576,
+              "end_mod_16k": 8192
+            },
+            {
+              "type": "LOAD",
+              "offset": 8048,
+              "vaddr": 40816,
+              "filesz": 0,
+              "memsz": 16,
+              "align": 16384,
+              "end": 40832,
+              "end_mod_16k": 8064
+            },
+            {
+              "type": "GNU_RELRO",
+              "offset": 7104,
+              "vaddr": 23488,
+              "filesz": 944,
+              "memsz": 1088,
+              "align": 1,
+              "end": 24576,
+              "end_mod_16k": 8192
+            }
+          ]
+        }
+      ],
+      "classes": {
+        "total": 26889,
+        "unique": 26889,
+        "duplicates": []
+      },
+      "dex_integrity": [
+        {
+          "dex": "classes.dex",
+          "sha1_ok": true,
+          "adler32_ok": true
+        },
+        {
+          "dex": "classes4.dex",
+          "sha1_ok": true,
+          "adler32_ok": true
+        },
+        {
+          "dex": "classes5.dex",
+          "sha1_ok": true,
+          "adler32_ok": true
+        },
+        {
+          "dex": "classes6.dex",
+          "sha1_ok": true,
+          "adler32_ok": true
+        },
+        {
+          "dex": "classes7.dex",
+          "sha1_ok": true,
+          "adler32_ok": true
+        },
+        {
+          "dex": "classes8.dex",
+          "sha1_ok": true,
+          "adler32_ok": true
+        },
+        {
+          "dex": "classes9.dex",
+          "sha1_ok": true,
+          "adler32_ok": true
+        },
+        {
+          "dex": "classes2.dex",
+          "sha1_ok": true,
+          "adler32_ok": true
+        },
+        {
+          "dex": "classes3.dex",
+          "sha1_ok": true,
+          "adler32_ok": true
+        }
+      ]
+    },
+    "play": {
+      "filename": "app-play-release-unsigned.apk",
+      "bytes": 2629621,
+      "sha256": "9b0b66b325aaba6d0803e1bb96921e389d22f5752253d29be4819dc039b04d30",
+      "badging": [
+        "package: name='com.jamiewardle.auralift' versionCode='3' versionName='0.3.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+        "sdkVersion:'26'",
+        "targetSdkVersion:'36'",
+        "application-label:'Auralift'",
+        "native-code: 'arm64-v8a' 'armeabi-v7a' 'x86' 'x86_64'"
+      ],
+      "permissions": [
+        "package: com.jamiewardle.auralift",
+        "uses-permission: name='android.permission.MODIFY_AUDIO_SETTINGS'",
+        "uses-permission: name='android.permission.FOREGROUND_SERVICE'",
+        "uses-permission: name='android.permission.FOREGROUND_SERVICE_SPECIAL_USE'",
+        "uses-permission: name='android.permission.POST_NOTIFICATIONS'",
+        "uses-permission: name='android.permission.SYSTEM_ALERT_WINDOW'",
+        "uses-permission: name='android.permission.VIBRATE'",
+        "uses-permission: name='android.permission.RECORD_AUDIO'",
+        "uses-permission: name='com.android.vending.BILLING'",
+        "permission: com.jamiewardle.auralift.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+        "uses-permission: name='com.jamiewardle.auralift.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'",
+        "uses-permission: name='android.permission.ACCESS_NETWORK_STATE'",
+        "uses-permission: name='android.permission.INTERNET'"
+      ],
+      "zipalign16k": {
+        "passed": true,
+        "output": ""
+      },
+      "duplicate_zip_entries": 0,
+      "unexpected_temp_entries": [],
+      "dex_count": 1,
+      "billing_package_in_dex": true,
+      "native_libraries": [
+        {
+          "path": "lib/arm64-v8a/libandroidx.graphics.path.so",
+          "compression": 0,
+          "zip_offset": 1392640,
+          "zip_aligned_16k": true,
+          "load_alignment_16k": true,
+          "headers": [
+            {
+              "type": "LOAD",
+              "offset": 0,
+              "vaddr": 0,
+              "filesz": 6976,
+              "memsz": 6976,
+              "align": 16384,
+              "end": 6976,
+              "end_mod_16k": 6976
+            },
+            {
+              "type": "LOAD",
+              "offset": 6976,
+              "vaddr": 23360,
+              "filesz": 920,
+              "memsz": 1216,
+              "align": 16384,
+              "end": 24576,
+              "end_mod_16k": 8192
+            },
+            {
+              "type": "LOAD",
+              "offset": 7896,
+              "vaddr": 40664,
+              "filesz": 0,
+              "memsz": 16,
+              "align": 16384,
+              "end": 40680,
+              "end_mod_16k": 7912
+            },
+            {
+              "type": "GNU_RELRO",
+              "offset": 6976,
+              "vaddr": 23360,
+              "filesz": 920,
+              "memsz": 1216,
+              "align": 1,
+              "end": 24576,
+              "end_mod_16k": 8192
+            }
+          ]
+        },
+        {
+          "path": "lib/armeabi-v7a/libandroidx.graphics.path.so",
+          "compression": 0,
+          "zip_offset": 1409024,
+          "zip_aligned_16k": true,
+          "load_alignment_16k": true,
+          "headers": [
+            {
+              "type": "LOAD",
+              "offset": 0,
+              "vaddr": 0,
+              "filesz": 5200,
+              "memsz": 5200,
+              "align": 16384,
+              "end": 5200,
+              "end_mod_16k": 5200
+            },
+            {
+              "type": "LOAD",
+              "offset": 5200,
+              "vaddr": 21584,
+              "filesz": 464,
+              "memsz": 2992,
+              "align": 16384,
+              "end": 24576,
+              "end_mod_16k": 8192
+            },
+            {
+              "type": "LOAD",
+              "offset": 5664,
+              "vaddr": 38432,
+              "filesz": 0,
+              "memsz": 8,
+              "align": 16384,
+              "end": 38440,
+              "end_mod_16k": 5672
+            },
+            {
+              "type": "GNU_RELRO",
+              "offset": 5200,
+              "vaddr": 21584,
+              "filesz": 464,
+              "memsz": 2992,
+              "align": 1,
+              "end": 24576,
+              "end_mod_16k": 8192
+            }
+          ]
+        },
+        {
+          "path": "lib/x86/libandroidx.graphics.path.so",
+          "compression": 0,
+          "zip_offset": 1425408,
+          "zip_aligned_16k": true,
+          "load_alignment_16k": true,
+          "headers": [
+            {
+              "type": "LOAD",
+              "offset": 0,
+              "vaddr": 0,
+              "filesz": 6400,
+              "memsz": 6400,
+              "align": 16384,
+              "end": 6400,
+              "end_mod_16k": 6400
+            },
+            {
+              "type": "LOAD",
+              "offset": 6400,
+              "vaddr": 22784,
+              "filesz": 460,
+              "memsz": 1792,
+              "align": 16384,
+              "end": 24576,
+              "end_mod_16k": 8192
+            },
+            {
+              "type": "LOAD",
+              "offset": 6860,
+              "vaddr": 39628,
+              "filesz": 0,
+              "memsz": 8,
+              "align": 16384,
+              "end": 39636,
+              "end_mod_16k": 6868
+            },
+            {
+              "type": "GNU_RELRO",
+              "offset": 6400,
+              "vaddr": 22784,
+              "filesz": 460,
+              "memsz": 1792,
+              "align": 1,
+              "end": 24576,
+              "end_mod_16k": 8192
+            }
+          ]
+        },
+        {
+          "path": "lib/x86_64/libandroidx.graphics.path.so",
+          "compression": 0,
+          "zip_offset": 1441792,
+          "zip_aligned_16k": true,
+          "load_alignment_16k": true,
+          "headers": [
+            {
+              "type": "LOAD",
+              "offset": 0,
+              "vaddr": 0,
+              "filesz": 7104,
+              "memsz": 7104,
+              "align": 16384,
+              "end": 7104,
+              "end_mod_16k": 7104
+            },
+            {
+              "type": "LOAD",
+              "offset": 7104,
+              "vaddr": 23488,
+              "filesz": 944,
+              "memsz": 1088,
+              "align": 16384,
+              "end": 24576,
+              "end_mod_16k": 8192
+            },
+            {
+              "type": "LOAD",
+              "offset": 8048,
+              "vaddr": 40816,
+              "filesz": 0,
+              "memsz": 16,
+              "align": 16384,
+              "end": 40832,
+              "end_mod_16k": 8064
+            },
+            {
+              "type": "GNU_RELRO",
+              "offset": 7104,
+              "vaddr": 23488,
+              "filesz": 944,
+              "memsz": 1088,
+              "align": 1,
+              "end": 24576,
+              "end_mod_16k": 8192
+            }
+          ]
+        }
+      ],
+      "classes": {
+        "total": 3326,
+        "unique": 3326,
+        "duplicates": []
+      },
+      "dex_integrity": [
+        {
+          "dex": "classes.dex",
+          "sha1_ok": true,
+          "adler32_ok": true
+        }
+      ]
+    }
+  },
+  "limits": [
+    "No physical or acoustic device measurements for 0.3.0.",
+    "Real Google Play checkout/refund/restore is not tested; catalogue and key are unconfigured.",
+    "Graphics native library still fails the documented 16 KB RELRO-end modulus check; resolve before claiming 16 KB compatibility.",
+    "Robolectric covers API 26 and 35; target API 36 does not establish physical testing on API 36+."
+  ]
+}

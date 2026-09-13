@@ -1,0 +1,829 @@
+{
+  "version": "0.5.0",
+  "date": "2026-09-13",
+  "api35": {
+    "Owner": {
+      "tests": 43,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "Play": {
+      "tests": 44,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "api26": {
+    "Owner": {
+      "tests": 29,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "Play": {
+      "tests": 32,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "lint": {
+    "ownerDebug": {
+      "errors": 0,
+      "warnings": 29
+    },
+    "playRelease": {
+      "errors": 0,
+      "warnings": 23
+    }
+  },
+  "artifacts": [
+    {
+      "name": "Auralift-0.5.0-owner.apk",
+      "bytes": 19845281,
+      "sha256": "8719e81ffe3caa52adddb5b52073655f9d3c6a1d414151dcb119c84537aeaa47"
+    },
+    {
+      "name": "Auralift-0.5.0-play-test.apk",
+      "bytes": 27042413,
+      "sha256": "bd9125a37045d60f10daefdef53bd9c3413e45c89e3cf190d2b82b45068ed31c"
+    },
+    {
+      "name": "Auralift-0.5.0-play-unsigned.aab",
+      "bytes": 8261938,
+      "sha256": "2b4d49dd3ed727b791567e9cc66062b6c0c0397b131739b1e163465ff5e31710"
+    }
+  ],
+  "apk_inspection": {
+    "owner": {
+      "filename": "app-owner-debug.apk",
+      "bytes": 19845281,
+      "sha256": "8719e81ffe3caa52adddb5b52073655f9d3c6a1d414151dcb119c84537aeaa47",
+      "badging": [
+        "package: name='com.jamiewardle.auralift.owner' versionCode='5' versionName='0.5.0-owner' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+        "sdkVersion:'26'",
+        "targetSdkVersion:'36'",
+        "application-label:'Auralift Owner'",
+        "native-code: 'arm64-v8a' 'armeabi-v7a' 'x86' 'x86_64'"
+      ],
+      "permissions": [
+        "package: com.jamiewardle.auralift.owner",
+        "uses-permission: name='android.permission.MODIFY_AUDIO_SETTINGS'",
+        "uses-permission: name='android.permission.RECEIVE_BOOT_COMPLETED'",
+        "uses-permission: name='android.permission.FOREGROUND_SERVICE'",
+        "uses-permission: name='android.permission.FOREGROUND_SERVICE_SPECIAL_USE'",
+        "uses-permission: name='android.permission.POST_NOTIFICATIONS'",
+        "uses-permission: name='android.permission.SYSTEM_ALERT_WINDOW'",
+        "uses-permission: name='android.permission.VIBRATE'",
+        "uses-permission: name='android.permission.RECORD_AUDIO'",
+        "permission: com.jamiewardle.auralift.owner.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+        "uses-permission: name='com.jamiewardle.auralift.owner.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'"
+      ],
+      "zipalign16k": {
+        "passed": true,
+        "output": ""
+      },
+      "signature": [
+        "Verifies",
+        "Verified using v1 scheme (JAR signing): false",
+        "Verified using v2 scheme (APK Signature Scheme v2): true",
+        "Verified using v3 scheme (APK Signature Scheme v3): false",
+        "Verified using v3.1 scheme (APK Signature Scheme v3.1): false",
+        "Verified using v4 scheme (APK Signature Scheme v4): false",
+        "Verified for SourceStamp: false",
+        "Number of signers: 1",
+        "Signer #1 certificate DN: C=US, O=Android, CN=Android Debug",
+        "Signer #1 certificate SHA-256 digest: 7ba0540911fe9b3208e119d82a5710079d9ad982ea1c4259c500e0047a8f8f36",
+        "Signer #1 certificate SHA-1 digest: b5fe25063fd4c206ad11b6be8bb7b1eece05705b",
+        "Signer #1 certificate MD5 digest: 641c7a195b11e8eb562b608f56bd198d",
+        "Signer #1 key algorithm: RSA",
+        "Signer #1 key size (bits): 2048",
+        "Signer #1 public key SHA-256 digest: 2a4f447f502332f6928a7bca2d66fa61756299261599748188bb0ff175e09be5",
+        "Signer #1 public key SHA-1 digest: eb9614fe23bec0fb47912c31e224521ada1f9eda",
+        "Signer #1 public key MD5 digest: fe55f747ce07fc8e130aaa998e487d3d"
+      ],
+      "duplicate_zip_entries": 0,
+      "unexpected_temp_entries": [],
+      "dex_count": 9,
+      "billing_package_in_dex": false,
+      "ad_sdk_in_dex": false,
+      "ump_sdk_in_dex": false,
+      "native_libraries": [
+        {
+          "path": "lib/arm64-v8a/libandroidx.graphics.path.so",
+          "compression": 0,
+          "zip_offset": 17874944,
+          "zip_aligned_16k": true,
+          "load_alignment_16k": true,
+          "headers": [
+            {
+              "type": "LOAD",
+              "offset": 0,
+              "vaddr": 0,
+              "filesz": 6976,
+              "memsz": 6976,
+              "align": 16384,
+              "end": 6976,
+              "end_mod_16k": 6976
+            },
+            {
+              "type": "LOAD",
+              "offset": 6976,
+              "vaddr": 23360,
+              "filesz": 920,
+              "memsz": 1216,
+              "align": 16384,
+              "end": 24576,
+              "end_mod_16k": 8192
+            },
+            {
+              "type": "LOAD",
+              "offset": 7896,
+              "vaddr": 40664,
+              "filesz": 0,
+              "memsz": 16,
+              "align": 16384,
+              "end": 40680,
+              "end_mod_16k": 7912
+            },
+            {
+              "type": "GNU_RELRO",
+              "offset": 6976,
+              "vaddr": 23360,
+              "filesz": 920,
+              "memsz": 1216,
+              "align": 1,
+              "end": 24576,
+              "end_mod_16k": 8192
+            }
+          ]
+        },
+        {
+          "path": "lib/armeabi-v7a/libandroidx.graphics.path.so",
+          "compression": 0,
+          "zip_offset": 17891328,
+          "zip_aligned_16k": true,
+          "load_alignment_16k": true,
+          "headers": [
+            {
+              "type": "LOAD",
+              "offset": 0,
+              "vaddr": 0,
+              "filesz": 5200,
+              "memsz": 5200,
+              "align": 16384,
+              "end": 5200,
+              "end_mod_16k": 5200
+            },
+            {
+              "type": "LOAD",
+              "offset": 5200,
+              "vaddr": 21584,
+              "filesz": 464,
+              "memsz": 2992,
+              "align": 16384,
+              "end": 24576,
+              "end_mod_16k": 8192
+            },
+            {
+              "type": "LOAD",
+              "offset": 5664,
+              "vaddr": 38432,
+              "filesz": 0,
+              "memsz": 8,
+              "align": 16384,
+              "end": 38440,
+              "end_mod_16k": 5672
+            },
+            {
+              "type": "GNU_RELRO",
+              "offset": 5200,
+              "vaddr": 21584,
+              "filesz": 464,
+              "memsz": 2992,
+              "align": 1,
+              "end": 24576,
+              "end_mod_16k": 8192
+            }
+          ]
+        },
+        {
+          "path": "lib/x86/libandroidx.graphics.path.so",
+          "compression": 0,
+          "zip_offset": 17907712,
+          "zip_aligned_16k": true,
+          "load_alignment_16k": true,
+          "headers": [
+            {
+              "type": "LOAD",
+              "offset": 0,
+              "vaddr": 0,
+              "filesz": 6400,
+              "memsz": 6400,
+              "align": 16384,
+              "end": 6400,
+              "end_mod_16k": 6400
+            },
+            {
+              "type": "LOAD",
+              "offset": 6400,
+              "vaddr": 22784,
+              "filesz": 460,
+              "memsz": 1792,
+              "align": 16384,
+              "end": 24576,
+              "end_mod_16k": 8192
+            },
+            {
+              "type": "LOAD",
+              "offset": 6860,
+              "vaddr": 39628,
+              "filesz": 0,
+              "memsz": 8,
+              "align": 16384,
+              "end": 39636,
+              "end_mod_16k": 6868
+            },
+            {
+              "type": "GNU_RELRO",
+              "offset": 6400,
+              "vaddr": 22784,
+              "filesz": 460,
+              "memsz": 1792,
+              "align": 1,
+              "end": 24576,
+              "end_mod_16k": 8192
+            }
+          ]
+        },
+        {
+          "path": "lib/x86_64/libandroidx.graphics.path.so",
+          "compression": 0,
+          "zip_offset": 17924096,
+          "zip_aligned_16k": true,
+          "load_alignment_16k": true,
+          "headers": [
+            {
+              "type": "LOAD",
+              "offset": 0,
+              "vaddr": 0,
+              "filesz": 7104,
+              "memsz": 7104,
+              "align": 16384,
+              "end": 7104,
+              "end_mod_16k": 7104
+            },
+            {
+              "type": "LOAD",
+              "offset": 7104,
+              "vaddr": 23488,
+              "filesz": 944,
+              "memsz": 1088,
+              "align": 16384,
+              "end": 24576,
+              "end_mod_16k": 8192
+            },
+            {
+              "type": "LOAD",
+              "offset": 8048,
+              "vaddr": 40816,
+              "filesz": 0,
+              "memsz": 16,
+              "align": 16384,
+              "end": 40832,
+              "end_mod_16k": 8064
+            },
+            {
+              "type": "GNU_RELRO",
+              "offset": 7104,
+              "vaddr": 23488,
+              "filesz": 944,
+              "memsz": 1088,
+              "align": 1,
+              "end": 24576,
+              "end_mod_16k": 8192
+            }
+          ]
+        }
+      ],
+      "unique_dex_classes": 26961,
+      "dex_checksums_valid": true,
+      "duplicate_dex_classes": 0
+    },
+    "play": {
+      "filename": "app-play-release-unsigned.apk",
+      "bytes": 4517740,
+      "sha256": "c3d05da90104ca3d84662a7c863ce00c50f7d8fe982c48207d45bcba6eb6e579",
+      "badging": [
+        "package: name='com.jamiewardle.auralift' versionCode='5' versionName='0.5.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+        "sdkVersion:'26'",
+        "targetSdkVersion:'36'",
+        "application-label:'Auralift'",
+        "native-code: 'arm64-v8a' 'armeabi-v7a' 'x86' 'x86_64'"
+      ],
+      "permissions": [
+        "package: com.jamiewardle.auralift",
+        "uses-permission: name='android.permission.MODIFY_AUDIO_SETTINGS'",
+        "uses-permission: name='android.permission.RECEIVE_BOOT_COMPLETED'",
+        "uses-permission: name='android.permission.FOREGROUND_SERVICE'",
+        "uses-permission: name='android.permission.FOREGROUND_SERVICE_SPECIAL_USE'",
+        "uses-permission: name='android.permission.POST_NOTIFICATIONS'",
+        "uses-permission: name='android.permission.SYSTEM_ALERT_WINDOW'",
+        "uses-permission: name='android.permission.VIBRATE'",
+        "uses-permission: name='android.permission.RECORD_AUDIO'",
+        "uses-permission: name='android.permission.INTERNET'",
+        "uses-permission: name='android.permission.ACCESS_NETWORK_STATE'",
+        "uses-permission: name='android.permission.READ_BASIC_PHONE_STATE'",
+        "uses-permission: name='com.google.android.gms.permission.AD_ID'",
+        "uses-permission: name='com.android.vending.BILLING'",
+        "uses-permission: name='android.permission.WAKE_LOCK'",
+        "permission: com.jamiewardle.auralift.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+        "uses-permission: name='com.jamiewardle.auralift.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'"
+      ],
+      "zipalign16k": {
+        "passed": true,
+        "output": ""
+      },
+      "duplicate_zip_entries": 0,
+      "unexpected_temp_entries": [],
+      "dex_count": 1,
+      "billing_package_in_dex": true,
+      "ad_sdk_in_dex": true,
+      "ump_sdk_in_dex": false,
+      "native_libraries": [
+        {
+          "path": "lib/arm64-v8a/libandroidx.graphics.path.so",
+          "compression": 0,
+          "zip_offset": 3145728,
+          "zip_aligned_16k": true,
+          "load_alignment_16k": true,
+          "headers": [
+            {
+              "type": "LOAD",
+              "offset": 0,
+              "vaddr": 0,
+              "filesz": 6976,
+              "memsz": 6976,
+              "align": 16384,
+              "end": 6976,
+              "end_mod_16k": 6976
+            },
+            {
+              "type": "LOAD",
+              "offset": 6976,
+              "vaddr": 23360,
+              "filesz": 920,
+              "memsz": 1216,
+              "align": 16384,
+              "end": 24576,
+              "end_mod_16k": 8192
+            },
+            {
+              "type": "LOAD",
+              "offset": 7896,
+              "vaddr": 40664,
+              "filesz": 0,
+              "memsz": 16,
+              "align": 16384,
+              "end": 40680,
+              "end_mod_16k": 7912
+            },
+            {
+              "type": "GNU_RELRO",
+              "offset": 6976,
+              "vaddr": 23360,
+              "filesz": 920,
+              "memsz": 1216,
+              "align": 1,
+              "end": 24576,
+              "end_mod_16k": 8192
+            }
+          ]
+        },
+        {
+          "path": "lib/armeabi-v7a/libandroidx.graphics.path.so",
+          "compression": 0,
+          "zip_offset": 3162112,
+          "zip_aligned_16k": true,
+          "load_alignment_16k": true,
+          "headers": [
+            {
+              "type": "LOAD",
+              "offset": 0,
+              "vaddr": 0,
+              "filesz": 5200,
+              "memsz": 5200,
+              "align": 16384,
+              "end": 5200,
+              "end_mod_16k": 5200
+            },
+            {
+              "type": "LOAD",
+              "offset": 5200,
+              "vaddr": 21584,
+              "filesz": 464,
+              "memsz": 2992,
+              "align": 16384,
+              "end": 24576,
+              "end_mod_16k": 8192
+            },
+            {
+              "type": "LOAD",
+              "offset": 5664,
+              "vaddr": 38432,
+              "filesz": 0,
+              "memsz": 8,
+              "align": 16384,
+              "end": 38440,
+              "end_mod_16k": 5672
+            },
+            {
+              "type": "GNU_RELRO",
+              "offset": 5200,
+              "vaddr": 21584,
+              "filesz": 464,
+              "memsz": 2992,
+              "align": 1,
+              "end": 24576,
+              "end_mod_16k": 8192
+            }
+          ]
+        },
+        {
+          "path": "lib/x86/libandroidx.graphics.path.so",
+          "compression": 0,
+          "zip_offset": 3178496,
+          "zip_aligned_16k": true,
+          "load_alignment_16k": true,
+          "headers": [
+            {
+              "type": "LOAD",
+              "offset": 0,
+              "vaddr": 0,
+              "filesz": 6400,
+              "memsz": 6400,
+              "align": 16384,
+              "end": 6400,
+              "end_mod_16k": 6400
+            },
+            {
+              "type": "LOAD",
+              "offset": 6400,
+              "vaddr": 22784,
+              "filesz": 460,
+              "memsz": 1792,
+              "align": 16384,
+              "end": 24576,
+              "end_mod_16k": 8192
+            },
+            {
+              "type": "LOAD",
+              "offset": 6860,
+              "vaddr": 39628,
+              "filesz": 0,
+              "memsz": 8,
+              "align": 16384,
+              "end": 39636,
+              "end_mod_16k": 6868
+            },
+            {
+              "type": "GNU_RELRO",
+              "offset": 6400,
+              "vaddr": 22784,
+              "filesz": 460,
+              "memsz": 1792,
+              "align": 1,
+              "end": 24576,
+              "end_mod_16k": 8192
+            }
+          ]
+        },
+        {
+          "path": "lib/x86_64/libandroidx.graphics.path.so",
+          "compression": 0,
+          "zip_offset": 3194880,
+          "zip_aligned_16k": true,
+          "load_alignment_16k": true,
+          "headers": [
+            {
+              "type": "LOAD",
+              "offset": 0,
+              "vaddr": 0,
+              "filesz": 7104,
+              "memsz": 7104,
+              "align": 16384,
+              "end": 7104,
+              "end_mod_16k": 7104
+            },
+            {
+              "type": "LOAD",
+              "offset": 7104,
+              "vaddr": 23488,
+              "filesz": 944,
+              "memsz": 1088,
+              "align": 16384,
+              "end": 24576,
+              "end_mod_16k": 8192
+            },
+            {
+              "type": "LOAD",
+              "offset": 8048,
+              "vaddr": 40816,
+              "filesz": 0,
+              "memsz": 16,
+              "align": 16384,
+              "end": 40832,
+              "end_mod_16k": 8064
+            },
+            {
+              "type": "GNU_RELRO",
+              "offset": 7104,
+              "vaddr": 23488,
+              "filesz": 944,
+              "memsz": 1088,
+              "align": 1,
+              "end": 24576,
+              "end_mod_16k": 8192
+            }
+          ]
+        }
+      ],
+      "unique_dex_classes": 7272,
+      "dex_checksums_valid": true,
+      "duplicate_dex_classes": 0
+    },
+    "play-test": {
+      "filename": "app-play-debug.apk",
+      "bytes": 27042413,
+      "sha256": "bd9125a37045d60f10daefdef53bd9c3413e45c89e3cf190d2b82b45068ed31c",
+      "badging": [
+        "package: name='com.jamiewardle.auralift' versionCode='5' versionName='0.5.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+        "sdkVersion:'26'",
+        "targetSdkVersion:'36'",
+        "application-label:'Auralift'",
+        "native-code: 'arm64-v8a' 'armeabi-v7a' 'x86' 'x86_64'"
+      ],
+      "permissions": [
+        "package: com.jamiewardle.auralift",
+        "uses-permission: name='android.permission.MODIFY_AUDIO_SETTINGS'",
+        "uses-permission: name='android.permission.RECEIVE_BOOT_COMPLETED'",
+        "uses-permission: name='android.permission.FOREGROUND_SERVICE'",
+        "uses-permission: name='android.permission.FOREGROUND_SERVICE_SPECIAL_USE'",
+        "uses-permission: name='android.permission.POST_NOTIFICATIONS'",
+        "uses-permission: name='android.permission.SYSTEM_ALERT_WINDOW'",
+        "uses-permission: name='android.permission.VIBRATE'",
+        "uses-permission: name='android.permission.RECORD_AUDIO'",
+        "uses-permission: name='android.permission.INTERNET'",
+        "uses-permission: name='android.permission.ACCESS_NETWORK_STATE'",
+        "uses-permission: name='android.permission.READ_BASIC_PHONE_STATE'",
+        "uses-permission: name='com.google.android.gms.permission.AD_ID'",
+        "uses-permission: name='com.android.vending.BILLING'",
+        "uses-permission: name='android.permission.WAKE_LOCK'",
+        "permission: com.jamiewardle.auralift.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+        "uses-permission: name='com.jamiewardle.auralift.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'"
+      ],
+      "zipalign16k": {
+        "passed": true,
+        "output": ""
+      },
+      "signature": [
+        "Verifies",
+        "Verified using v1 scheme (JAR signing): false",
+        "Verified using v2 scheme (APK Signature Scheme v2): true",
+        "Verified using v3 scheme (APK Signature Scheme v3): false",
+        "Verified using v3.1 scheme (APK Signature Scheme v3.1): false",
+        "Verified using v4 scheme (APK Signature Scheme v4): false",
+        "Verified for SourceStamp: false",
+        "Number of signers: 1",
+        "Signer #1 certificate DN: C=US, O=Android, CN=Android Debug",
+        "Signer #1 certificate SHA-256 digest: 7ba0540911fe9b3208e119d82a5710079d9ad982ea1c4259c500e0047a8f8f36",
+        "Signer #1 certificate SHA-1 digest: b5fe25063fd4c206ad11b6be8bb7b1eece05705b",
+        "Signer #1 certificate MD5 digest: 641c7a195b11e8eb562b608f56bd198d",
+        "Signer #1 key algorithm: RSA",
+        "Signer #1 key size (bits): 2048",
+        "Signer #1 public key SHA-256 digest: 2a4f447f502332f6928a7bca2d66fa61756299261599748188bb0ff175e09be5",
+        "Signer #1 public key SHA-1 digest: eb9614fe23bec0fb47912c31e224521ada1f9eda",
+        "Signer #1 public key MD5 digest: fe55f747ce07fc8e130aaa998e487d3d"
+      ],
+      "duplicate_zip_entries": 0,
+      "unexpected_temp_entries": [],
+      "dex_count": 10,
+      "billing_package_in_dex": true,
+      "ad_sdk_in_dex": true,
+      "ump_sdk_in_dex": true,
+      "native_libraries": [
+        {
+          "path": "lib/arm64-v8a/libandroidx.graphics.path.so",
+          "compression": 0,
+          "zip_offset": 24625152,
+          "zip_aligned_16k": true,
+          "load_alignment_16k": true,
+          "headers": [
+            {
+              "type": "LOAD",
+              "offset": 0,
+              "vaddr": 0,
+              "filesz": 6976,
+              "memsz": 6976,
+              "align": 16384,
+              "end": 6976,
+              "end_mod_16k": 6976
+            },
+            {
+              "type": "LOAD",
+              "offset": 6976,
+              "vaddr": 23360,
+              "filesz": 920,
+              "memsz": 1216,
+              "align": 16384,
+              "end": 24576,
+              "end_mod_16k": 8192
+            },
+            {
+              "type": "LOAD",
+              "offset": 7896,
+              "vaddr": 40664,
+              "filesz": 0,
+              "memsz": 16,
+              "align": 16384,
+              "end": 40680,
+              "end_mod_16k": 7912
+            },
+            {
+              "type": "GNU_RELRO",
+              "offset": 6976,
+              "vaddr": 23360,
+              "filesz": 920,
+              "memsz": 1216,
+              "align": 1,
+              "end": 24576,
+              "end_mod_16k": 8192
+            }
+          ]
+        },
+        {
+          "path": "lib/armeabi-v7a/libandroidx.graphics.path.so",
+          "compression": 0,
+          "zip_offset": 24641536,
+          "zip_aligned_16k": true,
+          "load_alignment_16k": true,
+          "headers": [
+            {
+              "type": "LOAD",
+              "offset": 0,
+              "vaddr": 0,
+              "filesz": 5200,
+              "memsz": 5200,
+              "align": 16384,
+              "end": 5200,
+              "end_mod_16k": 5200
+            },
+            {
+              "type": "LOAD",
+              "offset": 5200,
+              "vaddr": 21584,
+              "filesz": 464,
+              "memsz": 2992,
+              "align": 16384,
+              "end": 24576,
+              "end_mod_16k": 8192
+            },
+            {
+              "type": "LOAD",
+              "offset": 5664,
+              "vaddr": 38432,
+              "filesz": 0,
+              "memsz": 8,
+              "align": 16384,
+              "end": 38440,
+              "end_mod_16k": 5672
+            },
+            {
+              "type": "GNU_RELRO",
+              "offset": 5200,
+              "vaddr": 21584,
+              "filesz": 464,
+              "memsz": 2992,
+              "align": 1,
+              "end": 24576,
+              "end_mod_16k": 8192
+            }
+          ]
+        },
+        {
+          "path": "lib/x86/libandroidx.graphics.path.so",
+          "compression": 0,
+          "zip_offset": 24657920,
+          "zip_aligned_16k": true,
+          "load_alignment_16k": true,
+          "headers": [
+            {
+              "type": "LOAD",
+              "offset": 0,
+              "vaddr": 0,
+              "filesz": 6400,
+              "memsz": 6400,
+              "align": 16384,
+              "end": 6400,
+              "end_mod_16k": 6400
+            },
+            {
+              "type": "LOAD",
+              "offset": 6400,
+              "vaddr": 22784,
+              "filesz": 460,
+              "memsz": 1792,
+              "align": 16384,
+              "end": 24576,
+              "end_mod_16k": 8192
+            },
+            {
+              "type": "LOAD",
+              "offset": 6860,
+              "vaddr": 39628,
+              "filesz": 0,
+              "memsz": 8,
+              "align": 16384,
+              "end": 39636,
+              "end_mod_16k": 6868
+            },
+            {
+              "type": "GNU_RELRO",
+              "offset": 6400,
+              "vaddr": 22784,
+              "filesz": 460,
+              "memsz": 1792,
+              "align": 1,
+              "end": 24576,
+              "end_mod_16k": 8192
+            }
+          ]
+        },
+        {
+          "path": "lib/x86_64/libandroidx.graphics.path.so",
+          "compression": 0,
+          "zip_offset": 24674304,
+          "zip_aligned_16k": true,
+          "load_alignment_16k": true,
+          "headers": [
+            {
+              "type": "LOAD",
+              "offset": 0,
+              "vaddr": 0,
+              "filesz": 7104,
+              "memsz": 7104,
+              "align": 16384,
+              "end": 7104,
+              "end_mod_16k": 7104
+            },
+            {
+              "type": "LOAD",
+              "offset": 7104,
+              "vaddr": 23488,
+              "filesz": 944,
+              "memsz": 1088,
+              "align": 16384,
+              "end": 24576,
+              "end_mod_16k": 8192
+            },
+            {
+              "type": "LOAD",
+              "offset": 8048,
+              "vaddr": 40816,
+              "filesz": 0,
+              "memsz": 16,
+              "align": 16384,
+              "end": 40832,
+              "end_mod_16k": 8064
+            },
+            {
+              "type": "GNU_RELRO",
+              "offset": 7104,
+              "vaddr": 23488,
+              "filesz": 944,
+              "memsz": 1088,
+              "align": 1,
+              "end": 24576,
+              "end_mod_16k": 8192
+            }
+          ]
+        }
+      ],
+      "unique_dex_classes": 41732,
+      "dex_checksums_valid": true,
+      "duplicate_dex_classes": 0
+    }
+  },
+  "locales": {
+    "languages": [
+      "en",
+      "es",
+      "fr"
+    ],
+    "matching_keys": 323
+  },
+  "native_captures": 23,
+  "release_status": "Test build; physical +35 dB/overlay/checkout/ad tests and 16 KB graphics-library validation remain open."
+}
