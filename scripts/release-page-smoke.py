@@ -80,6 +80,7 @@ try:
     report['pageSize'] = int(adb('shell', 'getconf', 'PAGE_SIZE'))
     report['api'] = int(adb('shell', 'getprop', 'ro.build.version.sdk'))
     report['abi'] = adb('shell', 'getprop', 'ro.product.cpu.abi')
+    (out / 'memory-before.txt').write_text(adb('shell', 'cat', '/proc/meminfo'))
     assert report['pageSize'] == 16384, 'Wrong emulator: 16 KB was not active'
     # An isolated rootable emulator; disable compatibility workarounds explicitly.
     adb('root')
@@ -101,11 +102,12 @@ try:
     tap('Enable boost', 'enable')
     tap('Enable Auralift', 'acknowledge')
     find('Turn boost off', 'running')
-    assert adb('shell', 'pidof', package), 'App process disappeared'
+    assert adb('shell', 'pidof', package, check=False), 'App process disappeared; inspect logcat for crash or memory pressure'
+    (out / 'app-memory-running.txt').write_text(adb('shell', 'dumpsys', 'meminfo', package))
     report['checks'].append('gain selection and service start through public UI')
     adb('shell', 'input', 'keyevent', 'KEYCODE_HOME')
     time.sleep(10)
-    assert adb('shell', 'pidof', package), 'App process died in background'
+    assert adb('shell', 'pidof', package, check=False), 'App process died in background'
     adb('shell', 'am', 'start', '-W', '-n', package + '/.MainActivity')
     tap('Turn boost off', 'stop')
     find('Enable boost', 'stopped')
@@ -118,5 +120,6 @@ except BaseException as exc:
 finally:
     (out / 'page-size-report.json').write_text(json.dumps(report, indent=2) + '\n')
     (out / 'logcat.txt').write_text(adb('logcat', '-d', check=False))
+    (out / 'memory-after.txt').write_text(adb('shell', 'cat', '/proc/meminfo', check=False))
     adb('shell', 'am', 'force-stop', package, check=False)
     print(json.dumps(report, indent=2))
