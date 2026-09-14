@@ -131,8 +131,13 @@ class CoreDeviceTest : DeviceHarness() {
             app.profiles.add("Before expiry")
         }
         start()
+        SystemClock.sleep(4000) // Let the native gain ramp finish before removing access.
+        snapshot("pro_gain_before_expiry")
         onMain { app.access.setVerifiedPurchase(false) }
         await("Free gain ceiling enforced") { app.settings.state.value.gainDb == 15f }
+        await("Android readback respects Free ceiling when available") {
+            app.engine.value.reportedGainDb?.let { it <= 15.1f } ?: true
+        }
         assertTrue(app.engine.value.running)
         assertEquals(1, app.profiles.state.value.size)
         assertEquals(SoundPreset.VOICE, app.settings.state.value.preset)

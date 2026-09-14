@@ -163,7 +163,11 @@ abstract class DeviceHarness {
     }
     private fun report(description: Description, result: String, failure: Throwable?) {
         val name = "${description.className.substringAfterLast('.')}-${description.methodName}"
-        val dir = File(app.getExternalFilesDir(null), "auralift-test-results").apply { mkdirs() }
+        // Gradle's device runner pulls this directory BEFORE uninstalling the APK.
+        // Firebase/manual instrumentation uses the app-specific fallback directory.
+        val runnerOutput = InstrumentationRegistry.getArguments().getString("additionalTestOutputDir")
+        val dir = (if (runnerOutput.isNullOrBlank()) File(app.getExternalFilesDir(null), "auralift-test-results")
+            else File(runnerOutput, "auralift-test-results")).apply { mkdirs() }
         val report = JSONObject().put("test", description.displayName).put("result", result)
             .put("elapsedMs", SystemClock.elapsedRealtime() - startedAt)
             .put("manufacturer", Build.MANUFACTURER).put("model", Build.MODEL).put("api", Build.VERSION.SDK_INT)

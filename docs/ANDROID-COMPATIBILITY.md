@@ -31,6 +31,14 @@ attachment is deprecated. Some players or outputs can bypass the connected effec
 
 ## Evidence so far
 
+On 14 September Jamie supplied Firebase screenshots showing **five passing Robo
+executions**: Pixel 5/API 30, Galaxy S24 Ultra/API 36, Galaxy A54 5G/API 34,
+moto g 5G (2022)/API 33 and Pixel 8/API 35. All used en-US/portrait. These are
+five device/OS combinations across three manufacturers, not measurements of
+audible boost or confirmation of every feature. Logs/videos have not been
+independently reviewed. See [targeted automation](FIREBASE-AUTOMATION.md) and
+[human testing goals](HUMAN-TEST-GOALS.md) for remaining coverage.
+
 | Evidence | Result | Limit |
 | --- | --- | --- |
 | 0.2.0 automated checks, 12 September | 19 tests passed; lint zero errors; APK verified | Simulated API 35 framework and fake effect IO; no acoustic measurement |

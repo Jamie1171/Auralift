@@ -19,6 +19,8 @@ inputs = {
     'tests': root / 'app/build/outputs/apk/androidTest/play/debug/app-play-debug-androidTest.apk',
 }
 manifest = {'sourceCommit': revision, 'version': version, 'files': [], 'testResults': 'See the matching GitHub Actions run; packaging is not a test pass.'}
+if os.environ.get('GITHUB_RUN_ID'):
+    manifest['workflowRunUrl'] = f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}"
 certificates = []
 for role, source in inputs.items():
     with zipfile.ZipFile(source) as archive:

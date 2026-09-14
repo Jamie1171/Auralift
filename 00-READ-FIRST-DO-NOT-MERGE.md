@@ -35,7 +35,9 @@ history. See [the migration record](docs/REPOSITORY-MIGRATION.md).
 `.github/workflows/android.yml` is now at the repository root and defines the
 Android test/build workflow. It runs on pushes to `main`, Auralift pull requests,
 and manual dispatch. These are simulated Android checks, not cloud-device tests.
-Firebase Test Lab access is not configured yet.
+The additional device-test workflow builds a Firebase instrumentation kit and runs
+Android emulators. See `docs/FIREBASE-AUTOMATION.md`. Jamie controls physical Test
+Lab submissions through his Firebase console; cloud credentials are not in Git.
 
 Keep signing keys, account credentials, Android SDKs and build caches outside
 Git. GitHub's Owner debug builds use temporary CI signing keys; the private Owner

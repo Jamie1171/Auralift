@@ -29,8 +29,10 @@ These debug APKs are for isolated cloud/emulator tests, not the Play closed trac
 
 If Firebase exposes instrumentation environment variables, `soakSeconds=1200`
 selects a 20-minute screen-off service run. Use a 30-minute timeout for that run
-and confirm the plan permits it. The committed CI workflow already requests this
-longer check on its API 36 emulator, so repeating it in Firebase is optional.
+and confirm the plan permits it. GitHub's **Run workflow** offers the same
+1,200-second check on API 36. Routine pull requests use 30 seconds; the initial
+validation run separately requests 1,200 seconds. See the recorded results before
+treating either duration as passed.
 
 ## What is checked
 
@@ -44,7 +46,7 @@ longer check on its API 36 emulator, so repeating it in Firebase is optional.
 | Ad interruption | Effects suspended, reconnect blocked, late resume cannot restart Stop | Actual ad playback/SDK callbacks and consent UI |
 | Floating controls | Real overlay permission, gain button, close, screen-off, grant removal, Pro loss | Every OEM/protected screen, physical touch usability |
 | Timer | Cancellation survives old deadline; actual replacement deadline stops | Idle alarm delays and real-device long sleep fade |
-| Screen-off session | 30-second default; CI API 36 requests 1,200 seconds | Natural OEM battery management or uninterrupted real audio |
+| Screen-off session | 30-second default; manual CI/API 36 can request 1,200 seconds | Natural OEM battery management or uninterrupted real audio |
 | Optional permissions | Separate host-driven run with microphone/notifications denied | First-prompt UX across every manufacturer |
 
 `linked=false` is recorded as unavailable, not labelled an audio success. A test
