@@ -32,6 +32,15 @@ boot output is retained even if setup fails. The finished Gradle daemon is stopp
 before starting the 4 GB emulator. Animation settings, 16 KB properties and every
 app assertion remain checked. The ordinary API 26/36 device launcher is unchanged.
 
+[Run 34885312243](https://github.com/Jamie1171/Auralift/actions/runs/34885312243)
+then correctly failed its readiness deadline without running app checks. Its
+retained boot log exposed a launcher configuration error introduced by this
+change: `Unknown AVD name [auralift16k]`. The AVD manager and emulator had different
+default lookup folders. Both now use an explicit `ANDROID_AVD_HOME` under the
+runner's temporary directory and an explicit AVD data path. File existence and
+the emulator's own `-list-avds` result must both confirm the device before launch.
+This failure is retained as a failed setup attempt, not compatibility evidence.
+
 **Twelve host-side driver regression tests passed** with
 `python3 -m unittest discover -s scripts/tests -v`; no failures or skips. Cases
 include healthy restart, lost restart reply, lost request, timeout after restart,

@@ -42,9 +42,15 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
       - name: Check optimized startup and controls on a verified 16 KB runtime
+        env:
+          ANDROID_AVD_HOME: ${{ runner.temp }}/auralift-avd
         run: |
           sdkmanager 'emulator' 'system-images;android-35;google_apis_ps16k;x86_64'
-          echo no | avdmanager create avd --force --name auralift16k --package 'system-images;android-35;google_apis_ps16k;x86_64' --device pixel_2
+          mkdir -p "$ANDROID_AVD_HOME"
+          echo no | avdmanager create avd --force --name auralift16k --path "$ANDROID_AVD_HOME/auralift16k.avd" --package 'system-images;android-35;google_apis_ps16k;x86_64' --device pixel_2
+          test -f "$ANDROID_AVD_HOME/auralift16k.ini"
+          "$ANDROID_HOME/emulator/emulator" -list-avds | tee build/page-size-results/available-avds.txt
+          python3 -c 'from pathlib import Path; assert "auralift16k" in Path("build/page-size-results/available-avds.txt").read_text().splitlines(), "Emulator cannot find the created AVD"'
           ./gradlew --stop
           adb start-server
           "$ANDROID_HOME/emulator/emulator" -avd auralift16k -port 5554 -memory 4096 -cores 2 -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot > build/page-size-results/emulator-boot.log 2>&1 &
