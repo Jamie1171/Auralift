@@ -45,11 +45,14 @@ class AdPassCardTest {
     @Test fun activePassShowsTimeWhilePermanentAccessHidesTheOffer() {
         val access = mutableStateOf(AccessState(pro = true, passRemainingMs = 59 * 60_000L))
         compose.setContent { MaterialTheme {
-            AdPassCardContent(access.value, AdPassState(available = true, ready = true),
+            AdPassCardContent(access.value, AdPassState(available = true, ready = true, message = R.string.ad_rewarded),
                 { fail("Preparation must be user initiated") }, { fail("Watching must be user initiated") })
         } }
         compose.onNodeWithText("59 minutes of Pro remaining").assertIsDisplayed()
         compose.onNodeWithText("Watch ad · unlock 1 hour").assertDoesNotExist()
+        compose.runOnIdle { access.value = AccessState() }
+        compose.onNodeWithText("Ad Pass · 1 hour of Pro").assertIsDisplayed()
+        compose.onNodeWithText("Your one-hour Ad Pass is active.").assertDoesNotExist()
         compose.runOnIdle { access.value = AccessState(pro = true, permanent = true) }
         compose.onNodeWithText("Ad Pass is active").assertDoesNotExist()
         compose.onNodeWithText("Ad Pass · 1 hour of Pro").assertDoesNotExist()

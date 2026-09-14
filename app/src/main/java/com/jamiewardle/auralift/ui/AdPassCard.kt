@@ -72,7 +72,9 @@ import kotlin.math.ceil
                     Text(stringResource(if (ads.busy) R.string.ad_loading else if (ads.ready) R.string.watch_ad else R.string.prepare_ad))
                 }
                 val message = if (ownerEdition && onDetails != null) R.string.ad_pass_owner_hint else ads.message
-                if (message != 0 && message != R.string.ad_pass_intro) Text(stringResource(message),
+                // A completed reward message can outlive the pass in the SDK state.
+                // Only AccessState decides whether to show an active entitlement.
+                if (message != 0 && message != R.string.ad_pass_intro && message != R.string.ad_rewarded) Text(stringResource(message),
                     style = MaterialTheme.typography.bodySmall, modifier = Modifier.padding(top = 10.dp))
             }
             if (onDetails != null) TextButton(onClick = onDetails, modifier = Modifier.align(Alignment.End)) {
