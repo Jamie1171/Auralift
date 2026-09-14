@@ -126,7 +126,7 @@ class InterfaceTest {
     @Test fun listenPassTracksEarnedAccessAndExpiryWithoutStartingBoost() {
         compose.runOnIdle { if (Distribution.owner) app.access.simulateFree() else app.access.setVerifiedPurchase(false) }
         compose.onNodeWithText("About Ad Pass").performScrollTo().performClick()
-        compose.onNodeWithText("Auralift Pro").assertExists()
+        compose.onNodeWithText(app.getString(R.string.pro_heading)).assertExists()
         compose.activityRule.scenario.onActivity { it.onBackPressedDispatcher.onBackPressed() }
         compose.runOnIdle {
             assertFalse(app.engine.value.running)
