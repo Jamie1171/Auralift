@@ -12,8 +12,8 @@ These debug APKs are for isolated cloud/emulator tests, not the Play closed trac
 3. Test APK: select the file ending **-tests.apk**.
 4. Select devices, one Android version per device, **English (United States)**,
    portrait. Start with Pixel 8/API 35 and Galaxy A54/API 34 when quota permits.
-   The four tests already run today plus the first Pixel consume the assumed
-   five-physical-execution daily allowance; check the console's remaining quota.
+   Jamie supplied five earlier physical Robo passes; check the console's current
+   remaining quota before submitting another device matrix.
 5. Use a **10-minute timeout** for the normal suite. This includes a real two-minute
    timer check and a short 30-second screen-off check. A five-minute crawl and this
    suite are different tests. Check the duration/quota allowed by your current plan.
@@ -30,9 +30,9 @@ These debug APKs are for isolated cloud/emulator tests, not the Play closed trac
 If Firebase exposes instrumentation environment variables, `soakSeconds=1200`
 selects a 20-minute screen-off service run. Use a 30-minute timeout for that run
 and confirm the plan permits it. GitHub's **Run workflow** offers the same
-1,200-second check on API 36. Routine pull requests use 30 seconds; the initial
-validation run separately requests 1,200 seconds. See the recorded results before
-treating either duration as passed.
+1,200-second check on API 36 after the workflow is on the default branch. Routine
+pull requests use 30 seconds. Both normal API 26/36 suites passed; the initial
+API 36 validation also passed 1,200 seconds. See [actual results](VALIDATION.md).
 
 ## What is checked
 
@@ -81,8 +81,14 @@ AURALIFT_SOAK_SECONDS=30 bash scripts/device-test.sh
 
 The workflow runs real Android emulators on API 26 and 36, separate from the
 existing Robolectric unit/native-render tests on API 26/35. CI reports and JSON
-are preserved even on failure. Native ARM/16 KB release checks remain separate;
-an x86-64 emulator pass does not close that release gate.
+are preserved even on failure. A separate **Optimized app on 16 KB Android**
+workflow signs an ephemeral copy of the optimized public APK and checks startup,
+gain selection, service start and Stop on an API 35 x86-64 16 KB emulator. It
+verifies the runtime page size and records native LOAD/RELRO layout flags.
+That smoke test does not certify ARM hardware or clear unresolved static flags.
+The latest [16 KB run passed](https://github.com/Jamie1171/Auralift/actions/runs/34873143964)
+with compatibility workarounds disabled. Its native RELRO flags remain recorded;
+see [validation](VALIDATION.md) for the exact scope and separate release checks.
 
 Sources: [Firebase instrumentation](https://firebase.google.com/docs/test-lab/android/instrumentation-test),
 [UI Automator](https://developer.android.com/training/testing/other-components/ui-automator),

@@ -1,6 +1,6 @@
 # Android compatibility
 
-Reviewed 13 September 2026; updated for Owner/public preview 0.5.0. This is a support and testing
+Reviewed 14 September 2026; updated for Owner/public preview 0.5.0. This is a support and testing
 plan, not a claim that all Android devices have passed audio tests.
 
 ## Current requirements
@@ -45,7 +45,16 @@ independently reviewed. See [targeted automation](FIREBASE-AUTOMATION.md) and
 | Owner feedback, 13 September | Reports the update works great on the Pixel 9a | Exact OS build, player, selected gain, output and individual features not recorded |
 | Build configuration and manifest review | minSdk 26, targetSdk 36; no brand restriction or maximum SDK declared | Does not certify future Android versions |
 | Delivered APK inspected, 13 September | Four CPU architectures; matching delivered SHA-256 | Static artifact inspection only |
-| 16 KB memory layout | ZIP offsets and ELF LOAD segments are 16 KB aligned | RELRO-end alignment check flags the graphics library; runtime/release validation remains open |
+| 0.5.0 unit/lint/package gate, 14 September | 148 unit-test executions; no failures/skips; lint zero errors; required APK/AAB builds passed | Simulated unit checks; 37 Owner / 31 Play lint warnings remain |
+| Targeted Android emulators, 14 September | 15 executed cases each on API 26 and 36; all 30 diagnostic reports passed | x86-64, 4 KB; controlled muted player and entitlement fixtures |
+| API 36 screen-off service check | 1,200-second screen-off interval, return and Stop passed | Instrumentation active; no acoustic or normal OEM idle proof |
+| 16 KB memory layout | ZIP offsets and ELF LOAD segments are 16 KB aligned | RELRO-end alignment still flags the graphics library |
+| Optimized public APK on 16 KB emulator, 14 September | API 35 x86-64 startup, gain selection, service start, background return and Stop passed; compatibility workarounds disabled | No assertion that the flagged library loaded; ARM64 and AAB-derived release validation remain open |
+
+The completed [16 KB workflow](https://github.com/Jamie1171/Auralift/actions/runs/34873143964)
+replaces the previously pending emulator result. The [validation record](VALIDATION.md)
+retains exact source/APK identities, prior failed attempts and the native-library
+flags. A successful UI smoke check does not by itself clear those flags.
 
 Historical 0.2.0 artifact (current identities are in [validation](VALIDATION.md)):
 
@@ -67,7 +76,7 @@ These are coverage targets, not certification for every model from each brand.
 
 | Test group | Coverage sought | Status |
 | --- | --- | --- |
-| Oldest supported OS | Android 8.0/API 26: install, launch, settings, notification, effect start/stop | Framework smoke/logic tests added in 0.3.0; physical install/audio pending |
+| Oldest supported OS | Android 8.0/API 26: install, launch, settings, notification, effect start/stop | Unit checks and 15 targeted emulator cases passed; physical install/audio pending |
 | Older phone | Android 9–11, preferably 32-bit ARM and low memory | Pending |
 | Modern permission transitions | Android 12, 13 and 14: service start, notification denial, widget/tile and Stop | Pending |
 | Current Android | Android 15, 16 and 17: release build, background service and audio route changes | Pending |
@@ -75,7 +84,7 @@ These are coverage targets, not certification for every model from each brand.
 | Samsung | Recent Galaxy plus an older supported model | Pending |
 | Additional manufacturers | At least one Xiaomi/Redmi and one OnePlus/Oppo/Motorola device, as testers permit | Pending |
 | Other displays | Tablet, landscape, split screen, large text and TalkBack | Pending |
-| Memory page size | 16 KB arm64 runtime and standard 4 KB runtime using the release artifact | Pending |
+| Memory page size | 16 KB arm64 runtime and standard 4 KB runtime using the release artifact | API 35 x86-64 16 KB optimized smoke passed; normal 4 KB debug suite passed; ARM64/AAB-derived release checks pending |
 
 For each physical phone, try local media and at least one streaming player,
 speaker output, and Bluetooth or USB headphones when available. Record system-mix

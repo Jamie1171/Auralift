@@ -1,5 +1,91 @@
 # Validation — Auralift 0.5.0
 
+## Automated device coverage added 14 September 2026
+
+The new targeted instrumentation suite passed **15 executed cases on Android 8
+(API 26) and 15 on Android 16 (API 36)**. Each run contains 14 normal JUnit cases
+plus a separately launched permission-denial case. All 30 diagnostic JSON reports
+record `passed`; none failed or skipped. Both emulators use x86-64 and 4 KB pages.
+
+Validated suite source: `874fa892bbb4db9d5ec7d0d80dbb70d22c573b93`; GitHub's tested
+PR merge checkout: `0a94e694f4e1c65ae230f66c67dcfc0c9db2e305`.
+[Device run and artifacts](https://github.com/Jamie1171/Auralift/actions/runs/34870619274).
+The 15 cases cover first use, Free controls and persisted settings, foreground
+service/notification Stop, activity recreation versus leaving the app, real muted
+test-player sessions, compare/readback, entitlement/reward expiry, ad suspension,
+floating controls, optional permission denial, timer replacement and screen-off.
+
+The existing required unit/lint/package gate also passed, followed by its separate
+API 26 invocation: **148 unit-test executions** (43 Owner + 44 Play on API 35;
+29 Owner + 32 Play on API 26), with zero failures, errors or skips. Current lint
+has zero errors and 37 Owner / 31 Play warnings, including dependency-update,
+unused-resource, style and SDK notices. Release APK/AAB and Owner debug builds
+succeeded. [Full gate](https://github.com/Jamie1171/Auralift/actions/runs/34870619181).
+The initial run's downloaded XML confirms the same 148 counts and lint totals:
+[Initial gate](https://github.com/Jamie1171/Auralift/actions/runs/34868842150).
+
+Production Kotlin, permissions, version and production dependencies are unchanged.
+Instrumentation fixtures live in the separate test APK. The matching app/test
+APKs have verified signatures and hashes in their `build-identity.json`. Their
+ephemeral CI certificate is different from older downloads: use the supplied
+pair together, not an older Robo APK with a newer instrumentation APK.
+
+Normal emulated screen-off checks last 30 seconds. A separate API 36 run passed
+the **1,200-second screen-off service test** (1,206.355 seconds including setup,
+return and Stop). Its 14 normal cases and separate permission case all passed:
+[20-minute run](https://github.com/Jamie1171/Auralift/actions/runs/34868842227),
+source `efeca00a6d58b3ab7cbae5516a697efd9ee0b4fe`. The timed test body is unchanged
+in the supplied Firebase pair. Instrumentation remains active; this is service
+state evidence, not uninterrupted audio or natural OEM idle behaviour.
+
+The optimized public APK **passed the 16 KB emulator smoke check** in
+[run 34873143964](https://github.com/Jamie1171/Auralift/actions/runs/34873143964).
+The job's JSON report confirms API 35, x86-64, `PAGE_SIZE=16384` and disabled
+16 KB compatibility workarounds. It exercised first launch, +5 dB selection,
+service start, a ten-second background interval, return and Stop through the
+public UI. The APK's signature verification and `zipalign -c -P 16` also passed.
+The emulator used 4 GB RAM and density 320; this is not small-screen coverage.
+
+Validated branch source: `e64ca9f8690aaf6eaa6831f230fd63d718ce1203`;
+tested PR merge checkout: `326aa24244fe4c90b5fdc0d732628107e5f951ee`.
+APK SHA-256: `9fe0b39e4b8cdf97b38511afa550062ee20e16c95694fe5fe27a2b7bd9e7255c`.
+The [retained evidence](https://github.com/Jamie1171/Auralift/actions/runs/34873143964/artifacts/10360260115)
+contains the APK, JSON, UI captures, logcat and memory reports. Its archive digest
+is `9b33888c495480b4565b87adc73b98a0aa316122615edbadaa3a72b28c29396d`, as
+reported by GitHub. The workflow log's complete JSON report is preserved in
+[the dated device report](validation-device-2026-09-14.json).
+
+This resolves the outstanding emulator run, not the separate native-library
+release check. All four bundled `graphics-path:1.1.0` libraries still report
+aligned LOAD segments but unaligned GNU_RELRO ends. The smoke driver does not
+assert that this specific library was loaded. ARM64 execution and AAB-derived
+release validation remain open. Do not infer those results from this pass.
+
+The earlier failures remain recorded: run 34871163768 lost the app to emulator
+memory pressure; run 34872129209 failed to obtain a UI hierarchy during first-boot
+configuration. Increasing emulator RAM and waiting for a fresh hierarchy resolved
+the observed test-environment issues. Assertions were retained, and a previous
+screen is never reused. Neither failed attempt is counted as a compatibility pass.
+
+This handover update changes documentation only. The recorded unit, lint, build
+and device gates above apply to the unchanged application/test sources. No new
+Firebase job or manual 20-minute run was requested for this update; normal CI may
+rerun automatically when the documentation commit updates the PR.
+
+The native gain readback
+check observed gain above the Free ceiling before expiry, then verified a reduction
+to at most +15.1 dB. This is Android parameter feedback, not a sound measurement.
+
+Jamie also supplied five passing physical Robo summaries (Pixel 5/API 30,
+S24 Ultra/API 36, Galaxy A54/API 34, moto g 5G 2022/API 33, Pixel 8/API 35).
+Those screenshots establish reported crawl success; their full logs/videos have
+not been independently reviewed here. Real player/output cooperation, acoustic
+quality, normal OEM battery management, release updates and live monetisation
+remain distinct tests. [Firebase instructions](FIREBASE-AUTOMATION.md) and
+[human tester goals](HUMAN-TEST-GOALS.md).
+
+## Historical 13 September build validation
+
 13 September 2026. Native Kotlin/Compose, Owner and Play editions. Machine-readable
 results: [validation-0.5.0.json](validation-0.5.0.json). These are development checks,
 not physical audio measurements, live transactions, ad delivery or Play approval.
@@ -99,10 +185,12 @@ described in the updated native policy drafts. Both one-time products retain the
 same entitlement. Manual account configuration and real Play/AdMob tests remain
 necessary; simulated receipts/rewards do not prove live purchase or ad delivery.
 
-The existing graphics-path 1.1.0 libraries still have
+At the 13 September static inspection, the graphics-path 1.1.0 libraries had
 `(GNU_RELRO.vaddr + memsz) % 16384 == 8192` across all four ABIs. ZIP/LOAD alignment
-does not close this flag. No 16 KB runtime was available and no crash was reproduced.
-Do not call this a Play-ready or validated 16 KB release.
+does not close this flag. No 16 KB runtime was available for that historical build.
+The 14 September optimized x86-64 smoke check above now passes, but its report
+retains these static flags and does not prove the flagged library was exercised.
+Do not call this a Play-ready or fully validated 16 KB release.
 [Android page-size guide](https://developer.android.com/guide/practices/page-sizes).
 
 The owner previously reported Pixel 9a listening success and has supplied 0.4.0
