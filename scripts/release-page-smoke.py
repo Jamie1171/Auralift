@@ -22,19 +22,26 @@ def adb(*args, check=True):
 
 
 def capture(label):
-    adb('shell', 'uiautomator', 'dump', '/sdcard/auralift-window.xml')
-    raw = adb('shell', 'cat', '/sdcard/auralift-window.xml')
-    (out / f'{label}.xml').write_text(raw)
     png = subprocess.run(['adb', 'exec-out', 'screencap', '-p'], check=True, capture_output=True).stdout
     (out / f'{label}.png').write_bytes(png)
+    # During first-boot configuration, uiautomator can exit without creating a
+    # hierarchy. Retry within find's deadline; never reuse a stale hierarchy.
+    adb('shell', 'rm', '-f', '/sdcard/auralift-window.xml')
+    dumped = adb('shell', 'uiautomator', 'dump', '/sdcard/auralift-window.xml', check=False)
+    with (out / f'{label}-dump.txt').open('a') as evidence:
+        evidence.write(dumped + '\n')
+    raw = adb('shell', 'cat', '/sdcard/auralift-window.xml', check=False)
+    if not raw.lstrip().startswith('<?xml'):
+        return None
+    (out / f'{label}.xml').write_text(raw)
     return ET.fromstring(raw)
 
 
-def find(text, label, timeout=25):
+def find(text, label, timeout=45):
     deadline = time.monotonic() + timeout
     while time.monotonic() < deadline:
         root = capture(label)
-        for node in root.iter('node'):
+        for node in root.iter('node') if root is not None else []:
             if node.get('package') == package and text in (node.get('text'), node.get('content-desc')):
                 return node
         time.sleep(0.5)
@@ -93,6 +100,8 @@ try:
     # check, not evidence of small-screen layout coverage.
     adb('shell', 'wm', 'density', '320')
     report['displayDensity'] = 320
+    adb('shell', 'input', 'keyevent', 'KEYCODE_WAKEUP')
+    adb('shell', 'wm', 'dismiss-keyguard')
     adb('logcat', '-c')
     assert 'Success' in adb('install', '-g', str(apk))
     adb('shell', 'am', 'start', '-W', '-n', package + '/.MainActivity')
