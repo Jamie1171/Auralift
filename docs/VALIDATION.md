@@ -10,15 +10,52 @@ English, Spanish and French have 333 matching string keys and format arguments.
 New/extended UI checks exercise explicit Prepare versus Watch, disabled/unavailable
 ads, active/permanent/Owner states, main-screen pass expiry without starting boost,
 and the App info intent for this package. Native captures include the main Ad Pass,
-active-pass state and permission recovery help. Android test/build results are
-pending for this source update; the 0.5.0 results below do not certify 0.5.1.
+active-pass state and permission recovery help and were visually reviewed.
+
+Validated source: `9e858f4ff8a6fd6ebb8b158e259af4d621309694`; tested PR merge
+checkout: `6680af5e8affe798c6430d434c42c5150f135ade`. Downloaded artifact digests
+were verified before reading their reports. Machine-readable evidence:
+[validation-0.5.1.json](validation-0.5.1.json).
+
+| Check | Verified result |
+| --- | --- |
+| Unit tests, API 35 | 47 Owner + 48 Play passed |
+| Unit tests, separate API 26 invocation | 29 Owner + 32 Play passed |
+| Total unit executions | 156; zero failures, errors or skips |
+| Lint Owner debug / Play release | Zero errors; 39 / 35 warnings |
+| Required builds | Owner debug APK, Play release APK and AAB succeeded |
+| API 26 / API 36 device suites | 15 cases each passed; 30 passing diagnostic reports |
+| Optimized 16 KB smoke | API 35 x86-64 passed with compatibility workarounds disabled |
+
+[Required unit/lint/package gate](https://github.com/Jamie1171/Auralift/actions/runs/34877826129),
+[device suites](https://github.com/Jamie1171/Auralift/actions/runs/34877826099),
+[16 KB smoke](https://github.com/Jamie1171/Auralift/actions/runs/34877826132).
+Each device suite has 14 normal JUnit cases and one separately launched optional
+permission-denial case. Both use 4 KB pages. The normal screen-off case lasts
+30 seconds; a new 20-minute test was not run for 0.5.1.
+
+The 16 KB smoke exercises first launch, gain selection, service start, background
+return and Stop through the public UI. The four `graphics-path:1.1.0` GNU_RELRO
+flags remain open even though ELF LOAD segments and APK ZIP alignment pass. This
+does not establish ARM64, AAB-derived release or acoustic compatibility, or prove
+that the flagged library was loaded. Full scope is preserved in the JSON report.
 
 The existing CI gate also retains Google's apksigner tool so a downloaded test APK
 can be signed locally with the existing private update key. The key remains outside
 Git and CI artifacts. A personal test build and a Firebase kit have separate signing
 identities; never mix one kit's instrumentation APK with another signed app APK.
 
-## Automated device coverage added 14 September 2026
+`Auralift-0.5.1-play-test.apk` is signed with the original personal-test certificate
+(`7ba0540911fe9b3208e119d82a5710079d9ad982ea1c4259c500e0047a8f8f36`). Signature
+verification passed, all application ZIP payloads match the tested Firebase app,
+and uncompressed native-library offsets remain aligned to 16 KB. APK SHA-256:
+`224a785c3b09fd585891d4dc50bffe049fd0bc6b7769486ec63060550d7d9091`.
+This public debug build uses Google sample ads; it does not validate live ad
+delivery or production purchases. Android's restricted-settings grant remains a
+manual system action. The final result-recording commit changes documentation
+only; the code validated above is unchanged.
+
+## 0.5.0 baseline: automated device coverage, 14 September 2026
 
 The new targeted instrumentation suite passed **15 executed cases on Android 8
 (API 26) and 15 on Android 16 (API 36)**. Each run contains 14 normal JUnit cases
