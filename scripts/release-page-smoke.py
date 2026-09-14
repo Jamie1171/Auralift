@@ -88,6 +88,10 @@ try:
         adb('shell', 'setprop', key, value)
         assert adb('shell', 'getprop', key) == value
     report['compatibilityWorkarounds'] = 'disabled'
+    # Give the black-box controls enough viewport space; this is a native-loader
+    # check, not evidence of small-screen layout coverage.
+    adb('shell', 'wm', 'density', '320')
+    report['displayDensity'] = 320
     adb('logcat', '-c')
     assert 'Success' in adb('install', '-g', str(apk))
     adb('shell', 'am', 'start', '-W', '-n', package + '/.MainActivity')
