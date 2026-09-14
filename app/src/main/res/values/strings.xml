@@ -268,6 +268,10 @@
     <string name="tap_to_stop">Tap to stop</string>
     <string name="open_full_controls">Open controls</string>
     <string name="ad_pass">Ad Pass · 1 hour of Pro</string>
+    <string name="ad_pass_benefits">Up to +35 dB, the floating player and Pro themes.</string>
+    <string name="ad_pass_short_rules">No payment or automatic ads. After the hour, gain above +15 dB returns to +15 dB.</string>
+    <string name="ad_pass_details">About Ad Pass</string>
+    <string name="ad_pass_owner_hint">Owner has no ads. Open About Ad Pass to use the Pro test controls.</string>
     <string name="ad_pass_intro">Complete one rewarded ad to unlock all Pro features for one hour.</string>
     <string name="ad_pass_rules">Only when you choose. The hour starts when the ad awards the reward, including time outside Auralift. Passes do not stack. At expiry, gain above +15 dB reduces to +15 dB and Pro features lock. Earn another pass when an ad is available.</string>
     <string name="prepare_ad">Prepare Ad Pass</string>
@@ -307,6 +311,12 @@
     <string name="floating_permission_hint">Allow Auralift to display over other apps once. You do not need to grant permission to each app you listen in.</string>
     <string name="floating_permission_on">Display permission is allowed</string>
     <string name="floating_permission_off">Display permission is not allowed yet</string>
+    <string name="floating_restricted_title">Android blocked the switch?</string>
+    <string name="floating_restricted_hint">If Android says “App was denied access” or disables the switch, it may have restricted this installation. Only continue if you trust the app source.</string>
+    <string name="floating_restricted_steps">1. Open App info for %1$s below.\n\n2. Open the three-dot menu → Allow restricted settings, then follow Android’s prompts.\n\n3. Return here, choose Manage display permission and allow display over other apps. Then enable the floating player.</string>
+    <string name="floating_open_app_info">Open App info</string>
+    <string name="floating_restricted_missing">If that menu is missing or Android still blocks access, use the Learn how to allow access link in its message. In-app and notification boost controls work without this permission.</string>
+    <string name="floating_app_info_unavailable">Open Android Settings → Apps → Auralift to review App info.</string>
     <string name="floating_manage_permission">Manage display permission</string>
     <string name="floating_protected_apps">Android and protected apps can hide overlays. Auralift respects this. To hide the player yourself, tap × on its bubble; your boost keeps running.</string>
     <string name="floating_session_ready">Boost session is running</string>

@@ -29,6 +29,13 @@ jobs:
         run: cp -r app/build/test-results app/build/test-results-api35
       - name: Test oldest supported Android in a separate simulator JVM
         run: ./gradlew -Pauralift.testSdk=26 :app:testOwnerDebugUnitTest :app:testPlayDebugUnitTest
+      - name: Retain Android signing tool for private local updates
+        run: |
+          mkdir -p build/signing-tool
+          cp "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" build/signing-tool/
+          if [ -f "$ANDROID_HOME/build-tools/35.0.0/NOTICE.txt" ]; then
+            cp "$ANDROID_HOME/build-tools/35.0.0/NOTICE.txt" build/signing-tool/
+          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -41,6 +48,7 @@ jobs:
             app/build/test-results/
             app/build/test-results-api35/
             app/build/screenshots/
+            build/signing-tool/
 # Active at the root of Jamie1171/Auralift. CI debug keys are ephemeral; use the
 # backed-up personal key for Owner updates. No production signing or cloud device
 # lab is configured. Preserve available test reports even when verification fails.

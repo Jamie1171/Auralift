@@ -1,4 +1,22 @@
-# Validation — Auralift 0.5.0
+# Validation — Auralift
+
+## 0.5.1 main-screen Ad Pass and permission help
+
+14 September 2026. Adds the shared Ad Pass panel below Enable/Stop, earned-pass
+remaining time, and optional help for Android-restricted overlay settings. Version
+code is 6. No audio engine, reward-granting logic, permissions or dependencies change.
+English, Spanish and French have 333 matching string keys and format arguments.
+
+New/extended UI checks exercise explicit Prepare versus Watch, disabled/unavailable
+ads, active/permanent/Owner states, main-screen pass expiry without starting boost,
+and the App info intent for this package. Native captures include the main Ad Pass,
+active-pass state and permission recovery help. Android test/build results are
+pending for this source update; the 0.5.0 results below do not certify 0.5.1.
+
+The existing CI gate also retains Google's apksigner tool so a downloaded test APK
+can be signed locally with the existing private update key. The key remains outside
+Git and CI artifacts. A personal test build and a Firebase kit have separate signing
+identities; never mix one kit's instrumentation APK with another signed app APK.
 
 ## Automated device coverage added 14 September 2026
 

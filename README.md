@@ -1,7 +1,9 @@
 # Auralift
 
 A native Android volume booster, written in **Kotlin, Jetpack Compose and Android
-audio APIs**. Version **0.5.0** adds a prominent Floating Player Pro section, complete
+audio APIs**. Version **0.5.1** puts the one-hour Ad Pass directly below the Listen
+screen's Enable/Stop button, with an active-pass countdown and help for Android's
+restricted overlay settings. It retains the Floating Player Pro section, complete
 interface themes and 5 dB gain shortcuts: Free up to +15 dB, Pro up to +35 dB.
 Voluntary one-hour Ad Passes and equivalent £3.99 / £5.99 one-time products remain.
 Owner remains fully unlocked and contains no advertising or billing SDK.

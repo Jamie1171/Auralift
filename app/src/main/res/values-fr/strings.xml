@@ -322,4 +322,14 @@
     <string name="theme_ocean_hint">Bleu profond · cadran à double anneau</string>
     <string name="theme_amber_hint">Laiton chaud · cadran de studio</string>
     <string name="theme_orchid_hint">Prune et rose · éclat doux</string>
+    <string name="ad_pass_benefits">Jusqu’à +35 dB, le lecteur flottant et les thèmes Pro.</string>
+    <string name="ad_pass_short_rules">Aucun paiement ni publicité automatique. Après une heure, tout gain supérieur à +15 dB revient à +15 dB.</string>
+    <string name="ad_pass_details">À propos du Pass pub</string>
+    <string name="ad_pass_owner_hint">L’édition Owner ne contient pas de publicités. Ouvrez À propos du Pass pub pour utiliser les commandes de test Pro.</string>
+    <string name="floating_restricted_title">Android bloque l’interrupteur ?</string>
+    <string name="floating_restricted_hint">Si Android indique que l’accès a été refusé ou désactive l’interrupteur, cette installation peut être restreinte. Continuez uniquement si vous faites confiance à la source de l’app.</string>
+    <string name="floating_restricted_steps">1. Ouvrez les informations de %1$s avec le bouton ci-dessous.\n\n2. Ouvrez le menu à trois points → Autoriser les paramètres restreints, puis suivez les instructions Android.\n\n3. Revenez ici, choisissez Gérer l’autorisation de superposition et autorisez l’affichage par-dessus les autres apps. Activez ensuite le lecteur flottant.</string>
+    <string name="floating_open_app_info">Ouvrir les informations de l’app</string>
+    <string name="floating_restricted_missing">Si ce menu est absent ou si Android bloque toujours l’accès, utilisez le lien d’aide de son message. Les commandes dans l’app et la notification fonctionnent sans cette autorisation.</string>
+    <string name="floating_app_info_unavailable">Ouvrez Paramètres Android → Applications → Auralift pour consulter les informations de l’app.</string>
 </resources>

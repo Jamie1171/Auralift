@@ -84,13 +84,13 @@ fun AuraliftScreen(app: AuraliftApplication, toggle: () -> Unit, mediaKey: (Int)
                     TextButton(onClick = { extra = null }) { Text(stringResource(R.string.back)) }
                     ExtraScreen(extra!!, app) { if (it == "listen") { tab = 0; extra = null } else extra = it }
                 } else when (tab) {
-                    0 -> Listen(prefs, state, { change ->
+                    0 -> Listen(app, prefs, state, { change ->
                         val before = app.settings.state.value.gainDb
                         app.settings.update(change)
                         if (before != app.settings.state.value.gainDb) HapticTick.play(context, prefs.haptics)
                     }, {
                         if (!prefs.onboarded && !state.running) showIntro = true else toggle()
-                    }, mediaKey, access.pro) { extra = "pro" }
+                    }, mediaKey) { extra = "pro" }
                     1 -> { Sound(prefs, state, app); Spacer(Modifier.height(16.dp)); NamedSounds(app) { extra = "pro" } }
                     2 -> SettingsHub(app) { extra = it }
                 }
@@ -122,7 +122,7 @@ fun AuraliftScreen(app: AuraliftApplication, toggle: () -> Unit, mediaKey: (Int)
     }
 }
 
-@Composable private fun Listen(p: Preferences, s: EngineState, update: ((Preferences) -> Preferences) -> Unit, toggle: () -> Unit, mediaKey: (Int) -> Unit, pro: Boolean, explorePro: () -> Unit) {
+@Composable private fun Listen(app: AuraliftApplication, p: Preferences, s: EngineState, update: ((Preferences) -> Preferences) -> Unit, toggle: () -> Unit, mediaKey: (Int) -> Unit, explorePro: () -> Unit) {
     val context = LocalContext.current
     Text(context.getString(R.string.ui_bring_sound_closer), fontSize = 26.sp, lineHeight = 32.sp, fontWeight = FontWeight.Medium, letterSpacing = (-0.8).sp)
     Text(context.getString(R.string.ui_more_clarity_on_your_terms), Modifier.padding(top = 8.dp, bottom = 20.dp), color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 14.sp)
@@ -144,9 +144,6 @@ fun AuraliftScreen(app: AuraliftApplication, toggle: () -> Unit, mediaKey: (Int)
             SmallControl(Icons.Rounded.Add, context.getString(R.string.increase_boost), p.gainDb < limit) { update { it.copy(gainDb = min(limit, it.gainDb + 0.5f)) } }
         }
         GainChoices(listOf(0f) + GainMath.ranges.filter { it <= limit }, p.gainDb) { gain -> update { it.copy(gainDb = gain) } }
-        if (!pro) TextButton(onClick = explorePro, modifier = Modifier.fillMaxWidth()) {
-            Text(stringResource(R.string.unlock_gain))
-        }
         if (s.running) {
             Text(s.gainReadback, Modifier.fillMaxWidth().padding(top = 8.dp), textAlign = TextAlign.Center, fontSize = 13.sp, fontWeight = FontWeight.Medium)
             OutlinedButton(enabled = s.linked, onClick = { context.startService(Intent(context, BoostService::class.java).setAction(BoostService.COMPARE)) },
@@ -160,6 +157,7 @@ fun AuraliftScreen(app: AuraliftApplication, toggle: () -> Unit, mediaKey: (Int)
             Text(if (s.running) context.getString(R.string.ui_turn_boost_off) else context.getString(R.string.ui_enable_boost), fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
         }
     }
+    AdPassCard(app, onDetails = explorePro, modifier = Modifier.padding(top = 14.dp))
     Row(Modifier.padding(vertical = 18.dp), horizontalArrangement = Arrangement.spacedBy(9.dp)) {
         Icon(if (s.linked) Icons.Rounded.CheckCircle else Icons.Rounded.Info, null, Modifier.size(18.dp).padding(top = 2.dp), tint = MaterialTheme.colorScheme.primary)
         Column {
