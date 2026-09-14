@@ -1,5 +1,39 @@
 # Validation — Auralift
 
+## 16 KB emulator setup recovery, 14 September 2026
+
+[Run 34879590587](https://github.com/Jamie1171/Auralift/actions/runs/34879590587)
+failed at `adb root` before installing or testing the app. This newer failure
+followed a documentation-only commit and must not be replaced by the earlier
+successful runtime result in the 0.5.1 history below. The other latest
+[unit/lint/build](https://github.com/Jamie1171/Auralift/actions/runs/34879590817) and
+[API 26/36 device](https://github.com/Jamie1171/Auralift/actions/runs/34879590783)
+workflows succeeded on that commit.
+
+The driver now targets only the isolated emulator, records ADB stdout/stderr and
+timeouts, and permits bounded recovery during the debug-daemon restart. A separate
+successful `id -u` must confirm UID 0; a successful restart message alone cannot
+pass setup. This follows [AOSP's documented adbd restart behavior](https://android.googlesource.com/platform/packages/modules/adb/+/refs/heads/main/docs/dev/root.md).
+The driver still requires 16384-byte pages, both disabled compatibility settings,
+and all existing app startup, gain, background and Stop assertions. Setup retries
+cannot retry app assertions or mark an unverified runtime as passed. Failure
+reports distinguish setup from app checks, and diagnostic capture has timeouts.
+
+**Eight host-side driver regression tests passed** with
+`python3 -m unittest discover -s scripts/tests -v`; no failures or skips. Cases
+include healthy restart, lost restart reply, lost request, timeout after restart,
+false success without UID 0, failed UID readback, a persistent disconnect deadline,
+and refusing physical/non-debuggable builds. Python compilation and whitespace
+checks also passed. These tests simulate daemon states; they are not a 16 KB
+runtime pass. The same regression command runs before the optimized CI build.
+
+Runtime outcomes for this correction are recorded with exact source/run links in
+[PR #1](https://github.com/Jamie1171/Auralift/pull/1). Each run retains
+`page-size-report.json` and `adb-transcript.jsonl`; a pass requires `stage=complete`,
+`verifiedUid=0`, disabled compatibility workarounds and all three app checks. The
+0.5.1 app source, dependencies and downloadable APK are unchanged. The separate
+graphics-path GNU_RELRO, ARM64 and AAB-derived release limitations remain open.
+
 ## 0.5.1 main-screen Ad Pass and permission help
 
 14 September 2026. Adds the shared Ad Pass panel below Enable/Stop, earned-pass

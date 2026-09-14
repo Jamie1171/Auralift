@@ -5,6 +5,8 @@ on:
     paths:
       - '.github/workflows/page-size-smoke.yml'
       - 'scripts/release-page-smoke.py'
+      - 'scripts/emulator_adb.py'
+      - 'scripts/tests/**'
       - 'app/**'
       - '*.gradle.kts'
       - 'gradle/**'
@@ -16,6 +18,8 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+      - name: Test emulator setup recovery and failure handling
+        run: python3 -m unittest discover -s scripts/tests -v
       - uses: actions/setup-java@v4
         with:
           distribution: temurin

@@ -8,21 +8,21 @@ import subprocess
 import time
 import xml.etree.ElementTree as ET
 import zipfile
+from emulator_adb import EmulatorAdb, ensure_emulator_root
 
 out = Path('build/page-size-results')
 out.mkdir(parents=True, exist_ok=True)
 apk = out / 'Auralift-optimized-page-test.apk'
 package = 'com.jamiewardle.auralift'
-report = {'result': 'not_run', 'checks': [], 'nativeLibraries': [],
+report = {'result': 'not_run', 'stage': 'setup', 'checks': [], 'nativeLibraries': [],
           'scope': 'Optimized APK on x86-64 16 KB emulator. No acoustic or ARM certification.'}
 
-
-def adb(*args, check=True):
-    return subprocess.run(['adb', *args], check=check, capture_output=True, text=True).stdout.strip()
+adb = EmulatorAdb(out / 'adb-transcript.jsonl')
 
 
 def capture(label):
-    png = subprocess.run(['adb', 'exec-out', 'screencap', '-p'], check=True, capture_output=True).stdout
+    png = subprocess.run(['adb', '-s', adb.serial, 'exec-out', 'screencap', '-p'],
+                         check=True, capture_output=True, timeout=20).stdout
     (out / f'{label}.png').write_bytes(png)
     # During first-boot configuration, uiautomator can exit without creating a
     # hierarchy. Retry within find's deadline; never reuse a stale hierarchy.
@@ -84,14 +84,15 @@ def native_layout():
 try:
     report['apkSha256'] = hashlib.sha256(apk.read_bytes()).hexdigest()
     native_layout()
+    report['adbSetup'] = {}
+    ensure_emulator_root(adb, report['adbSetup'])
     report['pageSize'] = int(adb('shell', 'getconf', 'PAGE_SIZE'))
     report['api'] = int(adb('shell', 'getprop', 'ro.build.version.sdk'))
     report['abi'] = adb('shell', 'getprop', 'ro.product.cpu.abi')
     (out / 'memory-before.txt').write_text(adb('shell', 'cat', '/proc/meminfo'))
     assert report['pageSize'] == 16384, 'Wrong emulator: 16 KB was not active'
-    # An isolated rootable emulator; disable compatibility workarounds explicitly.
-    adb('root')
-    adb('wait-for-device')
+    # Root has been independently verified on the isolated emulator. Neither
+    # compatibility property may be skipped, even if a transport retry recovered.
     for key, value in [('bionic.linker.16kb.app_compat.enabled', 'false'), ('pm.16kb.app_compat.disabled', 'true')]:
         adb('shell', 'setprop', key, value)
         assert adb('shell', 'getprop', key) == value
@@ -103,6 +104,7 @@ try:
     adb('shell', 'input', 'keyevent', 'KEYCODE_WAKEUP')
     adb('shell', 'wm', 'dismiss-keyguard')
     adb('logcat', '-c')
+    report['stage'] = 'app_checks'
     assert 'Success' in adb('install', '-g', str(apk))
     adb('shell', 'am', 'start', '-W', '-n', package + '/.MainActivity')
     find('Enable boost', 'initial')
@@ -122,13 +124,20 @@ try:
     find('Enable boost', 'stopped')
     report['checks'].append('background return and Stop through public UI')
     report['result'] = 'passed'
+    report['stage'] = 'complete'
 except BaseException as exc:
     report['result'] = 'failed'
     report['failure'] = repr(exc)
     raise
 finally:
     (out / 'page-size-report.json').write_text(json.dumps(report, indent=2) + '\n')
-    (out / 'logcat.txt').write_text(adb('logcat', '-d', check=False))
-    (out / 'memory-after.txt').write_text(adb('shell', 'cat', '/proc/meminfo', check=False))
-    adb('shell', 'am', 'force-stop', package, check=False)
     print(json.dumps(report, indent=2))
+    # A disconnected emulator must not hide the original failure or hang upload.
+    for filename, args in [('logcat.txt', ('logcat', '-d')),
+                           ('memory-after.txt', ('shell', 'cat', '/proc/meminfo')),
+                           ('cleanup.txt', ('shell', 'am', 'force-stop', package))]:
+        try:
+            diagnostic = adb(*args, check=False, timeout=10)
+        except (subprocess.TimeoutExpired, OSError) as exc:
+            diagnostic = repr(exc)
+        (out / filename).write_text(diagnostic)
