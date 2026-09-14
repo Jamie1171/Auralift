@@ -322,4 +322,14 @@
     <string name="theme_ocean_hint">Azul profundo · dial de doble anillo</string>
     <string name="theme_amber_hint">Latón cálido · dial de estudio</string>
     <string name="theme_orchid_hint">Ciruela y rosa · brillo suave</string>
+    <string name="ad_pass_benefits">Hasta +35 dB, el reproductor flotante y los temas Pro.</string>
+    <string name="ad_pass_short_rules">Sin pagos ni anuncios automáticos. Tras la hora, la ganancia superior a +15 dB vuelve a +15 dB.</string>
+    <string name="ad_pass_details">Acerca del pase con anuncio</string>
+    <string name="ad_pass_owner_hint">La edición Owner no tiene anuncios. Abre Acerca del pase con anuncio para usar los controles de prueba de Pro.</string>
+    <string name="floating_restricted_title">¿Android ha bloqueado el interruptor?</string>
+    <string name="floating_restricted_hint">Si Android indica que se ha denegado el acceso o desactiva el interruptor, puede haber restringido esta instalación. Continúa solo si confías en el origen de la app.</string>
+    <string name="floating_restricted_steps">1. Abre la información de %1$s con el botón de abajo.\n\n2. Abre el menú de tres puntos → Permitir ajustes restringidos y sigue las instrucciones de Android.\n\n3. Vuelve aquí, elige Gestionar permiso de superposición y permite mostrar sobre otras apps. Después activa el reproductor flotante.</string>
+    <string name="floating_open_app_info">Abrir información de la app</string>
+    <string name="floating_restricted_missing">Si no aparece ese menú o Android sigue bloqueando el acceso, usa el enlace de ayuda de su mensaje. Los controles de amplificación de la app y la notificación funcionan sin este permiso.</string>
+    <string name="floating_app_info_unavailable">Abre Ajustes de Android → Apps → Auralift para ver la información de la app.</string>
 </resources>

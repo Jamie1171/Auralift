@@ -1,0 +1,432 @@
+{
+  "date": "2026-09-14",
+  "appVersion": "0.5.0",
+  "productionSourceChanged": false,
+  "suiteSourceCommit": "874fa892bbb4db9d5ec7d0d80dbb70d22c573b93",
+  "pullRequest": "https://github.com/Jamie1171/Auralift/pull/1",
+  "unitGate": {
+    "runId": 34868842150,
+    "testExecutions": {
+      "API26 Owner": {
+        "tests": 29,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "API26 Play": {
+        "tests": 32,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "API35 Owner": {
+        "tests": 43,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "API35 Play": {
+        "tests": 44,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "confirmedGateRunId": 34870619181,
+    "lint": {
+      "ownerWarnings": 37,
+      "playWarnings": 31,
+      "errors": 0
+    }
+  },
+  "targetedDevices": [
+    {
+      "api": 26,
+      "junitCases": 14,
+      "junitFailures": 0,
+      "junitSkips": 0,
+      "diagnosticResults": {
+        "passed": 15
+      },
+      "diagnosticReports": 15,
+      "pageSizes": [
+        4096
+      ],
+      "cases": [
+        {
+          "class": "com.jamiewardle.auralift.device.CoreDeviceTest",
+          "name": "realRewardClockExpiryWhileBackgroundedDoesNotWaitForReopening",
+          "seconds": 12.261,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.CoreDeviceTest",
+          "name": "freeControlsPersistAcrossActivityRecreationWithoutEnablingAudio",
+          "seconds": 1.334,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.CoreDeviceTest",
+          "name": "firstLaunchRequiresAcknowledgementAndLaterDoesNotStartAudio",
+          "seconds": 1.883,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.CoreDeviceTest",
+          "name": "backgroundDisabledStopsOnHomeButNotConfigurationRecreation",
+          "seconds": 7.753,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.CoreDeviceTest",
+          "name": "compareRestoresSelectionAndUnsupportedEffectsStayHonest",
+          "seconds": 3.083,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.CoreDeviceTest",
+          "name": "entitlementExpiryClampsAndRenewalDoesNotRestoreLouderGain",
+          "seconds": 6.264,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.CoreDeviceTest",
+          "name": "foregroundServiceAndNotificationStopLeaveTestPlayerAndVolumeAlone",
+          "seconds": 2.503,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.CoreDeviceTest",
+          "name": "adSuspensionReleasesEffectsAndLateResumeCannotRestartStoppedService",
+          "seconds": 4.003,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.CoreDeviceTest",
+          "name": "playerSessionOpenCloseAndModeSwitchDoNotAccumulateConnections",
+          "seconds": 3.022,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.CoreDeviceTest",
+          "name": "rememberBoostOffResetsBeforeEveryNewSession",
+          "seconds": 2.731,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.FloatingDeviceTest",
+          "name": "floatingControlsChangeGainAndCloseWithoutStoppingBoost",
+          "seconds": 7.979,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.FloatingDeviceTest",
+          "name": "overlayHidesWhileScreenOffThenOnPermissionLossAndExpiry",
+          "seconds": 8.051,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.TimingDeviceTest",
+          "name": "cancelledTimerCannotStopReplacementAndRealDeadlineStopsSession",
+          "seconds": 123.592,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.TimingDeviceTest",
+          "name": "screenOffServiceSoakAndReturnToStop",
+          "seconds": 33.98,
+          "failed": false,
+          "skipped": false
+        }
+      ]
+    },
+    {
+      "api": 36,
+      "junitCases": 14,
+      "junitFailures": 0,
+      "junitSkips": 0,
+      "diagnosticResults": {
+        "passed": 15
+      },
+      "diagnosticReports": 15,
+      "pageSizes": [
+        4096
+      ],
+      "cases": [
+        {
+          "class": "com.jamiewardle.auralift.device.CoreDeviceTest",
+          "name": "realRewardClockExpiryWhileBackgroundedDoesNotWaitForReopening",
+          "seconds": 14.301,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.CoreDeviceTest",
+          "name": "freeControlsPersistAcrossActivityRecreationWithoutEnablingAudio",
+          "seconds": 6.342,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.CoreDeviceTest",
+          "name": "firstLaunchRequiresAcknowledgementAndLaterDoesNotStartAudio",
+          "seconds": 6.162,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.CoreDeviceTest",
+          "name": "backgroundDisabledStopsOnHomeButNotConfigurationRecreation",
+          "seconds": 6.643,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.CoreDeviceTest",
+          "name": "compareRestoresSelectionAndUnsupportedEffectsStayHonest",
+          "seconds": 7.586,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.CoreDeviceTest",
+          "name": "entitlementExpiryClampsAndRenewalDoesNotRestoreLouderGain",
+          "seconds": 9.213,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.CoreDeviceTest",
+          "name": "foregroundServiceAndNotificationStopLeaveTestPlayerAndVolumeAlone",
+          "seconds": 3.154,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.CoreDeviceTest",
+          "name": "adSuspensionReleasesEffectsAndLateResumeCannotRestartStoppedService",
+          "seconds": 5.241,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.CoreDeviceTest",
+          "name": "playerSessionOpenCloseAndModeSwitchDoNotAccumulateConnections",
+          "seconds": 4.351,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.CoreDeviceTest",
+          "name": "rememberBoostOffResetsBeforeEveryNewSession",
+          "seconds": 4.522,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.FloatingDeviceTest",
+          "name": "floatingControlsChangeGainAndCloseWithoutStoppingBoost",
+          "seconds": 7.176,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.FloatingDeviceTest",
+          "name": "overlayHidesWhileScreenOffThenOnPermissionLossAndExpiry",
+          "seconds": 11.3,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.TimingDeviceTest",
+          "name": "cancelledTimerCannotStopReplacementAndRealDeadlineStopsSession",
+          "seconds": 123.686,
+          "failed": false,
+          "skipped": false
+        },
+        {
+          "class": "com.jamiewardle.auralift.device.TimingDeviceTest",
+          "name": "screenOffServiceSoakAndReturnToStop",
+          "seconds": 35.747,
+          "failed": false,
+          "skipped": false
+        }
+      ]
+    }
+  ],
+  "longScreenOffRun": {
+    "runId": 34868842227,
+    "sourceCommit": "efeca00a6d58b3ab7cbae5516a697efd9ee0b4fe",
+    "api": 36,
+    "normalTestsPassed": 14,
+    "soakSeconds": 1200,
+    "soakTestDurationSeconds": 1206.355
+  },
+  "firebaseKit": {
+    "sourceCommit": "0a94e694f4e1c65ae230f66c67dcfc0c9db2e305",
+    "version": "0.5.0",
+    "files": [
+      {
+        "role": "app",
+        "file": "Auralift-Firebase-0.5.0-0a94e694-app.apk",
+        "bytes": 26052478,
+        "sha256": "6ef04ff7118d88413a0a773599eb0c24cc11ad1f835e42bcd88977955bf94c9f",
+        "certificateSha256": "173facbc9bb624a1ea834210acb3e9d5073037fe9151606558e2d86785da492e"
+      },
+      {
+        "role": "tests",
+        "file": "Auralift-Firebase-0.5.0-0a94e694-tests.apk",
+        "bytes": 1144210,
+        "sha256": "ce10670f06a9890045d9af9e5dfedbe734cd4e0de4a1ebc0711b606a1aa14f0a",
+        "certificateSha256": "173facbc9bb624a1ea834210acb3e9d5073037fe9151606558e2d86785da492e"
+      }
+    ],
+    "testResults": "See the matching GitHub Actions run; packaging is not a test pass.",
+    "workflowRunUrl": "https://github.com/Jamie1171/Auralift/actions/runs/34870619274"
+  },
+  "deviceRunId": 34870619274,
+  "diagnosticArtifacts": {
+    "api26": 10359780582,
+    "api36": 10359217635
+  },
+  "limits": [
+    "x86-64 emulator and Android effect parameter readback; not acoustic evidence",
+    "Controlled muted player and internal entitlement fixtures; not third-party player/live monetisation validation",
+    "Twenty-minute instrumentation-active service check is not normal OEM sleep/endurance proof",
+    "ARM 16 KB optimized-release gate remains separate",
+    "Five physical Robo passes were supplied as screenshots; logs/videos not independently reviewed"
+  ],
+  "pageSizeAttempts": [
+    {
+      "runId": 34871163768,
+      "result": "failed",
+      "classification": "emulator_memory_pressure",
+      "evidence": "lowmemorykiller killed foreground Auralift at 176284 kB RSS; not an observed native-loader crash",
+      "artifactId": 10358747664
+    },
+    {
+      "runId": 34872129209,
+      "result": "failed",
+      "classification": "missing_ui_hierarchy",
+      "evidence": "4 GB emulator; uiautomator did not create its initial XML; approximately 2.5 GB memory available",
+      "artifactId": 10359582980
+    },
+    {
+      "runId": 34873143964,
+      "workflowRunUrl": "https://github.com/Jamie1171/Auralift/actions/runs/34873143964",
+      "jobId": 104073729362,
+      "sourceCommit": "e64ca9f8690aaf6eaa6831f230fd63d718ce1203",
+      "testedMergeCommit": "326aa24244fe4c90b5fdc0d732628107e5f951ee",
+      "result": "passed",
+      "classification": "optimized_x86_64_ui_smoke_pass",
+      "emulatorRamMiB": 4096,
+      "artifactId": 10360260115,
+      "artifactUrl": "https://github.com/Jamie1171/Auralift/actions/runs/34873143964/artifacts/10360260115",
+      "artifactSha256ReportedByGitHub": "9b33888c495480b4565b87adc73b98a0aa316122615edbadaa3a72b28c29396d",
+      "artifactExpiresAt": "2026-12-13T17:10:40Z",
+      "evidenceSource": "Complete page-size-report.json printed in the successful workflow job log; run/job and artifact metadata independently fetched from GitHub",
+      "signatureVerification": "passed",
+      "zipAlignment16k": "passed",
+      "report": {
+        "abi": "x86_64",
+        "api": 35,
+        "apkSha256": "9fe0b39e4b8cdf97b38511afa550062ee20e16c95694fe5fe27a2b7bd9e7255c",
+        "checks": [
+          "optimized first launch",
+          "gain selection and service start through public UI",
+          "background return and Stop through public UI"
+        ],
+        "compatibilityWorkarounds": "disabled",
+        "displayDensity": 320,
+        "nativeLibraries": [
+          {
+            "loadAligned16k": true,
+            "path": "lib/arm64-v8a/libandroidx.graphics.path.so",
+            "relroEndAligned16k": false
+          },
+          {
+            "loadAligned16k": true,
+            "path": "lib/armeabi-v7a/libandroidx.graphics.path.so",
+            "relroEndAligned16k": false
+          },
+          {
+            "loadAligned16k": true,
+            "path": "lib/x86/libandroidx.graphics.path.so",
+            "relroEndAligned16k": false
+          },
+          {
+            "loadAligned16k": true,
+            "path": "lib/x86_64/libandroidx.graphics.path.so",
+            "relroEndAligned16k": false
+          }
+        ],
+        "pageSize": 16384,
+        "result": "passed",
+        "scope": "Optimized APK on x86-64 16 KB emulator. No acoustic or ARM certification.",
+        "staticFlags": [
+          "lib/arm64-v8a/libandroidx.graphics.path.so",
+          "lib/armeabi-v7a/libandroidx.graphics.path.so",
+          "lib/x86/libandroidx.graphics.path.so",
+          "lib/x86_64/libandroidx.graphics.path.so"
+        ]
+      }
+    }
+  ],
+  "nativeLayoutFlags": {
+    "result": "flagged",
+    "dependency": "androidx.graphics:graphics-path:1.1.0",
+    "libraries": [
+      {
+        "path": "lib/arm64-v8a/libandroidx.graphics.path.so",
+        "loadAligned16k": true,
+        "relroEndAligned16k": false
+      },
+      {
+        "path": "lib/armeabi-v7a/libandroidx.graphics.path.so",
+        "loadAligned16k": true,
+        "relroEndAligned16k": false
+      },
+      {
+        "path": "lib/x86/libandroidx.graphics.path.so",
+        "loadAligned16k": true,
+        "relroEndAligned16k": false
+      },
+      {
+        "path": "lib/x86_64/libandroidx.graphics.path.so",
+        "loadAligned16k": true,
+        "relroEndAligned16k": false
+      }
+    ],
+    "note": "ZIP and LOAD alignment passed; RELRO ends remain flagged. UI startup alone does not prove this bundled native path library was loaded.",
+    "verifiedInRunId": 34873143964
+  },
+  "pageSizeSummary": {
+    "latestRunId": 34873143964,
+    "optimizedX86_64Smoke": "passed",
+    "nativeLayout": "flagged",
+    "flaggedNativeLibraryLoadVerified": false,
+    "arm64Runtime": "not_run",
+    "aabDerivedReleaseRuntime": "not_run",
+    "full16kReleaseValidation": "open"
+  },
+  "validationRecordUpdate": {
+    "date": "2026-09-14",
+    "scope": "Documentation-only handover; no production, test or workflow changes",
+    "testEvidenceRechecked": "Existing successful workflow jobs, retained JUnit and diagnostic JSON, and matching APK sizes/SHA-256",
+    "freshFirebaseSubmissions": 0,
+    "freshLocalAndroidTestExecutions": 0
+  }
+}

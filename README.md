@@ -1,7 +1,9 @@
 # Auralift
 
 A native Android volume booster, written in **Kotlin, Jetpack Compose and Android
-audio APIs**. Version **0.5.0** adds a prominent Floating Player Pro section, complete
+audio APIs**. Version **0.5.1** puts the one-hour Ad Pass directly below the Listen
+screen's Enable/Stop button, with an active-pass countdown and help for Android's
+restricted overlay settings. It retains the Floating Player Pro section, complete
 interface themes and 5 dB gain shortcuts: Free up to +15 dB, Pro up to +35 dB.
 Voluntary one-hour Ad Passes and equivalent £3.99 / £5.99 one-time products remain.
 Owner remains fully unlocked and contains no advertising or billing SDK.
@@ -108,7 +110,11 @@ The [Android workflow](.github/workflows/android.yml) runs from this repository 
 pushes to `main`, pull requests and manual dispatch. Download its APKs, unsigned
 AAB and test reports from the run's artifacts. Owner APKs built by GitHub use
 temporary CI debug keys and cannot update Jamie's privately signed Owner build.
-Firebase Test Lab and physical-device automation are not configured yet.
+The [device-test workflow](.github/workflows/device-tests.yml) builds a matching
+public debug app/test APK pair for Firebase and runs targeted Android emulator
+checks. See [Firebase upload instructions](docs/FIREBASE-AUTOMATION.md) and
+[human tester goals](docs/HUMAN-TEST-GOALS.md). Jamie submits Firebase jobs through
+his console; no Firebase service-account credentials are stored in this repository.
 
 ## Public edition and launch
 

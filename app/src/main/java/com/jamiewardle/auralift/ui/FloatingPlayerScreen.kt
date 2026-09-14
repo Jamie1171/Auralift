@@ -38,6 +38,7 @@ import com.jamiewardle.auralift.controls.OverlayPermission
     var refresh by remember { mutableIntStateOf(0) }
     var disclosure by rememberSaveable { mutableStateOf(false) }
     var enableRequested by rememberSaveable { mutableStateOf(false) }
+    var restrictedHelp by rememberSaveable { mutableStateOf(false) }
     val lifecycle = LocalLifecycleOwner.current.lifecycle
     DisposableEffect(lifecycle) {
         val observer = LifecycleEventObserver { _, event -> if (event == Lifecycle.Event.ON_RESUME) refresh++ }
@@ -47,6 +48,7 @@ import com.jamiewardle.auralift.controls.OverlayPermission
     val launcher = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         app.access.refresh()
         val granted = Settings.canDrawOverlays(context)
+        restrictedHelp = !granted && Build.VERSION.SDK_INT >= 33
         if (!granted || (enableRequested && app.access.state.value.pro)) {
             app.settings.update { it.copy(floatingControls = granted && app.access.state.value.pro) }
         }
@@ -84,6 +86,28 @@ import com.jamiewardle.auralift.controls.OverlayPermission
             Text(stringResource(R.string.floating_manage_permission))
         }
         Text(stringResource(R.string.floating_protected_apps), Modifier.padding(top = 12.dp), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        if (!allowed && Build.VERSION.SDK_INT >= 33) {
+            TextButton(onClick = { restrictedHelp = !restrictedHelp }, modifier = Modifier.padding(top = 8.dp)) {
+                Text(stringResource(R.string.floating_restricted_title))
+            }
+            if (restrictedHelp) {
+                Text(stringResource(R.string.floating_restricted_hint), style = MaterialTheme.typography.bodyMedium)
+                Text(stringResource(R.string.floating_restricted_steps,
+                    context.applicationInfo.loadLabel(context.packageManager).toString()),
+                    Modifier.padding(top = 10.dp), style = MaterialTheme.typography.bodyMedium)
+                OutlinedButton(onClick = {
+                    // Opens only our normal App info page; Android owns the restriction and grant.
+                    enableRequested = false
+                    runCatching { launcher.launch(OverlayPermission.appInfoIntent(context.packageName)) }.onFailure {
+                        Toast.makeText(context, R.string.floating_app_info_unavailable, Toast.LENGTH_LONG).show()
+                    }
+                }, modifier = Modifier.fillMaxWidth().padding(top = 12.dp).heightIn(min = 48.dp)) {
+                    Text(stringResource(R.string.floating_open_app_info))
+                }
+                Text(stringResource(R.string.floating_restricted_missing), Modifier.padding(top = 8.dp),
+                    style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+        }
     }
     Spacer(Modifier.height(16.dp))
     Panel {

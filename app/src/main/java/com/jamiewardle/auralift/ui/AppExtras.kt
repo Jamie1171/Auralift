@@ -257,17 +257,7 @@ import kotlin.math.ceil
     }
     if (!access.owner && !access.permanent) {
         Spacer(Modifier.height(16.dp))
-        Panel {
-            Text(stringResource(R.string.ad_pass), style = MaterialTheme.typography.titleLarge)
-            Text(stringResource(R.string.ad_pass_intro), Modifier.padding(top = 10.dp))
-            Text(stringResource(R.string.ad_pass_rules), Modifier.padding(vertical = 12.dp), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            if (!access.pro) Button(enabled = ads.available && !ads.busy, onClick = {
-                context.activity()?.let { if (ads.ready) app.ads.show(it) else app.ads.prepare(it) }
-            }, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) {
-                Text(stringResource(if (ads.busy) R.string.ad_loading else if (ads.ready) R.string.watch_ad else R.string.prepare_ad))
-            }
-            if (ads.message != 0) Text(stringResource(ads.message), style = MaterialTheme.typography.bodySmall, modifier = Modifier.padding(top = 10.dp))
-        }
+        AdPassCard(app)
         Spacer(Modifier.height(16.dp))
         Panel {
             Text(stringResource(R.string.lifetime_pro), style = MaterialTheme.typography.titleLarge)
@@ -294,7 +284,7 @@ import kotlin.math.ceil
     OwnerTools(app)
 }
 
-private fun Context.activity(): Activity? = when (this) { is Activity -> this; is ContextWrapper -> baseContext.activity(); else -> null }
+internal fun Context.activity(): Activity? = when (this) { is Activity -> this; is ContextWrapper -> baseContext.activity(); else -> null }
 
 @Composable internal fun NamedSounds(app: AuraliftApplication, pro: () -> Unit) {
     val context = LocalContext.current

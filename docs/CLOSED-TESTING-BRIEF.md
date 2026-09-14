@@ -1,5 +1,10 @@
 # Auralift closed-testing brief
 
+The 14 September [human testing goals](HUMAN-TEST-GOALS.md) refine this brief for
+Jamie's planned group of 20, with device/player/output reporting and tests that
+complement the new automation. The historical exchange description below does
+not establish the current account's credits, recruited testers or Play eligibility.
+
 13 September 2026. Prepared for Jamie's Get12Testers account; not submitted or
 sent to anyone. The account and listing remain under Jamie's control.
 
