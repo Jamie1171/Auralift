@@ -8,7 +8,7 @@ import unittest
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from emulator_adb import EmulatorAdb, ensure_emulator_root
+from emulator_adb import EmulatorAdb, ensure_emulator_root, wait_for_android_services
 
 
 class FakeDaemon:
@@ -134,6 +134,65 @@ class EmulatorRootTest(unittest.TestCase):
                 ensure_emulator_root(self.adb, self.evidence, timeout=25)
         self.assertEqual(now[0], 25)
         self.assertIsNone(self.evidence['verifiedUid'])
+
+
+class AndroidReadinessTest(unittest.TestCase):
+    def exercise(self, states, timeout=20):
+        clock = [0.0]
+        remaining_states = iter(states)
+        state = {}
+        evidence = {}
+
+        def run(command, **kwargs):
+            nonlocal state
+            args = tuple(command[3:])
+            stdout, stderr, code = '', '', 0
+            if args == ('shell', 'getprop', 'sys.boot_completed'):
+                state = next(remaining_states, state)
+                stdout = state.get('boot', '1')
+            elif args == ('shell', 'pidof', 'system_server'):
+                stdout = state.get('pid', '100')
+            elif args == ('shell', 'settings', 'get', 'global', 'animator_duration_scale'):
+                stdout = '1.0'
+            elif args == ('shell', 'input', 'keyevent', 'KEYCODE_WAKEUP'):
+                if state.get('broken_input'):
+                    code, stderr = 224, 'cmd: Failure calling service input: Broken pipe (32)'
+            elif args == ('shell', 'pm', 'path', 'android'):
+                stdout = 'package:/system/framework/framework-res.apk'
+            elif args != ('wait-for-device',):
+                raise AssertionError(f'Unexpected probe: {command}')
+            return subprocess.CompletedProcess(command, code, stdout, stderr)
+
+        with tempfile.TemporaryDirectory() as folder, \
+             patch('emulator_adb.subprocess.run', side_effect=run), \
+             patch('emulator_adb.time.monotonic', side_effect=lambda: clock[0]), \
+             patch('emulator_adb.time.sleep', side_effect=lambda seconds: clock.__setitem__(0, clock[0] + seconds)):
+            adb = EmulatorAdb(Path(folder) / 'adb.jsonl')
+            try:
+                wait_for_android_services(adb, evidence, timeout=timeout)
+            except TimeoutError:
+                self.assertFalse(evidence['ready'])
+                self.assertEqual(clock[0], timeout)
+                raise
+        return evidence
+
+    def test_boot_flag_with_broken_input_must_recover_before_ready(self):
+        evidence = self.exercise([{'broken_input': True}, {}, {}])
+        self.assertTrue(evidence['ready'])
+        self.assertEqual(evidence['attempts'], 3)
+
+    def test_system_server_restart_resets_readiness(self):
+        evidence = self.exercise([{'pid': '100'}, {'pid': '200'}, {'pid': '200'}])
+        self.assertEqual(evidence['systemServerPid'], '200')
+        self.assertEqual(evidence['attempts'], 3)
+
+    def test_permanently_broken_input_is_a_failure(self):
+        with self.assertRaisesRegex(TimeoutError, 'readiness'):
+            self.exercise([{'broken_input': True}], timeout=6)
+
+    def test_missing_boot_completion_is_a_failure(self):
+        with self.assertRaisesRegex(TimeoutError, 'readiness'):
+            self.exercise([{'boot': '0'}], timeout=6)
 
 
 if __name__ == '__main__':

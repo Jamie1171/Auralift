@@ -8,7 +8,7 @@ import subprocess
 import time
 import xml.etree.ElementTree as ET
 import zipfile
-from emulator_adb import EmulatorAdb, ensure_emulator_root
+from emulator_adb import EmulatorAdb, ensure_emulator_root, wait_for_android_services
 
 out = Path('build/page-size-results')
 out.mkdir(parents=True, exist_ok=True)
@@ -84,6 +84,8 @@ def native_layout():
 try:
     report['apkSha256'] = hashlib.sha256(apk.read_bytes()).hexdigest()
     native_layout()
+    report['bootSetup'] = {}
+    wait_for_android_services(adb, report['bootSetup'])
     report['adbSetup'] = {}
     ensure_emulator_root(adb, report['adbSetup'])
     report['pageSize'] = int(adb('shell', 'getconf', 'PAGE_SIZE'))
@@ -97,6 +99,9 @@ try:
         adb('shell', 'setprop', key, value)
         assert adb('shell', 'getprop', key) == value
     report['compatibilityWorkarounds'] = 'disabled'
+    for key in ('window_animation_scale', 'transition_animation_scale', 'animator_duration_scale'):
+        adb('shell', 'settings', 'put', 'global', key, '0')
+        assert float(adb('shell', 'settings', 'get', 'global', key)) == 0
     # Give the black-box controls enough viewport space; this is a native-loader
     # check, not evidence of small-screen layout coverage.
     adb('shell', 'wm', 'density', '320')

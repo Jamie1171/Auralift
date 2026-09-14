@@ -19,18 +19,33 @@ and all existing app startup, gain, background and Stop assertions. Setup retrie
 cannot retry app assertions or mark an unverified runtime as passed. Failure
 reports distinguish setup from app checks, and diagnostic capture has timeouts.
 
-**Eight host-side driver regression tests passed** with
+[The first recovery run, 34884348311](https://github.com/Jamie1171/Auralift/actions/runs/34884348311),
+passed all eight driver tests and the optimized build/signature/ZIP checks, then
+failed earlier in the external emulator launcher: `input keyevent 82` returned
+exit 224 with `Failure calling service input: Broken pipe (32)`. Our smoke driver
+was never invoked, so there was no runtime report or app compatibility result.
+
+The 16 KB job now launches the same SDK emulator/image directly and waits for
+two responsive samples from the same `system_server`, including input, settings
+and package services. The readiness wait has a three-minute limit, and emulator
+boot output is retained even if setup fails. The finished Gradle daemon is stopped
+before starting the 4 GB emulator. Animation settings, 16 KB properties and every
+app assertion remain checked. The ordinary API 26/36 device launcher is unchanged.
+
+**Twelve host-side driver regression tests passed** with
 `python3 -m unittest discover -s scripts/tests -v`; no failures or skips. Cases
 include healthy restart, lost restart reply, lost request, timeout after restart,
 false success without UID 0, failed UID readback, a persistent disconnect deadline,
-and refusing physical/non-debuggable builds. Python compilation and whitespace
+and refusing physical/non-debuggable builds. Four additional cases cover an early
+boot flag with broken input, system-server restart, persistent broken input and
+missing boot completion. Python compilation and whitespace
 checks also passed. These tests simulate daemon states; they are not a 16 KB
 runtime pass. The same regression command runs before the optimized CI build.
 
 Runtime outcomes for this correction are recorded with exact source/run links in
 [PR #1](https://github.com/Jamie1171/Auralift/pull/1). Each run retains
 `page-size-report.json` and `adb-transcript.jsonl`; a pass requires `stage=complete`,
-`verifiedUid=0`, disabled compatibility workarounds and all three app checks. The
+`bootSetup.ready=true`, `verifiedUid=0`, disabled compatibility workarounds and all three app checks. The
 0.5.1 app source, dependencies and downloadable APK are unchanged. The separate
 graphics-path GNU_RELRO, ARM64 and AAB-derived release limitations remain open.
 

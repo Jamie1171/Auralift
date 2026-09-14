@@ -32,6 +32,46 @@ class EmulatorAdb:
         return result.stdout.strip()
 
 
+def wait_for_android_services(adb, evidence, timeout=180):
+    """Boot completion alone does not prove that Android's Binder services work."""
+    deadline = time.monotonic() + timeout
+    evidence.update(ready=False, attempts=0)
+    previous_pid = None
+    last_error = 'Android services did not become ready'
+
+    def call(*args):
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            raise TimeoutError('Android service readiness exceeded its deadline')
+        return adb(*args, timeout=min(5, remaining))
+
+    while time.monotonic() < deadline:
+        evidence['attempts'] += 1
+        try:
+            call('wait-for-device')
+            if call('shell', 'getprop', 'sys.boot_completed') == '1':
+                pid = call('shell', 'pidof', 'system_server')
+                call('shell', 'settings', 'get', 'global', 'animator_duration_scale')
+                call('shell', 'input', 'keyevent', 'KEYCODE_WAKEUP')
+                package_path = call('shell', 'pm', 'path', 'android')
+                if pid and package_path.startswith('package:'):
+                    # Two responsive samples from the same system_server prevent
+                    # an early boot flag or service restart from satisfying setup.
+                    if pid == previous_pid:
+                        evidence.update(ready=True, systemServerPid=pid)
+                        return
+                    previous_pid = pid
+                else:
+                    previous_pid = None
+            else:
+                previous_pid = None
+        except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as exc:
+            previous_pid = None
+            last_error = repr(exc)
+        time.sleep(min(2, max(0, deadline - time.monotonic())))
+    raise TimeoutError(f'Android service readiness exceeded its deadline: {last_error}')
+
+
 def ensure_emulator_root(adb, evidence, timeout=90):
     """Verify UID 0 after adbd restarts; retry setup only, never the app checks.
 
