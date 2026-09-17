@@ -1,35 +1,54 @@
 # Validation — Auralift
 
-## 0.5.2 floating player and palettes — validation pending, 17 September 2026
+## 0.5.2 floating player and ten palettes — passed, 17 September 2026
 
-Requested changes: a 64 dp circular collapsed widget; separate minimise, close and
-Stop; player launch from Settings without boost; Stop resets 0 dB/Balanced while
-leaving the player open; persistent selected-preset outline/toggle; ten palettes.
+Validated source `64a826c0a2b27857fee3b62847a6e86aea9083af`, tested PR merge
+`02ce2f83efc7a4339e70032cd44e28f803d7d271`. This record is a documentation-only
+follow-up; it does not change the tested application or delivered APK.
 
-Version code 7. Added device regressions for Stop/reset/restart, idle Settings
-on/off/on, minimise, circular bounds and selected preset toggles. Added a service
-regression that proves floating-only start, reconnect and ad resume own no effects.
-Existing native screenshot coverage now renders all twenty light/dark palettes.
+- [Required unit/lint/build gate](https://github.com/Jamie1171/Auralift/actions/runs/35243466406):
+  passed all required tasks, then the separate API 26 invocation. **164 unit
+  executions**, zero failures/errors/skips: API 35 Owner 49 / Play 50; API 26
+  Owner 31 / Play 34. Optimized APK/AAB and Owner builds succeeded.
+- [Android device suites](https://github.com/Jamie1171/Auralift/actions/runs/35243466494):
+  **34 checks passed**, 17 each on API 26 and 36, including the isolated denied-
+  permission check. Downloaded per-test reports confirm all passes. The new tests
+  exercise Settings launch without boost, off/on, circular bounds, minimise,
+  reopen, selected preset toggles and Stop/reset/restart without reopening the app.
+- [16 KB smoke](https://github.com/Jamie1171/Auralift/actions/runs/35243466484):
+  optimized startup/controls and driver checks passed. Its existing x86-64 scope
+  and native-library/ARM64 limitations below still apply.
+- Native captures cover all **20 palette appearances**. Inspected all six new
+  palettes, expanded selected/stopped controls, and the compact circle. Main body,
+  muted and accent text contrast against each surface is at least 5.81:1; this is
+  a targeted colour check, not a full accessibility certification.
 
-The required local Gradle invocation was attempted but the environment could not
-reach the Gradle distribution host. GitHub's required build/lint/unit and API 26/36
-device workflows will supply build evidence. No pending run is counted as passed.
+Delivered **Auralift-0.5.2.apk**, version code 7, public personal-test build with
+Google test ads: **26,135,528 bytes**, SHA-256
+`ef784f48e201a9f836c691f2bfb686c959dbf885c536204930f97e73978389c8`.
+Re-signed locally with the previous personal certificate
+`7ba0540911fe9b3208e119d82a5710079d9ad982ea1c4259c500e0047a8f8f36`;
+APK v2/v3 signatures verify. All 463 non-META-INF payload entries match the CI
+app before re-signing. Signing material stays outside Git and CI.
 
-The first 0.5.2 runs (35242045148 / 35242045298 / 35242045142) failed before
-compilation: setup-android requested the removed SDK package `tools`. Workflows
-now request `platform-tools` explicitly while retaining the pinned build SDK and
-normal licence acceptance. These setup failures are not app-test passes.
-On initial corrected source `14cc3d3`, 160 unit executions passed (API 35:
-Owner 48 / Play 49; API 26: Owner 30 / Play 33), required lint/builds passed, and
-16 KB smoke passed. Device runs then failed: memory-off startup exposed an idle
-shutdown during preference reset; one new test tried scrolling the fixed nav bar;
-and a notification assertion observed the initial Close action before Stop was
-published. Floating Stop/reset/restart and preset selection already passed.
-These failures are retained and fixed, not counted as complete device passes.
+The circle is 64 dp and expands with separate Minimise/Close. Stop in the player
+releases effects, cancels comparison/timers and resets gain/EQ to 0 dB/Balanced,
+while leaving controls open. Close disables the Settings preference and leaves
+any active boost alone. Starting the player never starts effects. Nine extra
+palettes supplement free Mint, each with light/dark support.
 
-Production signing/monetisation and the previously documented native-library,
-ARM64 and physical listening limits are outside this personal-review update.
+Earlier attempts are retained rather than counted as passes. Runs 35242045148 /
+35242045298 / 35242045142 stopped before compilation because SDK setup requested
+the removed `tools` package; workflows now explicitly request `platform-tools`.
+Source `14cc3d3` passed 160 unit executions/builds/16 KB, but device runs exposed
+memory-off startup being mistaken for idle shutdown, a test scrolling the fixed
+nav bar, and a notification check observing the initial Close action before Stop.
+The final source fixes these and adds a regression for the memory-off startup.
 
+Screen-off checks here last 30 seconds; the older 20-minute result is historical.
+Physical listening, OEM idle reliability, live ads/purchases, production signing,
+and native-library/ARM64/AAB-derived validation remain separate launch work.
+See [machine-readable identity](validation-0.5.2.json).
 
 ## 16 KB emulator setup recovery, 14 September 2026
 

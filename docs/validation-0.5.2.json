@@ -1,0 +1,57 @@
+{
+  "version": "0.5.2",
+  "versionCode": 7,
+  "sourceCommit": "64a826c0a2b27857fee3b62847a6e86aea9083af",
+  "testedMergeCommit": "02ce2f83efc7a4339e70032cd44e28f803d7d271",
+  "apk": {
+    "file": "Auralift-0.5.2.apk",
+    "bytes": 26135528,
+    "sha256": "ef784f48e201a9f836c691f2bfb686c959dbf885c536204930f97e73978389c8",
+    "matchedPayloadEntries": 463,
+    "certificateSha256": "7ba0540911fe9b3208e119d82a5710079d9ad982ea1c4259c500e0047a8f8f36"
+  },
+  "unitRuns": {
+    "test-results-api35/testOwnerDebugUnitTest": {
+      "tests": 49,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "test-results-api35/testPlayDebugUnitTest": {
+      "tests": 50,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "test-results/testOwnerDebugUnitTest": {
+      "tests": 31,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "test-results/testPlayDebugUnitTest": {
+      "tests": 34,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "deviceResults": {
+    "api26": {
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0
+    },
+    "api36": {
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "workflowRuns": {
+    "unitLintBuild": 35243466406,
+    "devices": 35243466494,
+    "pageSize16k": 35243466484
+  },
+  "scope": "Personal test build; no production-signing/live-monetisation/acoustic/OEM-endurance certification. Existing graphics-path RELRO, ARM64 and AAB-derived limitations remain."
+}
