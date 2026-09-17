@@ -101,7 +101,7 @@
     <string name="battery_guidance">Si el refuerzo se detiene, abre Batería o Uso de batería y permite el uso en segundo plano. Los nombres varían. Android aún puede detener una sesión. Esto no anula Forzar detención.</string>
     <string name="floating_hint">Controla la ganancia, el volumen, los ajustes de EQ y la reproducción sobre otras apps.</string>
     <string name="overlay_unavailable">Las ventanas flotantes no están disponibles en este dispositivo. Usa la notificación o los controles de la app.</string>
-    <string name="floating_instructions">Activa la amplificación y sal de Auralift. Arrastra la burbuja para moverla y pulsa para ampliarla. Usa × para ocultarla o Detener para finalizar la amplificación.</string>
+    <string name="floating_instructions">Activa el reproductor y sal de Auralift. Arrastra el círculo para moverlo y toca para expandirlo. Minimizar vuelve al círculo. Detener restablece 0 dB y el sonido Equilibrado; × cierra el reproductor.</string>
     <string name="language_subtitle">Los cambios se aplican en toda la interfaz nativa.</string>
     <string name="follow_system">Usar idioma del sistema</string>
     <string name="pro_heading">Un poco más de posibilidades.</string>
@@ -111,7 +111,7 @@
     <string name="free_plan">Auralift Gratis</string>
     <string name="preview_minutes">Quedan %1$d minutos de Pro</string>
     <string name="free_features">Siempre gratis\nHasta +15 dB de ganancia, volumen multimedia, comparación, ecualizador y ajustes de voz, tres configuraciones de salida, temporizador, widget, notificaciones, idiomas y espectro.</string>
-    <string name="pro_features">Con Pro\nHasta +35 dB de ganancia, reproductor y controles flotantes, temas completos Ocean / Amber / Orchid, hasta 24 perfiles con nombre, importación/exportación y desvanecimiento suave.</string>
+    <string name="pro_features">Con Pro\nHasta +35 dB, reproductor flotante y controles, nueve paletas de color adicionales, hasta 24 perfiles de sonido, importación y exportación de perfiles y apagado gradual.</string>
     <string name="buy_once">Desbloquear Pro · %1$s una vez</string>
     <string name="restore_purchase">Restaurar compra</string>
     <string name="named_sounds">Tu biblioteca de sonido · Pro</string>
@@ -308,10 +308,10 @@
     <string name="floating_permission_on">Permiso de superposición concedido</string>
     <string name="floating_permission_off">Aún falta el permiso de superposición</string>
     <string name="floating_manage_permission">Gestionar permiso de superposición</string>
-    <string name="floating_protected_apps">Android y las apps protegidas pueden ocultar superposiciones. Auralift lo respeta. Para ocultar el reproductor, pulsa × en la burbuja; la amplificación continúa.</string>
+    <string name="floating_protected_apps">Android y las apps protegidas pueden ocultar superposiciones. Auralift lo respeta. Pulsa × en el reproductor expandido para cerrarlo; la amplificación activa continúa.</string>
     <string name="floating_session_ready">La sesión de amplificación está activa</string>
-    <string name="floating_session_needed">Inicia una sesión de escucha</string>
-    <string name="floating_visibility">El reproductor aparece al activar la amplificación y salir de Auralift. Se oculta dentro de Auralift, con el teléfono bloqueado y durante un anuncio del pase.</string>
+    <string name="floating_session_needed">Listo sin activar la amplificación</string>
+    <string name="floating_visibility">El reproductor funciona con la amplificación activada o desactivada. Se oculta dentro de Auralift, con el teléfono bloqueado y durante un anuncio del pase. Ciérralo con × o desactívalo aquí.</string>
     <string name="floating_go_listen">Ir a Escuchar</string>
     <string name="floating_permission_list">Android mostrará una lista de apps. Selecciona %1$s y permite mostrar sobre otras apps. Solo necesitas ese interruptor. La lista no te pide seleccionar todas las apps que quieras usar.</string>
     <string name="floating_permission_direct">En la siguiente pantalla de Android, permite que %1$s se muestre sobre otras apps. Vuelve aquí para terminar.</string>
@@ -332,4 +332,20 @@
     <string name="floating_open_app_info">Abrir información de la app</string>
     <string name="floating_restricted_missing">Si no aparece ese menú o Android sigue bloqueando el acceso, usa el enlace de ayuda de su mensaje. Los controles de amplificación de la app y la notificación funcionan sin este permiso.</string>
     <string name="floating_app_info_unavailable">Abre Ajustes de Android → Apps → Auralift para ver la información de la app.</string>
+    <string name="boost_on">Amplificación activada</string>
+    <string name="minimise_floating">Minimizar controles flotantes</string>
+    <string name="floating_not_selected">Sin seleccionar</string>
+    <string name="floating_idle">Reproductor listo · amplificación desactivada</string>
+    <string name="theme_rose">Rosa</string>
+    <string name="theme_rose_hint">Vino y rosa · contraste suave</string>
+    <string name="theme_coral">Coral</string>
+    <string name="theme_coral_hint">Terracota y melocotón · luz cálida</string>
+    <string name="theme_forest">Bosque</string>
+    <string name="theme_forest_hint">Pino y lima · calma del bosque</string>
+    <string name="theme_sunshine">Sol</string>
+    <string name="theme_sunshine_hint">Amarillo dorado · calidez luminosa</string>
+    <string name="theme_midnight">Medianoche</string>
+    <string name="theme_midnight_hint">Tinta y lavanda · brillo nocturno</string>
+    <string name="theme_slate">Pizarra</string>
+    <string name="theme_slate_hint">Grafito y plata · discreción</string>
 </resources>

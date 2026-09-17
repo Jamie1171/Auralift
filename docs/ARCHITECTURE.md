@@ -69,8 +69,9 @@ and [Equalizer API](https://developer.android.com/reference/android/media/audiof
 - Output device changes and AUDIO_BECOMING_NOISY rebuild effects. By default the
   requested gain is reset to zero first. An output-device list is not represented
   as reliable per-player routing telemetry; saved profiles are chosen manually.
-- Stop releases controlled effects, removes listeners, cancels timers, updates quick
-  controls and removes the notification. It does not command the external player
+- Stop releases controlled effects, cancels timers and updates quick controls.
+  If the permitted Pro floating player is enabled, the service remains with zero
+  owned effects and a Close-player notification; otherwise it shuts down. It does not command the external player
   to pause, mute or stop.
 - Sleep uses an elapsed-real-time deadline checked while running and an inexact
   allow-while-idle alarm. Delayed alarms check the current deadline, preventing an
@@ -128,8 +129,11 @@ reductions. The service also refreshes access and caps each ramp step.
 validates the entire bounded JSON before one preference write. It does not apply
 audio. Loading passes through the same settings sanitisation and gain ramp.
 
-The service owns `FloatingControls` and closes its Android window on Stop,
-permission loss, lock, foreground return or access expiry. An expanded panel scrolls
+The service owns `FloatingControls`. Its `boostEnabled` state is separate from
+service lifetime: only START or the explicit floating Enable action opens effects.
+SHOW_FLOATING never starts audio. Idle rebuild/ad callbacks cannot restore effects.
+The window stays after Stop and hides on permission loss, lock, foreground return
+or access expiry. Closing/disabling the last idle control stops the service. An expanded panel scrolls
 and remains draggable. Media actions use existing Android media-key dispatch;
 there is no notification listener or AccessibilityService.
 

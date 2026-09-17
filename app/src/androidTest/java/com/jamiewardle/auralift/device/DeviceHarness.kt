@@ -58,7 +58,7 @@ abstract class DeviceHarness {
         device.wakeUp()
         shell("wm dismiss-keyguard")
         device.pressMenu()
-        onMain { BoostService.stop(app) }
+        onMain { app.settings.update { it.copy(floatingControls = false) }; BoostService.stop(app) }
         await("previous session stopped") { !app.engine.value.running }
         shell("appops set ${app.packageName} SYSTEM_ALERT_WINDOW deny")
         // Granting is safe here; revoking a runtime permission would kill this instrumented process.
@@ -82,6 +82,7 @@ abstract class DeviceHarness {
         snapshot("before_cleanup")
         // Save the state before teardown; a passing test must not hide an active failure.
         onMain {
+            app.settings.update { it.copy(floatingControls = false) }
             BoostService.stop(app)
             app.adAudio.resume()
         }
@@ -160,6 +161,15 @@ abstract class DeviceHarness {
             .put("androidReadbackDb", state.reportedGainDb ?: JSONObject.NULL)
             .put("diagnostics", state.diagnostics))
         Log.i("AuraliftDeviceTest", "$label: ${state.diagnostics}")
+    }
+    protected fun capture(name: String) {
+        val runnerOutput = InstrumentationRegistry.getArguments().getString("additionalTestOutputDir")
+        val dir = (if (runnerOutput.isNullOrBlank()) File(app.getExternalFilesDir(null), "auralift-test-results")
+            else File(runnerOutput, "auralift-test-results")).apply { mkdirs() }
+        instrumentation.uiAutomation.takeScreenshot()?.let { bitmap ->
+            File(dir, "$name.png").outputStream().use { bitmap.compress(Bitmap.CompressFormat.PNG, 100, it) }
+            bitmap.recycle()
+        }
     }
     private fun report(description: Description, result: String, failure: Throwable?) {
         val name = "${description.className.substringAfterLast('.')}-${description.methodName}"

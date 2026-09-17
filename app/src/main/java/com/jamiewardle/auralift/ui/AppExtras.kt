@@ -139,10 +139,10 @@ import kotlin.math.ceil
                         ThemePreview(accent, p.lightTheme)
                         Column(Modifier.padding(16.dp)) {
                             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                                Text(stringResource(when (accent) { Accent.MINT -> R.string.theme_mint; Accent.OCEAN -> R.string.theme_ocean; Accent.AMBER -> R.string.theme_amber; Accent.ORCHID -> R.string.theme_orchid }), modifier = Modifier.weight(1f), style = MaterialTheme.typography.titleMedium)
+                                Text(stringResource(when (accent) { Accent.MINT -> R.string.theme_mint; Accent.OCEAN -> R.string.theme_ocean; Accent.AMBER -> R.string.theme_amber; Accent.ORCHID -> R.string.theme_orchid; Accent.ROSE -> R.string.theme_rose; Accent.CORAL -> R.string.theme_coral; Accent.FOREST -> R.string.theme_forest; Accent.SUNSHINE -> R.string.theme_sunshine; Accent.MIDNIGHT -> R.string.theme_midnight; Accent.SLATE -> R.string.theme_slate }), modifier = Modifier.weight(1f), style = MaterialTheme.typography.titleMedium)
                                 if (selected) Icon(Icons.Rounded.CheckCircle, stringResource(R.string.theme_selected), tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(20.dp))
                             }
-                            Text(stringResource(when (accent) { Accent.MINT -> R.string.theme_mint_hint; Accent.OCEAN -> R.string.theme_ocean_hint; Accent.AMBER -> R.string.theme_amber_hint; Accent.ORCHID -> R.string.theme_orchid_hint }), modifier = Modifier.padding(top = 6.dp), style = MaterialTheme.typography.bodySmall)
+                            Text(stringResource(when (accent) { Accent.MINT -> R.string.theme_mint_hint; Accent.OCEAN -> R.string.theme_ocean_hint; Accent.AMBER -> R.string.theme_amber_hint; Accent.ORCHID -> R.string.theme_orchid_hint; Accent.ROSE -> R.string.theme_rose_hint; Accent.CORAL -> R.string.theme_coral_hint; Accent.FOREST -> R.string.theme_forest_hint; Accent.SUNSHINE -> R.string.theme_sunshine_hint; Accent.MIDNIGHT -> R.string.theme_midnight_hint; Accent.SLATE -> R.string.theme_slate_hint }), modifier = Modifier.padding(top = 6.dp), style = MaterialTheme.typography.bodySmall)
                             Text(stringResource(if (accent == Accent.MINT) R.string.included else R.string.pro_button), modifier = Modifier.padding(top = 10.dp), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
                         }
                     }

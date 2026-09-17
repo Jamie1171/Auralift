@@ -30,6 +30,7 @@ class BackgroundAndAdAudioTest {
         app.settings.update { it.copy(gainDb = 30f, backgroundAudio = true) }
         app.activityVisible = false
         val controller = Robolectric.buildService(BoostService::class.java).create()
+        controller.get().onStartCommand(Intent().setAction(BoostService.START), 0, 1)
         val service = controller.get()
         shadowOf(Looper.getMainLooper()).idleFor(Duration.ofMillis(1100))
         assertTrue(app.engine.value.running)
@@ -53,9 +54,41 @@ class BackgroundAndAdAudioTest {
     @Test fun serviceStartedDuringAdCannotAttachEffects() {
         app.adAudio.suspend()
         val controller = Robolectric.buildService(BoostService::class.java).create()
+        controller.get().onStartCommand(Intent().setAction(BoostService.START), 0, 1)
         assertEquals(0, chains(controller.get()))
         controller.destroy(); app.adAudio.resume()
         assertFalse(app.engine.value.running)
+    }
+    @Test fun floatingOnlyStartAndReconnectNeverCreateEffects() {
+        org.robolectric.shadows.ShadowSettings.setCanDrawOverlays(true)
+        app.activityVisible = true
+        app.settings.update { it.copy(floatingControls = true, gainDb = 30f) }
+        val controller = Robolectric.buildService(BoostService::class.java).create()
+        val service = controller.get()
+        try {
+            service.onStartCommand(Intent().setAction(BoostService.SHOW_FLOATING), 0, 1)
+            service.onStartCommand(Intent().setAction(BoostService.RECONNECT), 0, 2)
+            app.adAudio.suspend(); app.adAudio.resume()
+            shadowOf(Looper.getMainLooper()).idleFor(Duration.ofMillis(1100))
+            assertFalse(app.engine.value.running)
+            assertEquals(0, chains(service))
+            assertEquals(30f, app.settings.state.value.gainDb)
+            service.onStartCommand(Intent().setAction(BoostService.START), 0, 3)
+            assertTrue(app.engine.value.running)
+            assertEquals(1, chains(service))
+            service.onStartCommand(Intent().setAction(BoostService.STOP), 0, 4)
+            app.adAudio.suspend(); app.adAudio.resume()
+            service.onStartCommand(Intent().setAction(BoostService.RECONNECT), 0, 5)
+            shadowOf(Looper.getMainLooper()).idleFor(Duration.ofMillis(1100))
+            assertFalse(app.engine.value.running)
+            assertEquals(0, chains(service))
+            assertTrue(app.settings.state.value.floatingControls)
+            val notification = shadowOf(app.getSystemService(NotificationManager::class.java)).allNotifications.single()
+            assertEquals(app.getString(R.string.close_floating), notification.actions.single().title.toString())
+        } finally {
+            controller.destroy()
+            org.robolectric.shadows.ShadowSettings.setCanDrawOverlays(false)
+        }
     }
     @Test fun rebootReceiverDoesNothingByDefaultAndNeverStartsAudio() {
         val receiver = RestartReminder()

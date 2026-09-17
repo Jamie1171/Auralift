@@ -8,6 +8,7 @@ import android.content.pm.ServiceInfo
 import android.media.*
 import android.media.audiofx.AudioEffect
 import android.os.*
+import android.provider.Settings
 import androidx.core.content.ContextCompat
 import com.jamiewardle.auralift.*
 import com.jamiewardle.auralift.R
@@ -30,6 +31,8 @@ class BoostService : Service() {
     private var comparingOriginal = false
     private var deadline = 0L
     private var stopped = false
+    private var boostEnabled = false
+    private var commandReceived = false
     private var routeSignature = emptySet<Int>()
     private var rampJob: Job? = null
     private var lastNotification = ""
@@ -52,25 +55,26 @@ class BoostService : Service() {
                 sessions.remove(id); chains.remove(id)?.release()
             } else if (intent.action == AudioEffect.ACTION_OPEN_AUDIO_EFFECT_CONTROL_SESSION && sessions.size < 16) {
                 sessions.add(id)
-                if (!app.adAudio.blocked.value && p.mode == EffectMode.PLAYERS && id !in chains) chains[id] = newChain(id)
+                if (boostEnabled && !app.adAudio.blocked.value && p.mode == EffectMode.PLAYERS && id !in chains) chains[id] = newChain(id)
             }
             ramp(); publish()
         }
     }
-    private fun newChain(id: Int) = EffectChain(id) { handler.post { if (!stopped) { ramp(); publish() } } }
+    private fun newChain(id: Int) = EffectChain(id) { handler.post { if (!stopped && boostEnabled) { ramp(); publish() } } }
 
     override fun onCreate() {
         super.onCreate()
         app.access.refresh()
-        if (!app.settings.state.value.rememberBoost) app.settings.update { it.copy(gainDb = 0f) }
         p = app.settings.state.value
-        floating = FloatingControls(this, { comparingOriginal = !comparingOriginal; ramp(); publish() }, { finish(word(R.string.boost_off)) })
+        floating = FloatingControls(this,
+            compare = { if (boostEnabled) { comparingOriginal = !comparingOriginal; ramp(); publish() } },
+            toggleBoost = { if (boostEnabled) stopBoost(word(R.string.boost_off), resetSound = true) else startBoost() })
         audio = getSystemService(AudioManager::class.java)
         val nm = getSystemService(NotificationManager::class.java)
         nm.createNotificationChannel(NotificationChannel(CHANNEL, word(R.string.channel_audio), NotificationManager.IMPORTANCE_LOW).apply {
             description = word(R.string.channel_audio_hint); setSound(null, null); enableVibration(false)
         })
-        val notification = notification(word(R.string.connecting_effects))
+        val notification = notification(word(R.string.floating_idle))
         if (Build.VERSION.SDK_INT >= 34) startForeground(NOTIFICATION, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
         else startForeground(NOTIFICATION, notification)
         routeSignature = audio.getDevices(AudioManager.GET_DEVICES_OUTPUTS).map { it.id }.toSet()
@@ -95,8 +99,9 @@ class BoostService : Service() {
             while (isActive) {
                 delay(1000)
                 app.access.refresh()
-                if (!p.backgroundAudio && !app.activityVisible && !app.adAudio.blocked.value) { finish(word(R.string.boost_off)); break }
-                if (deadline > 0L && SystemClock.elapsedRealtime() >= deadline) { finish(word(R.string.sleep_finished)); break }
+                if (boostEnabled && !p.backgroundAudio && !app.activityVisible && !app.adAudio.blocked.value) stopBoost(word(R.string.boost_off))
+                if (deadline > 0L && SystemClock.elapsedRealtime() >= deadline) stopBoost(word(R.string.sleep_finished))
+                if (stopped) break
                 val nextFade = if (deadline > 0 && ((p.sleepFade && app.access.state.value.pro) || fadeMultiplier < 1f)) ((deadline - SystemClock.elapsedRealtime()) / 30_000f).coerceIn(0f, 1f) else 1f
                 // Once a fade begins it never increases gain again, even if Pro expires.
                 val effectiveFade = if (deadline > 0) minOf(fadeMultiplier, nextFade) else 1f
@@ -106,13 +111,38 @@ class BoostService : Service() {
         }
     }
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        commandReceived = true
         when (intent?.action) {
-            STOP -> finish(word(R.string.boost_off))
+            START -> startBoost()
+            SHOW_FLOATING -> publish()
+            CLOSE_FLOATING -> { app.settings.update { it.copy(floatingControls = false) }; publish() }
+            STOP -> stopBoost(word(R.string.boost_off))
             RECONNECT -> rebuild()
-            TIMER -> setTimer(intent.getIntExtra("minutes", 0))
-            COMPARE -> { comparingOriginal = !comparingOriginal; ramp(); publish() }
+            TIMER -> if (boostEnabled) setTimer(intent.getIntExtra("minutes", 0))
+            COMPARE -> if (boostEnabled) { comparingOriginal = !comparingOriginal; ramp(); publish() }
         }
         return START_NOT_STICKY
+    }
+    private fun startBoost() {
+        if (stopped || boostEnabled) return
+        app.access.refresh()
+        if (!app.settings.state.value.rememberBoost) app.settings.update { it.copy(gainDb = 0f) }
+        boostEnabled = true
+        comparingOriginal = false
+        fadeMultiplier = 1f
+        rebuild()
+    }
+    private fun keepFloating() = app.settings.state.value.floatingControls &&
+        app.access.state.value.pro && Settings.canDrawOverlays(this)
+
+    private fun stopBoost(message: String, resetSound: Boolean = false) {
+        boostEnabled = false
+        rampJob?.cancel(); chains.values.forEach { it.release() }; chains.clear()
+        commandedGain = 0f; comparingOriginal = false; deadline = 0L; fadeMultiplier = 1f
+        getSystemService(AlarmManager::class.java).cancel(timerIntent())
+        if (resetSound) app.settings.update { it.copy(gainDb = 0f, preset = SoundPreset.BALANCED, customEq = List(5) { 0f }) }
+        app.engine.value = EngineState(message = message, detail = word(R.string.media_keeps_playing), diagnostics = app.engine.value.diagnostics)
+        if (keepFloating()) publish() else finish(message)
     }
     private fun routeChanged() {
         if (stopped) return
@@ -125,7 +155,7 @@ class BoostService : Service() {
     private fun rebuild() {
         rampJob?.cancel(); chains.values.forEach { it.release() }; chains.clear(); commandedGain = 0f
         if (stopped) return
-        if (app.adAudio.blocked.value) { publish(); return }
+        if (!boostEnabled || app.adAudio.blocked.value) { publish(); return }
         p = app.settings.state.value
         if (p.mode == EffectMode.SYSTEM) chains[0] = newChain(0)
         else sessions.forEach { chains[it] = newChain(it) }
@@ -133,14 +163,14 @@ class BoostService : Service() {
     }
     private fun ramp() {
         rampJob?.cancel()
-        if (app.adAudio.blocked.value || stopped) return
+        if (!boostEnabled || app.adAudio.blocked.value || stopped) return
         rampJob = scope.launch {
             var target: Float
             var lastPublish = 0L
             // Reductions are immediate; increases take small steps to avoid a sudden jump.
             do {
                 app.access.refresh()
-                if (!isActive || app.adAudio.blocked.value || stopped) break
+                if (!isActive || !boostEnabled || app.adAudio.blocked.value || stopped) break
                 val current = app.settings.state.value
                 val effectPreferences = current.copy(gainDb = current.gainDb * fadeMultiplier).forComparison(comparingOriginal)
                 val cap = chains.values.filter { it.gainAvailable }.minOfOrNull { it.maxGain } ?: 0f
@@ -158,6 +188,12 @@ class BoostService : Service() {
     }
     private fun publish() {
         if (stopped) return
+        if (!boostEnabled) {
+            if (commandReceived && !keepFloating()) { finish(word(R.string.boost_off)); return }
+            floating.refresh()
+            updateNotification(word(R.string.floating_idle))
+            return
+        }
         val connected = chains.values.filter { it.gainAvailable }
         val linked = connected.isNotEmpty()
         val native = linked && connected.all { it.compression }
@@ -196,8 +232,12 @@ class BoostService : Service() {
                 "\nReadback is the Android effect setting, not measured loudness. A player can bypass a connected effect.")
         floating.refresh()
         val summary = if (comparingOriginal && linked) word(R.string.comparing_notification) else if (linked) readback else message
-        if (summary != lastNotification) {
-            lastNotification = summary
+        updateNotification(summary)
+    }
+    private fun updateNotification(summary: String) {
+        val key = "$boostEnabled/$summary"
+        if (key != lastNotification) {
+            lastNotification = key
             if (Build.VERSION.SDK_INT < 33 || checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
                 getSystemService(NotificationManager::class.java).notify(NOTIFICATION, notification(summary))
             }
@@ -206,12 +246,12 @@ class BoostService : Service() {
     }
     private fun notification(text: String): Notification {
         val open = PendingIntent.getActivity(this, 0, Intent(this, MainActivity::class.java), PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
-        val stop = PendingIntent.getService(this, 1, Intent(this, BoostService::class.java).setAction(STOP), PendingIntent.FLAG_IMMUTABLE)
+        val stop = PendingIntent.getService(this, 1, Intent(this, BoostService::class.java).setAction(if (boostEnabled) STOP else CLOSE_FLOATING), PendingIntent.FLAG_IMMUTABLE)
         return Notification.Builder(this, CHANNEL).setSmallIcon(R.drawable.ic_wave)
             .setContentTitle("Auralift").setContentText(text).setContentIntent(open)
             .setOngoing(true).setOnlyAlertOnce(true).setCategory(Notification.CATEGORY_SERVICE)
             .setVisibility(Notification.VISIBILITY_PUBLIC)
-            .addAction(Notification.Action.Builder(null, word(R.string.stop_boost), stop).build()).build()
+            .addAction(Notification.Action.Builder(null, word(if (boostEnabled) R.string.stop_boost else R.string.close_floating), stop).build()).build()
     }
     private fun timerIntent() = PendingIntent.getBroadcast(this, 2, Intent(this, TimerReceiver::class.java), PendingIntent.FLAG_IMMUTABLE)
     private fun setTimer(minutes: Int) {
@@ -223,7 +263,7 @@ class BoostService : Service() {
     }
     private fun finish(message: String) {
         if (stopped) return
-        stopped = true; rampJob?.cancel(); chains.values.forEach { it.release() }; chains.clear()
+        stopped = true; boostEnabled = false; rampJob?.cancel(); chains.values.forEach { it.release() }; chains.clear()
         if (::floating.isInitialized) floating.dismiss()
         app.engine.value = EngineState(message = message, detail = word(R.string.media_keeps_playing), diagnostics = app.engine.value.diagnostics)
         getSystemService(AlarmManager::class.java).cancel(timerIntent())
@@ -239,6 +279,8 @@ class BoostService : Service() {
     override fun onBind(intent: Intent?): IBinder? = null
     companion object {
         const val START = "com.jamiewardle.auralift.START"
+        const val SHOW_FLOATING = "com.jamiewardle.auralift.SHOW_FLOATING"
+        const val CLOSE_FLOATING = "com.jamiewardle.auralift.CLOSE_FLOATING"
         const val STOP = "com.jamiewardle.auralift.STOP"
         const val RECONNECT = "com.jamiewardle.auralift.RECONNECT"
         const val TIMER = "com.jamiewardle.auralift.TIMER"
@@ -246,7 +288,21 @@ class BoostService : Service() {
         private const val CHANNEL = "audio_controls"
         private const val NOTIFICATION = 17
         fun start(context: Context) { context.startForegroundService(Intent(context, BoostService::class.java).setAction(START)) }
-        fun stop(context: Context) { context.stopService(Intent(context, BoostService::class.java)) }
+        fun stop(context: Context) {
+            if ((context.applicationContext as AuraliftApplication).engine.value.running)
+                context.startService(Intent(context, BoostService::class.java).setAction(STOP))
+        }
+        /** Called from visible app interaction; never creates audio effects. */
+        fun showFloating(context: Context) {
+            val app = context.applicationContext as AuraliftApplication
+            app.access.refresh()
+            if (!app.settings.state.value.floatingControls || !app.access.state.value.pro || !Settings.canDrawOverlays(context)) return
+            try { context.startForegroundService(Intent(context, BoostService::class.java).setAction(SHOW_FLOATING)) }
+            catch (_: RuntimeException) {
+                app.settings.update { it.copy(floatingControls = false) }
+                android.widget.Toast.makeText(context, R.string.start_failed, android.widget.Toast.LENGTH_LONG).show()
+            }
+        }
     }
 }
 

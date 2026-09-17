@@ -22,6 +22,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jamiewardle.auralift.AuraliftApplication
 import com.jamiewardle.auralift.R
+import com.jamiewardle.auralift.audio.BoostService
 import com.jamiewardle.auralift.controls.OverlayPermission
 
 @Composable internal fun ProBadge() {
@@ -52,6 +53,7 @@ import com.jamiewardle.auralift.controls.OverlayPermission
         if (!granted || (enableRequested && app.access.state.value.pro)) {
             app.settings.update { it.copy(floatingControls = granted && app.access.state.value.pro) }
         }
+        BoostService.showFloating(context)
         enableRequested = false; refresh++
     }
     ProBadge()
@@ -70,7 +72,7 @@ import com.jamiewardle.auralift.controls.OverlayPermission
             when {
                 !enabled -> app.settings.update { it.copy(floatingControls = false) }
                 !app.access.state.value.pro -> pro()
-                Settings.canDrawOverlays(context) -> app.settings.update { it.copy(floatingControls = true) }
+                Settings.canDrawOverlays(context) -> { app.settings.update { it.copy(floatingControls = true) }; BoostService.showFloating(context) }
                 else -> { enableRequested = true; disclosure = true }
             }
         }

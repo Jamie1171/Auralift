@@ -1,7 +1,8 @@
 # Auralift
 
 A native Android volume booster, written in **Kotlin, Jetpack Compose and Android
-audio APIs**. Version **0.5.1** puts the one-hour Ad Pass directly below the Listen
+audio APIs**. Version **0.5.2** adds a compact circular floating player, independent player/boost
+controls, selected EQ outlines and ten full light/dark palettes. Version 0.5.1 put the one-hour Ad Pass directly below the Listen
 screen's Enable/Stop button, with an active-pass countdown and help for Android's
 restricted overlay settings. It retains the Floating Player Pro section, complete
 interface themes and 5 dB gain shortcuts: Free up to +15 dB, Pro up to +35 dB.
@@ -18,7 +19,7 @@ independent of SoloRealm and must never be merged into its GitLab/Lovable projec
 | Free in the public edition | Pro; always included in Owner |
 | --- | --- |
 | Up to +15 dB gain, separate media volume, comparison and Stop | Up to +35 dB gain; floating player, media-volume and EQ-preset controls |
-| Balanced, Voice, Warm, Detail and custom five-anchor EQ | Complete Ocean, Amber and Orchid interface themes |
+| Balanced, Voice, Warm, Detail and custom five-anchor EQ | Nine additional colour palettes, each with light/dark appearance |
 | Three manually saved speaker/wired/Bluetooth setups | Up to 24 named sound profiles; JSON import and export |
 | Sleep timer, notification, widget and Quick Settings tile | Gradual reduction of added gain during the final 30 seconds of a sleep timer |
 | Light/dark Mint appearance; English, Spanish, French and follow-system language | One-hour earned Ad Pass in the public edition |
@@ -34,9 +35,11 @@ visualizer data stays in memory while the Listen screen is visible.
 
 The floating player controls the current external player using media-key commands.
 It is not a local music library and does not read track metadata or notifications.
-Some players ignore these commands. It appears only during a user-started boost
-session, after overlay permission is granted, while Auralift is in the background
-and the screen is unlocked. Stop remains accessible through the app/notification.
+Some players ignore these commands. Enable it in Settings after granting overlay permission; it appears while Auralift
+is in the background and the screen is unlocked, with boost on or off. Stop in
+the player releases effects and resets gain/EQ to 0 dB/Balanced without closing it.
+Minimise returns to the 64 dp circle; × or the Settings switch closes the player.
+The persistent notification offers Stop boost when running or Close when idle.
 
 ## Install the Owner edition
 
@@ -52,8 +55,9 @@ and the screen is unlocked. Stop remains accessible through the app/notification
 5. For the floating player: open **Settings → Floating player**, enable it and
    follow the one-permission guide. On Android 11+, select **Auralift Owner** in
    the app list and allow it once; the list is not a list of target media apps.
-   Enable boost, then leave Auralift. Tap the bubble to expand; drag
-   its gain label to move it. Closing the bubble does not stop your audio.
+   Leave Auralift; boost does not need to be enabled. Tap the circle to expand,
+   or drag it/the expanded gain label to move it. Minimise returns to the circle.
+   Closing the player does not stop your audio or any active boost.
 6. Tap **Pro** for Owner test controls. Simulate Free, a completed ad, expiry,
    purchased Pro, or restore all features. Restarting the app process restores Owner
    access; simply leaving and reopening may reuse the same process.

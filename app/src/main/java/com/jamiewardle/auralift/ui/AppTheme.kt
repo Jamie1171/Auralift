@@ -31,6 +31,12 @@ internal fun appTheme(accent: Accent, light: Boolean): AppThemeSpec {
             Accent.OCEAN -> { background = c(0xFFDCEBFF); surface = c(0xFFF1F7FF); raised = c(0xFFCDDEF4); text = c(0xFF0B2441); muted = c(0xFF405D7D); primary = c(0xFF005E9F); secondary = c(0xFF005E6D) }
             Accent.AMBER -> { background = c(0xFFF5E6CD); surface = c(0xFFFFF4E2); raised = c(0xFFEBD7B4); text = c(0xFF37210C); muted = c(0xFF735337); primary = c(0xFF815000); secondary = c(0xFF984C2C) }
             Accent.ORCHID -> { background = c(0xFFF2DFFC); surface = c(0xFFFFF0FE); raised = c(0xFFE9CCEE); text = c(0xFF3D154A); muted = c(0xFF75537E); primary = c(0xFF853999); secondary = c(0xFFA32765) }
+            Accent.ROSE -> { background = c(0xFFF8E4EB); surface = c(0xFFFFF5F8); raised = c(0xFFEED2DE); text = c(0xFF401B2B); muted = c(0xFF775063); primary = c(0xFFA22E60); secondary = c(0xFF7C477B) }
+            Accent.CORAL -> { background = c(0xFFFFE9DF); surface = c(0xFFFFF7F0); raised = c(0xFFF7D8C8); text = c(0xFF422019); muted = c(0xFF785448); primary = c(0xFFA13E2D); secondary = c(0xFF82610A) }
+            Accent.FOREST -> { background = c(0xFFE7EFDA); surface = c(0xFFF8FBEF); raised = c(0xFFD5E3C1); text = c(0xFF24311B); muted = c(0xFF526146); primary = c(0xFF406622); secondary = c(0xFF686011) }
+            Accent.SUNSHINE -> { background = c(0xFFFFF1BE); surface = c(0xFFFFFBE5); raised = c(0xFFF3E19E); text = c(0xFF362E09); muted = c(0xFF6B602D); primary = c(0xFF786000); secondary = c(0xFF876200) }
+            Accent.MIDNIGHT -> { background = c(0xFFE8E7FF); surface = c(0xFFF7F6FF); raised = c(0xFFD9D5F8); text = c(0xFF232044); muted = c(0xFF5B5680); primary = c(0xFF5142A5); secondary = c(0xFF8B4378) }
+            Accent.SLATE -> { background = c(0xFFE9EDF0); surface = c(0xFFFAFBFC); raised = c(0xFFD7DFE5); text = c(0xFF222E35); muted = c(0xFF536570); primary = c(0xFF365A70); secondary = c(0xFF4C6262) }
         }
     } else {
         when (accent) {
@@ -38,6 +44,12 @@ internal fun appTheme(accent: Accent, light: Boolean): AppThemeSpec {
             Accent.OCEAN -> { background = c(0xFF06162C); surface = c(0xFF102C49); raised = c(0xFF204563); text = c(0xFFEAF4FF); muted = c(0xFFA9C9E6); primary = c(0xFF7BD5FF); secondary = c(0xFF76E5D9) }
             Accent.AMBER -> { background = c(0xFF21170E); surface = c(0xFF39291A); raised = c(0xFF53402A); text = c(0xFFFFEFDA); muted = c(0xFFD0B99A); primary = c(0xFFFFCE80); secondary = c(0xFFFFAB82) }
             Accent.ORCHID -> { background = c(0xFF200C32); surface = c(0xFF39204D); raised = c(0xFF553465); text = c(0xFFFFEDFF); muted = c(0xFFD7B7E5); primary = c(0xFFE0B0FF); secondary = c(0xFFFFACE0) }
+            Accent.ROSE -> { background = c(0xFF230E19); surface = c(0xFF3A1C2B); raised = c(0xFF543143); text = c(0xFFFFEDF4); muted = c(0xFFDAB5C7); primary = c(0xFFFFA6C9); secondary = c(0xFFD6B2FA) }
+            Accent.CORAL -> { background = c(0xFF271412); surface = c(0xFF40241E); raised = c(0xFF5C3830); text = c(0xFFFFF0E8); muted = c(0xFFE1BBAA); primary = c(0xFFFFAE92); secondary = c(0xFFF3D37D) }
+            Accent.FOREST -> { background = c(0xFF101A0D); surface = c(0xFF1E2E17); raised = c(0xFF33452A); text = c(0xFFF0F7E6); muted = c(0xFFBBCAA9); primary = c(0xFFB1DB8B); secondary = c(0xFFE1D48D) }
+            Accent.SUNSHINE -> { background = c(0xFF1E1B0A); surface = c(0xFF322D13); raised = c(0xFF4A4220); text = c(0xFFFFF7D3); muted = c(0xFFD0C594); primary = c(0xFFFFDF68); secondary = c(0xFFFBB78A) }
+            Accent.MIDNIGHT -> { background = c(0xFF0E0E20); surface = c(0xFF1B1A36); raised = c(0xFF303051); text = c(0xFFF1EDFF); muted = c(0xFFBEBCDE); primary = c(0xFFBEB4FF); secondary = c(0xFFF1AEDB) }
+            Accent.SLATE -> { background = c(0xFF12171B); surface = c(0xFF212A31); raised = c(0xFF364149); text = c(0xFFF1F5F7); muted = c(0xFFB7C4CD); primary = c(0xFFD0E1ED); secondary = c(0xFFACD3CE) }
         }
     }
     val base = if (light) lightColorScheme() else darkColorScheme()
@@ -57,7 +69,7 @@ internal fun appTheme(accent: Accent, light: Boolean): AppThemeSpec {
         outline = muted.copy(alpha = .65f).compositeOver(surface), outlineVariant = raised
     )
     return AppThemeSpec(accent, colors, secondary.copy(alpha = if (light) .08f else .09f).compositeOver(background),
-        when (accent) { Accent.MINT -> 26.dp; Accent.OCEAN -> 18.dp; Accent.AMBER -> 10.dp; Accent.ORCHID -> 32.dp })
+        when (accent) { Accent.MINT -> 26.dp; Accent.OCEAN -> 18.dp; Accent.AMBER -> 10.dp; Accent.ORCHID, Accent.ROSE -> 32.dp; Accent.CORAL -> 24.dp; Accent.FOREST -> 20.dp; Accent.SUNSHINE -> 16.dp; Accent.MIDNIGHT -> 22.dp; Accent.SLATE -> 12.dp })
 }
 
 internal val LocalAppTheme = staticCompositionLocalOf { appTheme(Accent.MINT, false) }
@@ -78,7 +90,7 @@ internal val LocalAppTheme = staticCompositionLocalOf { appTheme(Accent.MINT, fa
             }
             Accent.ORCHID -> drawCircle(Brush.radialGradient(listOf(spec.colors.secondary.copy(alpha = .16f), Color.Transparent),
                 center = Offset(size.width, 0f), radius = size.width), size.width, Offset(size.width, 0f))
-            Accent.MINT -> Unit
+            Accent.MINT, Accent.ROSE, Accent.CORAL, Accent.FOREST, Accent.SUNSHINE, Accent.MIDNIGHT, Accent.SLATE -> Unit
         }
     }
 }

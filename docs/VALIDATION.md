@@ -1,5 +1,23 @@
 # Validation — Auralift
 
+## 0.5.2 floating player and palettes — validation pending, 17 September 2026
+
+Requested changes: a 64 dp circular collapsed widget; separate minimise, close and
+Stop; player launch from Settings without boost; Stop resets 0 dB/Balanced while
+leaving the player open; persistent selected-preset outline/toggle; ten palettes.
+
+Version code 7. Added device regressions for Stop/reset/restart, idle Settings
+on/off/on, minimise, circular bounds and selected preset toggles. Added a service
+regression that proves floating-only start, reconnect and ad resume own no effects.
+Existing native screenshot coverage now renders all twenty light/dark palettes.
+
+The required local Gradle invocation was attempted but the environment could not
+reach the Gradle distribution host. GitHub's required build/lint/unit and API 26/36
+device workflows will supply build evidence. No pending run is counted as passed.
+Production signing/monetisation and the previously documented native-library,
+ARM64 and physical listening limits are outside this personal-review update.
+
+
 ## 16 KB emulator setup recovery, 14 September 2026
 
 [Run 34879590587](https://github.com/Jamie1171/Auralift/actions/runs/34879590587)

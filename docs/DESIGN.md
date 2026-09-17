@@ -3,6 +3,20 @@
 The product is a compact audio utility built in Kotlin and Jetpack Compose.
 All screens are native. No HTML/CSS, WebView or browser-based UI is used.
 
+## 0.5.2 floating-player feedback
+
+The collapsed player is a 64 dp circular wave button. The expanded panel has
+separate Minimise and Close actions, an explicit boost-on/off status and a
+Start/Stop button. Stop releases all effects, cancels comparison/timer state and
+resets gain and EQ to 0 dB/Balanced; it leaves the player available. Close disables
+the Settings preference and leaves any active boost alone. Settings can start the
+player without starting boost. Tapping a selected sound preset returns to Balanced;
+a different preset replaces it. A 2 dp accent outline and selected accessibility
+state persist on the chosen preset.
+
+Ten palettes now each have light/dark versions: Mint, Ocean, Amber, Orchid, Rose,
+Coral, Forest, Sunshine, Midnight and Slate. Mint remains included in Free.
+
 ## 0.5.1 feedback update
 
 The Listen screen now places a distinct Ad Pass panel immediately below Enable
