@@ -14,7 +14,7 @@ enum class SoundPreset(val title: String, val subtitle: String, val curve: List<
 
 enum class EffectMode { SYSTEM, PLAYERS }
 enum class OutputProfile(val title: String) { SPEAKER("Phone speaker"), HEADPHONES("Wired / USB"), BLUETOOTH("Bluetooth") }
-enum class Accent { MINT, OCEAN, AMBER, ORCHID }
+enum class Accent { MINT, OCEAN, AMBER, ORCHID, ROSE, CORAL, FOREST, SUNSHINE, MIDNIGHT, SLATE }
 enum class Haptics { OFF, LIGHT, MEDIUM, STRONG }
 
 data class Preferences(

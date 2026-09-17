@@ -139,10 +139,10 @@ import kotlin.math.ceil
                         ThemePreview(accent, p.lightTheme)
                         Column(Modifier.padding(16.dp)) {
                             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                                Text(stringResource(when (accent) { Accent.MINT -> R.string.theme_mint; Accent.OCEAN -> R.string.theme_ocean; Accent.AMBER -> R.string.theme_amber; Accent.ORCHID -> R.string.theme_orchid }), modifier = Modifier.weight(1f), style = MaterialTheme.typography.titleMedium)
+                                Text(stringResource(when (accent) { Accent.MINT -> R.string.theme_mint; Accent.OCEAN -> R.string.theme_ocean; Accent.AMBER -> R.string.theme_amber; Accent.ORCHID -> R.string.theme_orchid; Accent.ROSE -> R.string.theme_rose; Accent.CORAL -> R.string.theme_coral; Accent.FOREST -> R.string.theme_forest; Accent.SUNSHINE -> R.string.theme_sunshine; Accent.MIDNIGHT -> R.string.theme_midnight; Accent.SLATE -> R.string.theme_slate }), modifier = Modifier.weight(1f), style = MaterialTheme.typography.titleMedium)
                                 if (selected) Icon(Icons.Rounded.CheckCircle, stringResource(R.string.theme_selected), tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(20.dp))
                             }
-                            Text(stringResource(when (accent) { Accent.MINT -> R.string.theme_mint_hint; Accent.OCEAN -> R.string.theme_ocean_hint; Accent.AMBER -> R.string.theme_amber_hint; Accent.ORCHID -> R.string.theme_orchid_hint }), modifier = Modifier.padding(top = 6.dp), style = MaterialTheme.typography.bodySmall)
+                            Text(stringResource(when (accent) { Accent.MINT -> R.string.theme_mint_hint; Accent.OCEAN -> R.string.theme_ocean_hint; Accent.AMBER -> R.string.theme_amber_hint; Accent.ORCHID -> R.string.theme_orchid_hint; Accent.ROSE -> R.string.theme_rose_hint; Accent.CORAL -> R.string.theme_coral_hint; Accent.FOREST -> R.string.theme_forest_hint; Accent.SUNSHINE -> R.string.theme_sunshine_hint; Accent.MIDNIGHT -> R.string.theme_midnight_hint; Accent.SLATE -> R.string.theme_slate_hint }), modifier = Modifier.padding(top = 6.dp), style = MaterialTheme.typography.bodySmall)
                             Text(stringResource(if (accent == Accent.MINT) R.string.included else R.string.pro_button), modifier = Modifier.padding(top = 10.dp), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
                         }
                     }
@@ -257,17 +257,7 @@ import kotlin.math.ceil
     }
     if (!access.owner && !access.permanent) {
         Spacer(Modifier.height(16.dp))
-        Panel {
-            Text(stringResource(R.string.ad_pass), style = MaterialTheme.typography.titleLarge)
-            Text(stringResource(R.string.ad_pass_intro), Modifier.padding(top = 10.dp))
-            Text(stringResource(R.string.ad_pass_rules), Modifier.padding(vertical = 12.dp), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            if (!access.pro) Button(enabled = ads.available && !ads.busy, onClick = {
-                context.activity()?.let { if (ads.ready) app.ads.show(it) else app.ads.prepare(it) }
-            }, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) {
-                Text(stringResource(if (ads.busy) R.string.ad_loading else if (ads.ready) R.string.watch_ad else R.string.prepare_ad))
-            }
-            if (ads.message != 0) Text(stringResource(ads.message), style = MaterialTheme.typography.bodySmall, modifier = Modifier.padding(top = 10.dp))
-        }
+        AdPassCard(app)
         Spacer(Modifier.height(16.dp))
         Panel {
             Text(stringResource(R.string.lifetime_pro), style = MaterialTheme.typography.titleLarge)
@@ -294,7 +284,7 @@ import kotlin.math.ceil
     OwnerTools(app)
 }
 
-private fun Context.activity(): Activity? = when (this) { is Activity -> this; is ContextWrapper -> baseContext.activity(); else -> null }
+internal fun Context.activity(): Activity? = when (this) { is Activity -> this; is ContextWrapper -> baseContext.activity(); else -> null }
 
 @Composable internal fun NamedSounds(app: AuraliftApplication, pro: () -> Unit) {
     val context = LocalContext.current

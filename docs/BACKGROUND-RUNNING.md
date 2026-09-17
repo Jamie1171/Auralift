@@ -17,7 +17,7 @@ or that an OEM will never terminate a service.
     android:exported="false"
     android:foregroundServiceType="specialUse">
     <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
-        android:value="User-started audio equalizer and gain control for media apps. Maintains Android AudioEffect objects and optional floating controls during a listening session. Persistent notification offers Stop. No silent playback or background recording." />
+        android:value="User-started audio equalizer and gain control for media apps. Maintains Android AudioEffect objects while boost is enabled. User-enabled floating playback controls can remain with boost off. Persistent notification offers Stop boost or Close floating controls. No silent playback or background recording." />
 </service>
 ```
 
@@ -48,6 +48,11 @@ cannot start a mediaPlayback foreground service from BOOT_COMPLETED, so the copi
 The user starts a foreground service while interacting with the app. It retains
 AudioEffect objects when the activity leaves or the screen locks. A low-importance
 notification has an explicit Stop action, no notification sound and no vibration.
+Since 0.5.2, an enabled floating player also keeps this one service/notification
+available with boost off and zero owned audio effects. Its notification then offers
+Close floating controls. The Settings switch launches only these controls; audio
+starts only through an explicit Enable action. Closing the idle player ends the
+service. Permission loss or Pro expiry also ends an idle control service.
 The app does not steal audio focus. Run in background is on by default; turning it
 off ends the session when the activity leaves (configuration recreation and a
 requested ad pause are handled separately). No always-on microphone or wake lock

@@ -1,0 +1,279 @@
+{
+  "version": "0.5.1",
+  "versionCode": 6,
+  "date": "2026-09-14",
+  "sourceCommit": "9e858f4ff8a6fd6ebb8b158e259af4d621309694",
+  "testedMergeCommit": "6680af5e8affe798c6430d434c42c5150f135ade",
+  "changes": [
+    "Ad Pass below main-screen Enable/Stop, shared with Pro",
+    "Explicit prepare and watch actions; active time and expiry state",
+    "Conditional restricted-settings guidance and installed-package App info shortcut",
+    "English, Spanish and French copy; no engine, reward-granting, permission or dependency changes"
+  ],
+  "validation": {
+    "unit": {
+      "api35Owner": {
+        "tests": 47,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "api35Play": {
+        "tests": 48,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "api26Owner": {
+        "tests": 29,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "api26Play": {
+        "tests": 32,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "lint": {
+      "ownerDebug": {
+        "Warning": 39,
+        "errors": 0
+      },
+      "playRelease": {
+        "Warning": 35,
+        "errors": 0
+      }
+    },
+    "device": {
+      "api26": {
+        "junit": [
+          {
+            "name": "com.jamiewardle.auralift.device.CoreDeviceTest",
+            "tests": "14",
+            "failures": "0",
+            "errors": "0",
+            "skipped": "0",
+            "time": "228.504",
+            "timestamp": "2026-09-14T18:05:30",
+            "hostname": "localhost"
+          }
+        ],
+        "diagnosticReports": 15,
+        "results": {
+          "passed": 15
+        }
+      },
+      "api36": {
+        "junit": [
+          {
+            "name": "com.jamiewardle.auralift.device.CoreDeviceTest",
+            "tests": "14",
+            "failures": "0",
+            "errors": "0",
+            "skipped": "0",
+            "time": "255.261",
+            "timestamp": "2026-09-14T18:06:14",
+            "hostname": "localhost"
+          }
+        ],
+        "diagnosticReports": 15,
+        "results": {
+          "passed": 15
+        }
+      }
+    },
+    "totalUnitExecutions": 156
+  },
+  "runs": {
+    "requiredGate": 34877826129,
+    "api26And36Devices": 34877826099,
+    "optimized16kbSmoke": 34877826132
+  },
+  "downloadedEvidence": [
+    {
+      "archive_download_url": "https://api.github.com/repos/Jamie1171/Auralift/actions/artifacts/10362165679/zip",
+      "created_at": "2026-09-14T18:06:00Z",
+      "digest": "sha256:57449df6966df4269db33c4eacf749f24d7aa8c241adc15515a724bf6bee82f5",
+      "expired": false,
+      "expires_at": "2026-12-13T17:57:08Z",
+      "id": 10362165679,
+      "name": "Auralift-owner-and-unsigned-public",
+      "size_in_bytes": 36529337,
+      "updated_at": "2026-09-14T18:06:00Z",
+      "url": "https://api.github.com/repos/Jamie1171/Auralift/actions/artifacts/10362165679",
+      "workflow_run": {
+        "head_branch": "test/firebase-device-coverage",
+        "head_repository_id": 1368927097,
+        "head_sha": "9e858f4ff8a6fd6ebb8b158e259af4d621309694",
+        "id": 34877826129,
+        "repository_id": 1368927097
+      },
+      "localName": "final-gate.zip",
+      "archiveDigestVerified": true
+    },
+    {
+      "archive_download_url": "https://api.github.com/repos/Jamie1171/Auralift/actions/artifacts/10362230642/zip",
+      "created_at": "2026-09-14T18:05:53Z",
+      "digest": "sha256:550df7cdeb4f200f55097c3c0e2cbb2f684bbf86d17c8e39a5d4740ca070cff0",
+      "expired": false,
+      "expires_at": "2026-12-13T17:57:08Z",
+      "id": 10362230642,
+      "name": "Auralift-device-results-api26",
+      "size_in_bytes": 392911,
+      "updated_at": "2026-09-14T18:05:53Z",
+      "url": "https://api.github.com/repos/Jamie1171/Auralift/actions/artifacts/10362230642",
+      "workflow_run": {
+        "head_branch": "test/firebase-device-coverage",
+        "head_repository_id": 1368927097,
+        "head_sha": "9e858f4ff8a6fd6ebb8b158e259af4d621309694",
+        "id": 34877826099,
+        "repository_id": 1368927097
+      },
+      "localName": "Auralift-device-results-api26.zip",
+      "archiveDigestVerified": true
+    },
+    {
+      "archive_download_url": "https://api.github.com/repos/Jamie1171/Auralift/actions/artifacts/10362042397/zip",
+      "created_at": "2026-09-14T18:06:28Z",
+      "digest": "sha256:2e873a28c15272ac49187e0cc76fa39a85032a296da86bdd1e6b9a5019427c90",
+      "expired": false,
+      "expires_at": "2026-12-13T17:57:08Z",
+      "id": 10362042397,
+      "name": "Auralift-device-results-api36",
+      "size_in_bytes": 2842775,
+      "updated_at": "2026-09-14T18:06:28Z",
+      "url": "https://api.github.com/repos/Jamie1171/Auralift/actions/artifacts/10362042397",
+      "workflow_run": {
+        "head_branch": "test/firebase-device-coverage",
+        "head_repository_id": 1368927097,
+        "head_sha": "9e858f4ff8a6fd6ebb8b158e259af4d621309694",
+        "id": 34877826099,
+        "repository_id": 1368927097
+      },
+      "localName": "Auralift-device-results-api36.zip",
+      "archiveDigestVerified": true
+    }
+  ],
+  "requiredBuildOutputs": [
+    "bundle/playRelease/app-play-release.aab",
+    "apk/owner/debug/app-owner-debug.apk",
+    "apk/play/release/app-play-release-unsigned.apk"
+  ],
+  "native16kb": {
+    "abi": "x86_64",
+    "api": 35,
+    "apkSha256": "ba4fd68a1335c63fff44d1ae731b11a3bab7d79624b74334cb9ab46e5ed20039",
+    "checks": [
+      "optimized first launch",
+      "gain selection and service start through public UI",
+      "background return and Stop through public UI"
+    ],
+    "compatibilityWorkarounds": "disabled",
+    "displayDensity": 320,
+    "nativeLibraries": [
+      {
+        "loadAligned16k": true,
+        "path": "lib/arm64-v8a/libandroidx.graphics.path.so",
+        "relroEndAligned16k": false
+      },
+      {
+        "loadAligned16k": true,
+        "path": "lib/armeabi-v7a/libandroidx.graphics.path.so",
+        "relroEndAligned16k": false
+      },
+      {
+        "loadAligned16k": true,
+        "path": "lib/x86/libandroidx.graphics.path.so",
+        "relroEndAligned16k": false
+      },
+      {
+        "loadAligned16k": true,
+        "path": "lib/x86_64/libandroidx.graphics.path.so",
+        "relroEndAligned16k": false
+      }
+    ],
+    "pageSize": 16384,
+    "result": "passed",
+    "scope": "Optimized APK on x86-64 16 KB emulator. No acoustic or ARM certification.",
+    "staticFlags": [
+      "lib/arm64-v8a/libandroidx.graphics.path.so",
+      "lib/armeabi-v7a/libandroidx.graphics.path.so",
+      "lib/x86/libandroidx.graphics.path.so",
+      "lib/x86_64/libandroidx.graphics.path.so"
+    ]
+  },
+  "personalTestApk": {
+    "file": "Auralift-0.5.1-play-test.apk",
+    "bytes": 26110952,
+    "sha256": "224a785c3b09fd585891d4dc50bffe049fd0bc6b7769486ec63060550d7d9091",
+    "certificateSha256": "7ba0540911fe9b3208e119d82a5710079d9ad982ea1c4259c500e0047a8f8f36",
+    "sourceCommit": "9e858f4ff8a6fd6ebb8b158e259af4d621309694",
+    "testedMergeCommit": "6680af5e8affe798c6430d434c42c5150f135ade",
+    "payloadUnchangedFromTestedApp": true,
+    "nativeZipLayout": {
+      "lib/arm64-v8a/libandroidx.graphics.path.so": {
+        "compressed": false,
+        "dataOffsetRemainder16k": 0
+      },
+      "lib/armeabi-v7a/libandroidx.graphics.path.so": {
+        "compressed": false,
+        "dataOffsetRemainder16k": 0
+      },
+      "lib/x86/libandroidx.graphics.path.so": {
+        "compressed": false,
+        "dataOffsetRemainder16k": 0
+      },
+      "lib/x86_64/libandroidx.graphics.path.so": {
+        "compressed": false,
+        "dataOffsetRemainder16k": 0
+      }
+    }
+  },
+  "firebaseKit": {
+    "sourceCommit": "6680af5e8affe798c6430d434c42c5150f135ade",
+    "version": "0.5.1",
+    "files": [
+      {
+        "role": "app",
+        "file": "Auralift-Firebase-0.5.1-6680af5e-app.apk",
+        "bytes": 26060118,
+        "sha256": "960e578056159ce9fa83117f66bdb645d2fa0e1af16ef60fcec25f6caf084bab",
+        "certificateSha256": "322c45193386b3a9e931fee36239e7cccb5a4ec25a82695e620ea9c49dc5f1a1"
+      },
+      {
+        "role": "tests",
+        "file": "Auralift-Firebase-0.5.1-6680af5e-tests.apk",
+        "bytes": 1144210,
+        "sha256": "7785968624c4a1858ead4978ab4bff0cee2ae9820fb8648a6027544cc8a0b49a",
+        "certificateSha256": "322c45193386b3a9e931fee36239e7cccb5a4ec25a82695e620ea9c49dc5f1a1"
+      }
+    ],
+    "testResults": "See the matching GitHub Actions run; packaging is not a test pass.",
+    "workflowRunUrl": "https://github.com/Jamie1171/Auralift/actions/runs/34877826099"
+  },
+  "locales": {
+    "en": 333,
+    "es": 333,
+    "fr": 333,
+    "formatArgumentsMatch": true
+  },
+  "uiCapturesReviewed": [
+    "listen-ad-pass.png",
+    "listen-active-pass.png",
+    "floating-permission-help.png"
+  ],
+  "limits": [
+    "Unit totals repeat shared cases across editions and SDKs.",
+    "Emulated effect feedback is not an acoustic measurement or OEM idle endurance evidence.",
+    "Normal screen-off tests last 30 seconds; the earlier 0.5.0 1200-second service pass is historical, not rerun for 0.5.1.",
+    "Overlay permission must still be granted manually through Android; recovery guidance does not bypass restricted settings.",
+    "Google sample ads in the public debug APK; no live monetization certification.",
+    "Four graphics-path 1.1.0 GNU_RELRO flags remain open; no ARM64 or AAB-derived release certification and no assertion that this library loaded.",
+    "The personal APK and Firebase app/test pair have different certificates and must not be mixed for instrumentation."
+  ],
+  "permissionReference": "https://support.google.com/android/answer/12623953?hl=en",
+  "recordingCommitScope": "Documentation only; source and tests remain those of sourceCommit."
+}

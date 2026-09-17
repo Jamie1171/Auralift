@@ -68,6 +68,7 @@ class GainEntitlementTest {
         assertTrue(RewardClaim(app.access).earned())
         app.settings.update { it.copy(gainDb = 35f, backgroundAudio = true) }
         val controller = Robolectric.buildService(BoostService::class.java).create()
+        controller.get().onStartCommand(Intent().setAction(BoostService.START), 0, 1)
         app.adAudio.suspend()
         app.getSharedPreferences("feature_access", 0).edit().putBoolean("passExpired", true).commit()
         shadowOf(Looper.getMainLooper()).idleFor(Duration.ofMillis(1100))

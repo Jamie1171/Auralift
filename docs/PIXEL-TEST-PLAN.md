@@ -13,7 +13,7 @@ and other equalizers. Use familiar speech/music instead of test tones or silence
 | Update Owner 0.4.0 → 0.5.0 | Same-signature update; Pro +35 available; old gain never raised; smaller ceiling rounds down | Pending |
 | Full range and readback | +35 dB selectable in Owner/Pro; Free stops at +15 dB; record Android target or EQ peak; device limits remain explicit | Pending |
 | Floating permission | Settings → Floating player; select only Auralift Owner in Android list; cancel/grant/revoke; bubble hidden on lock/protected screens | Pending |
-| Themes | Ocean/Amber/Orchid visibly change all screens and floating panel; inspect light/dark and large text | Pending |
+| Themes | All ten palettes visibly change screens and floating panel; inspect light/dark and large text | Pending |
 | Ad Pass expiry | Simulate Free, earn pass, select >15; expire: gain ≤15, media continues, renewing does not increase gain | Pending |
 | Compare original / Restore | Boost and EQ return to zero, restore preserves chosen settings and ramps | Pending |
 | Install and first launch | Opens without network or login; boost off | Pending |

@@ -30,7 +30,7 @@ perpetual Android compatibility. Refund and statutory rights still apply.
 | Background controls, reboot reminder, languages, memory, haptics, spectrum | Yes | Yes |
 | Mint theme and light/dark appearance | Yes | Yes |
 | Floating player, gain, volume and EQ controls | No | Yes |
-| Full Ocean, Amber and Orchid themes | No | Yes |
+| Nine additional full light/dark palettes (ten total) | No | Yes |
 | Up to 24 named sounds and JSON import/export | No | Yes |
 | Final 30-second fade of added gain | No | Yes |
 | Help, feedback, policies, permission controls | Yes | Yes |
@@ -157,7 +157,9 @@ expiry can only reduce its effective gain further.
 Floating Player is a prominent Pro card and separate Settings page. Android's
 overlay grant is for Auralift itself. One grant covers eligible apps; protected
 screens and system decisions remain authoritative. There is no monitoring-based
-per-app exclusion list. The bubble's close action hides it without stopping boost.
+per-app exclusion list. The 64 dp circle expands with Minimise and Close. Close disables the player
+without stopping boost. Stop in the player resets gain/EQ to 0 dB/Balanced and
+leaves the player available; Settings can launch it without enabling boost.
 The app adds no usage-access, AccessibilityService or package-inventory permission.
 
 Themes include complete dark/light palettes, surfaces, controls, corner shapes,

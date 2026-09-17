@@ -1,0 +1,68 @@
+name: Optimized app on 16 KB Android
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/page-size-smoke.yml'
+      - 'scripts/release-page-smoke.py'
+      - 'scripts/emulator_adb.py'
+      - 'scripts/tests/**'
+      - 'app/**'
+      - '*.gradle.kts'
+      - 'gradle/**'
+permissions:
+  contents: read
+jobs:
+  release16k:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test emulator setup recovery and failure handling
+        run: python3 -m unittest discover -s scripts/tests -v
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+          log-accepted-android-sdk-licenses: false
+      - uses: gradle/actions/setup-gradle@v4
+      - run: sdkmanager 'platforms;android-36' 'build-tools;35.0.0'
+      - name: Build optimized public app
+        run: ./gradlew :app:assemblePlayRelease
+      - name: Sign isolated test copy
+        run: |
+          mkdir -p build/page-size-results
+          keytool -genkeypair -keystore "$RUNNER_TEMP/auralift-page-test.jks" -storepass android -keypass android -alias page-test -keyalg RSA -keysize 2048 -validity 2 -dname 'CN=Isolated Auralift test'
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" sign --ks "$RUNNER_TEMP/auralift-page-test.jks" --ks-pass pass:android --key-pass pass:android --out build/page-size-results/Auralift-optimized-page-test.apk app/build/outputs/apk/play/release/app-play-release-unsigned.apk
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose build/page-size-results/Auralift-optimized-page-test.apk
+          "$ANDROID_HOME/build-tools/35.0.0/zipalign" -c -P 16 -v 4 build/page-size-results/Auralift-optimized-page-test.apk > build/page-size-results/zipalign.txt
+      - name: Enable emulator acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Check optimized startup and controls on a verified 16 KB runtime
+        env:
+          ANDROID_AVD_HOME: ${{ runner.temp }}/auralift-avd
+        run: |
+          sdkmanager 'emulator' 'system-images;android-35;google_apis_ps16k;x86_64'
+          mkdir -p "$ANDROID_AVD_HOME"
+          echo no | avdmanager create avd --force --name auralift16k --path "$ANDROID_AVD_HOME/auralift16k.avd" --package 'system-images;android-35;google_apis_ps16k;x86_64' --device pixel_2
+          test -f "$ANDROID_AVD_HOME/auralift16k.ini"
+          "$ANDROID_HOME/emulator/emulator" -list-avds | tee build/page-size-results/available-avds.txt
+          python3 -c 'from pathlib import Path; assert "auralift16k" in Path("build/page-size-results/available-avds.txt").read_text().splitlines(), "Emulator cannot find the created AVD"'
+          ./gradlew --stop
+          adb start-server
+          "$ANDROID_HOME/emulator/emulator" -avd auralift16k -port 5554 -memory 4096 -cores 2 -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot > build/page-size-results/emulator-boot.log 2>&1 &
+          auralift_emulator_pid=$!
+          trap 'adb -s emulator-5554 emu kill >/dev/null 2>&1 || true; kill "$auralift_emulator_pid" 2>/dev/null || true' EXIT
+          python3 scripts/release-page-smoke.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Auralift-optimized-16KB-evidence
+          path: build/page-size-results/
+          if-no-files-found: warn

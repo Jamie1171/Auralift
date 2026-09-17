@@ -93,6 +93,9 @@ class InterfaceTest {
         compose.onNodeWithText("+20 dB").assertDoesNotExist()
         compose.onNodeWithText("+35 dB").assertDoesNotExist()
         compose.runOnIdle { assertEquals(15f, app.settings.state.value.gainDb) }
+        compose.onNodeWithText("Ad Pass · 1 hour of Pro").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText("About Ad Pass").performScrollTo().assertIsDisplayed()
+        screenshot("listen-ad-pass")
         compose.onNodeWithText("Bring sound closer.").performScrollTo()
         screenshot("free-listen")
         compose.onNodeWithText("Settings", useUnmergedTree = true).performClick()
@@ -109,6 +112,40 @@ class InterfaceTest {
         compose.runOnIdle { assertFalse(app.settings.state.value.floatingControls) }
         compose.onNodeWithText("Cancel").performClick()
         compose.runOnIdle { assertFalse(app.settings.state.value.floatingControls) }
+        compose.onNodeWithText("Android blocked the switch?").performScrollTo().performClick()
+        compose.onNodeWithText("Open App info").performScrollTo().assertIsDisplayed()
+        screenshot("floating-permission-help")
+        compose.onNodeWithText("Open App info").performClick()
+        compose.runOnIdle {
+            val intent = org.robolectric.Shadows.shadowOf(compose.activity).nextStartedActivityForResult.intent
+            assertEquals(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS, intent.action)
+            assertEquals("package:${app.packageName}", intent.dataString)
+            assertFalse(app.settings.state.value.floatingControls)
+        }
+    }
+    @Test fun listenPassTracksEarnedAccessAndExpiryWithoutStartingBoost() {
+        compose.runOnIdle { if (Distribution.owner) app.access.simulateFree() else app.access.setVerifiedPurchase(false) }
+        compose.onNodeWithText("About Ad Pass").performScrollTo().performClick()
+        compose.onNodeWithText(app.getString(R.string.pro_heading)).assertExists()
+        compose.activityRule.scenario.onActivity { it.onBackPressedDispatcher.onBackPressed() }
+        compose.runOnIdle {
+            assertFalse(app.engine.value.running)
+            com.jamiewardle.auralift.access.RewardClaim(app.access).earned()
+            assertTrue(app.access.state.value.pro)
+            assertFalse(app.engine.value.running)
+        }
+        compose.onNodeWithText("Ad Pass is active").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText("Prepare Ad Pass").assertDoesNotExist()
+        screenshot("listen-active-pass")
+        compose.runOnIdle {
+            app.settings.update { it.copy(gainDb = 35f) }
+            app.getSharedPreferences("feature_access", 0).edit().putBoolean("passExpired", true).commit()
+            app.access.refresh()
+            assertEquals(15f, app.settings.state.value.gainDb)
+            assertFalse(app.engine.value.running)
+        }
+        compose.onNodeWithText("Ad Pass · 1 hour of Pro").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText("Ad Pass is active").assertDoesNotExist()
     }
     @Test fun completeThemesRenderInDarkAndLightAppearance() {
         for (accent in com.jamiewardle.auralift.model.Accent.entries) {

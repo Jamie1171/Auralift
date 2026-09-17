@@ -30,7 +30,7 @@
         </service>
         <service android:name=".audio.BoostService" android:exported="false" android:foregroundServiceType="specialUse">
             <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
-                android:value="User-started audio equalizer and gain control for media apps. Maintains Android AudioEffect objects and optional floating controls during a listening session. Persistent notification offers Stop. No silent playback or background recording." />
+                android:value="User-started audio equalizer and gain control for media apps. Maintains Android AudioEffect objects while boost is enabled. User-enabled floating playback controls can remain with boost off. Persistent notification offers Stop boost or Close floating controls. No silent playback or background recording." />
         </service>
         <receiver android:name=".controls.RestartReminder" android:exported="false">
             <intent-filter><action android:name="android.intent.action.BOOT_COMPLETED" /></intent-filter>

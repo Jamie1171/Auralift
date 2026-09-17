@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart(); app.activityVisible = true
         app.access.refresh(); app.purchases.refresh()
+        BoostService.showFloating(this)
     }
     override fun onStop() {
         app.activityVisible = false
