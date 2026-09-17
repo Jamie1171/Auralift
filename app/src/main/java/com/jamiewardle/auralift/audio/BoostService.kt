@@ -140,8 +140,9 @@ class BoostService : Service() {
         rampJob?.cancel(); chains.values.forEach { it.release() }; chains.clear()
         commandedGain = 0f; comparingOriginal = false; deadline = 0L; fadeMultiplier = 1f
         getSystemService(AlarmManager::class.java).cancel(timerIntent())
-        if (resetSound) app.settings.update { it.copy(gainDb = 0f, preset = SoundPreset.BALANCED, customEq = List(5) { 0f }) }
+        // Publish Off before settings collectors refresh the floating/quick controls.
         app.engine.value = EngineState(message = message, detail = word(R.string.media_keeps_playing), diagnostics = app.engine.value.diagnostics)
+        if (resetSound) app.settings.update { it.copy(gainDb = 0f, preset = SoundPreset.BALANCED, customEq = List(5) { 0f }) }
         if (keepFloating()) publish() else finish(message)
     }
     private fun routeChanged() {
