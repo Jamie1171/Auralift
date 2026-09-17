@@ -14,6 +14,11 @@ Existing native screenshot coverage now renders all twenty light/dark palettes.
 The required local Gradle invocation was attempted but the environment could not
 reach the Gradle distribution host. GitHub's required build/lint/unit and API 26/36
 device workflows will supply build evidence. No pending run is counted as passed.
+
+The first 0.5.2 runs (35242045148 / 35242045298 / 35242045142) failed before
+compilation: setup-android requested the removed SDK package `tools`. Workflows
+now request `platform-tools` explicitly while retaining the pinned build SDK and
+normal licence acceptance. These setup failures are not app-test passes.
 Production signing/monetisation and the previously documented native-library,
 ARM64 and physical listening limits are outside this personal-review update.
 
