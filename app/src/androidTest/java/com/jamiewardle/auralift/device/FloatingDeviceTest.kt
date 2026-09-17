@@ -83,7 +83,8 @@ class FloatingDeviceTest : DeviceHarness() {
     @Test fun settingsLaunchesCircleWithoutBoostAndCanToggleOffThenOn() {
         launch(); proFixture()
         shell("appops set ${app.packageName} SYSTEM_ALERT_WINDOW allow")
-        click("Settings"); click("Floating player")
+        compose.onNodeWithText("Settings", useUnmergedTree = true).performClick()
+        compose.onNodeWithText("Floating player").performClick()
         val toggle = compose.onNodeWithContentDescription(app.getString(R.string.floating_enable))
         toggle.performScrollTo().performClick()
         await("idle player notification") { notifications().any { it.id == 17 } }

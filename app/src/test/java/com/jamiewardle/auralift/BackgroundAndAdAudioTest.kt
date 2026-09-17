@@ -59,6 +59,18 @@ class BackgroundAndAdAudioTest {
         controller.destroy(); app.adAudio.resume()
         assertFalse(app.engine.value.running)
     }
+    @Test fun startingWithMemoryOffResetsBeforeAttachingAndDoesNotStopTheService() {
+        app.activityVisible = true
+        app.settings.update { it.copy(rememberBoost = false, gainDb = 15f) }
+        val controller = Robolectric.buildService(BoostService::class.java).create()
+        try {
+            controller.get().onStartCommand(Intent().setAction(BoostService.START), 0, 1)
+            shadowOf(Looper.getMainLooper()).idleFor(Duration.ofMillis(1100))
+            assertTrue(app.engine.value.running)
+            assertEquals(0f, app.settings.state.value.gainDb)
+            assertEquals(1, chains(controller.get()))
+        } finally { controller.destroy() }
+    }
     @Test fun floatingOnlyStartAndReconnectNeverCreateEffects() {
         org.robolectric.shadows.ShadowSettings.setCanDrawOverlays(true)
         app.activityVisible = true

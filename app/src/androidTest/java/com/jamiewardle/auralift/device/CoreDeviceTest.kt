@@ -48,7 +48,7 @@ class CoreDeviceTest : DeviceHarness() {
         val player = playerSession()
         val volume = audio.getStreamVolume(AudioManager.STREAM_MUSIC)
         start()
-        await("Stop notification") { notifications().any { it.id == 17 } }
+        await("Stop notification") { notifications().any { it.id == 17 && it.notification.actions?.any { action -> action.title.toString() == "Stop boost" } == true } }
         val stop = notifications().first { it.id == 17 }.notification.actions
             .first { it.title.toString() == "Stop boost" }.actionIntent
         stop.send()

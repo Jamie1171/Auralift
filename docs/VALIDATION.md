@@ -19,6 +19,14 @@ The first 0.5.2 runs (35242045148 / 35242045298 / 35242045142) failed before
 compilation: setup-android requested the removed SDK package `tools`. Workflows
 now request `platform-tools` explicitly while retaining the pinned build SDK and
 normal licence acceptance. These setup failures are not app-test passes.
+On initial corrected source `14cc3d3`, 160 unit executions passed (API 35:
+Owner 48 / Play 49; API 26: Owner 30 / Play 33), required lint/builds passed, and
+16 KB smoke passed. Device runs then failed: memory-off startup exposed an idle
+shutdown during preference reset; one new test tried scrolling the fixed nav bar;
+and a notification assertion observed the initial Close action before Stop was
+published. Floating Stop/reset/restart and preset selection already passed.
+These failures are retained and fixed, not counted as complete device passes.
+
 Production signing/monetisation and the previously documented native-library,
 ARM64 and physical listening limits are outside this personal-review update.
 

@@ -125,9 +125,11 @@ class BoostService : Service() {
     }
     private fun startBoost() {
         if (stopped || boostEnabled) return
+        // Settings/entitlement collectors may publish synchronously during reset.
+        // Mark the explicit Start before they can mistake this for an unused idle service.
+        boostEnabled = true
         app.access.refresh()
         if (!app.settings.state.value.rememberBoost) app.settings.update { it.copy(gainDb = 0f) }
-        boostEnabled = true
         comparingOriginal = false
         fadeMultiplier = 1f
         rebuild()
