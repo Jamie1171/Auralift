@@ -1,6 +1,6 @@
 # Support and languages — 0.5.5
 
-- Feedback & support creates a draft for `auralift.support@gmail.com` using an
+- Feedback & support creates a draft for `auraforgelabssupport+auralift@gmail.com` using an
   email application. Nothing is sent automatically; Auralift cannot confirm
   delivery by another app. The copy-address action remains available if no email
   handler is installed. Categories and instructions are localized in EN/ES/FR.
@@ -34,3 +34,13 @@
 Android implementation references:
 https://developer.android.com/guide/components/intents-common#Email
 https://developer.android.com/guide/topics/resources/app-languages
+
+## Shared support inbox
+
+Auralift uses `auraforgelabssupport+auralift@gmail.com`, which delivers to
+Jamie’s confirmed `auraforgelabssupport@gmail.com` mailbox. Filter the tagged
+recipient into the Auralift label. The subject also identifies Auralift.
+Use the untagged address for the shared merchant/developer contact.
+The contact-only correction keeps agreement version 2026-09-18.2; its current
+EN/ES/FR archive mirrors are updated to match the bundled documents. Historical
+preview terms and earlier validation evidence retain their original contacts.

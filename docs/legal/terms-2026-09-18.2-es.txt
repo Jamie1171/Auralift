@@ -5,7 +5,7 @@ Versión del acuerdo: 2026-09-18.2
 1. Proveedor y contacto
 Auralift es una aplicación proporcionada por Jamie Wardle, que opera con el nombre comercial AuraForge Labs, con domicilio en Flat 6a, 23 Savile Road, Halifax, HX1 2BA, West Yorkshire, England.
 
-Para solicitar asistencia, consultar sobre compras, reembolsos o presentar reclamaciones, escribe a auralift.support@gmail.com. Estas condiciones explican el uso de Auralift y sus funciones de pago. Se aplican junto con las condiciones pertinentes de Google Play y no eliminan los derechos irrenunciables de los consumidores.
+Para solicitar asistencia, consultar sobre compras, reembolsos o presentar reclamaciones, escribe a auraforgelabssupport+auralift@gmail.com. Estas condiciones explican el uso de Auralift y sus funciones de pago. Se aplican junto con las condiciones pertinentes de Google Play y no eliminan los derechos irrenunciables de los consumidores.
 
 Antes de usar Auralift, puedes leer y guardar estas condiciones y elegir Aceptar y continuar o Ahora no. Aceptar y continuar registra tu aceptación de estas condiciones; no constituye consentimiento para la publicidad opcional, una renuncia a tus derechos como consumidor ni una compra, y tampoco inicia el procesamiento de audio. Las condiciones y la política de privacidad siguen disponibles en Ajustes.
 
@@ -40,7 +40,7 @@ Las compras están vinculadas a la cuenta de Google Play utilizada. Su restaurac
 Si una compra se reembolsa o revoca a través de Google Play, el acceso de pago asociado puede retirarse cuando se reciba su estado actualizado. Desinstalar la aplicación no solicita ni obtiene por sí solo un reembolso.
 
 6. Reembolsos, desistimiento y compras defectuosas
-Google Play procesa los pagos y ofrece un servicio de solicitud de reembolsos. El derecho a un reembolso depende de la compra, las circunstancias, el país y la legislación aplicable. Puedes usar el procedimiento de Google Play (https://support.google.com/googleplay/answer/2479637?hl=es) o escribirnos a auralift.support@gmail.com para que investiguemos y, cuando corresponda, tramitemos un reembolso mediante Play Console.
+Google Play procesa los pagos y ofrece un servicio de solicitud de reembolsos. El derecho a un reembolso depende de la compra, las circunstancias, el país y la legislación aplicable. Puedes usar el procedimiento de Google Play (https://support.google.com/googleplay/answer/2479637?hl=es) o escribirnos a auraforgelabssupport+auralift@gmail.com para que investiguemos y, cuando corresponda, tramitemos un reembolso mediante Play Console.
 
 Explica el problema e incluye la referencia de pedido de Google Play si la tienes. No envíes contraseñas ni datos completos de tarjetas. No exigimos información excesiva ni condicionamos a nuestro procedimiento de asistencia el ejercicio de derechos disponibles directamente a través de Google o de la ley.
 

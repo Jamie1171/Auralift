@@ -8,7 +8,7 @@ import com.jamiewardle.auralift.BuildConfig
 
 /** Creates a user-reviewed email draft; never sends a message or claims delivery. */
 object SupportEmail {
-    const val ADDRESS = "auralift.support@gmail.com"
+    const val ADDRESS = "auraforgelabssupport+auralift@gmail.com"
 
     fun draft(context: Context, category: String, message: String,
         diagnostics: String? = null, screenshot: Uri? = null): Intent {

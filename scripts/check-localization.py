@@ -25,7 +25,7 @@ for language in ('en', 'es', 'fr'):
     for page, count in [('terms', 10), ('privacy', 13)]:
         data = (folder / f'{page}.txt').read_text()
         assert len(re.findall(r'^\d+\. ', data, re.M)) == count, f'{language}/{page}: sections missing'
-        assert 'auralift.support@gmail.com' in data and 'AuraForge Labs' in data
+        assert 'auraforgelabssupport+auralift@gmail.com' in data and 'AuraForge Labs' in data
         assert not re.search(r'\[TODO|finalized before|preview terms|final public publisher', data, re.I)
         if page == 'terms':
             assert version in data

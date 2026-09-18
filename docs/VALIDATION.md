@@ -1,5 +1,26 @@
 # Validation — Auralift
 
+## 0.5.6 shared support mailbox — verification pending
+
+The app recipient, copy-address fallback and all six EN/ES/FR offline policies
+now use `auraforgelabssupport+auralift@gmail.com`, delivering into the confirmed
+Auraforge Labs mailbox. Existing subjects identify Auralift. The website exporter
+and current terms archive mirrors match. Version code is 11. No billing or ad
+activation settings were changed.
+
+- Local translation/legal check passed: 379 resource keys per language, matching
+  format arguments, all document sections and byte-identical current archives.
+- All six website documents regenerated from the updated shipped assets.
+- Both prescribed local Gradle invocations stopped before compilation because
+  the Gradle distribution download returned `Network is unreachable`. CI is
+  required before delivering a new binary; no new build pass is claimed here.
+- The previously signed 0.5.5 bundle manifest was inspected and already contains
+  `com.android.vending.BILLING`. Its disabled checkout does not remove that
+  permission. The Console screenshot asks for an uploaded billing-capable app;
+  it does not establish a requirement to publish the closed track first.
+- Historical preview terms and previous-build evidence retain their original
+  email. This contact-only change keeps agreement version 2026-09-18.2.
+
 ## 0.5.5 support and localization — required gates passed, 18 September 2026
 
 Validated source `28b0f654e926cc9a683827b89aadea2ffda31bb3` (version code 10),

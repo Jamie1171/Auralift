@@ -93,7 +93,7 @@ class TermsStoreTest {
             val store = TermsStore(app)
             val text = LegalDocuments.read(app, "terms", language)
             assertTrue(text.contains(TermsStore.CURRENT_VERSION))
-            assertTrue(LegalDocuments.read(app, "privacy", language).contains("auralift.support@gmail.com"))
+            assertTrue(LegalDocuments.read(app, "privacy", language).contains("auraforgelabssupport+auralift@gmail.com"))
             assertTrue(store.accept(language))
             val receipt = TermsStore(app).state.value!!
             val expectedHash = java.security.MessageDigest.getInstance("SHA-256")

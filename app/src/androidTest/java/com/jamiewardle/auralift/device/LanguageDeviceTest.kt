@@ -41,7 +41,7 @@ class LanguageDeviceTest : DeviceHarness() {
                 settings()
                 click(word(R.string.help_feedback))
                 click(word(R.string.share_feedback))
-                compose.onNodeWithText("auralift.support@gmail.com").assertExists()
+                compose.onNodeWithText("auraforgelabssupport+auralift@gmail.com").assertExists()
                 compose.onNodeWithText(word(R.string.feedback_message)).performTextInput("Test support message")
                 capture("support-$tag")
                 compose.onNodeWithText(word(R.string.choose_where_to_send)).performScrollTo().assertIsEnabled()

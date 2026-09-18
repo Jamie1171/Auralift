@@ -5,7 +5,7 @@ Version de l’accord : 2026-09-18.2
 1. Fournisseur et contact
 Auralift est proposée par Jamie Wardle, exerçant sous le nom commercial AuraForge Labs, à l’adresse Flat 6a, 23 Savile Road, Halifax, HX1 2BA, West Yorkshire, England.
 
-Pour l’assistance, les questions sur les achats, les remboursements ou les réclamations, écrivez à auralift.support@gmail.com. Ces conditions expliquent l’utilisation d’Auralift et de ses fonctions payantes. Elles s’appliquent avec les conditions pertinentes de Google Play et ne suppriment pas les droits impératifs des consommateurs.
+Pour l’assistance, les questions sur les achats, les remboursements ou les réclamations, écrivez à auraforgelabssupport+auralift@gmail.com. Ces conditions expliquent l’utilisation d’Auralift et de ses fonctions payantes. Elles s’appliquent avec les conditions pertinentes de Google Play et ne suppriment pas les droits impératifs des consommateurs.
 
 Avant d’utiliser Auralift, vous pouvez lire et enregistrer ces conditions, puis choisir Accepter et continuer ou Pas maintenant. Accepter et continuer enregistre votre acceptation ; cela ne constitue ni un consentement à la publicité facultative, ni une renonciation à vos droits, ni un achat, et ne démarre pas le traitement audio. Les conditions et la politique de confidentialité restent accessibles dans les Paramètres.
 
@@ -40,7 +40,7 @@ Les achats sont associés au compte Google Play utilisé. Leur restauration ou v
 Si un achat est remboursé ou révoqué via Google Play, le droit d’accès payant associé peut être retiré à réception de son état actualisé. Désinstaller l’application ne demande ni n’obtient automatiquement un remboursement.
 
 6. Remboursements, rétractation et achats défectueux
-Google Play traite les paiements et propose un service de demande de remboursement. L’éligibilité dépend de l’achat, des circonstances, du pays et du droit applicable. Vous pouvez utiliser la procédure Google Play (https://support.google.com/googleplay/answer/2479637?hl=fr) ou nous écrire à auralift.support@gmail.com pour que nous examinions le problème et, si nécessaire, organisions un remboursement via Play Console.
+Google Play traite les paiements et propose un service de demande de remboursement. L’éligibilité dépend de l’achat, des circonstances, du pays et du droit applicable. Vous pouvez utiliser la procédure Google Play (https://support.google.com/googleplay/answer/2479637?hl=fr) ou nous écrire à auraforgelabssupport+auralift@gmail.com pour que nous examinions le problème et, si nécessaire, organisions un remboursement via Play Console.
 
 Expliquez le problème et fournissez, si possible, la référence de commande Google Play. N’envoyez ni mot de passe ni coordonnées complètes de carte bancaire. Nous n’exigeons pas une quantité déraisonnable d’informations et ne faisons pas de notre procédure d’assistance une condition à l’exercice des droits disponibles directement auprès de Google ou prévus par la loi.
 

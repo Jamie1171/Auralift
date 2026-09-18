@@ -4,7 +4,7 @@ Fecha de entrada en vigor: 18 de septiembre de 2026
 1. Quiénes somos
 Auralift es una utilidad de audio para Android operada por Jamie Wardle, que utiliza el nombre comercial AuraForge Labs, con domicilio en Flat 6a, 23 Savile Road, Halifax, HX1 2BA, West Yorkshire, England. Este operador es responsable de los datos personales que tratamos según se describe a continuación. «Auralift», «nosotros» y «nos» se refieren a dicho operador.
 
-Contacta con nosotros sobre privacidad o asistencia en auralift.support@gmail.com.
+Contacta con nosotros sobre privacidad o asistencia en auraforgelabssupport+auralift@gmail.com.
 
 Esta política cubre la edición pública de Auralift para Google Play. La edición de pruebas Owner, independiente, no incluye los SDK de facturación ni publicidad y carece de permiso de internet; su procesamiento de audio, preferencias y registro de aceptación permanecen en el dispositivo. El correo y las exportaciones iniciados por el usuario utilizan el proveedor externo que este elija. Google y otros proveedores también tratan información mediante sus propios servicios, según se explica más adelante.
 
@@ -50,7 +50,7 @@ Comprar Pro elimina la necesidad de utilizar anuncios con recompensa. No borra r
 6. Comentarios, correo e informes de calidad
 Si nos escribes, recibimos tu dirección de correo, mensaje y los adjuntos u otra información que envíes. Nuestro buzón de asistencia está alojado en Google. Envía solo la información necesaria para explicar el problema y no envíes contraseñas, datos completos de tarjetas ni información sensible innecesaria.
 
-La función Comentarios y asistencia prepara un borrador dirigido a auralift.support@gmail.com. Lo revisas en tu aplicación de correo y decides si enviarlo. Incluye el mensaje y la versión de la aplicación; los diagnósticos opcionales pueden añadir información del dispositivo, Android y la configuración de audio. Solo se incluye un adjunto si lo eliges. Tu proveedor de correo gestiona la transmisión. La aplicación no nos envía silenciosamente esos comentarios.
+La función Comentarios y asistencia prepara un borrador dirigido a auraforgelabssupport+auralift@gmail.com. Lo revisas en tu aplicación de correo y decides si enviarlo. Incluye el mensaje y la versión de la aplicación; los diagnósticos opcionales pueden añadir información del dispositivo, Android y la configuración de audio. Solo se incluye un adjunto si lo eliges. Tu proveedor de correo gestiona la transmisión. La aplicación no nos envía silenciosamente esos comentarios.
 
 Google puede facilitarnos por separado información de calidad de Android a través de Play Console, incluidos informes de fallos y rendimiento recopilados conforme a los ajustes de Google/Android del usuario. Esto es distinto de un mensaje enviado desde Auralift. La aplicación revisada no contiene un servicio independiente de analítica o informes de fallos operado por el desarrollador.
 
@@ -88,7 +88,7 @@ Google y otros proveedores independientes aplican sus propios plazos. Eliminar l
 10. Tus opciones y derechos
 Según los datos, la finalidad y la ley aplicable, puedes tener derecho a acceder y rectificar datos personales, solicitar su eliminación o la limitación del uso, obtener una copia portable y oponerte a tratamientos basados en intereses legítimos. Si el tratamiento se basa en consentimiento, puedes retirarlo sin afectar a la licitud del tratamiento anterior.
 
-Escribe a auralift.support@gmail.com para ejercer derechos sobre información que tratamos. Podemos necesitar información proporcionada para verificar tu identidad. Algunos registros pueden conservarse cuando la ley lo permita o exija; explicaremos las limitaciones. Para los datos presentes solo en tu dispositivo, los controles pertinentes suelen estar en la aplicación o en Android.
+Escribe a auraforgelabssupport+auralift@gmail.com para ejercer derechos sobre información que tratamos. Podemos necesitar información proporcionada para verificar tu identidad. Algunos registros pueden conservarse cuando la ley lo permita o exija; explicaremos las limitaciones. Para los datos presentes solo en tu dispositivo, los controles pertinentes suelen estar en la aplicación o en Android.
 
 También puedes reclamar ante la Information Commissioner’s Office del Reino Unido mediante https://ico.org.uk/make-a-complaint/ o ante la autoridad de protección de datos que te corresponda.
 

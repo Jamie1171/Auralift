@@ -21,7 +21,7 @@ def filename(page, language):
 def linked(text):
  text = escape(text)
  text = re.sub(r'https://[^\s<)]+', lambda m: '<a href="'+m[0].rstrip('.')+'">'+m[0].rstrip('.')+'</a>'+('.' if m[0].endswith('.') else ''), text)
- return text.replace('auralift.support@gmail.com', '<a href="mailto:auralift.support@gmail.com">auralift.support@gmail.com</a>')
+ return text.replace('auraforgelabssupport+auralift@gmail.com', '<a href="mailto:auraforgelabssupport+auralift@gmail.com">auraforgelabssupport+auralift@gmail.com</a>')
 for lang,(privacy,terms,skip,langlabel,footer) in labels.items():
  for page,title in [('privacy',privacy),('terms',terms)]:
   content = (assets / (lang if lang != 'en' else '') / f'{page}.txt').read_text()
@@ -44,7 +44,7 @@ for lang,(privacy,terms,skip,langlabel,footer) in labels.items():
 <h1>{escape(title)}</h1>
 {chr(10).join(body)}
 </main>
-<footer><a href="mailto:auralift.support@gmail.com">auralift.support@gmail.com</a><p>{footer}</p></footer>
+<footer><a href="mailto:auraforgelabssupport+auralift@gmail.com">auraforgelabssupport+auralift@gmail.com</a><p>{footer}</p></footer>
 </body></html>
 '''
   (args.destination/filename(page,lang)).write_text(html)

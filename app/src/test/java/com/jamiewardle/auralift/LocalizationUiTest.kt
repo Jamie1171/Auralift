@@ -48,7 +48,7 @@ class LocalizationUiTest {
         click(R.string.help_feedback)
         click(R.string.share_feedback)
         compose.onNodeWithText(supportTitle).assertExists()
-        compose.onNodeWithText("auralift.support@gmail.com").assertExists()
+        compose.onNodeWithText("auraforgelabssupport+auralift@gmail.com").assertExists()
         compose.onNodeWithText(word(R.string.feedback_message)).performTextInput("Test de support local")
         compose.onNodeWithText(word(R.string.choose_where_to_send)).performScrollTo().assertIsEnabled()
     }

@@ -6,7 +6,7 @@ Effective date: 18 September 2026
 
 Auralift is an Android audio utility operated by Jamie Wardle trading as AuraForge Labs, at Flat 6a, 23 Savile Road, Halifax, HX1 2BA, West Yorkshire, England. This operator is responsible for the personal information that we handle as described below. “Auralift”, “we” and “us” refer to that operator.
 
-Contact us about privacy or support at auralift.support@gmail.com.
+Contact us about privacy or support at auraforgelabssupport+auralift@gmail.com.
 
 This policy covers the public Google Play edition of Auralift. The separate Owner test edition excludes billing and advertising SDKs and has no internet permission; its audio processing, preferences and terms record remain local. User-initiated email and file exports use your selected external provider. Google and other providers also process information through their own services, as explained below.
 
@@ -54,7 +54,7 @@ Buying Pro removes the need to use rewarded ads. It does not retrospectively era
 
 If you email us, we receive your email address, message and any attachments or other information you send. Our support mailbox is hosted by Google. Please send only information needed to explain the issue, and do not send passwords, full card details or unnecessary sensitive information.
 
-The Feedback & support feature prepares an email draft addressed to auralift.support@gmail.com. You review the draft in your email app and decide whether to send it. It includes feedback details and the app version; optional diagnostics can add device, Android and audio-configuration information. An attachment is included only if you choose one. Your selected email provider handles the transmission. The app does not silently upload that feedback to us.
+The Feedback & support feature prepares an email draft addressed to auraforgelabssupport+auralift@gmail.com. You review the draft in your email app and decide whether to send it. It includes feedback details and the app version; optional diagnostics can add device, Android and audio-configuration information. An attachment is included only if you choose one. Your selected email provider handles the transmission. The app does not silently upload that feedback to us.
 
 Google may separately make Android quality information available through Play Console, including crash and performance reports collected under the user’s Google/Android settings. This is distinct from an Auralift feedback message. The reviewed app does not contain a separate developer-operated analytics or crash-reporting service. Android vitals (https://developer.android.com/topic/performance/vitals)
 
@@ -96,7 +96,7 @@ Google and other independent providers apply their own retention rules. Deleting
 
 Depending on the information, purpose and applicable law, you may have rights to access and correct personal information, request deletion or restricted use, obtain a portable copy, and object to processing based on legitimate interests. Where processing relies on consent, you can withdraw it without changing the lawfulness of earlier processing.
 
-Email auralift.support@gmail.com to exercise rights relating to information we handle. We may need proportionate information to verify your identity. Some records may need to be retained where the law permits or requires this; we will explain any limitation. For data held only on your device, the relevant controls are normally in the app or Android settings.
+Email auraforgelabssupport+auralift@gmail.com to exercise rights relating to information we handle. We may need proportionate information to verify your identity. Some records may need to be retained where the law permits or requires this; we will explain any limitation. For data held only on your device, the relevant controls are normally in the app or Android settings.
 
 You can also complain to the UK Information Commissioner’s Office through the ICO complaints service (https://ico.org.uk/make-a-complaint/), or to your relevant local data-protection authority.
 
