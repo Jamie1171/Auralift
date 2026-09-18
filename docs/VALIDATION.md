@@ -1,5 +1,20 @@
 # Validation — Auralift
 
+## 0.5.5 support and localization — validation in progress
+
+Feedback & support prepares an email draft to the support mailbox, with optional
+screenshot and diagnostic details. No automatic sending or false delivery notice.
+English, Spanish and French include complete offline legal documents, an explicit
+English option and language-aware acceptance receipts. Public publisher details
+replace the in-app preview documents; agreement version is now 2026-09-18.2.
+
+`scripts/check-localization.py` passes: 379 strings in each locale, matching format
+arguments, complete legal sections and byte-identical archived terms. `git diff
+--check` passes. Both prescribed local Gradle invocations were attempted separately;
+each failed before compilation because the Gradle distribution download reports
+`java.net.SocketException: Network is unreachable`. CI compilation, tests, lint,
+packaging and native UI validation are pending. No email has been sent by testing.
+
 ## 0.5.4 explicit terms acceptance — passed, 18 September 2026
 
 Validated source `3ef5f6b23c92856b8379bcc10752c8bac39124a3` (version code 9).

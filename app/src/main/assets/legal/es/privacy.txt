@@ -1,0 +1,105 @@
+Auralift — Política de privacidad
+Fecha de entrada en vigor: 18 de septiembre de 2026
+
+1. Quiénes somos
+Auralift es una utilidad de audio para Android operada por Jamie Wardle, que utiliza el nombre comercial AuraForge Labs, con domicilio en Flat 6a, 23 Savile Road, Halifax, HX1 2BA, West Yorkshire, England. Este operador es responsable de los datos personales que tratamos según se describe a continuación. «Auralift», «nosotros» y «nos» se refieren a dicho operador.
+
+Contacta con nosotros sobre privacidad o asistencia en auralift.support@gmail.com.
+
+Esta política cubre la edición pública de Auralift para Google Play. La edición de pruebas Owner, independiente, no incluye los SDK de facturación ni publicidad y carece de permiso de internet; su procesamiento de audio, preferencias y registro de aceptación permanecen en el dispositivo. El correo y las exportaciones iniciados por el usuario utilizan el proveedor externo que este elija. Google y otros proveedores también tratan información mediante sus propios servicios, según se explica más adelante.
+
+2. Procesamiento de audio y permisos del dispositivo
+Auralift aplica efectos de audio compatibles con Android en tu dispositivo. Su motor de audio no nos envía el audio que escuchas ni graba conversaciones. No operamos un servidor de almacenamiento de audio de Auralift.
+
+El visualizador opcional utiliza las funciones de visualización de audio de Android. Android exige el permiso denominado «Grabar audio» para esta función. Auralift lo utiliza para mostrar información de la salida de audio; no usa esta función para grabar el micrófono. Los datos de visualización se tratan temporalmente en memoria mientras se usa el visualizador y no se guardan ni se nos envían.
+
+Otros permisos permiten los controles de audio, la notificación del servicio activo, las notificaciones y la vibración opcionales y el reproductor opcional sobre otras aplicaciones. El reproductor flotante puede seguir visible con la amplificación detenida; mostrarlo no nos proporciona una grabación de tu pantalla ni del contenido de otras aplicaciones. El recordatorio opcional de reinicio utiliza el evento de encendido para ofrecer un aviso, en lugar de iniciar automáticamente una sesión de audio.
+
+Puedes gestionar los permisos en los ajustes de Android. Rechazar un permiso opcional afecta a su función asociada; no tienes que conceder todos los permisos para usar la aplicación.
+
+3. Ajustes, perfiles y otra información en tu dispositivo
+Auralift guarda en el almacenamiento de la aplicación tus ajustes de audio, apariencia, perfiles, configuraciones de salida y preferencias del temporizador. También guarda la información necesaria para recordar el acceso comprado y la expiración de un Ad Pass. No recibimos estos ajustes mediante una cuenta de Auralift o un servicio de sincronización en la nube; la aplicación no dispone de ninguno de ellos.
+
+Al elegir Aceptar y continuar, Auralift guarda la versión aceptada de las condiciones, el idioma y una huella que identifica el documento exacto, la versión de la aplicación y su código de versión, y la fecha y hora indicadas por el dispositivo. El registro permanece en almacenamiento local privado, se excluye de las copias de seguridad y no se nos envía ni se transmite a servicios publicitarios o de analítica. Recuerda tu elección; no verifica tu identidad ni la exactitud del reloj. Una aceptación posterior sustituye el registro, y borrar los datos o desinstalar la aplicación lo elimina.
+
+Puedes guardar una copia de las condiciones o de la política de privacidad con el selector de archivos de Android. Esa copia no contiene el registro de aceptación. El proveedor de destino elegido puede utilizar almacenamiento en la nube.
+
+La aplicación desactiva su copia de seguridad normal de datos en Android. Los perfiles que exportes son archivos independientes. El proveedor de archivos o almacenamiento en la nube que elijas determina dónde se guardan y quién puede acceder a ellos. Desinstalar Auralift no elimina los archivos exportados de esos lugares.
+
+4. Compras y Google Play
+Google Play gestiona el pago y los datos de facturación. Auralift recibe los datos de compra necesarios para verificar y restaurar el acceso, como el producto, el estado de compra, el token y el registro de compra firmado. Se guarda una copia privada en tu dispositivo para reconocer el acceso sin conexión. No recibimos de la aplicación los datos completos de tu tarjeta.
+
+Si nos consultas sobre una compra, podemos utilizar tu mensaje, la referencia de pedido de Google Play y la información disponible del pedido para investigar. Google Play puede facilitarnos información de transacciones mediante sus herramientas para desarrolladores, como el estado, el importe y los datos de contacto del comprador cuando se proporcionen. Usamos estos datos para asistencia de compras, reembolsos, prevención del fraude y registros exigidos.
+
+Google también trata información al prestar sus servicios de facturación y tienda conforme a sus propias políticas: https://policies.google.com/privacy.
+
+5. Publicidad opcional con recompensa
+Puedes elegir ver un anuncio con recompensa para obtener un Ad Pass temporal cuando esté disponible. No se exige ver anuncios para usar las funciones gratuitas de audio. Elegir ver un anuncio es independiente de las opciones de privacidad solicitadas en el formulario de consentimiento.
+
+Al optar por Ad Pass, Auralift utiliza el servicio de consentimiento de Google para obtener o actualizar las opciones aplicables. En aperturas posteriores, dicho servicio puede actualizar esa información aunque no veas otro anuncio. La aplicación solo solicita anuncios cuando sus comprobaciones de consentimiento lo permiten y utilizas Ad Pass.
+
+El SDK publicitario de Google puede recopilar y compartir direcciones IP, ubicación aproximada deducida de la IP, interacciones con aplicaciones y anuncios, diagnósticos e identificadores del dispositivo o relacionados con la cuenta cuando estén disponibles. Google describe usos como publicidad, medición y prevención del fraude. Los anuncios y su medición pueden implicar a Google y a socios identificados en la información de consentimiento aplicable.
+
+Información del SDK publicitario de Google: https://developers.google.com/admob/android/next-gen/privacy/play-data-disclosure
+Cómo usa Google la información de aplicaciones asociadas: https://policies.google.com/technologies/partner-sites
+
+Cuando se ofrezcan, utiliza las opciones de privacidad publicitaria de la aplicación para revisar o cambiar tus elecciones. Android también ofrece controles del identificador publicitario. Rechazar o retirar el consentimiento puede afectar a la disponibilidad o al tipo de anuncios y de Ad Pass, pero no elimina las funciones gratuitas de audio. La publicidad no personalizada también puede implicar tratamiento de datos.
+
+Comprar Pro elimina la necesidad de utilizar anuncios con recompensa. No borra retroactivamente información recibida por Google u otros proveedores, no elimina el código de sus SDK de la aplicación instalada ni garantiza que un SDK inicializado previamente detenga de inmediato toda actividad en segundo plano.
+
+6. Comentarios, correo e informes de calidad
+Si nos escribes, recibimos tu dirección de correo, mensaje y los adjuntos u otra información que envíes. Nuestro buzón de asistencia está alojado en Google. Envía solo la información necesaria para explicar el problema y no envíes contraseñas, datos completos de tarjetas ni información sensible innecesaria.
+
+La función Comentarios y asistencia prepara un borrador dirigido a auralift.support@gmail.com. Lo revisas en tu aplicación de correo y decides si enviarlo. Incluye el mensaje y la versión de la aplicación; los diagnósticos opcionales pueden añadir información del dispositivo, Android y la configuración de audio. Solo se incluye un adjunto si lo eliges. Tu proveedor de correo gestiona la transmisión. La aplicación no nos envía silenciosamente esos comentarios.
+
+Google puede facilitarnos por separado información de calidad de Android a través de Play Console, incluidos informes de fallos y rendimiento recopilados conforme a los ajustes de Google/Android del usuario. Esto es distinto de un mensaje enviado desde Auralift. La aplicación revisada no contiene un servicio independiente de analítica o informes de fallos operado por el desarrollador.
+
+Android vitals: https://developer.android.com/topic/performance/vitals
+
+7. Por qué usamos datos personales
+Cuando la legislación británica de protección de datos se aplica a nuestro tratamiento, usamos las siguientes bases:
+
+Proporcionar el acceso comprado y la asistencia de compra necesaria: ejecución de nuestro contrato contigo.
+
+Atender consultas generales, investigar problemas y prevenir abusos: intereses legítimos de apoyar a los usuarios y mantener un servicio fiable, ponderados frente a tus derechos.
+
+Conservar los registros exigidos por la ley: cumplimiento de una obligación legal.
+
+Formular o responder a reclamaciones legales: intereses legítimos de proteger derechos legales, cuando corresponda.
+
+Tratamiento publicitario opcional para el que se exige consentimiento: tu consentimiento mediante los controles de privacidad aplicables.
+
+Google describe sus propias finalidades y bases jurídicas en sus avisos. El uso de una base por nuestra parte no autoriza todas las actividades de otro proveedor. No tomamos decisiones sobre ti con efectos legales o similares significativos basadas exclusivamente en tratamiento automatizado.
+
+8. Cesiones, seguridad y tratamiento internacional
+No nos dedicamos a vender mensajes de asistencia ni perfiles de audio guardados. No obstante, los proveedores descritos pueden tratar información, incluidos Google Play, los servicios publicitarios de Google, nuestro proveedor de correo y cualquier servicio que selecciones para compartir o exportar. Podemos comunicar información necesaria a asesores o autoridades cuando sea razonablemente preciso por obligaciones o reclamaciones legales.
+
+Utilizamos las protecciones del almacenamiento de Android y de los servicios con los que tratamos información, y limitamos los datos de asistencia a lo necesario. Google declara que su SDK publicitario cifra los datos durante la transmisión. Ningún método de almacenamiento o transmisión garantiza seguridad absoluta.
+
+Los proveedores pueden tratar datos fuera del Reino Unido. Google explica sus mecanismos de transferencia internacional, incluidas decisiones de adecuación y garantías contractuales, en https://policies.google.com/privacy/frameworks. Cuando organicemos una transferencia restringida, debemos utilizar un mecanismo lícito aplicable. Contacta con nosotros para conocer las medidas relevantes para los datos que conservamos.
+
+9. Plazos de conservación
+Las preferencias locales y los registros en caché permanecen hasta que se sustituyan, se eliminen mediante los controles disponibles o se borren al limpiar el almacenamiento o desinstalar la aplicación. Los datos temporales del visualizador no se conservan como grabaciones. Los archivos exportados permanecen donde los guardes hasta que los elimines allí.
+
+Conservamos la correspondencia de asistencia mientras sea necesaria para resolver la solicitud y su seguimiento. Las partes relevantes pueden mantenerse más tiempo si son necesarias para una disputa de compra, una reclamación legal o una obligación de conservación; los adjuntos y diagnósticos innecesarios no deben guardarse solo porque sean necesarios otros registros. Valoramos si el asunto sigue abierto, los plazos legales o de disputa aplicables y si la información sigue siendo necesaria.
+
+Google y otros proveedores independientes aplican sus propios plazos. Eliminar la aplicación no elimina automáticamente registros de compra o publicidad de Google, correos ya enviados ni archivos exportados. Contacta con nosotros para solicitar la revisión o eliminación de información que conservemos.
+
+10. Tus opciones y derechos
+Según los datos, la finalidad y la ley aplicable, puedes tener derecho a acceder y rectificar datos personales, solicitar su eliminación o la limitación del uso, obtener una copia portable y oponerte a tratamientos basados en intereses legítimos. Si el tratamiento se basa en consentimiento, puedes retirarlo sin afectar a la licitud del tratamiento anterior.
+
+Escribe a auralift.support@gmail.com para ejercer derechos sobre información que tratamos. Podemos necesitar información proporcionada para verificar tu identidad. Algunos registros pueden conservarse cuando la ley lo permita o exija; explicaremos las limitaciones. Para los datos presentes solo en tu dispositivo, los controles pertinentes suelen estar en la aplicación o en Android.
+
+También puedes reclamar ante la Information Commissioner’s Office del Reino Unido mediante https://ico.org.uk/make-a-complaint/ o ante la autoridad de protección de datos que te corresponda.
+
+11. Público previsto
+Auralift está destinada a personas de 18 años o más. No solicitamos tu fecha de nacimiento ni operamos cuentas de usuario de Auralift. Este público previsto no significa que verifiquemos la edad de cada usuario.
+
+12. Sitio web de políticas
+Estas páginas se alojan en GitHub Pages. GitHub registra y almacena las direcciones IP de los visitantes por seguridad, incluso en visitas sin cuenta de GitHub. Las páginas no incluyen scripts de analítica, publicidad, formularios ni contenido incrustado de terceros. Consulta la información de GitHub Pages sobre recopilación de datos (https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#data-collection) y su declaración de privacidad (https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement).
+
+13. Cambios
+Actualizaremos esta política cuando cambien funciones o prácticas relevantes, mostraremos la fecha de entrada en vigor y te informaremos de los cambios importantes cuando corresponda. Un aviso actualizado no sustituye al consentimiento cuando se exige uno nuevo.
+
+Idiomas de los documentos
+Estos documentos están disponibles en inglés, español y francés. Puedes elegir el idioma y guardar una copia. Las traducciones pretenden describir las mismas condiciones y prácticas. Contacta con nosotros si alguna redacción no está clara; elegir un idioma no restringe tus derechos irrenunciables.

@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.test.core.app.ApplicationProvider
 import com.jamiewardle.auralift.audio.BoostService
 import com.jamiewardle.auralift.legal.TermsStore
+import com.jamiewardle.auralift.legal.LegalDocuments
 import java.io.File
 import org.junit.Assert.*
 import org.junit.Test
@@ -84,5 +85,40 @@ class TermsStoreTest {
         val store = TermsStore(app)
         assertFalse(store.accept())
         assertFalse(store.hasAcceptedCurrent())
+    }
+
+    @Test fun receiptIdentifiesEachTranslatedDocumentAndLanguageChangesKeepAgreement() {
+        for (language in LegalDocuments.languages) {
+            File(app.noBackupFilesDir, TermsStore.FILE_NAME).delete()
+            val store = TermsStore(app)
+            val text = LegalDocuments.read(app, "terms", language)
+            assertTrue(text.contains(TermsStore.CURRENT_VERSION))
+            assertTrue(LegalDocuments.read(app, "privacy", language).contains("auralift.support@gmail.com"))
+            assertTrue(store.accept(language))
+            val receipt = TermsStore(app).state.value!!
+            val expectedHash = java.security.MessageDigest.getInstance("SHA-256")
+                .digest(text.toByteArray(Charsets.UTF_8)).joinToString("") { "%02x".format(it) }
+            assertEquals(language, receipt.language)
+            assertEquals(expectedHash, receipt.documentSha256)
+            assertTrue(store.accept(if (language == "en") "fr" else "en"))
+            assertEquals(receipt, store.state.value)
+        }
+        assertEquals("es", LegalDocuments.language("es-MX"))
+        assertEquals("fr", LegalDocuments.language("fr-CA"))
+        assertEquals("en", LegalDocuments.language("de-DE"))
+    }
+
+    @Test fun oldEnglishReceiptRemainsReadableAndUnknownLanguageIsRejected() {
+        val old = TermsStore(app, version = "2026-09-18.1")
+        assertTrue(old.accept())
+        val disk = File(app.noBackupFilesDir, TermsStore.FILE_NAME)
+        val json = org.json.JSONObject(disk.readText()).apply { remove("language") }
+        disk.writeText(json.toString())
+        val current = TermsStore(app)
+        assertEquals("en", current.state.value!!.language)
+        assertFalse(current.hasAcceptedCurrent())
+        assertFalse(current.accept("de"))
+        assertTrue(current.accept("fr"))
+        assertTrue(TermsStore(app).hasAcceptedCurrent())
     }
 }
