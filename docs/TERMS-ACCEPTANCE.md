@@ -1,4 +1,9 @@
-# Terms acceptance and competitor review — 18 September 2026
+# Terms acceptance
+
+The current 0.5.5 implementation supersedes the language/document scope below.
+See [Support and languages](SUPPORT-AND-LANGUAGES.md) for complete EN/ES/FR
+policies, language-aware receipts, and agreement version 2026-09-18.2.
+
 
 ## Implementation in 0.5.4 / version code 9
 

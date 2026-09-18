@@ -15,8 +15,9 @@ object SupportEmail {
         val body = "Auralift ${BuildConfig.VERSION_NAME}\n$category\n\n${message.trim()}" +
             if (diagnostics != null) "\n\n$diagnostics" else ""
         val subject = "Auralift — $category"
-        val intent = if (screenshot == null) Intent(Intent.ACTION_SENDTO,
-            Uri.parse("mailto:$ADDRESS?subject=${Uri.encode(subject)}&body=${Uri.encode(body)}"))
+        // Keep user text out of the mailto query: Android MailTo decodes before
+        // splitting query parameters, which can truncate text containing '&'.
+        val intent = if (screenshot == null) Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:$ADDRESS"))
         else Intent(Intent.ACTION_SEND).apply {
             selector = Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:"))
             type = context.contentResolver.getType(screenshot) ?: "image/*"

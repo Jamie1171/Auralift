@@ -15,6 +15,14 @@ each failed before compilation because the Gradle distribution download reports
 `java.net.SocketException: Network is unreachable`. CI compilation, tests, lint,
 packaging and native UI validation are pending. No email has been sent by testing.
 
+First CI run 35397019133 compiled the app and ran the new localized UI checks.
+One support test exposed Android MailTo parsing user text before splitting query
+parameters, truncating messages containing ampersands. Drafts now put recipient
+in the mailto URI and preserve subject/body in standard Intent extras; the test
+checks accented text and special characters in those extras. Remaining checks
+require the follow-up CI run. Actual device language-switch/recreation checks and
+captures were also added for EN/ES/FR.
+
 ## 0.5.4 explicit terms acceptance — passed, 18 September 2026
 
 Validated source `3ef5f6b23c92856b8379bcc10752c8bac39124a3` (version code 9).
