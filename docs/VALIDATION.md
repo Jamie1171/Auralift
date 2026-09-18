@@ -1,22 +1,40 @@
 # Validation — Auralift
 
-## 0.5.4 explicit terms acceptance — validation pending
+## 0.5.4 explicit terms acceptance — passed, 18 September 2026
 
-Native acceptance, local versioned receipt, offline document export and stronger
-listening guidance are implemented. See [scope and competitor review](TERMS-ACCEPTANCE.md).
-Resource XML parses and the archived terms match the shipped asset byte-for-byte.
-Both prescribed local Gradle invocations stopped before compilation because the
-wrapper download is blocked by this environment’s network. Required Android tests,
-lint and packaging are pending CI; no release is published.
+Validated source `3ef5f6b23c92856b8379bcc10752c8bac39124a3` (version code 9).
+Production application source is unchanged since `9e65379d53fcda29ccfc0c31bb1e5598fc9d2866`;
+subsequent changes update test fixtures, an overlay-window wait and documentation.
 
-First CI run 35357229704 compiled both editions and ran 61 Owner tests. The new
-receipt and acceptance UI cases passed; two pre-existing OwnerInterfaceTest cases
-failed because their fixtures attempted to navigate past the new acceptance screen.
-Their fixtures now explicitly establish agreement before exercising unrelated UI.
-The first API 26 device run also reached 15/16 passes; the floating minimise test
-checked the replacement window immediately after the old window vanished. It now
-waits up to five seconds for the same required circle, matching the other overlay
-checks. No production floating-player code changes were needed.
+- [Required unit/lint/build gate](https://github.com/Jamie1171/Auralift/actions/runs/35358225185): passed both editions on API 35, both lint tasks, Owner APK,
+  optimized public APK and public AAB, then both API 26 unit tasks separately.
+- [Android 8 device suite](https://github.com/Jamie1171/Auralift/actions/runs/35358225526/job/105642739220): passed, including the corrected floating-window synchronisation check.
+- [Android 16 device suite](https://github.com/Jamie1171/Auralift/actions/runs/35358225526/job/105642738819): passed on the same final source.
+- [Optimized 16 KB startup and controls](https://github.com/Jamie1171/Auralift/actions/runs/35358225143): passed, including real first-launch acceptance before starting boost.
+- Inspected native captures at 360 × 640 dp: readable warning/document links,
+  scrolling acceptance action, no layout overlap. Unit UI checks cover reading
+  both documents before agreement, decline, acceptance without audio/gain changes,
+  activity recreation and subsequent Settings access.
+- Receipt tests cover persistence, exact version/text metadata, old warning flags,
+  corrupt/missing records, write failure, material version changes and service
+  startup bypass attempts. Resource XML parses in all three languages, with no
+  duplicate keys. The archived terms match the shipped asset byte-for-byte:
+  SHA-256 `2fc55ff77581389affa0c1f12ca16814e24e073703784239ca3b407400899ad4`.
+
+Earlier attempts are retained. Both prescribed local Gradle invocations stopped
+before compilation because the wrapper download is blocked by this environment's
+network. First CI run 35357229704 compiled both editions and ran 61 Owner tests;
+the new receipt/acceptance tests passed, but two pre-existing Owner UI cases needed
+to establish agreement before navigating to unrelated controls. Run 35357746094
+then passed the full required gate. Device runs 35357229700 and 35357746082 exposed
+an Android 8 floating-window test timing issue: after the expanded window vanished,
+the test immediately queried its replacement. It now waits up to five seconds for
+the same required circle. No production floating-player changes were needed.
+
+See [acceptance design and competitor review](TERMS-ACCEPTANCE.md).
+These are simulated tests, not acoustic safety evidence or legal approval. Existing
+physical-device, live monetisation and ARM64/native-library scope limits below
+remain. No website, Play upload, production signing or public release is performed.
 
 ## 0.5.3 reviewer access — passed, 18 September 2026
 
