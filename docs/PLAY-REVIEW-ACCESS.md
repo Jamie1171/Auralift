@@ -1,4 +1,8 @@
-# Google Play reviewer access — 0.5.3
+# Google Play reviewer access — 0.5.4
+
+On first launch, reviewers can read/save the Terms of Use and Privacy Policy,
+then choose **Agree and continue**. This local agreement step does not require
+sign-in and does not start audio processing. It is the same flow every user sees.
 
 The public Play build has an explicit **Settings → Auralift Pro → Review access**
 entry. Paste the privately supplied reusable code and select **Unlock Pro for review**.

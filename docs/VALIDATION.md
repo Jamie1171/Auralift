@@ -13,6 +13,10 @@ First CI run 35357229704 compiled both editions and ran 61 Owner tests. The new
 receipt and acceptance UI cases passed; two pre-existing OwnerInterfaceTest cases
 failed because their fixtures attempted to navigate past the new acceptance screen.
 Their fixtures now explicitly establish agreement before exercising unrelated UI.
+The first API 26 device run also reached 15/16 passes; the floating minimise test
+checked the replacement window immediately after the old window vanished. It now
+waits up to five seconds for the same required circle, matching the other overlay
+checks. No production floating-player code changes were needed.
 
 ## 0.5.3 reviewer access — passed, 18 September 2026
 
