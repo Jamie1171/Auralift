@@ -20,6 +20,7 @@ import java.io.File
 class OwnerInterfaceTest {
     @get:Rule val compose = createAndroidComposeRule<MainActivity>()
     private val app get() = ApplicationProvider.getApplicationContext<AuraliftApplication>()
+    @Before fun acceptTermsFixture() { compose.runOnIdle { assertTrue(app.terms.accept()) } }
     @Test fun ownerCanTestEarnedPassAndExpiryWithoutRaisingGain() {
         compose.runOnIdle { app.settings.update { it.copy(gainDb = 24f, accent = Accent.OCEAN) } }
         compose.onNodeWithText("Pro").performClick()

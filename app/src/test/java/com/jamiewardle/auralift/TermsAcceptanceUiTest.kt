@@ -63,7 +63,7 @@ class TermsAcceptanceUiTest {
         val view = compose.activity.window.decorView
         val bitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
         view.draw(Canvas(bitmap))
-        File("build/screenshots/$name.png").also { it.parentFile.mkdirs() }.outputStream().use {
+        File("build/screenshots/$name.png").also { it.parentFile?.mkdirs() }.outputStream().use {
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, it)
         }
         bitmap.recycle()

@@ -9,6 +9,11 @@ Both prescribed local Gradle invocations stopped before compilation because the
 wrapper download is blocked by this environment’s network. Required Android tests,
 lint and packaging are pending CI; no release is published.
 
+First CI run 35357229704 compiled both editions and ran 61 Owner tests. The new
+receipt and acceptance UI cases passed; two pre-existing OwnerInterfaceTest cases
+failed because their fixtures attempted to navigate past the new acceptance screen.
+Their fixtures now explicitly establish agreement before exercising unrelated UI.
+
 ## 0.5.3 reviewer access — passed, 18 September 2026
 
 Validated application/test source `e25e703b7084c0894ecedca210f2aa33071fc0d7`.
