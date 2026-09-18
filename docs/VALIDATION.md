@@ -1,25 +1,49 @@
 # Validation — Auralift
 
-## 0.5.6 shared support mailbox — verification pending
+## 0.5.6 shared support mailbox — built and signed
 
-The app recipient, copy-address fallback and all six EN/ES/FR offline policies
-now use `auraforgelabssupport+auralift@gmail.com`, delivering into the confirmed
-Auraforge Labs mailbox. Existing subjects identify Auralift. The website exporter
-and current terms archive mirrors match. Version code is 11. No billing or ad
-activation settings were changed.
+Validated source `c24b364f223dc7f15a163bb9d26f6e303b89b97b`, PR merge
+`b3290a50da7ce32e59381ad605ebe804eaca7560`; version 0.5.6 / code 11.
 
-- Local translation/legal check passed: 379 resource keys per language, matching
-  format arguments, all document sections and byte-identical current archives.
-- All six website documents regenerated from the updated shipped assets.
-- Both prescribed local Gradle invocations stopped before compilation because
-  the Gradle distribution download returned `Network is unreachable`. CI is
-  required before delivering a new binary; no new build pass is claimed here.
-- The previously signed 0.5.5 bundle manifest was inspected and already contains
-  `com.android.vending.BILLING`. Its disabled checkout does not remove that
-  permission. The Console screenshot asks for an uploaded billing-capable app;
-  it does not establish a requirement to publish the closed track first.
-- Historical preview terms and previous-build evidence retain their original
-  email. This contact-only change keeps agreement version 2026-09-18.2.
+- [Required build gate](https://github.com/Jamie1171/Auralift/actions/runs/35405225416)
+  passed: both editions, both lint tasks, APKs and AAB. API 35: Owner 68 / Play 70;
+  API 26: Owner 45 / Play 48. Total 231 unit-test executions, no failures/errors/skips.
+- [Android 8 and Android 16 device jobs](https://github.com/Jamie1171/Auralift/actions/runs/35405225367)
+  both passed. Android 16 finished all 17 primary tests and its separate denied-permission
+  test. This includes the language/support scenario that previously timed out;
+  the earlier timeout evidence below is retained, not reclassified as a pass.
+- [16 KB optimized runtime job](https://github.com/Jamie1171/Auralift/actions/runs/35405225427)
+  is **failed**, although its saved `page-size-report.json` reports all four app checks
+  passed on x86-64 API 35 with 16 KB pages and compatibility workarounds disabled.
+  Its final diagnostic `logcat` collection raised UnicodeDecodeError after those checks.
+  Do not describe the whole workflow as successful. Existing ARM/RELRO limits remain.
+- The recipient and copy-address fallback are
+  `auraforgelabssupport+auralift@gmail.com`. All six bundled policies and current
+  terms mirrors use the same confirmed shared inbox; existing subjects identify Auralift.
+  The contact-only correction keeps agreement version 2026-09-18.2.
+- [Policy website deployment](https://github.com/Jamie1171/auralift-policies/actions/runs/35405237463)
+  passed for `47927e5b134e17affe4c7ebe12e96180d05aba62`: six document pages and the
+  index use the new address. Local page links and 379 resource keys per locale checked.
+- Signed deliverable: `Auralift-0.5.6-Closed-Test.aab`, 8,467,839 bytes; SHA-256
+  `981cdd5eb5db0e677b0cc77801c787174c8b3ad5f168594373319c430f5773f9`.
+- CI archive SHA-256:
+  `0e88acdc9c6282b9b2e8e68efe41e3a315f405c25ce6066e6f35ae26c969902d`.
+  All 547 original AAB entries are byte-identical after signing; ZIP CRC checks pass.
+- Strict JAR signature verification passed with the existing RSA-4096 upload key
+  trusted. Upload certificate SHA-256:
+  `281699a8a22822d97772c1cba3f5f5d6e0048807468ce7e4f2dbceacc40be85f`.
+  Private key material remains outside Git.
+- Bundle protobuf manifest inspected: `com.jamiewardle.auralift`, code 11,
+  min SDK 26, target SDK 36, non-debuggable; `com.android.vending.BILLING` present.
+  All six bundled policies checked for the new address and absence of the old address.
+- Both prescribed local Gradle commands were attempted but the wrapper download was
+  network-blocked; the successful CI run above executed the required tasks instead.
+
+This signed bundle is for upload to a Play Console draft and product configuration.
+Live purchases and ads remain disabled pending account configuration. No Play upload,
+review submission, purchase/ad certification, standalone bundletool validation or
+AAB-derived device test is claimed. Historical documents/evidence preserve their
+original contact details.
 
 ## 0.5.5 support and localization — required gates passed, 18 September 2026
 
