@@ -1,17 +1,37 @@
 # Validation — Auralift
 
-## 0.5.3 reviewer access — verification pending, 18 September 2026
+## 0.5.3 reviewer access — passed, 18 September 2026
 
-Adds a reusable offline review grant, native code entry and explicit removal,
-with regression checks for invalid codes, recreation, purchase/pass independence,
-gain transitions and the 360 dp entry flow. No real review code is in the tests.
-Both local required Gradle invocations stopped before compilation: the wrapper download
-failed with `Network is unreachable`. Verification will use the existing GitHub
-Android workflow; this is not a recorded pass. The first CI run (35352186337) passed the entitlement tests but timed out in
-the new dialog UI test before text entry (Compose never became idle). The entry
-now expands inline in the scrolling Pro page, avoiding the extra dialog window;
-the same invalid-code, unlock and removal assertions are retained. A new CI run
-is required. Production signing and submission remain separate. See [reviewer setup](PLAY-REVIEW-ACCESS.md).
+Validated application/test source `e25e703b7084c0894ecedca210f2aa33071fc0d7`.
+This record is a documentation-only follow-up and does not alter the tested app.
+
+- [Required unit/lint/build gate](https://github.com/Jamie1171/Auralift/actions/runs/35352929223): passed both editions on API 35, both lint tasks, Owner APK,
+  optimized public APK and public AAB, then both API 26 unit tasks separately.
+  The new native 360 dp UI test enters an invalid code, corrects it, activates
+  review access and returns to Free. Entitlement regressions cover persistence,
+  code reuse, rejection, Owner isolation, changed verifier, purchase/pass
+  independence and gain clamping without an automatic gain increase.
+- [Device API 26 and 36 suites](https://github.com/Jamie1171/Auralift/actions/runs/35352929222): both jobs passed.
+- [Optimized 16 KB smoke](https://github.com/Jamie1171/Auralift/actions/runs/35352929691): passed. Its pre-existing x86-64 scope and ARM64/native-library
+  limitations below remain unchanged.
+- The private reviewer code was checked locally against the configured digest;
+  all resource XML parsed and the Console instructions fit its 500-character field.
+  Neither the real code nor signing material is in the public repository.
+
+Earlier attempts are retained: both local Gradle commands stopped before
+compilation because the wrapper download was network blocked. CI run
+35352186337 passed entitlement tests but failed the new dialog screen test with
+Compose AppNotIdleException before text entry. The final implementation expands
+code entry inline on the scrolling Pro page; the same assertions now pass.
+Initial 16 KB run 35352186413 failed before app installation when the emulator
+lost its package service (Broken pipe / Can't find service: package). It is not
+counted as an app pass. The later linked optimized run passed.
+
+Version 0.5.3 / code 8 remains unsubmitted. This change does not configure
+production signing, live purchases/ads or claim physical audio validation.
+A signed Play build containing this feature must accompany the reviewer
+instructions; the existing 0.5.2 installation does not accept the new code.
+See [reviewer setup](PLAY-REVIEW-ACCESS.md).
 
 ## 0.5.2 floating player and ten palettes — passed, 17 September 2026
 
