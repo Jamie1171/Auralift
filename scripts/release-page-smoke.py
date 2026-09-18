@@ -112,7 +112,16 @@ try:
     report['stage'] = 'app_checks'
     assert 'Success' in adb('install', '-g', str(apk))
     adb('shell', 'am', 'start', '-W', '-n', package + '/.MainActivity')
+    find('Before you listen', 'terms-first-launch')
+    # Scroll this small emulator viewport until the explicit agreement is visible.
+    for attempt in range(6):
+        root = capture('terms-scroll-' + str(attempt))
+        if any(node.get('text') == 'Agree and continue' for node in (root.iter('node') if root is not None else [])):
+            break
+        adb('shell', 'input', 'swipe', '360', '950', '360', '300', '350')
+    tap('Agree and continue', 'terms-agree')
     find('Enable boost', 'initial')
+    report['checks'].append('explicit terms acceptance leaves boost off')
     report['checks'].append('optimized first launch')
     tap('+5 dB', 'select-gain')
     tap('Enable boost', 'enable')

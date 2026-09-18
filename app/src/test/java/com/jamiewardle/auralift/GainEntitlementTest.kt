@@ -64,6 +64,7 @@ class GainEntitlementTest {
     }
 
     @Test fun expiryWhileBackgroundedOrDuringAdKeepsSessionAndReducesGain() {
+        assertTrue(app.terms.accept())
         if (Distribution.owner) app.access.simulateFree()
         assertTrue(RewardClaim(app.access).earned())
         app.settings.update { it.copy(gainDb = 35f, backgroundAudio = true) }

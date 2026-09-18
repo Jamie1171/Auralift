@@ -357,4 +357,17 @@
     <string name="review_end">Finalizar acceso de revisión</string>
     <string name="review_active_hint">Todas las funciones Pro están disponibles. No se requieren compras ni anuncios. Puedes finalizar el acceso de revisión para probar la versión gratuita.</string>
     <string name="review_end_failed">No se pudo eliminar el acceso de revisión. Inténtalo de nuevo.</string>
+    <string name="terms_welcome">Antes de escuchar</string>
+    <string name="terms_updated">Revisa las condiciones actualizadas</string>
+    <string name="terms_safety">Empieza con un volumen bajo y auméntalo poco a poco. Escuchar a un volumen alto o durante mucho tiempo puede causar daños auditivos permanentes y tinnitus. Un nivel excesivo puede dañar los altavoces. Haz pausas y sigue las indicaciones del equipo. Un sonido cómodo o sin distorsión no garantiza una escucha segura.</string>
+    <string name="terms_summary">Auralift ajusta la ganancia digital; no mide el nivel sonoro en tus oídos. Los resultados dependen del dispositivo y del reproductor. Los controles gratuitos siguen disponibles; las compras Pro y los pases por anuncios son opcionales. Tus derechos como consumidor se mantienen.</string>
+    <string name="terms_review">Revisa las condiciones antes de decidir. Puedes leer y guardar ambos documentos aquí y encontrarlos después en Ajustes. Los documentos completos están actualmente en inglés.</string>
+    <string name="terms_accept_explanation">Aceptar y continuar significa que aceptas las Condiciones de uso. No da consentimiento para publicidad ni inicia el procesamiento de audio.</string>
+    <string name="terms_local_record">Este dispositivo guarda la versión de las condiciones, la huella del documento, la versión de la app y la hora de aceptación indicada por el dispositivo. No se nos envía este registro.</string>
+    <string name="terms_agree">Aceptar y continuar</string>
+    <string name="terms_not_now">Ahora no</string>
+    <string name="terms_saving">Guardando…</string>
+    <string name="terms_save_failed">No se pudo guardar tu aceptación. Inténtalo de nuevo. El audio sigue desactivado.</string>
+    <string name="terms_save_copy">Guardar una copia</string>
+    <string name="terms_export_failed">No se pudo guardar la copia. Elige otra ubicación.</string>
 </resources>

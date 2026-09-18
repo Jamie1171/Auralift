@@ -415,10 +415,3 @@ internal fun Context.activity(): Activity? = when (this) { is Activity -> this; 
         Text(stringResource(R.string.feedback_privacy), Modifier.padding(top = 12.dp), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
     }
 }
-
-@Composable private fun PolicyScreen(page: String) {
-    val context = LocalContext.current
-    val content = remember(page) { context.assets.open("legal/$page.txt").bufferedReader().use { it.readText() } }
-    PageHeading(stringResource(if (page == "privacy") R.string.privacy_policy else R.string.terms_of_use), stringResource(R.string.policy_language))
-    Panel { Text(content, style = MaterialTheme.typography.bodyMedium) }
-}

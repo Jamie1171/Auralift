@@ -11,6 +11,7 @@ import com.jamiewardle.auralift.access.AdAudioGate
 import com.jamiewardle.auralift.profiles.ProfileStore
 
 class AuraliftApplication : Application() {
+    lateinit var terms: com.jamiewardle.auralift.legal.TermsStore; private set
     lateinit var settings: SettingsStore; private set
     val engine = MutableStateFlow(EngineState())
     lateinit var access: AccessStore; private set
@@ -21,6 +22,7 @@ class AuraliftApplication : Application() {
     var activityVisible = false
     override fun onCreate() {
         super.onCreate()
+        terms = com.jamiewardle.auralift.legal.TermsStore(this)
         access = AccessStore(this, Distribution.owner, Distribution.reviewCodeSha256)
         // Load any locally verified purchase before applying the startup gain ceiling.
         purchases = Distribution.purchases(this, access)

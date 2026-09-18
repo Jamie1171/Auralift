@@ -1,8 +1,8 @@
 Auralift — Privacy policy
-Personal and pre-release editions · 13 September 2026
+Personal and pre-release editions · 18 September 2026
 
 1. About this preview
-Auralift is an audio utility developed by Jamie Wardle. This notice describes version 0.5.0. It does not describe another volume booster or its advertising partners. A public publisher contact and privacy-policy web address will be supplied before a public release. For this preview, use the existing channel through which you received the app to contact the developer.
+Auralift is an audio utility developed by Jamie Wardle. This notice describes version 0.5.4. It does not describe another volume booster or its advertising partners. Contact us at auralift.support@gmail.com about privacy or support. Final public publisher particulars and a privacy-policy web address will be supplied before public release.
 
 2. Audio stays on your device
 Boosting and equalization use Android audio effects on your device. Auralift does not upload audio, open the microphone for recording, save recordings or examine what you say. The audio features do not read contacts, browsing history, notifications or precise location. The optional advertising service has separate data handling described below, including approximate location derived from an IP address.
@@ -10,12 +10,16 @@ Boosting and equalization use Android audio effects on your device. Auralift doe
 The optional Music spectrum uses Android's Visualizer interface. Android requires the permission called “microphone” or RECORD_AUDIO for this interface, even though it provides low-resolution playback data rather than microphone recording. Frequency data is used in memory to draw the spectrum only while the Listen screen is visible. It is released when you leave that screen or the app. This data is not saved or transmitted. You can use boosting without enabling spectrum or granting this permission.
 
 3. Local preferences and files
+When you choose Agree and continue, Auralift stores the accepted terms version, a SHA-256 fingerprint identifying that document, the app version and version code, and the date/time reported by your device. This acknowledgement is kept only in private app storage, excluded from backup, and is not sent to the developer, Google advertising or an analytics service. We do not collect your identity for this purpose. The record remembers your choice; it does not prove who tapped or that the device clock was correct. A later acceptance replaces the local record; clearing app data or uninstalling removes it.
+
+You can save a copy of the terms or privacy policy to a location you choose using Android’s file picker. The saved document does not include your acceptance record. A destination provider you choose may use its own cloud storage.
+
 Auralift stores your chosen gain, EQ, appearance, language, preferences, saved sound names and Ad Pass state and local reward identifiers in private app storage. Android's automatic app backup is disabled. The Ad Pass clock uses the device's boot count and clocks locally; these values are not sent anywhere and are not persistent tracking identifiers.
 
 Sound import reads only a file you choose in Android's file picker. Export writes only to the destination you choose, which may be a cloud provider if you select one. Exported files contain sound names, gain and EQ values. Auralift itself has no cloud synchronization. Removing a named sound deletes it from the app; previously exported copies remain wherever you saved them.
 
 4. Optional permissions
-Notifications show active audio controls and a Stop action. Display over other apps permits the floating player while a listening session is active. One permission for Auralift allows display over eligible apps; Android and protected screens may block it. Auralift does not monitor which app is foreground or maintain a per-app exclusion list. That player does not read the contents of other apps and is hidden on the lock screen. Vibration supplies optional control feedback. Audio-settings and foreground-service permissions maintain effects while you listen. The receive-boot permission supports an optional reminder notification after a phone restart. It never starts the audio service or changes gain. The audio service does not automatically restart after Android stops it. Battery settings buttons open Android settings without requesting a direct battery-exemption permission.
+Notifications show active audio controls and a Stop action. Display over other apps permits the optional floating player, including while boost is stopped. One permission for Auralift allows display over eligible apps; Android and protected screens may block it. Auralift does not monitor which app is foreground or maintain a per-app exclusion list. That player does not read the contents of other apps and is hidden on the lock screen. Vibration supplies optional control feedback. Audio-settings and foreground-service permissions maintain effects while you listen. The receive-boot permission supports an optional reminder notification after a phone restart. It never starts the audio service or changes gain. The audio service does not automatically restart after Android stops it. Battery settings buttons open Android settings without requesting a direct battery-exemption permission.
 
 You can turn optional features off in Auralift and revoke permissions in Android settings. Some phone manufacturers restrict background work or floating windows.
 
@@ -41,4 +45,4 @@ The feedback form does not send anything automatically. If you choose Share, And
 Delete saved sounds in Auralift, disable optional features, revoke permissions in Android settings, or clear app storage/uninstall to remove the app's local data. These actions do not delete exported files, messages already shared, or Google's purchase and advertising records. Use the relevant storage, messaging or Google account controls for those. A completed Play purchase may be restored through the same Google Play account when that edition is available.
 
 8. Changes and contact
-Changes to the app's data handling will be reflected in an updated notice with a new date. Any future accounts, backend verification or hosted support would need an updated notice before introduction. Questions about this preview can be sent to the developer through the channel where the preview was shared with you. Public contact and support details must be finalized before launch.
+Changes to the app's data handling will be reflected in an updated notice with a new date. Any future accounts, backend verification or hosted support would need an updated notice before introduction. Questions about this preview can be sent to auralift.support@gmail.com. Final public publisher particulars must be supplied before launch.

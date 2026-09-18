@@ -21,7 +21,7 @@ import java.io.File
 class InterfaceTest {
     @get:Rule val compose = createAndroidComposeRule<MainActivity>()
     private val app get() = ApplicationProvider.getApplicationContext<AuraliftApplication>()
-    @Before fun proFixture() { compose.runOnIdle { app.access.setVerifiedPurchase(true) } }
+    @Before fun proFixture() { compose.runOnIdle { assertTrue(app.terms.accept()); app.access.setVerifiedPurchase(true) } }
     @Test fun interfaceControlsPersistTheirRealSettings() {
         compose.onNodeWithText("Enable boost").assertExists()
         compose.onNodeWithContentDescription("Increase boost by half a decibel").performClick()
