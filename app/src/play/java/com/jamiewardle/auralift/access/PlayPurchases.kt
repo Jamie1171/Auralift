@@ -116,7 +116,7 @@ class PlayPurchases(private val context: Context, private val access: AccessStor
             mutable.value = mutable.value.copy(ready = true, prices = offers.mapValues { it.value.formattedPrice })
             if (launch != null && selected != null) {
                 val offer = offers[selected]; val product = products[selected.id]
-                if (offer == null || product == null || launch.isFinishing || launch.isDestroyed || access.state.value.permanent) {
+                if (offer == null || product == null || launch.isFinishing || launch.isDestroyed || (access.state.value.permanent || access.state.value.review)) {
                     mutable.value = mutable.value.copy(busy = false); return@queryProductDetailsAsync
                 }
                 val flow = BillingFlowParams.newBuilder().setProductDetailsParamsList(listOf(
@@ -128,7 +128,7 @@ class PlayPurchases(private val context: Context, private val access: AccessStor
         }
     }
     override fun buy(activity: Activity, product: ProProduct) {
-        if (access.state.value.permanent) return
+        if ((access.state.value.permanent || access.state.value.review)) return
         if (!configured || !client.isReady || mutable.value.busy) { refresh(); return }
         mutable.value = mutable.value.copy(busy = true)
         // Check both products immediately before checkout: don't sell the same access twice.

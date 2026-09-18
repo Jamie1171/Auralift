@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 
 object Distribution {
     const val owner = true
+    const val reviewCodeSha256 = ""
     const val storeLive = false
     fun ads(app: AuraliftApplication): AdPasses = object : AdPasses {
         override val state = MutableStateFlow(AdPassState(message = R.string.owner_no_ads))

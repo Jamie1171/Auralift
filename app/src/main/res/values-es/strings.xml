@@ -348,4 +348,13 @@
     <string name="theme_midnight_hint">Tinta y lavanda · brillo nocturno</string>
     <string name="theme_slate">Pizarra</string>
     <string name="theme_slate_hint">Grafito y plata · discreción</string>
+    <string name="review_access">Acceso de revisión</string>
+    <string name="review_active">Acceso de revisión activo</string>
+    <string name="review_hint">Introduce el código facilitado para revisar la aplicación. Desbloquea todas las funciones Pro en este dispositivo sin pagos, anuncios ni límite de tiempo.</string>
+    <string name="review_code">Código de acceso</string>
+    <string name="review_unlock">Desbloquear Pro para revisión</string>
+    <string name="review_invalid">Código no reconocido o no se pudo guardar el acceso. Comprueba el código e inténtalo de nuevo.</string>
+    <string name="review_end">Finalizar acceso de revisión</string>
+    <string name="review_active_hint">Todas las funciones Pro están disponibles. No se requieren compras ni anuncios. Puedes finalizar el acceso de revisión para probar la versión gratuita.</string>
+    <string name="review_end_failed">No se pudo eliminar el acceso de revisión. Inténtalo de nuevo.</string>
 </resources>

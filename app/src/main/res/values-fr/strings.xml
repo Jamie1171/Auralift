@@ -348,4 +348,13 @@
     <string name="theme_midnight_hint">Encre et lavande · lueur du soir</string>
     <string name="theme_slate">Ardoise</string>
     <string name="theme_slate_hint">Graphite et argent · sobriété</string>
+    <string name="review_access">Accès pour examen</string>
+    <string name="review_active">Accès pour examen actif</string>
+    <string name="review_hint">Saisissez le code fourni pour examiner l’application. Toutes les fonctionnalités Pro sont débloquées sur cet appareil sans paiement, publicité ni limite de temps.</string>
+    <string name="review_code">Code d’accès</string>
+    <string name="review_unlock">Débloquer Pro pour examen</string>
+    <string name="review_invalid">Code non reconnu ou accès impossible à enregistrer. Vérifiez le code et réessayez.</string>
+    <string name="review_end">Terminer l’accès pour examen</string>
+    <string name="review_active_hint">Toutes les fonctionnalités Pro sont disponibles sans achat ni publicité. Vous pouvez terminer cet accès pour examiner la version gratuite.</string>
+    <string name="review_end_failed">Impossible de supprimer l’accès pour examen. Réessayez.</string>
 </resources>

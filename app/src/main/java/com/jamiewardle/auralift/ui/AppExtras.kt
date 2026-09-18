@@ -249,13 +249,13 @@ import kotlin.math.ceil
     val context = LocalContext.current
     PageHeading(stringResource(R.string.pro_heading), stringResource(R.string.pro_subtitle))
     Panel {
-        Text(stringResource(when { access.owner -> R.string.owner_unlocked; access.passRemainingMs > 0 -> R.string.preview_active; access.pro -> R.string.pro_unlocked; else -> R.string.free_plan }), style = MaterialTheme.typography.titleLarge)
+        Text(stringResource(when { access.owner -> R.string.owner_unlocked; access.review -> R.string.review_active; access.passRemainingMs > 0 -> R.string.preview_active; access.pro -> R.string.pro_unlocked; else -> R.string.free_plan }), style = MaterialTheme.typography.titleLarge)
         if (access.passRemainingMs > 0) Text(stringResource(R.string.preview_minutes, ceil(access.passRemainingMs / 60_000.0).toInt()), Modifier.padding(top = 8.dp))
         Text(stringResource(R.string.free_features), Modifier.padding(top = 14.dp), style = MaterialTheme.typography.bodyMedium)
         HorizontalDivider(Modifier.padding(vertical = 18.dp))
         Text(stringResource(R.string.pro_features), style = MaterialTheme.typography.bodyMedium)
     }
-    if (!access.owner && !access.permanent) {
+    if (!access.owner && !access.permanent && !access.review) {
         Spacer(Modifier.height(16.dp))
         AdPassCard(app)
         Spacer(Modifier.height(16.dp))
@@ -281,6 +281,7 @@ import kotlin.math.ceil
     }
     if (ads.privacyRequired) TextButton(onClick = { context.activity()?.let { app.ads.privacyOptions(it) } }, enabled = !ads.busy) { Text(stringResource(R.string.ad_privacy_choices)) }
     Spacer(Modifier.height(16.dp))
+    ReviewAccess(app.access, enabled = !ads.busy && !purchase.busy)
     OwnerTools(app)
 }
 

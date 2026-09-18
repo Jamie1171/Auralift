@@ -21,7 +21,7 @@ class AuraliftApplication : Application() {
     var activityVisible = false
     override fun onCreate() {
         super.onCreate()
-        access = AccessStore(this, Distribution.owner)
+        access = AccessStore(this, Distribution.owner, Distribution.reviewCodeSha256)
         // Load any locally verified purchase before applying the startup gain ceiling.
         purchases = Distribution.purchases(this, access)
         settings = SettingsStore(this, { GainMath.allowance(access.state.value.pro) }, access::refresh)

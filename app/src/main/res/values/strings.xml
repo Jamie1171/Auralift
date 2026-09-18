@@ -348,4 +348,13 @@
     <string name="theme_midnight_hint">Ink &amp; lavender · evening glow</string>
     <string name="theme_slate">Slate</string>
     <string name="theme_slate_hint">Graphite &amp; silver · understated</string>
+    <string name="review_access">Review access</string>
+    <string name="review_active">Review access active</string>
+    <string name="review_hint">Enter the access code supplied for app review. All Pro features unlock on this device without payment, ads or a time limit.</string>
+    <string name="review_code">Access code</string>
+    <string name="review_unlock">Unlock Pro for review</string>
+    <string name="review_invalid">Code not recognised or access could not be saved. Check the code and try again.</string>
+    <string name="review_end">End review access</string>
+    <string name="review_active_hint">All Pro features are available. No purchase or ad is required. You can end review access to inspect the free experience.</string>
+    <string name="review_end_failed">Could not remove review access. Please try again.</string>
 </resources>
