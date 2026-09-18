@@ -1,27 +1,47 @@
 # Validation — Auralift
 
-## 0.5.5 support and localization — validation in progress
+## 0.5.5 support and localization — required gates passed, 18 September 2026
 
-Feedback & support prepares an email draft to the support mailbox, with optional
-screenshot and diagnostic details. No automatic sending or false delivery notice.
-English, Spanish and French include complete offline legal documents, an explicit
-English option and language-aware acceptance receipts. Public publisher details
-replace the in-app preview documents; agreement version is now 2026-09-18.2.
+Validated source `28b0f654e926cc9a683827b89aadea2ffda31bb3` (version code 10),
+PR merge build `8ccaf8925f771027425f3a18fbb488a282e9bd0a`.
 
-`scripts/check-localization.py` passes: 379 strings in each locale, matching format
-arguments, complete legal sections and byte-identical archived terms. `git diff
---check` passes. Both prescribed local Gradle invocations were attempted separately;
-each failed before compilation because the Gradle distribution download reports
-`java.net.SocketException: Network is unreachable`. CI compilation, tests, lint,
-packaging and native UI validation are pending. No email has been sent by testing.
+- [Required unit/lint/build gate](https://github.com/Jamie1171/Auralift/actions/runs/35397434159): passed both editions, both lint tasks, Owner APK,
+  optimized public APK and public AAB. API 35: Owner 68 / Play 70 tests; separate
+  API 26 invocation: Owner 45 / Play 48 tests. Total 231, no failures or skips.
+- [Android 8 device suite](https://github.com/Jamie1171/Auralift/actions/runs/35397434336/job/105769370241): all 17 tests passed, plus the separate denied-permission check.
+  Real app language selection cycles EN/ES/FR, survives activity recreation,
+  retains agreement and opens the matching offline policies and support screen.
+- Android 16 device suite in the same run: pending completion.
+- [Optimized 16 KB startup and controls](https://github.com/Jamie1171/Auralift/actions/runs/35397434170): passed on the final application source.
+- Inspected native Spanish/French support and policy captures: readable titles,
+  controls and document text. Unit UI checks also cover the explicit English
+  override and accepting the language actually displayed.
+- Resource check passes for all 379 strings in each locale, matching format
+  arguments, complete legal sections and byte-identical archived terms. Terms
+  version 2026-09-18.2 replaces the preview text with the public publisher terms.
+- Support tests check exact recipient, accented/special-character message text,
+  optional diagnostics, screenshot URI and read-only attachment permission.
+  The form opens an email draft and never claims delivery. No email was sent by
+  automated testing; individual third-party email-client behaviour is not certified.
+- Six static web policies match the bundled document text; all language links
+  resolve within the generated site. [GitHub Pages deployment](https://github.com/Jamie1171/auralift-policies/actions/runs/35397462810) passed for policy
+  commit `87c2c176f50f5c61a1f6f751c281fa1d2a047d8f`.
+- Test APK SHA-256: `3d0db4fcd01b646ea4f1024c0be7068ba601becc05c36728766dc4cb57993dff`.
+  APK signature verifies. CI uses a temporary debug certificate different from
+  the previously supplied 0.5.4 APK; replacement requires a fresh test install.
+  Export wanted profiles first because uninstalling clears local data.
 
-First CI run 35397019133 compiled the app and ran the new localized UI checks.
-One support test exposed Android MailTo parsing user text before splitting query
-parameters, truncating messages containing ampersands. Drafts now put recipient
-in the mailto URI and preserve subject/body in standard Intent extras; the test
-checks accented text and special characters in those extras. Remaining checks
-require the follow-up CI run. Actual device language-switch/recreation checks and
-captures were also added for EN/ES/FR.
+Earlier attempts are retained: both prescribed local Gradle invocations failed
+before compilation because the distribution download reports `Network is unreachable`.
+First CI run 35397019133 compiled successfully and passed localized UI/receipt
+checks, but a support test exposed Android MailTo parsing query text before
+splitting parameters, truncating messages containing ampersands. Drafts now put
+the recipient in the mailto URI and preserve subject/body in standard Intent
+extras. The follow-up required gate above passed. No core audio behavior changed.
+
+These are software/emulator checks, not acoustic safety evidence, independent
+legal/translation review, live ad or payment certification. No production signing
+or Google Play upload was performed. See [implementation](SUPPORT-AND-LANGUAGES.md).
 
 ## 0.5.4 explicit terms acceptance — passed, 18 September 2026
 
