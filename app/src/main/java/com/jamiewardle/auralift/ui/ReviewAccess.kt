@@ -26,30 +26,29 @@ import com.jamiewardle.auralift.access.AccessStore
             }
             if (endFailed) Text(stringResource(R.string.review_end_failed), color = MaterialTheme.colorScheme.error)
         }
-    } else {
+    } else if (!open) {
         TextButton(onClick = { open = true }, enabled = enabled) { Text(stringResource(R.string.review_access)) }
     }
     if (open) {
         // Deliberately not saved in instance state, analytics or diagnostic reports.
         var code by remember { mutableStateOf("") }
         var invalid by remember { mutableStateOf(false) }
-        AlertDialog(onDismissRequest = { open = false },
-            title = { Text(stringResource(R.string.review_access)) },
-            text = {
-                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                    Text(stringResource(R.string.review_hint))
-                    OutlinedTextField(value = code, onValueChange = {
-                        code = it.take(128); invalid = false
-                    }, label = { Text(stringResource(R.string.review_code)) }, singleLine = true,
-                        isError = invalid, modifier = Modifier.fillMaxWidth(),
-                        keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Characters,
-                            autoCorrectEnabled = false))
-                    if (invalid) Text(stringResource(R.string.review_invalid), color = MaterialTheme.colorScheme.error)
-                }
-            },
-            confirmButton = { TextButton(enabled = enabled && code.isNotBlank(), onClick = {
+        Panel {
+            Text(stringResource(R.string.review_access), style = MaterialTheme.typography.titleMedium)
+            Text(stringResource(R.string.review_hint), Modifier.padding(top = 8.dp))
+            OutlinedTextField(value = code, onValueChange = {
+                code = it.take(128); invalid = false
+            }, label = { Text(stringResource(R.string.review_code)) }, singleLine = true,
+                isError = invalid, modifier = Modifier.fillMaxWidth().padding(top = 12.dp),
+                keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Characters,
+                    autoCorrectEnabled = false))
+            if (invalid) Text(stringResource(R.string.review_invalid), color = MaterialTheme.colorScheme.error)
+            Button(enabled = enabled && code.isNotBlank(), onClick = {
                 if (access.activateReview(code)) open = false else invalid = true
-            }) { Text(stringResource(R.string.review_unlock)) } },
-            dismissButton = { TextButton(onClick = { open = false }) { Text(stringResource(R.string.cancel)) } })
+            }, modifier = Modifier.fillMaxWidth().padding(top = 12.dp)) {
+                Text(stringResource(R.string.review_unlock))
+            }
+            TextButton(onClick = { open = false }) { Text(stringResource(R.string.cancel)) }
+        }
     }
 }

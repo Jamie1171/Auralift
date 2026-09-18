@@ -5,10 +5,13 @@
 Adds a reusable offline review grant, native code entry and explicit removal,
 with regression checks for invalid codes, recreation, purchase/pass independence,
 gain transitions and the 360 dp entry flow. No real review code is in the tests.
-Local required Gradle invocation stopped before compilation: the wrapper download
+Both local required Gradle invocations stopped before compilation: the wrapper download
 failed with `Network is unreachable`. Verification will use the existing GitHub
-Android workflow; this is not a recorded pass. Production signing and submission
-remain separate. See [reviewer setup](PLAY-REVIEW-ACCESS.md).
+Android workflow; this is not a recorded pass. The first CI run (35352186337) passed the entitlement tests but timed out in
+the new dialog UI test before text entry (Compose never became idle). The entry
+now expands inline in the scrolling Pro page, avoiding the extra dialog window;
+the same invalid-code, unlock and removal assertions are retained. A new CI run
+is required. Production signing and submission remain separate. See [reviewer setup](PLAY-REVIEW-ACCESS.md).
 
 ## 0.5.2 floating player and ten palettes — passed, 17 September 2026
 
