@@ -11,7 +11,10 @@ PR merge build `8ccaf8925f771027425f3a18fbb488a282e9bd0a`.
 - [Android 8 device suite](https://github.com/Jamie1171/Auralift/actions/runs/35397434336/job/105769370241): all 17 tests passed, plus the separate denied-permission check.
   Real app language selection cycles EN/ES/FR, survives activity recreation,
   retains agreement and opens the matching offline policies and support screen.
-- Android 16 device suite in the same run: pending completion.
+- Android 16 device suite in the same run: attempt 1 timed out after 45 minutes.
+  Its log reached 14/17 tests with zero reported failures, then stopped progressing.
+  This is an incomplete run, not a pass or proof of an application failure.
+  Job 105781123445 retries only the cancelled API 36 job; completion is pending.
 - [Optimized 16 KB startup and controls](https://github.com/Jamie1171/Auralift/actions/runs/35397434170): passed on the final application source.
 - Inspected native Spanish/French support and policy captures: readable titles,
   controls and document text. Unit UI checks also cover the explicit English
@@ -53,6 +56,39 @@ extras. The follow-up required gate above passed. No core audio behavior changed
 These are software/emulator checks, not acoustic safety evidence, independent
 legal/translation review, live ad or payment certification. No production signing
 or Google Play upload was performed. See [implementation](SUPPORT-AND-LANGUAGES.md).
+
+## 0.5.5 signed closed-test bundle — prepared, rollout verification pending
+
+Prepared from the exact CI archive above (archive SHA-256
+`5811ce8f37651bca399debc24d1f2e7471b6b37699b7427084082463f6b8f9f8`),
+without rebuilding or changing application contents.
+
+- File: `Auralift-0.5.5-Closed-Test.aab`, 8,467,738 bytes.
+- SHA-256: `1163ada1f312cb182fe398576ea757d1515de6b88fb5645d0de143916d66afa8`.
+- Manifest inspected from the bundle: `com.jamiewardle.auralift`, version 0.5.5 /
+  code 10, min SDK 26, target SDK 36, non-debuggable.
+- Signed with a dedicated RSA-4096 upload key, SHA256withRSA and SHA-256 digests.
+  Strict JAR signature verification passes with its upload certificate trusted.
+  All 547 original bundle entries are byte-identical; only signature metadata
+  was added. ZIP CRC verification passes.
+- Upload certificate SHA-256:
+  `281699a8a22822d97772c1cba3f5f5d6e0048807468ce7e4f2dbceacc40be85f`.
+  Alias `auralift-upload`, PKCS12. A private backup was delivered separately to
+  Jamie; no key or password is committed. Reuse this upload key for future bundles.
+  It is separate from Google's app-signing key and the sideloaded-test certificate.
+- Live ads and checkout are disabled in this bundle. AdMob and Play purchase
+  configuration remain separate work; software tests do not certify live payments.
+- The original API 36 timeout and retry above must be resolved before rollout.
+  The existing 16 KB/ARM64 native-library limits remain recorded below. Direct
+  inspection confirms all native LOAD alignments are 16 KB; the graphics-path
+  GNU_RELRO end modulo 16 KB is still 8192 in all four ABIs.
+- Standalone bundletool validation could not be run because the official tool
+  download did not complete in this environment. The CI Gradle bundle build and
+  local signature/identity/content checks passed. Play Console validation of the
+  uploaded draft and AAB-derived runtime testing are not yet claimed.
+
+This file can be uploaded as a draft for Console validation. It has not been
+uploaded or submitted by the assistant; no reviewer/tester invitation was sent.
 
 ## 0.5.4 explicit terms acceptance — passed, 18 September 2026
 
