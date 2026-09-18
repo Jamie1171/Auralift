@@ -26,10 +26,21 @@ PR merge build `8ccaf8925f771027425f3a18fbb488a282e9bd0a`.
 - Six static web policies match the bundled document text; all language links
   resolve within the generated site. [GitHub Pages deployment](https://github.com/Jamie1171/auralift-policies/actions/runs/35397462810) passed for policy
   commit `87c2c176f50f5c61a1f6f751c281fa1d2a047d8f`.
-- Test APK SHA-256: `3d0db4fcd01b646ea4f1024c0be7068ba601becc05c36728766dc4cb57993dff`.
-  APK signature verifies. CI uses a temporary debug certificate different from
-  the previously supplied 0.5.4 APK; replacement requires a fresh test install.
-  Export wanted profiles first because uninstalling clears local data.
+- Original CI APK SHA-256: `3d0db4fcd01b646ea4f1024c0be7068ba601becc05c36728766dc4cb57993dff`.
+- Delivered `Auralift-0.5.5-Play-Test.apk` is re-signed with the retained personal-test
+  certificate used for 0.5.2, avoiding another disposable signing identity.
+  APK v2/v3 signatures verify; all 469 non-META-INF payload entries are byte-identical
+  to the CI-tested APK. Size: 26,213,758 bytes. SHA-256:
+  `49ece36b52adb721d1093f45614edd7d4b808af7d4e83a79b955d1a676eb1bb4`.
+  Certificate SHA-256:
+  `7ba0540911fe9b3208e119d82a5710079d9ad982ea1c4259c500e0047a8f8f36`.
+  Private signing material stays outside Git and CI.
+- The previously supplied 0.5.4 screenshot APK has certificate SHA-256
+  `9fb6c57963bf8af99ffdd00d16c65bf80a1fabee6646ffc933760ced8f7b9219`;
+  its temporary private key is not available. Neither it nor the original CI-signed
+  0.5.5 APK can be updated in place with this retained-key build. Export wanted
+  profiles before uninstalling those builds; reinstalling clears local app data.
+  Future personal APKs should use the retained key. This is not a Play upload key.
 
 Earlier attempts are retained: both prescribed local Gradle invocations failed
 before compilation because the distribution download reports `Network is unreachable`.
