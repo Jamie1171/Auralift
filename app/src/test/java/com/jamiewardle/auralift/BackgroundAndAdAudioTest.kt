@@ -23,7 +23,7 @@ import java.time.Duration
 @GraphicsMode(GraphicsMode.Mode.LEGACY)
 class BackgroundAndAdAudioTest {
     private val app get() = ApplicationProvider.getApplicationContext<AuraliftApplication>()
-    @Before fun proFixture() { app.access.setVerifiedPurchase(true) }
+    @Before fun proFixture() { assertTrue(app.terms.accept()); app.access.setVerifiedPurchase(true) }
     // Inspect owned chains because a simulated audio HAL cannot establish acoustic gain.
     private fun chains(service: BoostService) = (BoostService::class.java.getDeclaredField("chains").apply { isAccessible = true }.get(service) as Map<*, *>).size
     @Test fun screenOffSessionLivesAndAdsReleaseEffectsBeforeAnyReconnect() {

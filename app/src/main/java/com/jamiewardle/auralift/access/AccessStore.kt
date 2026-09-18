@@ -8,7 +8,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 data class AccessState(val pro: Boolean = false, val owner: Boolean = false,
-                       val permanent: Boolean = false, val passRemainingMs: Long = 0)
+                       val permanent: Boolean = false, val passRemainingMs: Long = 0,
+                       val review: Boolean = false)
 
 /** Local clock, not DRM. Wall time carries an earned pass across a reboot. */
 object PassClock {
@@ -23,7 +24,8 @@ object PassClock {
     }
 }
 
-class AccessStore(private val context: Context, private val ownerBuild: Boolean) {
+class AccessStore(private val context: Context, private val ownerBuild: Boolean,
+                  private val reviewCodeSha256: String = "") {
     private val disk = context.getSharedPreferences("feature_access", Context.MODE_PRIVATE)
     // In memory: simulations cannot survive a new Owner process or affect the Play package.
     private var ownerSimulation = false
@@ -46,6 +48,7 @@ class AccessStore(private val context: Context, private val ownerBuild: Boolean)
     private fun boot() = Settings.Global.getInt(context.contentResolver, Settings.Global.BOOT_COUNT, -1)
     fun refresh() {
         val owner = ownerBuild && !ownerSimulation
+        val review = reviewAvailable && disk.getString("reviewGrant", null) == reviewCodeSha256
         val wall = System.currentTimeMillis()
         val remaining = if (!disk.getBoolean("passExpired", false)) PassClock.remaining(
             disk.getLong("passElapsed", -1), disk.getLong("passWall", 0), disk.getInt("passBoot", -2),
@@ -55,9 +58,30 @@ class AccessStore(private val context: Context, private val ownerBuild: Boolean)
             else putLong("lastWall", wall)
         }
         val wasPro = mutable.value.pro
-        mutable.value = AccessState(owner || purchased || remaining > 0, owner, purchased,
-            if (owner || purchased) 0 else remaining)
+        mutable.value = AccessState(owner || purchased || review || remaining > 0, owner, purchased,
+            if (owner || purchased || review) 0 else remaining, review)
         if (wasPro != mutable.value.pro) entitlementChanged?.invoke()
+    }
+    val reviewAvailable: Boolean
+        get() = !ownerBuild && reviewCodeSha256.matches(Regex("[0-9a-f]{64}"))
+
+    /** Explicit complimentary access to ordinary Pro, never an Owner simulation or purchase. */
+    fun activateReview(code: String): Boolean {
+        if (!reviewAvailable || code.length > 128) return false
+        val normalized = code.filterNot { it.isWhitespace() || it == '-' }.uppercase(java.util.Locale.ROOT)
+        if (!normalized.matches(Regex("[0-9A-F]{32}"))) return false
+        val digest = java.security.MessageDigest.getInstance("SHA-256")
+            .digest(normalized.toByteArray(Charsets.UTF_8)).joinToString("") { "%02x".format(it) }
+        if (!java.security.MessageDigest.isEqual(digest.toByteArray(), reviewCodeSha256.toByteArray())) return false
+        val saved = disk.edit().putString("reviewGrant", reviewCodeSha256).commit()
+        refresh()
+        return saved && state.value.review
+    }
+
+    fun deactivateReview(): Boolean {
+        val saved = disk.edit().remove("reviewGrant").commit()
+        refresh()
+        return saved && !state.value.review
     }
     /** Called only by a completed SDK reward or the isolated Owner simulator. No install grant. */
     internal fun grantEarnedPass(rewardId: String): Boolean {

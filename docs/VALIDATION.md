@@ -1,5 +1,74 @@
 # Validation — Auralift
 
+## 0.5.4 explicit terms acceptance — passed, 18 September 2026
+
+Validated source `3ef5f6b23c92856b8379bcc10752c8bac39124a3` (version code 9).
+Production application source is unchanged since `9e65379d53fcda29ccfc0c31bb1e5598fc9d2866`;
+subsequent changes update test fixtures, an overlay-window wait and documentation.
+
+- [Required unit/lint/build gate](https://github.com/Jamie1171/Auralift/actions/runs/35358225185): passed both editions on API 35, both lint tasks, Owner APK,
+  optimized public APK and public AAB, then both API 26 unit tasks separately.
+- [Android 8 device suite](https://github.com/Jamie1171/Auralift/actions/runs/35358225526/job/105642739220): passed, including the corrected floating-window synchronisation check.
+- [Android 16 device suite](https://github.com/Jamie1171/Auralift/actions/runs/35358225526/job/105642738819): passed on the same final source.
+- [Optimized 16 KB startup and controls](https://github.com/Jamie1171/Auralift/actions/runs/35358225143): passed, including real first-launch acceptance before starting boost.
+- Inspected native captures at 360 × 640 dp: readable warning/document links,
+  scrolling acceptance action, no layout overlap. Unit UI checks cover reading
+  both documents before agreement, decline, acceptance without audio/gain changes,
+  activity recreation and subsequent Settings access.
+- Receipt tests cover persistence, exact version/text metadata, old warning flags,
+  corrupt/missing records, write failure, material version changes and service
+  startup bypass attempts. Resource XML parses in all three languages, with no
+  duplicate keys. The archived terms match the shipped asset byte-for-byte:
+  SHA-256 `2fc55ff77581389affa0c1f12ca16814e24e073703784239ca3b407400899ad4`.
+
+Earlier attempts are retained. Both prescribed local Gradle invocations stopped
+before compilation because the wrapper download is blocked by this environment's
+network. First CI run 35357229704 compiled both editions and ran 61 Owner tests;
+the new receipt/acceptance tests passed, but two pre-existing Owner UI cases needed
+to establish agreement before navigating to unrelated controls. Run 35357746094
+then passed the full required gate. Device runs 35357229700 and 35357746082 exposed
+an Android 8 floating-window test timing issue: after the expanded window vanished,
+the test immediately queried its replacement. It now waits up to five seconds for
+the same required circle. No production floating-player changes were needed.
+
+See [acceptance design and competitor review](TERMS-ACCEPTANCE.md).
+These are simulated tests, not acoustic safety evidence or legal approval. Existing
+physical-device, live monetisation and ARM64/native-library scope limits below
+remain. No website, Play upload, production signing or public release is performed.
+
+## 0.5.3 reviewer access — passed, 18 September 2026
+
+Validated application/test source `e25e703b7084c0894ecedca210f2aa33071fc0d7`.
+This record is a documentation-only follow-up and does not alter the tested app.
+
+- [Required unit/lint/build gate](https://github.com/Jamie1171/Auralift/actions/runs/35352929223): passed both editions on API 35, both lint tasks, Owner APK,
+  optimized public APK and public AAB, then both API 26 unit tasks separately.
+  The new native 360 dp UI test enters an invalid code, corrects it, activates
+  review access and returns to Free. Entitlement regressions cover persistence,
+  code reuse, rejection, Owner isolation, changed verifier, purchase/pass
+  independence and gain clamping without an automatic gain increase.
+- [Device API 26 and 36 suites](https://github.com/Jamie1171/Auralift/actions/runs/35352929222): both jobs passed.
+- [Optimized 16 KB smoke](https://github.com/Jamie1171/Auralift/actions/runs/35352929691): passed. Its pre-existing x86-64 scope and ARM64/native-library
+  limitations below remain unchanged.
+- The private reviewer code was checked locally against the configured digest;
+  all resource XML parsed and the Console instructions fit its 500-character field.
+  Neither the real code nor signing material is in the public repository.
+
+Earlier attempts are retained: both local Gradle commands stopped before
+compilation because the wrapper download was network blocked. CI run
+35352186337 passed entitlement tests but failed the new dialog screen test with
+Compose AppNotIdleException before text entry. The final implementation expands
+code entry inline on the scrolling Pro page; the same assertions now pass.
+Initial 16 KB run 35352186413 failed before app installation when the emulator
+lost its package service (Broken pipe / Can't find service: package). It is not
+counted as an app pass. The later linked optimized run passed.
+
+Version 0.5.3 / code 8 remains unsubmitted. This change does not configure
+production signing, live purchases/ads or claim physical audio validation.
+A signed Play build containing this feature must accompany the reviewer
+instructions; the existing 0.5.2 installation does not accept the new code.
+See [reviewer setup](PLAY-REVIEW-ACCESS.md).
+
 ## 0.5.2 floating player and ten palettes — passed, 17 September 2026
 
 Validated source `64a826c0a2b27857fee3b62847a6e86aea9083af`, tested PR merge

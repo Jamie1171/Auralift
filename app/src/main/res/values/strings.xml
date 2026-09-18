@@ -348,4 +348,26 @@
     <string name="theme_midnight_hint">Ink &amp; lavender · evening glow</string>
     <string name="theme_slate">Slate</string>
     <string name="theme_slate_hint">Graphite &amp; silver · understated</string>
+    <string name="review_access">Review access</string>
+    <string name="review_active">Review access active</string>
+    <string name="review_hint">Enter the access code supplied for app review. All Pro features unlock on this device without payment, ads or a time limit.</string>
+    <string name="review_code">Access code</string>
+    <string name="review_unlock">Unlock Pro for review</string>
+    <string name="review_invalid">Code not recognised or access could not be saved. Check the code and try again.</string>
+    <string name="review_end">End review access</string>
+    <string name="review_active_hint">All Pro features are available. No purchase or ad is required. You can end review access to inspect the free experience.</string>
+    <string name="review_end_failed">Could not remove review access. Please try again.</string>
+    <string name="terms_welcome">Before you listen</string>
+    <string name="terms_updated">Review the updated terms</string>
+    <string name="terms_safety">Start at low volume and increase gradually. Loud or prolonged listening can cause permanent hearing damage and tinnitus. Excessive output can damage speakers. Take breaks and follow your equipment’s guidance. Comfortable or undistorted sound is not a guarantee of safe listening.</string>
+    <string name="terms_summary">Auralift adjusts digital gain; it does not measure loudness at your ears. Results depend on your device and player. Free controls remain available; Pro purchases and rewarded Ad Passes are optional. Your consumer rights remain protected.</string>
+    <string name="terms_review">Please review the terms before deciding. You can read and save both documents here, and find them later in Settings. The full documents are currently in English.</string>
+    <string name="terms_accept_explanation">Agree and continue means you accept the Terms of Use. It does not give consent for advertising or start audio processing.</string>
+    <string name="terms_local_record">This device saves the terms version, document fingerprint, app version and device-reported acceptance time. This record is not sent to us.</string>
+    <string name="terms_agree">Agree and continue</string>
+    <string name="terms_not_now">Not now</string>
+    <string name="terms_saving">Saving…</string>
+    <string name="terms_save_failed">Your agreement could not be saved. Please try again. Audio remains off.</string>
+    <string name="terms_save_copy">Save a copy</string>
+    <string name="terms_export_failed">The copy could not be saved. Please choose another location.</string>
 </resources>

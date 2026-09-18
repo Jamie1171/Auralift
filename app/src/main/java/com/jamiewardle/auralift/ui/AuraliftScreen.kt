@@ -45,6 +45,7 @@ import kotlin.math.*
 
 @Composable
 fun AuraliftScreen(app: AuraliftApplication, toggle: () -> Unit, mediaKey: (Int) -> Unit) {
+    val acceptance by app.terms.state.collectAsStateWithLifecycle()
     val prefs by app.settings.state.collectAsStateWithLifecycle()
     val state by app.engine.collectAsStateWithLifecycle()
     val access by app.access.state.collectAsStateWithLifecycle()
@@ -53,7 +54,7 @@ fun AuraliftScreen(app: AuraliftApplication, toggle: () -> Unit, mediaKey: (Int)
     var extra by rememberSaveable { mutableStateOf<String?>(null) }
     val screenScroll = remember(tab, extra) { ScrollState(0) }
     var showIntro by rememberSaveable { mutableStateOf(false) }
-    BackHandler(extra != null) { extra = null }
+    BackHandler(extra != null && acceptance?.version == app.terms.version) { extra = null }
     LaunchedEffect(Unit) { while (true) { app.access.refresh(); delay(1000) } }
     val accent = if (access.pro) prefs.accent else Accent.MINT
     val theme = remember(accent, prefs.lightTheme) { appTheme(accent, prefs.lightTheme) }
@@ -61,6 +62,10 @@ fun AuraliftScreen(app: AuraliftApplication, toggle: () -> Unit, mediaKey: (Int)
     MaterialTheme(colorScheme = theme.colors, shapes = Shapes(
         small = RoundedCornerShape(theme.corner / 2), medium = RoundedCornerShape(theme.corner),
         large = RoundedCornerShape(theme.corner), extraLarge = RoundedCornerShape(theme.corner))) {
+        if (acceptance?.version != app.terms.version) {
+            TermsAcceptanceScreen(app)
+            return@MaterialTheme
+        }
         Box(Modifier.fillMaxSize()) {
         ThemeBackdrop(Modifier.matchParentSize())
         Scaffold(

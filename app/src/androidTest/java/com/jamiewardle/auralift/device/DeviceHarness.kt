@@ -66,6 +66,7 @@ abstract class DeviceHarness {
             instrumentation.uiAutomation.grantRuntimePermission(app.packageName, Manifest.permission.POST_NOTIFICATIONS)
         }
         onMain {
+            assertTrue(app.terms.accept())
             app.adAudio.resume()
             if (Distribution.owner) app.access.simulateFree() else {
                 app.getSharedPreferences("feature_access", Context.MODE_PRIVATE).edit().clear()

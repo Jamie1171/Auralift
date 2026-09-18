@@ -104,7 +104,8 @@ class FloatingDeviceTest : DeviceHarness() {
         assertTrue(device.wait(Until.hasObject(minimise), 5000))
         device.findObject(minimise).click()
         assertTrue(device.wait(Until.gone(minimise), 5000))
-        assertTrue(device.hasObject(handle))
+        // Resize removes one window before the replacement reaches accessibility.
+        assertTrue(device.wait(Until.hasObject(handle), 5000))
         assertTrue(app.settings.state.value.floatingControls)
         // Reopening the app restores the opted-in widget, without enabling audio.
         scenario!!.close(); scenario = null; launch(); device.pressHome()

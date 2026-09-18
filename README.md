@@ -1,5 +1,12 @@
 # Auralift
 
+The current review branch is **0.5.4 / version code 9**. It adds explicit first-use
+terms acceptance, a private local receipt, offline document saving and stronger
+listening guidance, on top of 0.5.3 Google Play reviewer access. Acceptance never
+starts boost. See [acceptance and competitor review](docs/TERMS-ACCEPTANCE.md),
+[review access](docs/PLAY-REVIEW-ACCESS.md) and [validation](docs/VALIDATION.md).
+These changes are not yet a published Play release.
+
 A native Android volume booster, written in **Kotlin, Jetpack Compose and Android
 audio APIs**. Version **0.5.2** adds a compact circular floating player, independent player/boost
 controls, selected EQ outlines and ten full light/dark palettes. Version 0.5.1 put the one-hour Ad Pass directly below the Listen

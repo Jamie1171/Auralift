@@ -112,6 +112,7 @@ class BoostService : Service() {
     }
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         commandReceived = true
+        if (!app.terms.hasAcceptedCurrent()) { finish(word(R.string.boost_off)); return START_NOT_STICKY }
         when (intent?.action) {
             START -> startBoost()
             SHOW_FLOATING -> publish()
@@ -124,7 +125,7 @@ class BoostService : Service() {
         return START_NOT_STICKY
     }
     private fun startBoost() {
-        if (stopped || boostEnabled) return
+        if (stopped || boostEnabled || !app.terms.hasAcceptedCurrent()) return
         // Settings/entitlement collectors may publish synchronously during reset.
         // Mark the explicit Start before they can mistake this for an unused idle service.
         boostEnabled = true
@@ -134,7 +135,7 @@ class BoostService : Service() {
         fadeMultiplier = 1f
         rebuild()
     }
-    private fun keepFloating() = app.settings.state.value.floatingControls &&
+    private fun keepFloating() = app.terms.hasAcceptedCurrent() && app.settings.state.value.floatingControls &&
         app.access.state.value.pro && Settings.canDrawOverlays(this)
 
     private fun stopBoost(message: String, resetSound: Boolean = false) {
@@ -191,6 +192,7 @@ class BoostService : Service() {
     }
     private fun publish() {
         if (stopped) return
+        if (!app.terms.hasAcceptedCurrent()) { finish(word(R.string.boost_off)); return }
         if (!boostEnabled) {
             if (commandReceived && !keepFloating()) { finish(word(R.string.boost_off)); return }
             floating.refresh()
@@ -290,7 +292,10 @@ class BoostService : Service() {
         const val COMPARE = "com.jamiewardle.auralift.COMPARE"
         private const val CHANNEL = "audio_controls"
         private const val NOTIFICATION = 17
-        fun start(context: Context) { context.startForegroundService(Intent(context, BoostService::class.java).setAction(START)) }
+        fun start(context: Context) {
+            if (!(context.applicationContext as AuraliftApplication).terms.hasAcceptedCurrent()) return
+            context.startForegroundService(Intent(context, BoostService::class.java).setAction(START))
+        }
         fun stop(context: Context) {
             if ((context.applicationContext as AuraliftApplication).engine.value.running)
                 context.startService(Intent(context, BoostService::class.java).setAction(STOP))
@@ -299,7 +304,7 @@ class BoostService : Service() {
         fun showFloating(context: Context) {
             val app = context.applicationContext as AuraliftApplication
             app.access.refresh()
-            if (!app.settings.state.value.floatingControls || !app.access.state.value.pro || !Settings.canDrawOverlays(context)) return
+            if (!app.terms.hasAcceptedCurrent() || !app.settings.state.value.floatingControls || !app.access.state.value.pro || !Settings.canDrawOverlays(context)) return
             try { context.startForegroundService(Intent(context, BoostService::class.java).setAction(SHOW_FLOATING)) }
             catch (_: RuntimeException) {
                 app.settings.update { it.copy(floatingControls = false) }

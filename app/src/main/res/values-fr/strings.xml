@@ -348,4 +348,26 @@
     <string name="theme_midnight_hint">Encre et lavande · lueur du soir</string>
     <string name="theme_slate">Ardoise</string>
     <string name="theme_slate_hint">Graphite et argent · sobriété</string>
+    <string name="review_access">Accès pour examen</string>
+    <string name="review_active">Accès pour examen actif</string>
+    <string name="review_hint">Saisissez le code fourni pour examiner l’application. Toutes les fonctionnalités Pro sont débloquées sur cet appareil sans paiement, publicité ni limite de temps.</string>
+    <string name="review_code">Code d’accès</string>
+    <string name="review_unlock">Débloquer Pro pour examen</string>
+    <string name="review_invalid">Code non reconnu ou accès impossible à enregistrer. Vérifiez le code et réessayez.</string>
+    <string name="review_end">Terminer l’accès pour examen</string>
+    <string name="review_active_hint">Toutes les fonctionnalités Pro sont disponibles sans achat ni publicité. Vous pouvez terminer cet accès pour examiner la version gratuite.</string>
+    <string name="review_end_failed">Impossible de supprimer l’accès pour examen. Réessayez.</string>
+    <string name="terms_welcome">Avant de commencer</string>
+    <string name="terms_updated">Consultez les conditions mises à jour</string>
+    <string name="terms_safety">Commencez à faible volume et augmentez progressivement. Une écoute forte ou prolongée peut provoquer des lésions auditives permanentes et des acouphènes. Un niveau excessif peut endommager les haut-parleurs. Faites des pauses et suivez les conseils du fabricant. Un son confortable ou sans distorsion ne garantit pas une écoute sans risque.</string>
+    <string name="terms_summary">Auralift règle le gain numérique ; elle ne mesure pas le niveau sonore à vos oreilles. Les résultats dépendent de votre appareil et du lecteur. Les commandes gratuites restent disponibles ; les achats Pro et les pass publicitaires sont facultatifs. Vos droits de consommateur restent protégés.</string>
+    <string name="terms_review">Consultez les conditions avant de décider. Vous pouvez lire et enregistrer les deux documents ici, puis les retrouver dans les Paramètres. Les documents complets sont actuellement en anglais.</string>
+    <string name="terms_accept_explanation">Accepter et continuer signifie que vous acceptez les Conditions d’utilisation. Cela ne vaut pas consentement à la publicité et ne démarre pas le traitement audio.</string>
+    <string name="terms_local_record">Cet appareil conserve la version des conditions, l’empreinte du document, la version de l’app et l’heure d’acceptation indiquée par l’appareil. Cet enregistrement ne nous est pas envoyé.</string>
+    <string name="terms_agree">Accepter et continuer</string>
+    <string name="terms_not_now">Pas maintenant</string>
+    <string name="terms_saving">Enregistrement…</string>
+    <string name="terms_save_failed">Votre acceptation n’a pas pu être enregistrée. Réessayez. Le traitement audio reste désactivé.</string>
+    <string name="terms_save_copy">Enregistrer une copie</string>
+    <string name="terms_export_failed">La copie n’a pas pu être enregistrée. Choisissez un autre emplacement.</string>
 </resources>

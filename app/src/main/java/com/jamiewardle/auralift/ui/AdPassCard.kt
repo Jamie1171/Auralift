@@ -38,7 +38,7 @@ import kotlin.math.ceil
     onPrepare: () -> Unit, onWatch: () -> Unit, onDetails: (() -> Unit)? = null,
     ownerEdition: Boolean = false, modifier: Modifier = Modifier) {
     // An earned pass keeps a visible countdown. Permanent access needs no ad offer.
-    if (access.owner || access.permanent) return
+    if (access.owner || access.permanent || access.review) return
     val active = access.pro && access.passRemainingMs > 0
     Surface(modifier.fillMaxWidth(), shape = RoundedCornerShape(LocalAppTheme.current.corner),
         color = MaterialTheme.colorScheme.primaryContainer,
