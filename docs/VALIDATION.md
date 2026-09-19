@@ -1,6 +1,6 @@
 # Validation — Auralift
 
-## 0.5.9 closed-test rewarded ads — validation pending
+## 0.5.9 closed-test rewarded ads — built and signed
 
 Version code 14 enables Google's official demo app and rewarded-unit IDs in the
 optimized Play release, controlled by the explicit `auralift.testAds=true` property.
@@ -19,7 +19,29 @@ See Google's [test-ad instructions](https://developers.google.com/admob/android/
 
 - Local localization and whitespace checks passed.
 - Both prescribed local Gradle commands failed at the Gradle 8.13 download with
-  network unreachable. The required GitHub Actions checks are pending.
+  network unreachable. The required GitHub Actions gate passed instead.
+- Validated source `6cb42719e52b784049028c39d82aab839a556eb8`, PR merge
+  `8ebe0fba23697740f480f66fe08c26d78e9ab52c`.
+- [Required build gate](https://github.com/Jamie1171/Auralift/actions/runs/35446179323):
+  both lint tasks, APKs, AAB and the public-store/test-ad conflict check passed.
+  API 35: Owner 71 / Play 75; API 26: Owner 48 / Play 53. Total 247 unit-test
+  executions, no failures/errors/skips; result XML and guard log inspected.
+- [Device workflow](https://github.com/Jamie1171/Auralift/actions/runs/35446179320):
+  Android 8 and Android 16 jobs passed.
+- [16 KB optimized runtime](https://github.com/Jamie1171/Auralift/actions/runs/35446179287):
+  passed on x86-64. This does not add physical-device or ARM runtime evidence.
+- Signed deliverable: `Auralift-0.5.9-Closed-Test.aab`, 8,469,933 bytes; SHA-256
+  `3bf8bbfe3c708c9cd7145c4d8ebe71c1b1c49d777860173ce368173ac5dc183f`.
+  CI archive SHA-256:
+  `2d9efab3a100b3d0b2863c9620817f8dc40b1cbb96f2b422ebcfa8e06ab8a504`.
+  All 547 original bundle entries remain unchanged after signing and ZIP CRCs pass.
+- Strict signature verification passed with the existing upload certificate trusted;
+  certificate SHA-256
+  `281699a8a22822d97772c1cba3f5f5d6e0048807468ce7e4f2dbceacc40be85f`.
+  Inspected manifest and DEX: version 0.5.9 / code 14, non-debuggable, matching
+  Google demo app/unit IDs, billing permission, scoped email query, existing public
+  billing key and lifetime option IDs. All six legal support addresses remain.
+- No Play Console upload/submission or actual ad viewing was performed here.
 - Actual ad loading/completion, consent UI and the one-hour timer must be checked
   on an installed Free test account. No live inventory, revenue or account-side
   AdMob readiness is claimed. No test purchase is required to earn a pass.
