@@ -1,0 +1,74 @@
+Auralift — Condiciones de uso
+Fecha de entrada en vigor: 18 de septiembre de 2026
+Versión del acuerdo: 2026-09-18.2
+
+1. Proveedor y contacto
+Auralift es una aplicación proporcionada por Jamie Wardle, que opera con el nombre comercial AuraForge Labs, con domicilio en Flat 6a, 23 Savile Road, Halifax, HX1 2BA, West Yorkshire, England.
+
+Para solicitar asistencia, consultar sobre compras, reembolsos o presentar reclamaciones, escribe a auraforgelabssupport+auralift@gmail.com. Estas condiciones explican el uso de Auralift y sus funciones de pago. Se aplican junto con las condiciones pertinentes de Google Play y no eliminan los derechos irrenunciables de los consumidores.
+
+Antes de usar Auralift, puedes leer y guardar estas condiciones y elegir Aceptar y continuar o Ahora no. Aceptar y continuar registra tu aceptación de estas condiciones; no constituye consentimiento para la publicidad opcional, una renuncia a tus derechos como consumidor ni una compra, y tampoco inicia el procesamiento de audio. Las condiciones y la política de privacidad siguen disponibles en Ajustes.
+
+Auralift está destinada a personas de 18 años o más.
+
+2. Qué hace Auralift
+Auralift permite ajustar el audio mediante las funciones disponibles en dispositivos Android compatibles. Actualmente requiere Android 8.0 o posterior. Los resultados dependen del dispositivo, la ruta de audio, el software del fabricante, el reproductor y el contenido. Algunas fuentes de audio o dispositivos pueden no admitir determinados efectos.
+
+Los valores de amplificación mostrados son la ganancia digital solicitada, no una medición de la presión sonora en tus oídos ni una garantía de que el equipo pueda producir ese aumento sin distorsión. Auralift no es un producto sanitario ni un tratamiento para problemas auditivos. Prueba las funciones gratuitas con tu dispositivo y tus aplicaciones de audio antes de comprar; hacerlo no implica renunciar a tus derechos si una función de pago es defectuosa o no coincide con su descripción.
+
+3. Escucha y controles
+Empieza con un volumen bajo del sistema y aumenta los ajustes gradualmente. El sonido fuerte, especialmente con una exposición repetida o prolongada, puede causar daños auditivos permanentes y acúfenos. Los daños pueden desarrollarse sin molestias evidentes. Una salida excesiva también puede dañar los altavoces u otros equipos de audio. Sigue las recomendaciones de escucha y funcionamiento de tu dispositivo, auriculares y altavoces.
+
+Reduce el volumen y la ganancia, o detén la reproducción, si el sonido resulta incómodo o distorsionado. La ausencia de molestias o distorsión no demuestra que la escucha sea segura. Auralift no mide la presión sonora en tus oídos. Ni la ganancia mostrada, ni el límite gratuito, ni la aceptación de una advertencia garantizan un nivel de escucha seguro. Descansa con regularidad y evita escuchar durante mucho tiempo a niveles elevados.
+
+Al detener la amplificación, se liberan los efectos de Auralift. La acción Detener del reproductor flotante también restablece la ganancia y los ajustes del ecualizador. No detiene la música ni la reproducción de otra aplicación. El reproductor flotante puede permanecer abierto con la amplificación detenida. Cerrarlo es una acción independiente y no significa por sí sola que todos los efectos de audio o reproductores se hayan detenido.
+
+4. Funciones gratuitas, Pro y Ad Pass
+La edición gratuita ofrece los controles de audio anunciados con un límite de ganancia solicitada de +15 dB. Pro añade las funciones prémium anunciadas, entre ellas un límite de +35 dB, el reproductor flotante, temas adicionales y funciones avanzadas de perfiles. Siguen aplicándose las limitaciones del equipo y de compatibilidad.
+
+Cuando estén disponibles, Lifetime Pro y Supporter Pro son compras únicas que conceden las mismas funciones Pro. Supporter Pro es una compra opcional de precio superior para quienes quieran prestar apoyo adicional; no es una donación benéfica y está sujeta a las mismas protecciones aplicables al consumidor. Ninguno de los productos es una suscripción. Google Play muestra el precio y la moneda aplicables antes del pago.
+
+Un Ad Pass con recompensa proporciona una hora de acceso temporal a Pro después de que el servicio publicitario confirme el cumplimiento de las condiciones de la recompensa. La hora transcurre en tiempo real, incluso mientras no se usa la aplicación. Los pases no se acumulan y se puede solicitar otro después de que expire el anterior, según disponibilidad. No se garantizan la disponibilidad, la duración ni la carga correcta de los anuncios.
+
+Cuando expira un pase, la aplicación vuelve al límite gratuito sin aumentar un ajuste inferior, cierra el reproductor flotante prémium y vuelve al tema gratuito. Los perfiles guardados se conservan, aunque las operaciones prémium dejan de estar disponibles hasta que se recupere el acceso Pro. La expiración no detiene la reproducción de otra aplicación. Activar Pro no aumenta automáticamente la ganancia.
+
+5. Compras, restauración y significado de «Lifetime»
+«Lifetime Pro» significa una licencia de pago único para las funciones Pro de este producto Auralift, sin cargos recurrentes. No imponemos renovaciones periódicas ni revocamos una licencia de pago válida simplemente para exigir que se compre de nuevo. No incluye productos futuros independientes ni garantiza compatibilidad con todos los dispositivos o versiones de sistema futuros. Tus derechos relativos a las funciones prometidas, las actualizaciones exigidas y el contenido digital defectuoso no se ven afectados.
+
+Las compras están vinculadas a la cuenta de Google Play utilizada. Su restauración o verificación pueden requerir esa cuenta, los servicios de Google Play y una conexión a internet. Una imposibilidad temporal de verificar una compra no anula por sí misma tus derechos como consumidor; contacta con asistencia si no puedes restaurar el acceso.
+
+Si una compra se reembolsa o revoca a través de Google Play, el acceso de pago asociado puede retirarse cuando se reciba su estado actualizado. Desinstalar la aplicación no solicita ni obtiene por sí solo un reembolso.
+
+6. Reembolsos, desistimiento y compras defectuosas
+Google Play procesa los pagos y ofrece un servicio de solicitud de reembolsos. El derecho a un reembolso depende de la compra, las circunstancias, el país y la legislación aplicable. Puedes usar el procedimiento de Google Play (https://support.google.com/googleplay/answer/2479637?hl=es) o escribirnos a auraforgelabssupport+auralift@gmail.com para que investiguemos y, cuando corresponda, tramitemos un reembolso mediante Play Console.
+
+Explica el problema e incluye la referencia de pedido de Google Play si la tienes. No envíes contraseñas ni datos completos de tarjetas. No exigimos información excesiva ni condicionamos a nuestro procedimiento de asistencia el ejercicio de derechos disponibles directamente a través de Google o de la ley.
+
+Para consumidores del Reino Unido, el derecho habitual de desistimiento sobre contenido digital solo puede extinguirse al comenzar el suministro inmediato si has consentido expresamente, reconocido el efecto sobre ese derecho y se han cumplido los demás requisitos exigidos. La mera inclusión de esta frase no obtiene dicho consentimiento. Si no se cumplen las condiciones, se mantiene cualquier derecho de desistimiento aplicable. Otros países pueden reconocer derechos diferentes.
+
+El contenido digital de pago debe cumplir los requisitos legales aplicables, incluidos su descripción y los requisitos de calidad e idoneidad. Si no los cumple, puedes tener derecho a corrección o sustitución, reducción del precio, reembolso u otra reparación prevista por la legislación pertinente. No utilizaremos una regla de «ventas definitivas», la palabra «Supporter» ni una declaración de compatibilidad para eliminar esos derechos.
+
+Estas condiciones no ofrecen una garantía adicional e incondicional de reembolso por cambio de opinión. Esto no limita la política de reembolsos aplicable de Google, una garantía específica ofrecida al comprar ni tus derechos legales. Si no resolvemos una reclamación, puedes solicitar su revisión; tus demás vías legales siguen disponibles.
+
+7. Permiso para usar la aplicación
+Recibes permiso para instalar y usar Auralift a través de canales de distribución autorizados, sujeto a estas condiciones y a las licencias aplicables. Nosotros y nuestros licenciantes conservamos los derechos de propiedad intelectual. Los componentes de terceros y de código abierto siguen sujetos a sus avisos y licencias correspondientes.
+
+No uses Auralift ilegalmente, no interfieras en los sistemas de compra o publicidad ni la presentes como un producto propio. Nada de lo aquí indicado restringe actividades permitidas por la ley aplicable o una licencia de código abierto pese a una restricción contractual.
+
+8. Actualizaciones, disponibilidad y otros servicios
+Las actualizaciones pueden corregir defectos, abordar cuestiones de seguridad o compatibilidad, o modificar funciones. Cumpliremos las obligaciones aplicables de proporcionar las actualizaciones exigidas y preservar los derechos adquiridos. Estas condiciones no nos conceden un derecho ilimitado a retirar funciones de pago sin ofrecer ninguna reparación.
+
+Android, Google Play, los servicios publicitarios y tus aplicaciones multimedia son servicios independientes. Su disponibilidad y funcionamiento pueden afectar a Auralift. No podemos prometer un funcionamiento ininterrumpido con todas las combinaciones de terceros, pero seguimos siendo responsables de las obligaciones que nos impone la ley.
+
+Puedes dejar de usar Auralift y desinstalarla en cualquier momento. Desinstalarla no elimina los archivos exportados, no solicita un reembolso ni cancela derechos derivados de una compra completada. Si se deja de ofrecer el producto, explicaremos cómo afecta al acceso de pago y proporcionaremos las reparaciones exigidas por la ley. No usaremos estas condiciones para revocar arbitrariamente una licencia válida ni negar las reparaciones debidas por funciones prometidas que no suministremos.
+
+9. Responsabilidad y derechos legales
+Respondemos por el incumplimiento de las obligaciones que nos corresponden conforme a estas condiciones y a la ley. Nada de lo aquí indicado excluye ni limita responsabilidad cuando hacerlo sea ilegal, incluida la responsabilidad por fraude o por muerte o lesiones causadas por negligencia. No se excluyen tus derechos irrenunciables sobre contenido digital.
+
+Sigue unas recomendaciones de escucha razonables y usa los controles con cuidado. Dichas recomendaciones no te trasladan la responsabilidad por un defecto ni justifican nuestro incumplimiento de obligaciones legales.
+
+10. Cambios en estas condiciones
+Podemos actualizar estas condiciones para reflejar cambios lícitos en la aplicación, los servicios o la actividad. Mostraremos la fecha de entrada en vigor y explicaremos los cambios sustanciales, informándote antes de que surtan efecto y solicitando una nueva aceptación cuando corresponda. Los cambios no eliminarán retroactivamente derechos adquiridos ni prevalecerán sobre las protecciones irrenunciables de tu país. Respetaremos los requisitos de consentimiento o reparación legal que se apliquen a un cambio.
+
+Idiomas de los documentos
+Estos documentos están disponibles en inglés, español y francés. Puedes elegir el idioma y guardar una copia. Las traducciones pretenden describir las mismas condiciones y prácticas. Contacta con nosotros si alguna redacción no está clara; elegir un idioma no restringe tus derechos irrenunciables.

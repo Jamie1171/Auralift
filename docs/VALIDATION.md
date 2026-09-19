@@ -1,5 +1,291 @@
 # Validation — Auralift
 
+## 0.5.9 closed-test rewarded ads — built and signed
+
+Version code 14 enables Google's official demo app and rewarded-unit IDs in the
+optimized Play release, controlled by the explicit `auralift.testAds=true` property.
+The runtime and manifest receive matching IDs. Test mode overrides supplied live
+IDs; disabling it restores the existing production-property/disabled behavior.
+The configuration rejects `testAds=true` with `storeLive=true`; CI now checks that
+rejection and its expected error. The guard cannot detect a Play Console track:
+this bundle is for internal/closed testing, not promotion into production.
+
+There are no reward/consent/audio/expiry code changes. The same UMP checks and SDK
+earned-reward callback grant one real hour, persisted across reopening; loading or
+closing an ad alone grants nothing. Existing tests cover duplicate rewards,
+failed claims, expiry, gain clamping, retained profiles and the ad audio gate.
+Owner remains a separate SDK-free package and payment configuration is unchanged.
+See Google's [test-ad instructions](https://developers.google.com/admob/android/next-gen/test-ads).
+
+- Local localization and whitespace checks passed.
+- Both prescribed local Gradle commands failed at the Gradle 8.13 download with
+  network unreachable. The required GitHub Actions gate passed instead.
+- Validated source `6cb42719e52b784049028c39d82aab839a556eb8`, PR merge
+  `8ebe0fba23697740f480f66fe08c26d78e9ab52c`.
+- [Required build gate](https://github.com/Jamie1171/Auralift/actions/runs/35446179323):
+  both lint tasks, APKs, AAB and the public-store/test-ad conflict check passed.
+  API 35: Owner 71 / Play 75; API 26: Owner 48 / Play 53. Total 247 unit-test
+  executions, no failures/errors/skips; result XML and guard log inspected.
+- [Device workflow](https://github.com/Jamie1171/Auralift/actions/runs/35446179320):
+  Android 8 and Android 16 jobs passed.
+- [16 KB optimized runtime](https://github.com/Jamie1171/Auralift/actions/runs/35446179287):
+  passed on x86-64. This does not add physical-device or ARM runtime evidence.
+- Signed deliverable: `Auralift-0.5.9-Closed-Test.aab`, 8,469,933 bytes; SHA-256
+  `3bf8bbfe3c708c9cd7145c4d8ebe71c1b1c49d777860173ce368173ac5dc183f`.
+  CI archive SHA-256:
+  `2d9efab3a100b3d0b2863c9620817f8dc40b1cbb96f2b422ebcfa8e06ab8a504`.
+  All 547 original bundle entries remain unchanged after signing and ZIP CRCs pass.
+- Strict signature verification passed with the existing upload certificate trusted;
+  certificate SHA-256
+  `281699a8a22822d97772c1cba3f5f5d6e0048807468ce7e4f2dbceacc40be85f`.
+  Inspected manifest and DEX: version 0.5.9 / code 14, non-debuggable, matching
+  Google demo app/unit IDs, billing permission, scoped email query, existing public
+  billing key and lifetime option IDs. All six legal support addresses remain.
+- No Play Console upload/submission or actual ad viewing was performed here.
+- Actual ad loading/completion, consent UI and the one-hour timer must be checked
+  on an installed Free test account. No live inventory, revenue or account-side
+  AdMob readiness is claimed. No test purchase is required to earn a pass.
+
+## 0.5.8 support email repair — built and signed
+
+Jamie reported a successful 0.5.7 Play test-card purchase and Pro unlock/restore.
+This is user-observed evidence, not a claim of testing Supporter, refunds or pending
+payments. The same device opened support drafts with only a recipient, and failed
+to open drafts containing a screenshot.
+
+Version code 13 uses ACTION_SEND for the complete draft, discovers email packages
+through a scoped mailto query, and targets their actual SEND activities. It removes
+the SENDTO selector from screenshot sharing. The chooser and its targets carry the
+image URI and temporary read permission. Message, subject and optional diagnostics
+remain together; requested device details have a fallback before the audio service
+has produced diagnostics. The form remains local and the user sends in their email
+app. No backend, automatic sending or broad package visibility is introduced.
+The address is centered with 12 dp spacing below it.
+
+Regression coverage checks text/Unicode preservation, the actual share activity,
+attachment access through the chooser, exclusion of non-email apps, unsupported
+clients, and optional diagnostic fallback. The implementation follows Android's
+[email intent guidance](https://developer.android.com/guide/components/intents-common#Email)
+and [sharing guidance](https://developer.android.com/develop/ui/compose/sharing/send).
+
+- Local localization and whitespace checks passed.
+- Both prescribed local Gradle invocations failed downloading Gradle 8.13 because
+  the network was unreachable. The required GitHub Actions gate passed instead.
+- Validated source `1982292a82f595bc56a491df06df8ba9bd3cbfe6`, PR merge
+  `a4af4ba1dcc7d96a1de0bb1a9ac237fdaf5f3b59`.
+- [Required build gate](https://github.com/Jamie1171/Auralift/actions/runs/35442256461):
+  both lint tasks, APKs and AAB passed. API 35: Owner 71 / Play 75; API 26:
+  Owner 48 / Play 53. Total 247 unit-test executions, no failures/errors/skips.
+  All five support regression cases passed in each edition on each SDK.
+- Inspected the generated feedback screenshot: centered address and separation
+  above the category controls are visible; the form and email action remain usable.
+- [Device workflow](https://github.com/Jamie1171/Auralift/actions/runs/35442256475):
+  Android 8 passed; Android 16 later ended cancelled, so no successful Android 16
+  completion is claimed for this build.
+- [16 KB optimized runtime](https://github.com/Jamie1171/Auralift/actions/runs/35442256468):
+  initial attempt failed during background checks. Logs show a native SIGSEGV in
+  emulator `system_server` / SettingsProvider, followed by DeadSystemException in
+  Auralift, Phone and Google Play services. A single fresh-emulator retry passed
+  (job 105895873549); the initial failed attempt is retained as infrastructure
+  failure evidence, not reclassified as an app pass. Existing ARM runtime limits
+  remain; the exercised runtime is x86-64.
+- Signed deliverable: `Auralift-0.5.8-Closed-Test.aab`, 8,469,890 bytes; SHA-256
+  `5fda94815077ecdcfe5eb252ec5dfd6bb62fbf445e02dbbc5b9565e7bc9a15ef`.
+  CI archive SHA-256:
+  `626203d5adbd487e8d0a0470864e8f4445db307dac564f185a34e61ddf8e1060`.
+  All 547 original bundle entries remain unchanged after signing and ZIP CRCs pass.
+- Strict signature verification passed with the existing upload certificate trusted;
+  certificate SHA-256
+  `281699a8a22822d97772c1cba3f5f5d6e0048807468ce7e4f2dbceacc40be85f`.
+  Manifest confirms `com.jamiewardle.auralift`, 0.5.8 / code 13, min SDK 26,
+  target SDK 36, non-debuggable, billing permission and the scoped mailto query.
+  No QUERY_ALL_PACKAGES permission. Existing public billing key, lifetime option
+  IDs and all six legal support addresses remain present in the signed bundle.
+- Actual Gmail draft population and screenshot opening must be confirmed on the
+  device after installation; automated intent tests do not prove client behavior.
+  No email was sent and no Play Console upload/submission was performed.
+
+Subsequent user evidence: Jamie confirmed 0.5.8 on Pixel 9a / Android 17 populated
+the Gmail subject and message, included optional diagnostics, and attached the
+chosen screenshot. He then promoted the bundle to the closed track for review.
+
+## 0.5.7 Play billing configuration — built and signed
+
+Version code 12 configures Jamie's supplied RSA-2048 public licensing key.
+Public-key DER SHA-256: `5fc0dad47336ec054b129200dd2285dddfed82082665ef5396b5e6e520b2105c`.
+Pro and Supporter accept their `pro-lifetime` / `supporter-lifetime` base options,
+prefer them over legacy `buy`, and reject unrelated/promotional offers. Regression
+coverage checks both mappings and rejection cases. Prices remain supplied by Play.
+Release advertising IDs remain unset; Owner remains separate and unlocked.
+
+The emulator ADB collector now replaces invalid UTF-8 in diagnostics instead of
+crashing after completed app checks. Command exit-code checks are unchanged.
+
+Both prescribed local Gradle invocations failed while downloading Gradle 8.13
+(network unreachable). Required gates will run in GitHub Actions instead.
+Validated source `5afa89245f39a76f84e28a61c1582999ddbc1957`, PR merge
+`1da1289fb701890ac8b2433cbea4eea67b9eab07`.
+- [Required build gate](https://github.com/Jamie1171/Auralift/actions/runs/35411054760):
+  both lint tasks, APKs, AAB and both unit-test invocations passed. API 35: Owner 68 /
+  Play 72; API 26: Owner 45 / Play 50. Total 235, no failures/errors/skips.
+- [Android 8 and Android 16 device jobs](https://github.com/Jamie1171/Auralift/actions/runs/35411054636): both passed.
+- [16 KB optimized runtime workflow](https://github.com/Jamie1171/Auralift/actions/runs/35411054688): passed, including diagnostic collection.
+  This does not add physical-device or ARM runtime evidence to the earlier limits.
+- Local localization checks passed for all 379 keys per locale and six legal documents.
+  All 12 emulator-helper tests passed; an additional invalid-byte diagnostic check
+  confirmed decoding recovery while preserving failed-command rejection.
+- Signed deliverable: `Auralift-0.5.7-Closed-Test.aab`, 8,468,437 bytes; SHA-256
+  `b7d8d206ed812e7a22921be125e966d8e8c9f2e87533bfc90d59ef47099c6600`.
+- CI archive SHA-256:
+  `fce73af1d82e65c190a1959601b0c495381cf42a032cc45e8d6e844107e307e3`.
+  All 547 original bundle entries remain byte-identical after signing; ZIP CRCs pass.
+- Strict signature verification passed with the existing RSA-4096 upload certificate
+  trusted; certificate SHA-256
+  `281699a8a22822d97772c1cba3f5f5d6e0048807468ce7e4f2dbceacc40be85f`.
+- Bundle manifest inspected: `com.jamiewardle.auralift`, code 12, min SDK 26,
+  target SDK 36, non-debuggable, billing permission present. DEX contains the exact
+  supplied verification key and both lifetime option IDs. All six bundled legal
+  documents retain the confirmed shared support address.
+- Saved signed bundle for Jamie to upload as the next closed-track release.
+  No Play Console submission, standalone bundletool validation or real transaction
+  testing was performed by this build process.
+No actual Play purchase, restore, refund, pending payment or approval is claimed.
+
+## 0.5.6 shared support mailbox — built and signed
+
+Validated source `c24b364f223dc7f15a163bb9d26f6e303b89b97b`, PR merge
+`b3290a50da7ce32e59381ad605ebe804eaca7560`; version 0.5.6 / code 11.
+
+- [Required build gate](https://github.com/Jamie1171/Auralift/actions/runs/35405225416)
+  passed: both editions, both lint tasks, APKs and AAB. API 35: Owner 68 / Play 70;
+  API 26: Owner 45 / Play 48. Total 231 unit-test executions, no failures/errors/skips.
+- [Android 8 and Android 16 device jobs](https://github.com/Jamie1171/Auralift/actions/runs/35405225367)
+  both passed. Android 16 finished all 17 primary tests and its separate denied-permission
+  test. This includes the language/support scenario that previously timed out;
+  the earlier timeout evidence below is retained, not reclassified as a pass.
+- [16 KB optimized runtime job](https://github.com/Jamie1171/Auralift/actions/runs/35405225427)
+  is **failed**, although its saved `page-size-report.json` reports all four app checks
+  passed on x86-64 API 35 with 16 KB pages and compatibility workarounds disabled.
+  Its final diagnostic `logcat` collection raised UnicodeDecodeError after those checks.
+  Do not describe the whole workflow as successful. Existing ARM/RELRO limits remain.
+- The recipient and copy-address fallback are
+  `auraforgelabssupport+auralift@gmail.com`. All six bundled policies and current
+  terms mirrors use the same confirmed shared inbox; existing subjects identify Auralift.
+  The contact-only correction keeps agreement version 2026-09-18.2.
+- [Policy website deployment](https://github.com/Jamie1171/auralift-policies/actions/runs/35405237463)
+  passed for `47927e5b134e17affe4c7ebe12e96180d05aba62`: six document pages and the
+  index use the new address. Local page links and 379 resource keys per locale checked.
+- Signed deliverable: `Auralift-0.5.6-Closed-Test.aab`, 8,467,839 bytes; SHA-256
+  `981cdd5eb5db0e677b0cc77801c787174c8b3ad5f168594373319c430f5773f9`.
+- CI archive SHA-256:
+  `0e88acdc9c6282b9b2e8e68efe41e3a315f405c25ce6066e6f35ae26c969902d`.
+  All 547 original AAB entries are byte-identical after signing; ZIP CRC checks pass.
+- Strict JAR signature verification passed with the existing RSA-4096 upload key
+  trusted. Upload certificate SHA-256:
+  `281699a8a22822d97772c1cba3f5f5d6e0048807468ce7e4f2dbceacc40be85f`.
+  Private key material remains outside Git.
+- Bundle protobuf manifest inspected: `com.jamiewardle.auralift`, code 11,
+  min SDK 26, target SDK 36, non-debuggable; `com.android.vending.BILLING` present.
+  All six bundled policies checked for the new address and absence of the old address.
+- Both prescribed local Gradle commands were attempted but the wrapper download was
+  network-blocked; the successful CI run above executed the required tasks instead.
+
+This signed bundle is for upload to a Play Console draft and product configuration.
+Live purchases and ads remain disabled pending account configuration. No Play upload,
+review submission, purchase/ad certification, standalone bundletool validation or
+AAB-derived device test is claimed. Historical documents/evidence preserve their
+original contact details.
+
+## 0.5.5 support and localization — required gates passed, 18 September 2026
+
+Validated source `28b0f654e926cc9a683827b89aadea2ffda31bb3` (version code 10),
+PR merge build `8ccaf8925f771027425f3a18fbb488a282e9bd0a`.
+
+- [Required unit/lint/build gate](https://github.com/Jamie1171/Auralift/actions/runs/35397434159): passed both editions, both lint tasks, Owner APK,
+  optimized public APK and public AAB. API 35: Owner 68 / Play 70 tests; separate
+  API 26 invocation: Owner 45 / Play 48 tests. Total 231, no failures or skips.
+- [Android 8 device suite](https://github.com/Jamie1171/Auralift/actions/runs/35397434336/job/105769370241): all 17 tests passed, plus the separate denied-permission check.
+  Real app language selection cycles EN/ES/FR, survives activity recreation,
+  retains agreement and opens the matching offline policies and support screen.
+- Android 16 device suite in the same run: attempt 1 timed out after 45 minutes.
+  Its log reached 14/17 tests with zero reported failures, then stopped progressing.
+  This is an incomplete run, not a pass or proof of an application failure.
+  Job 105781123445 retries only the cancelled API 36 job; completion is pending.
+- [Optimized 16 KB startup and controls](https://github.com/Jamie1171/Auralift/actions/runs/35397434170): passed on the final application source.
+- Inspected native Spanish/French support and policy captures: readable titles,
+  controls and document text. Unit UI checks also cover the explicit English
+  override and accepting the language actually displayed.
+- Resource check passes for all 379 strings in each locale, matching format
+  arguments, complete legal sections and byte-identical archived terms. Terms
+  version 2026-09-18.2 replaces the preview text with the public publisher terms.
+- Support tests check exact recipient, accented/special-character message text,
+  optional diagnostics, screenshot URI and read-only attachment permission.
+  The form opens an email draft and never claims delivery. No email was sent by
+  automated testing; individual third-party email-client behaviour is not certified.
+- Six static web policies match the bundled document text; all language links
+  resolve within the generated site. [GitHub Pages deployment](https://github.com/Jamie1171/auralift-policies/actions/runs/35397462810) passed for policy
+  commit `87c2c176f50f5c61a1f6f751c281fa1d2a047d8f`.
+- Original CI APK SHA-256: `3d0db4fcd01b646ea4f1024c0be7068ba601becc05c36728766dc4cb57993dff`.
+- Delivered `Auralift-0.5.5-Play-Test.apk` is re-signed with the retained personal-test
+  certificate used for 0.5.2, avoiding another disposable signing identity.
+  APK v2/v3 signatures verify; all 469 non-META-INF payload entries are byte-identical
+  to the CI-tested APK. Size: 26,213,758 bytes. SHA-256:
+  `49ece36b52adb721d1093f45614edd7d4b808af7d4e83a79b955d1a676eb1bb4`.
+  Certificate SHA-256:
+  `7ba0540911fe9b3208e119d82a5710079d9ad982ea1c4259c500e0047a8f8f36`.
+  Private signing material stays outside Git and CI.
+- The previously supplied 0.5.4 screenshot APK has certificate SHA-256
+  `9fb6c57963bf8af99ffdd00d16c65bf80a1fabee6646ffc933760ced8f7b9219`;
+  its temporary private key is not available. Neither it nor the original CI-signed
+  0.5.5 APK can be updated in place with this retained-key build. Export wanted
+  profiles before uninstalling those builds; reinstalling clears local app data.
+  Future personal APKs should use the retained key. This is not a Play upload key.
+
+Earlier attempts are retained: both prescribed local Gradle invocations failed
+before compilation because the distribution download reports `Network is unreachable`.
+First CI run 35397019133 compiled successfully and passed localized UI/receipt
+checks, but a support test exposed Android MailTo parsing query text before
+splitting parameters, truncating messages containing ampersands. Drafts now put
+the recipient in the mailto URI and preserve subject/body in standard Intent
+extras. The follow-up required gate above passed. No core audio behavior changed.
+
+These are software/emulator checks, not acoustic safety evidence, independent
+legal/translation review, live ad or payment certification. No production signing
+or Google Play upload was performed. See [implementation](SUPPORT-AND-LANGUAGES.md).
+
+## 0.5.5 signed closed-test bundle — prepared, rollout verification pending
+
+Prepared from the exact CI archive above (archive SHA-256
+`5811ce8f37651bca399debc24d1f2e7471b6b37699b7427084082463f6b8f9f8`),
+without rebuilding or changing application contents.
+
+- File: `Auralift-0.5.5-Closed-Test.aab`, 8,467,738 bytes.
+- SHA-256: `1163ada1f312cb182fe398576ea757d1515de6b88fb5645d0de143916d66afa8`.
+- Manifest inspected from the bundle: `com.jamiewardle.auralift`, version 0.5.5 /
+  code 10, min SDK 26, target SDK 36, non-debuggable.
+- Signed with a dedicated RSA-4096 upload key, SHA256withRSA and SHA-256 digests.
+  Strict JAR signature verification passes with its upload certificate trusted.
+  All 547 original bundle entries are byte-identical; only signature metadata
+  was added. ZIP CRC verification passes.
+- Upload certificate SHA-256:
+  `281699a8a22822d97772c1cba3f5f5d6e0048807468ce7e4f2dbceacc40be85f`.
+  Alias `auralift-upload`, PKCS12. A private backup was delivered separately to
+  Jamie; no key or password is committed. Reuse this upload key for future bundles.
+  It is separate from Google's app-signing key and the sideloaded-test certificate.
+- Live ads and checkout are disabled in this bundle. AdMob and Play purchase
+  configuration remain separate work; software tests do not certify live payments.
+- The original API 36 timeout and retry above must be resolved before rollout.
+  The existing 16 KB/ARM64 native-library limits remain recorded below. Direct
+  inspection confirms all native LOAD alignments are 16 KB; the graphics-path
+  GNU_RELRO end modulo 16 KB is still 8192 in all four ABIs.
+- Standalone bundletool validation could not be run because the official tool
+  download did not complete in this environment. The CI Gradle bundle build and
+  local signature/identity/content checks passed. Play Console validation of the
+  uploaded draft and AAB-derived runtime testing are not yet claimed.
+
+This file can be uploaded as a draft for Console validation. It has not been
+uploaded or submitted by the assistant; no reviewer/tester invitation was sent.
+
 ## 0.5.4 explicit terms acceptance — passed, 18 September 2026
 
 Validated source `3ef5f6b23c92856b8379bcc10752c8bac39124a3` (version code 9).

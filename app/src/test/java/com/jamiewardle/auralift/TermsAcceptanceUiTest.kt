@@ -29,11 +29,11 @@ class TermsAcceptanceUiTest {
         screenshot("terms-welcome")
         compose.onNodeWithText("Terms of use").performScrollTo().performClick()
         compose.onNodeWithText("Save a copy").performScrollTo().assertIsDisplayed()
-        compose.onNodeWithText("Agreement version: 2026-09-18.1", substring = true).assertExists()
+        compose.onNodeWithText("Agreement version: 2026-09-18.2", substring = true).assertExists()
         assertFalse(app.terms.hasAcceptedCurrent())
         compose.activityRule.scenario.onActivity { it.onBackPressedDispatcher.onBackPressed() }
         compose.onNodeWithText("Privacy policy").performScrollTo().performClick()
-        compose.onNodeWithText("This acknowledgement is kept only in private app storage", substring = true).assertExists()
+        compose.onNodeWithText("The record stays in private local storage", substring = true).assertExists()
         compose.activityRule.scenario.onActivity { it.onBackPressedDispatcher.onBackPressed() }
         compose.onNodeWithText("Agree and continue").performScrollTo()
         screenshot("terms-accept")

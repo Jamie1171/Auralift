@@ -107,7 +107,10 @@ class PlayPurchases(private val context: Context, private val access: AccessStor
         client.queryProductDetailsAsync(params) { result, query ->
             val products = query.productDetailsList.associateBy { it.productId }
             val offers = ProProduct.entries.mapNotNull { type ->
-                products[type.id]?.oneTimePurchaseOfferDetailsList?.firstOrNull { it.purchaseOptionId == "buy" && it.offerId == null }?.let { type to it }
+                products[type.id]?.oneTimePurchaseOfferDetailsList
+                    ?.filter { type.acceptsPurchaseOption(it.purchaseOptionId, it.offerId) }
+                    ?.minByOrNull { if (it.purchaseOptionId == type.purchaseOptionId) 0 else 1 }
+                    ?.let { type to it }
             }.toMap()
             if (result.responseCode != BillingClient.BillingResponseCode.OK || offers.isEmpty()) {
                 mutable.value = mutable.value.copy(ready = false, busy = false, prices = emptyMap(), message = R.string.purchase_unavailable)
