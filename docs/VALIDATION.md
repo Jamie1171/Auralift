@@ -1,6 +1,6 @@
 # Validation — Auralift
 
-## 0.5.8 support email repair — validation pending
+## 0.5.8 support email repair — built and signed
 
 Jamie reported a successful 0.5.7 Play test-card purchase and Pro unlock/restore.
 This is user-observed evidence, not a claim of testing Supporter, refunds or pending
@@ -24,9 +24,39 @@ and [sharing guidance](https://developer.android.com/develop/ui/compose/sharing/
 
 - Local localization and whitespace checks passed.
 - Both prescribed local Gradle invocations failed downloading Gradle 8.13 because
-  the network was unreachable. GitHub Actions gates are pending.
+  the network was unreachable. The required GitHub Actions gate passed instead.
+- Validated source `1982292a82f595bc56a491df06df8ba9bd3cbfe6`, PR merge
+  `a4af4ba1dcc7d96a1de0bb1a9ac237fdaf5f3b59`.
+- [Required build gate](https://github.com/Jamie1171/Auralift/actions/runs/35442256461):
+  both lint tasks, APKs and AAB passed. API 35: Owner 71 / Play 75; API 26:
+  Owner 48 / Play 53. Total 247 unit-test executions, no failures/errors/skips.
+  All five support regression cases passed in each edition on each SDK.
+- Inspected the generated feedback screenshot: centered address and separation
+  above the category controls are visible; the form and email action remain usable.
+- [Device workflow](https://github.com/Jamie1171/Auralift/actions/runs/35442256475):
+  Android 8 passed; Android 16 is still running at this checkpoint.
+- [16 KB optimized runtime](https://github.com/Jamie1171/Auralift/actions/runs/35442256468):
+  initial attempt failed during background checks. Logs show a native SIGSEGV in
+  emulator `system_server` / SettingsProvider, followed by DeadSystemException in
+  Auralift, Phone and Google Play services. A single fresh-emulator retry passed
+  (job 105895873549); the initial failed attempt is retained as infrastructure
+  failure evidence, not reclassified as an app pass. Existing ARM runtime limits
+  remain; the exercised runtime is x86-64.
+- Signed deliverable: `Auralift-0.5.8-Closed-Test.aab`, 8,469,890 bytes; SHA-256
+  `5fda94815077ecdcfe5eb252ec5dfd6bb62fbf445e02dbbc5b9565e7bc9a15ef`.
+  CI archive SHA-256:
+  `626203d5adbd487e8d0a0470864e8f4445db307dac564f185a34e61ddf8e1060`.
+  All 547 original bundle entries remain unchanged after signing and ZIP CRCs pass.
+- Strict signature verification passed with the existing upload certificate trusted;
+  certificate SHA-256
+  `281699a8a22822d97772c1cba3f5f5d6e0048807468ce7e4f2dbceacc40be85f`.
+  Manifest confirms `com.jamiewardle.auralift`, 0.5.8 / code 13, min SDK 26,
+  target SDK 36, non-debuggable, billing permission and the scoped mailto query.
+  No QUERY_ALL_PACKAGES permission. Existing public billing key, lifetime option
+  IDs and all six legal support addresses remain present in the signed bundle.
 - Actual Gmail draft population and screenshot opening must be confirmed on the
   device after installation; automated intent tests do not prove client behavior.
+  No email was sent and no Play Console upload/submission was performed.
 
 ## 0.5.7 Play billing configuration — built and signed
 
