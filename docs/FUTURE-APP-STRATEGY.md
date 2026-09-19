@@ -2,8 +2,9 @@
 
 Last updated: 19 September 2026. This is the continuity brief for Jamie's future
 Android app opportunities, kept in Auralift's repository at his request. It records
-the earlier discussion and makes its research process reusable. It is not a new
-competitor study or an instruction to begin building another app.
+the earlier discussion and makes its research process reusable. The first dated
+competitor study is linked below. Neither this brief nor that research is an
+instruction to begin building another app without selecting a direction.
 
 ## Jamie's goals and preferences
 
@@ -96,9 +97,40 @@ operationalises the earlier plan; it does not imply research has already occurre
 | First release | Core scope, exclusions and human testing needed |
 | Recommendation | Proceed / investigate / reject, reasoning and unresolved questions |
 
-Use current sources when this research begins. Avoid treating a few negative
+Use current sources when researching. Avoid treating a few negative
 reviews as representative of everyone or treating recruited testers as evidence
 of organic demand. Keep observations, inferences and Jamie's preferences separate.
+
+## Research completed: 19 September 2026
+
+Jamie requested a deep, autonomous search for three strong utility opportunities,
+including competitor comparisons, review cross-checks, a reserve pile and a
+practical design for each surviving proposition. The resulting study is at
+[research/2026-09-19-utility-opportunities/README.md](research/2026-09-19-utility-opportunities/README.md).
+
+The study inspected 740 review entries representing 698 distinct sampled reviews
+across 25 apps, with separate newest-review checks for 12 apps and additional
+native, web, open-source and built-in alternatives. It is qualitative desk
+research, not a representative survey, on-device benchmark or proof of demand.
+
+Codex's ranked recommendations for validation are:
+
+1. **Offline workshop cutting and offcut planner** — first prototype recommendation;
+   prove valid, competitive plans and an easier practical workflow.
+2. **File-size preparation assistant** — guide photos/videos through explicit
+   limits, verified output and sharing; target-size compression already exists.
+3. **Everyday multi-timer board** — clearer active controls and reusable routines;
+   weakest commercial confidence because good cheap/free alternatives exist.
+
+General home inventory was demoted after checking strong existing alternatives,
+especially Find My Stuff. Generic photo resizing, manual subscription tracking
+and shift-calendar clones were also deprioritised. The study contains the full
+reasoning, dated evidence, product scopes, pricing hypotheses and stop conditions.
+
+These are research recommendations, **not Jamie's selection of a new product**.
+No new app code, competitor benchmark, customer interview, ad campaign or external
+outreach was performed. Proposed prices are customer-checkout hypotheses, not
+changes to Auralift's products or measured willingness to pay.
 
 ## Current checkpoint and next action
 
@@ -109,16 +141,18 @@ of organic demand. Keep observations, inferences and Jamie's preferences separat
 - Jamie submitted the closed release and listed Auralift on Get12Testers. His
   latest report is **two testers on board**. Do not infer that the full testing
   period or production-access requirements are complete.
-- **No next app, niche, competitor shortlist or budget has been selected.**
-- Next research task, when requested: produce a small evidence-backed shortlist
-  of utility opportunities using the process above and recommend which uncertain
-  core behaviour to prototype first. Do not start five apps merely because tester
-  credits are available.
+- **Jamie has not selected the next app, niche or budget.** The research shortlist
+  above is complete and available for that decision.
+- Recommended next step: validate the cutting-planner proposition against real
+  projects and strong existing alternatives, following the study's gates. This
+  is a recommendation, not a completed test or an instruction to start five apps
+  merely because tester credits are available.
 
 ## Starting a new chat
 
 Give the new assistant access to `Jamie1171/Auralift` and ask it to read this file
-before researching future app opportunities. The current location is branch
+before researching future app opportunities, then read the linked dated study.
+The current location is branch
 `feat/support-localized-legal`; if it has subsequently been merged, use the latest
 merged copy. Read the repository's working instructions before making changes.
 Memory alone is not the source of truth for this plan. Update this document as
