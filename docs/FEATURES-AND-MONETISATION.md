@@ -106,6 +106,10 @@ the Auralift interface and audio engine remain native Kotlin/Compose/Android API
 - Configure the one-hour in-app reward and relevant UMP Privacy & messaging forms
   in AdMob. Test accept, decline, privacy changes, no network and no fill. Privacy
   choices appear in Settings and Pro whenever UMP requires an entry point.
+- Add each purchase-test Google account under Play Console Settings → Licence testing,
+  separately from closed-track membership. Install the Play edition from the test
+  link using that account, exit reviewer access, and confirm checkout offers a test
+  payment method. Closed-track membership alone does not prevent real charges.
 - Use test ads/test devices only during development. Use Play licence testers for
   both products, pending/cancelled/approved purchases, restore, refund and offline
   cases. A successful query with either valid product maintains Pro; losing one

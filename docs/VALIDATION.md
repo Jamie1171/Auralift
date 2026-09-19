@@ -1,6 +1,6 @@
 # Validation — Auralift
 
-## 0.5.7 Play billing configuration — validation pending
+## 0.5.7 Play billing configuration — built and signed
 
 Version code 12 configures Jamie's supplied RSA-2048 public licensing key.
 Public-key DER SHA-256: `5fc0dad47336ec054b129200dd2285dddfed82082665ef5396b5e6e520b2105c`.
@@ -14,7 +14,32 @@ crashing after completed app checks. Command exit-code checks are unchanged.
 
 Both prescribed local Gradle invocations failed while downloading Gradle 8.13
 (network unreachable). Required gates will run in GitHub Actions instead.
-Build results and signed artifact verification will be recorded after completion.
+Validated source `5afa89245f39a76f84e28a61c1582999ddbc1957`, PR merge
+`1da1289fb701890ac8b2433cbea4eea67b9eab07`.
+- [Required build gate](https://github.com/Jamie1171/Auralift/actions/runs/35411054760):
+  both lint tasks, APKs, AAB and both unit-test invocations passed. API 35: Owner 68 /
+  Play 72; API 26: Owner 45 / Play 50. Total 235, no failures/errors/skips.
+- [Android 8 and Android 16 device jobs](https://github.com/Jamie1171/Auralift/actions/runs/35411054636): both passed.
+- [16 KB optimized runtime workflow](https://github.com/Jamie1171/Auralift/actions/runs/35411054688): passed, including diagnostic collection.
+  This does not add physical-device or ARM runtime evidence to the earlier limits.
+- Local localization checks passed for all 379 keys per locale and six legal documents.
+  All 12 emulator-helper tests passed; an additional invalid-byte diagnostic check
+  confirmed decoding recovery while preserving failed-command rejection.
+- Signed deliverable: `Auralift-0.5.7-Closed-Test.aab`, 8,468,437 bytes; SHA-256
+  `b7d8d206ed812e7a22921be125e966d8e8c9f2e87533bfc90d59ef47099c6600`.
+- CI archive SHA-256:
+  `fce73af1d82e65c190a1959601b0c495381cf42a032cc45e8d6e844107e307e3`.
+  All 547 original bundle entries remain byte-identical after signing; ZIP CRCs pass.
+- Strict signature verification passed with the existing RSA-4096 upload certificate
+  trusted; certificate SHA-256
+  `281699a8a22822d97772c1cba3f5f5d6e0048807468ce7e4f2dbceacc40be85f`.
+- Bundle manifest inspected: `com.jamiewardle.auralift`, code 12, min SDK 26,
+  target SDK 36, non-debuggable, billing permission present. DEX contains the exact
+  supplied verification key and both lifetime option IDs. All six bundled legal
+  documents retain the confirmed shared support address.
+- Saved signed bundle for Jamie to upload as the next closed-track release.
+  No Play Console submission, standalone bundletool validation or real transaction
+  testing was performed by this build process.
 No actual Play purchase, restore, refund, pending payment or approval is claimed.
 
 ## 0.5.6 shared support mailbox — built and signed
