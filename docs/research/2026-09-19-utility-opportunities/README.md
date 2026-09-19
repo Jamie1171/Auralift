@@ -10,7 +10,7 @@ No new app has been selected by Jamie, built, named, or submitted. Product names
 
 | Priority | Specific proposition | Why it survives the research | Main reason it could fail | Next decision |
 | --- | --- | --- | --- | --- |
-| **1** | **Offline Cut & Offcut Planner:** turn a parts list and available stock into an understandable, executable cutting plan | Material has a real cost; the task benefits from local computation, clear diagrams, reusable offcuts and occasional-use pricing | Good free web tools and existing offline Android competitors already exist. A weak optimiser or awkward entry screen destroys the advantage | Benchmark a small native prototype against existing tools before committing to a full app |
+| **1** | **Offline Cut & Offcut Planner:** turn a parts list and available stock into an understandable, executable cutting plan | Material has a real cost; the task benefits from local computation, clear diagrams, reusable offcuts and occasional-use pricing | Good free web tools and existing offline Android competitors already exist. A weak optimiser or awkward entry screen destroys the advantage | Validate a reachable customer and reason to switch, then benchmark a small native prototype before committing to a full app |
 | **2** | **Upload Fit:** make a photo or video meet explicit file-size, format and dimension requirements | Similar selection, interruption and completion problems recur across several large apps; users have an immediate reason to finish the task | Target-size compression already exists. Device codecs and background processing make dependable delivery expensive | Prove the complete select → fit → verify → share workflow on varied phones |
 | **3** | **Everyday Timer Board:** run several named tasks and reusable stages with unmistakable controls and alerts | Confusing running controls and alarm identity recur across competing apps; cooking, hobbies and everyday routines recur in positive feedback | Excellent free and £1.25 alternatives set a low price ceiling; Android background limits remain | Compare a simple interaction prototype against the best alternatives, then validate alarms |
 
@@ -24,6 +24,8 @@ Read the full proposals:
 4. [What was demoted, rejected, or left in reserve](SCREENING.md)
 5. [Review method, sample coverage and dated evidence](EVIDENCE.md)
 6. [Validation sequence, pricing experiments and economics](VALIDATION.md)
+
+**Follow-up after Jamie's discovery challenge:** [Cutting market, customer reach and complete premium scope](04-cutting-market-and-premium-scope.md). The market has established free and professional alternatives. The recommendation is now explicitly to validate customer reach before or alongside the technical prototype; an occasional DIYer may not know this category exists. Regular hobbyists and small makers are the proposed initial audience, not all DIY or industrial production. No acquisition channel or willingness to pay has been validated.
 
 ## What the investigation actually covered
 

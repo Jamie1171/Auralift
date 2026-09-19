@@ -4,10 +4,11 @@ This file describes **future work**, not tests already performed. The research h
 
 ## Recommended sequence
 
-**Start with cutting.** The first deliverable should be a small local prototype that accepts stock and pieces, produces a verifiable plan and presents it intelligibly. It should answer a technical and a user question before branding, billing, ads or a large settings screen are added.
+**Investigate cutting first, including customer reach.** Jamie's follow-up challenged whether intended users know this category exists. First establish a specific audience, how they currently find help and a plausible reason to switch. Before or alongside that work, a small local prototype can accept stock and pieces, produce a verifiable plan and present it intelligibly. Technical success alone does not justify the full build. See the [market and premium-scope follow-up](04-cutting-market-and-premium-scope.md).
 
 | Stage | Work | Evidence required to continue |
 | --- | --- | --- |
+| 0. Establish a reachable customer | Observe recent projects and existing discovery paths; test a plain-language demonstration with relevant makers | A specific recurring task, a reason to try the product and a credible route to those people; neither download bands nor recruited app testers establish this |
 | 1. Confirm the comparison | Install the strongest applicable alternatives; verify current free limits, offline behaviour and checkout | Accurate current baseline, including free tools |
 | 2. Prove the uncertain core | Small implementation plus an independent output check | Valid results on a defined corpus; known unsupported cases |
 | 3. Observe real tasks | Intended users bring their own parts list, file or routine; compare with their preferred alternative | Concrete improvement in completion, time, errors or confidence |
@@ -41,7 +42,7 @@ These are **proposed UK customer checkout prices**, not tax-exclusive bulk-entry
 | Upload Fit | £4.99–£6.99 | A supported single file that genuinely meets requirements | Batch work, saved destination presets and history organisation | Many users need it only once; broad compatibility costs |
 | Timer | £2.99–£3.99 | Useful simultaneous timers, correct alerts and controls | More saved routines and organisation | £1.25/free alternatives; low revenue per customer |
 
-The ranges should be challenged in observed sessions and later by actual purchase behaviour. Do not assume that being cheaper than a subscription automatically yields buyers. A lifetime model fits best when the product remains local and does not promise unlimited recurring cloud work. It still carries maintenance and support costs.
+The ranges should be challenged in observed sessions and later by actual purchase behaviour. The cutting range describes the original narrower proposition; it is not a settled price for the broader workshop workflow in the follow-up. Do not assume that being cheaper than a subscription automatically yields buyers. A lifetime model fits best when the product remains local and does not promise unlimited recurring cloud work. It still carries maintenance and support costs.
 
 An optional Supporter tier can express support without different functionality, but it is not evidence of a viable primary business. Optional ads should be assessed for each tool, including how an entitlement behaves during a running task. No forced ads is part of the intended experience, not a licence to make unprofitable promises.
 
@@ -81,6 +82,6 @@ Reuse components after reviewing dependencies and policies for the new app. Do n
 
 ## Handover
 
-The research recommendation is **prototype cutting first**, subject to Jamie's choice. No launch date, app name, budget or new product has been approved. Update [the portfolio strategy](../../FUTURE-APP-STRATEGY.md) when Jamie chooses a direction or new evidence changes the ranking.
+The research recommendation is **validate customer reach and switching benefit for cutting first, before or alongside its technical prototype**, subject to Jamie's choice. No launch date, app name, budget or new product has been approved. Update [the portfolio strategy](../../FUTURE-APP-STRATEGY.md) when Jamie chooses a direction or new evidence changes the ranking.
 
 For the next research or implementation session, read the [decision brief](README.md), the chosen product brief and the evidence limits first. Then record what was actually tested, including failures and reasons to stop. Do not silently turn this shortlist into an assertion that demand or reliability has already been proved.

@@ -115,8 +115,9 @@ research, not a representative survey, on-device benchmark or proof of demand.
 
 Codex's ranked recommendations for validation are:
 
-1. **Offline workshop cutting and offcut planner** — first prototype recommendation;
-   prove valid, competitive plans and an easier practical workflow.
+1. **Offline workshop cutting and offcut planner** — first validation recommendation;
+   establish customer reach and switching benefit before or alongside a prototype
+   proving valid, competitive plans and an easier practical workflow.
 2. **File-size preparation assistant** — guide photos/videos through explicit
    limits, verified output and sharing; target-size compression already exists.
 3. **Everyday multi-timer board** — clearer active controls and reusable routines;
@@ -132,6 +133,16 @@ No new app code, competitor benchmark, customer interview, ad campaign or extern
 outreach was performed. Proposed prices are customer-checkout hypotheses, not
 changes to Auralift's products or measured willingness to pay.
 
+Jamie's follow-up challenged whether occasional DIYers would know cutting
+software exists or know how to find it. The
+[market and premium-scope follow-up](research/2026-09-19-utility-opportunities/04-cutting-market-and-premium-scope.md)
+therefore makes customer reach an explicit first gate. It proposes regular hobby
+woodworkers and small makers as the initial audience, with a complete
+project-to-purchase-to-cuts-to-offcuts workflow. Established free and professional
+competitors already offer many of these features; a simpler workflow and a viable
+discovery route must be demonstrated. This is a qualified recommendation, not
+Jamie's selection of a product or an instruction to begin building.
+
 ## Current checkpoint and next action
 
 - Auralift 0.5.9 / code 14 was delivered with Google rewarded test ads.
@@ -143,8 +154,8 @@ changes to Auralift's products or measured willingness to pay.
   period or production-access requirements are complete.
 - **Jamie has not selected the next app, niche or budget.** The research shortlist
   above is complete and available for that decision.
-- Recommended next step: validate the cutting-planner proposition against real
-  projects and strong existing alternatives, following the study's gates. This
+- Recommended next step: validate who would discover and choose a cutting planner,
+  alongside real projects and strong existing alternatives, following the study's gates. This
   is a recommendation, not a completed test or an instruction to start five apps
   merely because tester credits are available.
 
