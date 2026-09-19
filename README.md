@@ -1,11 +1,12 @@
 # Auralift
 
-The current review branch is **0.5.4 / version code 9**. It adds explicit first-use
-terms acceptance, a private local receipt, offline document saving and stronger
-listening guidance, on top of 0.5.3 Google Play reviewer access. Acceptance never
-starts boost. See [acceptance and competitor review](docs/TERMS-ACCEPTANCE.md),
-[review access](docs/PLAY-REVIEW-ACCESS.md) and [validation](docs/VALIDATION.md).
-These changes are not yet a published Play release.
+The current review branch is **0.5.7 / version code 12**. It configures the public
+Google Play receipt-verification key and the permanent Pro/Supporter purchase
+options for closed testing. Local checkout prices come from Google Play. Live ads
+remain disabled. Version 0.5.6 / code 11 was submitted for closed-track review;
+this update still requires Play installation and licence-tester purchase checks.
+See [monetisation](docs/FEATURES-AND-MONETISATION.md) and
+[validation](docs/VALIDATION.md) for configuration and actual test evidence.
 
 A native Android volume booster, written in **Kotlin, Jetpack Compose and Android
 audio APIs**. Version **0.5.2** adds a compact circular floating player, independent player/boost
@@ -13,7 +14,7 @@ controls, selected EQ outlines and ten full light/dark palettes. Version 0.5.1 p
 screen's Enable/Stop button, with an active-pass countdown and help for Android's
 restricted overlay settings. It retains the Floating Player Pro section, complete
 interface themes and 5 dB gain shortcuts: Free up to +15 dB, Pro up to +35 dB.
-Voluntary one-hour Ad Passes and equivalent £3.99 / £5.99 one-time products remain.
+Voluntary one-hour Ad Passes and equivalent one-time Pro / Supporter products remain.
 Owner remains fully unlocked and contains no advertising or billing SDK.
 
 **Project home: [Jamie1171/Auralift](https://github.com/Jamie1171/Auralift).**

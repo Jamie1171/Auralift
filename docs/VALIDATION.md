@@ -1,5 +1,22 @@
 # Validation — Auralift
 
+## 0.5.7 Play billing configuration — validation pending
+
+Version code 12 configures Jamie's supplied RSA-2048 public licensing key.
+Public-key DER SHA-256: `5fc0dad47336ec054b129200dd2285dddfed82082665ef5396b5e6e520b2105c`.
+Pro and Supporter accept their `pro-lifetime` / `supporter-lifetime` base options,
+prefer them over legacy `buy`, and reject unrelated/promotional offers. Regression
+coverage checks both mappings and rejection cases. Prices remain supplied by Play.
+Release advertising IDs remain unset; Owner remains separate and unlocked.
+
+The emulator ADB collector now replaces invalid UTF-8 in diagnostics instead of
+crashing after completed app checks. Command exit-code checks are unchanged.
+
+Both prescribed local Gradle invocations failed while downloading Gradle 8.13
+(network unreachable). Required gates will run in GitHub Actions instead.
+Build results and signed artifact verification will be recorded after completion.
+No actual Play purchase, restore, refund, pending payment or approval is claimed.
+
 ## 0.5.6 shared support mailbox — built and signed
 
 Validated source `c24b364f223dc7f15a163bb9d26f6e303b89b97b`, PR merge

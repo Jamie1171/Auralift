@@ -1,9 +1,10 @@
-# Features and monetisation — 0.5.0
+# Features and monetisation — 0.5.7
 
-13 September 2026. This implements Jamie's approved model. Account-side products,
-prices, AdMob configuration and real transactions have not been activated.
+19 September 2026. Jamie has created and activated both one-time products.
+The public licensing key is configured in 0.5.7; actual Play transactions remain
+to be tested. Live AdMob configuration is still absent.
 
-| Option | Intended UK price | Product ID | Access |
+| Option | Bulk base price (before local tax/rounding) | Product ID | Access |
 | --- | --- | --- | --- |
 | Free | £0 | None | All core audio controls |
 | Ad Pass | Complete one rewarded ad | No Play purchase product | All Pro features for one hour; repeat after expiry when ads are available |
@@ -11,8 +12,9 @@ prices, AdMob configuration and real transactions have not been activated.
 | Supporter Pro | £5.99 once | `auralift_supporter` | Exactly the same permanent Pro entitlement; optional extra support |
 
 Both purchase products are **non-consumable one-time products**, not subscriptions
-or two separate feature tiers. Each uses a `buy` purchase option and base offer
-(no offer ID). Configure the actual local prices in Play Console; the app displays
+or two separate feature tiers. Pro uses purchase option `pro-lifetime`; Supporter uses `supporter-lifetime`.
+Both use the base offer (no offer ID). The original `buy` option remains supported
+as a fallback, with each product-specific lifetime option preferred. Configure the actual local prices in Play Console; the app displays
 Google's returned formatted prices rather than hard-coding sterling at checkout.
 Existing owners are not offered another purchase of the same access. Supporter
 is labelled as the same features for a higher price, never an implied requirement.
@@ -94,9 +96,9 @@ the Auralift interface and audio engine remain native Kotlin/Compose/Android API
 ## Activation checklist
 
 - Finalise public package, publisher/support details, signing and hosted policies.
-- Create both product IDs above with purchase option `buy`, base offer, prices
-  and country availability. Activate them for the relevant test track.
-- Set Gradle property `auralift.playPublicKey` to Play's public licensing key.
+- Both product IDs are created with active purchase options. Match the option IDs
+  above and confirm country availability for testers.
+- Gradle property `auralift.playPublicKey` now contains the supplied public licensing key.
   The key is public verification material; no private signing key belongs in Git.
 - Set `auralift.admobAppId` and `auralift.rewardedAdId` to the production IDs only
   for a deliberate release. Defaults leave release ads unavailable. Play **debug**

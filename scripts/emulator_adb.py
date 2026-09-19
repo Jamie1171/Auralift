@@ -16,7 +16,8 @@ class EmulatorAdb:
         command = ['adb', '-s', self.serial, *args]
         entry = {'command': command}
         try:
-            result = subprocess.run(command, capture_output=True, text=True, timeout=timeout)
+            result = subprocess.run(command, capture_output=True, text=True,
+                                    encoding='utf-8', errors='replace', timeout=timeout)
             entry.update(returncode=result.returncode, stdout=result.stdout, stderr=result.stderr)
         except subprocess.TimeoutExpired as exc:
             entry['timeoutSeconds'] = timeout
