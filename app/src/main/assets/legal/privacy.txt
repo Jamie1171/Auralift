@@ -1,48 +1,116 @@
 Auralift — Privacy policy
-Personal and pre-release editions · 18 September 2026
 
-1. About this preview
-Auralift is an audio utility developed by Jamie Wardle. This notice describes version 0.5.4. It does not describe another volume booster or its advertising partners. Contact us at auralift.support@gmail.com about privacy or support. Final public publisher particulars and a privacy-policy web address will be supplied before public release.
+Effective date: 18 September 2026
 
-2. Audio stays on your device
-Boosting and equalization use Android audio effects on your device. Auralift does not upload audio, open the microphone for recording, save recordings or examine what you say. The audio features do not read contacts, browsing history, notifications or precise location. The optional advertising service has separate data handling described below, including approximate location derived from an IP address.
+1. Who we are
 
-The optional Music spectrum uses Android's Visualizer interface. Android requires the permission called “microphone” or RECORD_AUDIO for this interface, even though it provides low-resolution playback data rather than microphone recording. Frequency data is used in memory to draw the spectrum only while the Listen screen is visible. It is released when you leave that screen or the app. This data is not saved or transmitted. You can use boosting without enabling spectrum or granting this permission.
+Auralift is an Android audio utility operated by Jamie Wardle trading as AuraForge Labs, at Flat 6a, 23 Savile Road, Halifax, HX1 2BA, West Yorkshire, England. This operator is responsible for the personal information that we handle as described below. “Auralift”, “we” and “us” refer to that operator.
 
-3. Local preferences and files
-When you choose Agree and continue, Auralift stores the accepted terms version, a SHA-256 fingerprint identifying that document, the app version and version code, and the date/time reported by your device. This acknowledgement is kept only in private app storage, excluded from backup, and is not sent to the developer, Google advertising or an analytics service. We do not collect your identity for this purpose. The record remembers your choice; it does not prove who tapped or that the device clock was correct. A later acceptance replaces the local record; clearing app data or uninstalling removes it.
+Contact us about privacy or support at auraforgelabssupport+auralift@gmail.com.
 
-You can save a copy of the terms or privacy policy to a location you choose using Android’s file picker. The saved document does not include your acceptance record. A destination provider you choose may use its own cloud storage.
+This policy covers the public Google Play edition of Auralift. The separate Owner test edition excludes billing and advertising SDKs and has no internet permission; its audio processing, preferences and terms record remain local. User-initiated email and file exports use your selected external provider. Google and other providers also process information through their own services, as explained below.
 
-Auralift stores your chosen gain, EQ, appearance, language, preferences, saved sound names and Ad Pass state and local reward identifiers in private app storage. Android's automatic app backup is disabled. The Ad Pass clock uses the device's boot count and clocks locally; these values are not sent anywhere and are not persistent tracking identifiers.
+2. Audio processing and device permissions
 
-Sound import reads only a file you choose in Android's file picker. Export writes only to the destination you choose, which may be a cloud provider if you select one. Exported files contain sound names, gain and EQ values. Auralift itself has no cloud synchronization. Removing a named sound deletes it from the app; previously exported copies remain wherever you saved them.
+Auralift applies supported Android audio effects on your device. Its audio engine does not upload your listening audio to us or record conversations. We do not operate an Auralift audio-storage server.
 
-4. Optional permissions
-Notifications show active audio controls and a Stop action. Display over other apps permits the optional floating player, including while boost is stopped. One permission for Auralift allows display over eligible apps; Android and protected screens may block it. Auralift does not monitor which app is foreground or maintain a per-app exclusion list. That player does not read the contents of other apps and is hidden on the lock screen. Vibration supplies optional control feedback. Audio-settings and foreground-service permissions maintain effects while you listen. The receive-boot permission supports an optional reminder notification after a phone restart. It never starts the audio service or changes gain. The audio service does not automatically restart after Android stops it. Battery settings buttons open Android settings without requesting a direct battery-exemption permission.
+The optional visualiser uses Android’s audio visualisation facilities. Android requires the permission named “Record audio” for this feature. Auralift uses it to display sound information from the audio output; it does not use this feature to make microphone recordings. Visualisation data is handled temporarily in memory while the visualiser is being used and is not saved or sent to us.
 
-You can turn optional features off in Auralift and revoke permissions in Android settings. Some phone manufacturers restrict background work or floating windows.
+Other permissions support audio controls, the active-service notification, optional notifications and vibration, and the optional player displayed over other apps. The floating player can remain visible with boost stopped; displaying it does not give us a recording of your screen or the contents of other apps. The optional restart reminder uses a device-start event to offer a reminder, rather than automatically starting an audio session.
 
-5. Purchases and the owner edition
-The Owner edition contains no billing or advertising SDK, has no internet permission and cannot charge you. All owner features are unlocked, with optional local simulations for testing.
+You can manage permissions in Android settings. Refusing an optional permission affects its associated feature, rather than requiring you to grant every permission to use the app.
 
-The Google Play edition contains Google Play Billing integration for two one-time Pro products with the same entitlement. Purchases remain unavailable in this pre-release build until the products and verification key are configured. When enabled, Google Play processes checkout and associates purchases with your Google account under Google's policies. Auralift receives product and purchase-state information, a purchase token and signed receipt, and stores the verified receipt privately for restoration and offline access. Auralift does not receive payment-card details. Google Play may need an internet connection to purchase or restore access. The app has no separate account or developer-operated purchase server in this version.
+3. Settings, profiles and other information on your device
 
-The Play edition includes internet and network-state permissions contributed by the billing SDK and its Google data-transport dependencies. When billing is configured and used, the SDK can send Google billing diagnostics, such as API success/failure and service-connection information, to improve billing reliability. The unconfigured preview does not initialize the billing client. The Owner edition excludes these dependencies and network permissions. Google's privacy policy applies to its services (https://policies.google.com/privacy).
+Auralift keeps settings such as your audio adjustments, appearance, saved profiles, output setups and timer preferences in app storage. It also stores information needed to remember purchase access and the expiry of an Ad Pass. We do not receive these settings through an Auralift account or cloud-sync service; the app has neither.
 
-The Play edition also includes Google Mobile Ads (GMA Next-Gen) and User Messaging Platform (UMP) for optional rewarded Ad Passes. There are no forced opening ads, banners or recurring advertising interruptions. The supplied Owner edition simulates rewards without advertising. Play debug builds use Google test ads; an unconfigured release does not initialize the advertising SDK or load ads.
+When you choose Agree and continue, Auralift stores the accepted terms version, the language and a fingerprint identifying the exact document, the app version and version code, and the date/time reported by your device. The record stays in private local storage, is excluded from backup, and is not sent to us or to advertising or analytics services. It remembers your choice; it does not verify your identity or the accuracy of the device clock. A later acceptance replaces the local record, and clearing app data or uninstalling removes it.
 
-When you choose Prepare Ad Pass, UMP checks the applicable privacy choices and displays a form when required. The advertising SDK initializes only after the consent flow permits an ad request. Subsequent app launches can refresh previously requested privacy information without showing an unsolicited ad. Ad privacy choices remains available in Settings and the Pro screen when UMP requires it. Refusing or changing choices never blocks core free audio; ad availability may differ.
+You can save a copy of the terms or privacy policy using Android’s file picker. The saved document does not include your acceptance record. Your chosen destination provider may use cloud storage.
 
-When active, Google's advertising SDK collects and shares network addresses (which can indicate approximate location), ad and app interactions, diagnostic information, and device/account identifiers such as advertising ID and app set ID for serving ads, measurement and fraud prevention. SDK traffic is encrypted in transit. Its manifest includes network, advertising-ID, basic-phone-state and wake-lock permissions. Auralift does not send it audio, spectrum buffers, saved sound names or hearing information. We add no separate audience analytics or crash-reporting service. Google handles its data under https://policies.google.com/privacy and its advertising policies. See https://developers.google.com/admob/android/next-gen/privacy/play-data-disclosure for the current SDK disclosure.
+The app disables its normal Android app-data backup. Profiles you choose to export are separate files. Your selected file or cloud-storage provider determines where those exports are stored and who can access them. Uninstalling Auralift does not delete exported files from those locations.
 
-An earned pass is stored locally with device clock information and a random reward identifier to prevent duplicate callbacks. No developer-operated reward server or user account is used. Clearing local data removes the pass; it does not erase data already processed by Google. You can reset or delete your advertising ID in Android settings. Buying either Pro product removes the need to request further ads, but does not retroactively erase Google's records or remove the SDK from the installed Play binary.
+4. Purchases and Google Play
 
-6. Feedback is your choice
-The feedback form does not send anything automatically. If you choose Share, Android lets you select a receiving app or recipient. You may include a screenshot you select and, separately, opt into connection details such as your phone model, Android version, audio output types and effect settings. No audio or purchase token is included in connection details. Review the content before sharing. The receiving app or service handles that communication under its own privacy practices. This preview has no hosted support form or support database.
+Google Play handles checkout and payment details. Auralift receives purchase information needed to verify and restore access, such as the product, purchase state, purchase token and signed purchase record. A copy is stored privately on your device to help recognise your access when offline. We do not receive your full payment-card details from the app.
 
-7. Your controls
-Delete saved sounds in Auralift, disable optional features, revoke permissions in Android settings, or clear app storage/uninstall to remove the app's local data. These actions do not delete exported files, messages already shared, or Google's purchase and advertising records. Use the relevant storage, messaging or Google account controls for those. A completed Play purchase may be restored through the same Google Play account when that edition is available.
+If you contact us about a purchase, we may use your message, Google Play order reference and available order information to investigate. Google Play may make transaction information available to us in its developer tools, including order status, amount and buyer contact information where provided. We use this for purchase support, refunds, fraud prevention and required records.
 
-8. Changes and contact
-Changes to the app's data handling will be reflected in an updated notice with a new date. Any future accounts, backend verification or hosted support would need an updated notice before introduction. Questions about this preview can be sent to auralift.support@gmail.com. Final public publisher particulars must be supplied before launch.
+Google also processes information when providing its billing and store services under its own policies. Google Privacy Policy (https://policies.google.com/privacy)
+
+5. Optional rewarded advertising
+
+You can choose to watch a rewarded advertisement to obtain a temporary Ad Pass where this option is available. An advert is not required to use the free audio features. Choosing to watch an advert is separate from any privacy choices requested by the consent form.
+
+When you opt into Ad Pass, Auralift uses Google’s consent service to obtain or refresh applicable choices. On subsequent launches, the consent service may refresh that information even if you do not watch another advert. The app requests adverts only when its consent checks allow this and you use the Ad Pass feature.
+
+Google’s advertising SDK can collect and share IP addresses, approximate location inferred from IP, app and advert interactions, diagnostic information, and device or account-related identifiers where available. Google describes uses including advertising, measurement and fraud prevention. Adverts and measurement may involve Google and advertising partners identified in the applicable consent information. Google advertising SDK disclosure (https://developers.google.com/admob/android/next-gen/privacy/play-data-disclosure) · How Google uses information from partner apps (https://policies.google.com/technologies/partner-sites)
+
+Where offered, use the app’s advertising privacy options to review or change choices. Android also provides advertising-identifier controls. Refusing or withdrawing consent may affect the availability or type of adverts and Ad Pass, but does not remove the free audio features. Non-personalised advertising can still involve data processing.
+
+Buying Pro removes the need to use rewarded ads. It does not retrospectively erase information already received by Google or other advertising providers, remove their SDK code from the installed app, or guarantee that a previously initialised SDK immediately stops all background activity.
+
+6. Feedback, email and quality reports
+
+If you email us, we receive your email address, message and any attachments or other information you send. Our support mailbox is hosted by Google. Please send only information needed to explain the issue, and do not send passwords, full card details or unnecessary sensitive information.
+
+The Feedback & support feature prepares an email draft addressed to auraforgelabssupport+auralift@gmail.com. You review the draft in your email app and decide whether to send it. It includes feedback details and the app version; optional diagnostics can add device, Android and audio-configuration information. An attachment is included only if you choose one. Your selected email provider handles the transmission. The app does not silently upload that feedback to us.
+
+Google may separately make Android quality information available through Play Console, including crash and performance reports collected under the user’s Google/Android settings. This is distinct from an Auralift feedback message. The reviewed app does not contain a separate developer-operated analytics or crash-reporting service. Android vitals (https://developer.android.com/topic/performance/vitals)
+
+7. Why we use personal information
+
+Where UK data-protection law applies to our handling of personal information, we use the following bases:
+
+Purpose | Basis
+
+Providing purchased access and necessary purchase support | Performance of our contract with you
+
+Handling general enquiries, investigating problems and preventing misuse | Legitimate interests in supporting users and maintaining a reliable service, balanced against your rights
+
+Keeping records required by law | Compliance with a legal obligation
+
+Establishing or responding to legal claims | Legitimate interests in protecting legal rights, where appropriate
+
+Optional advertising processing for which consent is required | Your consent through the applicable privacy controls
+
+Google’s own purposes and legal bases are described in its notices. Our use of a particular basis does not authorise every activity by another provider. We do not make decisions about you with legal or similarly significant effects solely through automated processing.
+
+8. Sharing, security and international processing
+
+We do not operate a business selling support messages or saved audio profiles. Information can nevertheless be processed by the providers described above, including Google Play, Google advertising services, our email provider and any service you select when sharing or exporting. We may disclose necessary information to advisers or authorities when reasonably needed for legal obligations or claims.
+
+We use the protections provided by Android’s app storage and the services through which we handle information, and limit support information to what is needed. Google states that its advertising SDK encrypts transmitted data in transit. No storage or transmission method can promise absolute security.
+
+Provider processing may take place outside the UK. Google explains its international-transfer arrangements, including relevant adequacy decisions and contractual safeguards, in its data-transfer information (https://policies.google.com/privacy/frameworks). Where we arrange a restricted transfer, we must use an applicable lawful transfer mechanism. Contact us for details about the arrangements relevant to information we hold.
+
+9. How long information is kept
+
+Local preferences and cached records remain until replaced, removed through available app controls, or deleted by clearing app storage or uninstalling the app. Temporary visualiser information is not retained as a recording. Exported files remain wherever you save them until you delete them there.
+
+We keep support correspondence while needed to resolve the request and related follow-up. Relevant portions may be retained longer where needed for a purchase dispute, legal claim or record-keeping duty; unnecessary attachments and diagnostic details should not be retained just because other records are needed. We assess retention by whether the issue is still open, any applicable dispute or legal period, and whether the information remains necessary.
+
+Google and other independent providers apply their own retention rules. Deleting the app does not automatically delete Google purchase or advertising records, emails already sent, or files you exported. Please contact us if you want us to review or delete information we hold.
+
+10. Your choices and rights
+
+Depending on the information, purpose and applicable law, you may have rights to access and correct personal information, request deletion or restricted use, obtain a portable copy, and object to processing based on legitimate interests. Where processing relies on consent, you can withdraw it without changing the lawfulness of earlier processing.
+
+Email auraforgelabssupport+auralift@gmail.com to exercise rights relating to information we handle. We may need proportionate information to verify your identity. Some records may need to be retained where the law permits or requires this; we will explain any limitation. For data held only on your device, the relevant controls are normally in the app or Android settings.
+
+You can also complain to the UK Information Commissioner’s Office through the ICO complaints service (https://ico.org.uk/make-a-complaint/), or to your relevant local data-protection authority.
+
+11. Intended audience
+
+Auralift is intended for adults aged 18 and over. We do not ask for your date of birth or operate an Auralift user-account system. This intended audience does not mean that we verify every user's age.
+
+12. This policy website
+
+These policy pages are hosted by GitHub Pages. GitHub logs and stores visitors' IP addresses for security purposes, including visits made without a GitHub account. These pages do not include analytics scripts, advertising, forms or embedded third-party content. See GitHub's Pages data-collection information (https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection) and GitHub's Privacy Statement (https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement).
+
+13. Changes
+
+We will update this policy when relevant features or data practices change, show the effective date, and bring significant changes to your attention as appropriate. An updated notice does not replace consent where fresh consent is required.
+
+Document languages
+These documents are available in English, Spanish and French. You can select the document language and save a copy. Translations are intended to describe the same terms and practices. Contact us if wording is unclear; language selection does not restrict your mandatory rights.

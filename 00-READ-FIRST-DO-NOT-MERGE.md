@@ -30,6 +30,10 @@ history. See [the migration record](docs/REPOSITORY-MIGRATION.md).
 10. `docs/BACKGROUND-RUNNING.md` — manifest rationale and reboot reminders.
 11. `docs/CLOSED-TESTING-BRIEF.md` — tester recruitment and structured feedback plan.
 
+For future app opportunities, also read `docs/FUTURE-APP-STRATEGY.md`: Jamie's
+AuraForge Labs goals, agreed niche-research process and current decisions. This
+portfolio brief does not expand Auralift's implementation scope.
+
 ## Build automation and credentials
 
 `.github/workflows/android.yml` is now at the repository root and defines the

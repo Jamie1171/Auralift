@@ -1,5 +1,6 @@
 package com.jamiewardle.auralift.ui
 
+import com.jamiewardle.auralift.support.SupportEmail
 import android.Manifest
 import android.app.Activity
 import android.app.NotificationManager
@@ -29,6 +30,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.os.LocaleListCompat
@@ -384,14 +386,18 @@ internal fun Context.activity(): Activity? = when (this) { is Activity -> this; 
 
 @Composable private fun FeedbackScreen(app: AuraliftApplication) {
     val context = LocalContext.current
-    var category by rememberSaveable { mutableIntStateOf(R.string.feedback_not_working) }
+    var category by rememberSaveable { mutableIntStateOf(R.string.feedback_support) }
     var message by rememberSaveable { mutableStateOf("") }
     var includeDetails by rememberSaveable { mutableStateOf(false) }
     var attachment by rememberSaveable { mutableStateOf<String?>(null) }
     val image = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { attachment = it?.toString() }
     PageHeading(stringResource(R.string.share_feedback), stringResource(R.string.feedback_subtitle))
     Panel {
-        listOf(R.string.feedback_not_working, R.string.feedback_noise, R.string.feedback_stopping, R.string.feedback_idea).chunked(2).forEach { row ->
+        Text(SupportEmail.ADDRESS, modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp),
+            textAlign = TextAlign.Center, style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.primary)
+        listOf(R.string.feedback_support, R.string.feedback_purchase, R.string.feedback_not_working,
+            R.string.feedback_noise, R.string.feedback_stopping, R.string.feedback_idea).chunked(2).forEach { row ->
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) { row.forEach { item ->
                 FilterChip(selected = category == item, onClick = { category = item }, label = { Text(stringResource(item)) }, modifier = Modifier.weight(1f).heightIn(min = 48.dp))
             } }
@@ -400,18 +406,21 @@ internal fun Context.activity(): Activity? = when (this) { is Activity -> this; 
         SettingSwitch(stringResource(R.string.include_diagnostics), stringResource(R.string.diagnostics_hint), includeDetails) { includeDetails = it }
         TextButton(onClick = { if (attachment == null) image.launch("image/*") else attachment = null }) { Text(stringResource(if (attachment == null) R.string.attach_screenshot else R.string.remove_screenshot)) }
         Button(enabled = message.trim().length >= 6, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp), onClick = {
-            val text = "Auralift ${BuildConfig.VERSION_NAME}\n${context.getString(category)}\n\n${message.trim()}" +
-                if (includeDetails) "\n\n${app.engine.value.diagnostics}" else ""
-            val intent = Intent(Intent.ACTION_SEND).apply {
-                type = "text/plain"; putExtra(Intent.EXTRA_SUBJECT, "Auralift feedback"); putExtra(Intent.EXTRA_TEXT, text)
-                attachment?.let { value ->
-                    val uri = Uri.parse(value); type = context.contentResolver.getType(uri) ?: "image/*"
-                    putExtra(Intent.EXTRA_STREAM, uri); clipData = ClipData.newUri(context.contentResolver, "Screenshot", uri)
-                    addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                }
+            try {
+                val intent = SupportEmail.draft(context, context.getString(category), message,
+                    diagnostics = if (includeDetails) app.engine.value.diagnostics else null,
+                    screenshot = attachment?.let(Uri::parse))
+                context.startActivity(SupportEmail.chooser(context, intent, context.getString(R.string.choose_where_to_send)))
+            } catch (_: ActivityNotFoundException) {
+                Toast.makeText(context, context.word(R.string.feedback_email_unavailable), Toast.LENGTH_LONG).show()
+            } catch (_: SecurityException) {
+                Toast.makeText(context, context.word(R.string.feedback_email_unavailable), Toast.LENGTH_LONG).show()
             }
-            context.openSettings(Intent.createChooser(intent, context.word(R.string.share_feedback)))
         }) { Text(stringResource(R.string.choose_where_to_send)) }
+        TextButton(onClick = {
+            context.getSystemService(ClipboardManager::class.java).setPrimaryClip(ClipData.newPlainText("Auralift support", SupportEmail.ADDRESS))
+            Toast.makeText(context, context.word(R.string.support_email_copied), Toast.LENGTH_SHORT).show()
+        }) { Text(stringResource(R.string.copy_support_email)) }
         Text(stringResource(R.string.feedback_privacy), Modifier.padding(top = 12.dp), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
     }
 }

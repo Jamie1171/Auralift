@@ -1,9 +1,14 @@
-# Features and monetisation — 0.5.0
+# Features and monetisation — 0.5.9
 
-13 September 2026. This implements Jamie's approved model. Account-side products,
-prices, AdMob configuration and real transactions have not been activated.
+19 September 2026. Jamie has created and activated both one-time products.
+Jamie confirmed a 0.5.7 Play licence-test Pro purchase and unlock/restore. Live
+AdMob configuration is still absent. Version 0.5.9 explicitly enables Google's
+rewarded demo inventory in the closed-test release using `auralift.testAds=true`.
+It uses the existing consent, earned-reward, audio-gate and real one-hour expiry
+paths; no simulated unlock or shortened timer is shipped to testers. Google demo
+ads are not monetized. An installed-device ad completion check is still required.
 
-| Option | Intended UK price | Product ID | Access |
+| Option | Bulk base price (before local tax/rounding) | Product ID | Access |
 | --- | --- | --- | --- |
 | Free | £0 | None | All core audio controls |
 | Ad Pass | Complete one rewarded ad | No Play purchase product | All Pro features for one hour; repeat after expiry when ads are available |
@@ -11,8 +16,9 @@ prices, AdMob configuration and real transactions have not been activated.
 | Supporter Pro | £5.99 once | `auralift_supporter` | Exactly the same permanent Pro entitlement; optional extra support |
 
 Both purchase products are **non-consumable one-time products**, not subscriptions
-or two separate feature tiers. Each uses a `buy` purchase option and base offer
-(no offer ID). Configure the actual local prices in Play Console; the app displays
+or two separate feature tiers. Pro uses purchase option `pro-lifetime`; Supporter uses `supporter-lifetime`.
+Both use the base offer (no offer ID). The original `buy` option remains supported
+as a fallback, with each product-specific lifetime option preferred. Configure the actual local prices in Play Console; the app displays
 Google's returned formatted prices rather than hard-coding sterling at checkout.
 Existing owners are not offered another purchase of the same access. Supporter
 is labelled as the same features for a higher price, never an implied requirement.
@@ -94,16 +100,25 @@ the Auralift interface and audio engine remain native Kotlin/Compose/Android API
 ## Activation checklist
 
 - Finalise public package, publisher/support details, signing and hosted policies.
-- Create both product IDs above with purchase option `buy`, base offer, prices
-  and country availability. Activate them for the relevant test track.
-- Set Gradle property `auralift.playPublicKey` to Play's public licensing key.
+- Both product IDs are created with active purchase options. Match the option IDs
+  above and confirm country availability for testers.
+- Gradle property `auralift.playPublicKey` now contains the supplied public licensing key.
   The key is public verification material; no private signing key belongs in Git.
-- Set `auralift.admobAppId` and `auralift.rewardedAdId` to the production IDs only
-  for a deliberate release. Defaults leave release ads unavailable. Play **debug**
-  forcibly uses Google's official test app/ad IDs regardless of these properties.
+- For closed/internal testing, `auralift.testAds=true` forces Google's official
+  demo app ID and rewarded unit into both the release manifest and runtime config,
+  even if production IDs are supplied. Play **debug** also always uses test IDs.
+  For a public release set `auralift.testAds=false` and configure
+  `auralift.admobAppId` / `auralift.rewardedAdId`. With the flag off and no IDs,
+  release ads remain unavailable. Test ads plus `auralift.storeLive=true` is a build
+  error. This is a build-time guard, not automatic detection of a Play track:
+  do not promote the test-ad bundle into production.
 - Configure the one-hour in-app reward and relevant UMP Privacy & messaging forms
   in AdMob. Test accept, decline, privacy changes, no network and no fill. Privacy
   choices appear in Settings and Pro whenever UMP requires an entry point.
+- Add each purchase-test Google account under Play Console Settings → Licence testing,
+  separately from closed-track membership. Install the Play edition from the test
+  link using that account, exit reviewer access, and confirm checkout offers a test
+  payment method. Closed-track membership alone does not prevent real charges.
 - Use test ads/test devices only during development. Use Play licence testers for
   both products, pending/cancelled/approved purchases, restore, refund and offline
   cases. A successful query with either valid product maintains Pro; losing one

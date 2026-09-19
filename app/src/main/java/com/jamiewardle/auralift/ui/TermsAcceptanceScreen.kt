@@ -12,16 +12,20 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.jamiewardle.auralift.AuraliftApplication
 import com.jamiewardle.auralift.R
+import com.jamiewardle.auralift.legal.LegalDocuments
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @Composable internal fun TermsAcceptanceScreen(app: AuraliftApplication) {
     val context = LocalContext.current
+    val appLanguage = LegalDocuments.language(LocalConfiguration.current.locales[0].toLanguageTag())
+    var language by rememberSaveable(appLanguage) { mutableStateOf(appLanguage) }
     val scope = rememberCoroutineScope()
     var document by rememberSaveable { mutableStateOf<String?>(null) }
     var saving by remember { mutableStateOf(false) }
@@ -35,7 +39,7 @@ import kotlinx.coroutines.withContext
                 verticalArrangement = Arrangement.spacedBy(16.dp)) {
                 if (document != null) {
                     TextButton(onClick = { document = null }) { Text(stringResource(R.string.back)) }
-                    PolicyScreen(document!!)
+                    PolicyScreen(document!!, language) { language = it }
                 } else {
                     Text("Auralift", style = MaterialTheme.typography.titleLarge)
                     Text(stringResource(if (previous == null) R.string.terms_welcome else R.string.terms_updated),
@@ -43,6 +47,7 @@ import kotlinx.coroutines.withContext
                     Text(stringResource(R.string.terms_safety), style = MaterialTheme.typography.bodyLarge)
                     Text(stringResource(R.string.terms_summary), style = MaterialTheme.typography.bodyMedium)
                     Text(stringResource(R.string.terms_review), style = MaterialTheme.typography.bodyMedium)
+                    DocumentLanguage(language, appLanguage) { language = it }
                     OutlinedButton(onClick = { document = "terms" }, modifier = Modifier.fillMaxWidth()) {
                         Text(stringResource(R.string.terms_of_use))
                     }
@@ -55,7 +60,7 @@ import kotlinx.coroutines.withContext
                     Button(onClick = {
                         saving = true; failed = false
                         scope.launch {
-                            val saved = withContext(Dispatchers.IO) { app.terms.accept() }
+                            val saved = withContext(Dispatchers.IO) { app.terms.accept(language) }
                             failed = !saved; saving = false
                         }
                     }, enabled = !saving, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) {
@@ -70,10 +75,14 @@ import kotlinx.coroutines.withContext
 }
 
 /** Shared offline documents, reachable both before agreement and from Settings. */
-@Composable internal fun PolicyScreen(page: String) {
+@Composable internal fun PolicyScreen(page: String, selectedLanguage: String? = null,
+    onLanguageChange: ((String) -> Unit)? = null) {
     val context = LocalContext.current
+    val appLanguage = LegalDocuments.language(LocalConfiguration.current.locales[0].toLanguageTag())
+    var ownLanguage by rememberSaveable(appLanguage) { mutableStateOf(appLanguage) }
+    val language = selectedLanguage ?: ownLanguage
     val scope = rememberCoroutineScope()
-    val content = remember(page) { context.assets.open("legal/$page.txt").bufferedReader().use { it.readText() } }
+    val content = remember(page, language) { LegalDocuments.read(context, page, language) }
     var exportFailed by remember(page) { mutableStateOf(false) }
     // Keep the chosen document across rotation while the system file picker is open.
     var exportText by rememberSaveable { mutableStateOf("") }
@@ -90,11 +99,24 @@ import kotlinx.coroutines.withContext
         }
     }
     PageHeading(stringResource(if (page == "privacy") R.string.privacy_policy else R.string.terms_of_use),
-        stringResource(R.string.policy_language))
+        stringResource(R.string.policy_language, LegalDocuments.name(language)))
+    DocumentLanguage(language, appLanguage) {
+        if (onLanguageChange != null) onLanguageChange(it) else ownLanguage = it
+    }
     OutlinedButton(onClick = {
         exportText = content
-        save.launch("Auralift-$page.txt")
+        save.launch("Auralift-$page-$language.txt")
     }) { Text(stringResource(R.string.terms_save_copy)) }
     if (exportFailed) Text(stringResource(R.string.terms_export_failed), color = MaterialTheme.colorScheme.error)
     Panel { SelectionContainer { Text(content, style = MaterialTheme.typography.bodyMedium) } }
+}
+
+@Composable private fun DocumentLanguage(language: String, appLanguage: String, onChange: (String) -> Unit) {
+    Text(stringResource(R.string.document_language, LegalDocuments.name(language)),
+        style = MaterialTheme.typography.bodyMedium)
+    if (appLanguage != "en") {
+        TextButton(onClick = { onChange(if (language == "en") appLanguage else "en") }) {
+            Text(stringResource(if (language == "en") R.string.document_app_language else R.string.document_english))
+        }
+    }
 }
