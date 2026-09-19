@@ -1,11 +1,13 @@
 # Auralift
 
-The current review branch is **0.5.8 / version code 13**. It repairs support email
-drafts and screenshot sharing, and centers the support address with more spacing.
-Drafts use the installed email app; no server or automatic sending is involved.
-Jamie confirmed a 0.5.7 licence-test purchase unlocked Pro. Checkout prices still
-come from Google Play, and live ads remain disabled. The new email handoff still
-requires confirmation in an installed email client on Jamie's device.
+The current review branch is **0.5.9 / version code 14**. Closed/internal-test
+release bundles now explicitly use Google's rewarded test ads, so testers can earn
+the one-hour Pro pass and test the floating player without a purchase. Consent,
+reward callbacks, audio suspension and expiry use the existing Play implementation.
+`auralift.testAds=true` is for testing only: switch it off and configure production
+IDs before a public launch. Building with both test ads and `storeLive=true` fails.
+Jamie confirmed the 0.5.7 licence-test Pro purchase and the repaired 0.5.8 Gmail
+drafts, diagnostics and screenshots on Pixel 9a. Live advertising remains disabled.
 See [monetisation](docs/FEATURES-AND-MONETISATION.md) and
 [validation](docs/VALIDATION.md) for configuration and actual test evidence.
 

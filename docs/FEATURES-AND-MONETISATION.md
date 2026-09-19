@@ -1,8 +1,12 @@
-# Features and monetisation — 0.5.7
+# Features and monetisation — 0.5.9
 
 19 September 2026. Jamie has created and activated both one-time products.
-The public licensing key is configured in 0.5.7; actual Play transactions remain
-to be tested. Live AdMob configuration is still absent.
+Jamie confirmed a 0.5.7 Play licence-test Pro purchase and unlock/restore. Live
+AdMob configuration is still absent. Version 0.5.9 explicitly enables Google's
+rewarded demo inventory in the closed-test release using `auralift.testAds=true`.
+It uses the existing consent, earned-reward, audio-gate and real one-hour expiry
+paths; no simulated unlock or shortened timer is shipped to testers. Google demo
+ads are not monetized. An installed-device ad completion check is still required.
 
 | Option | Bulk base price (before local tax/rounding) | Product ID | Access |
 | --- | --- | --- | --- |
@@ -100,9 +104,14 @@ the Auralift interface and audio engine remain native Kotlin/Compose/Android API
   above and confirm country availability for testers.
 - Gradle property `auralift.playPublicKey` now contains the supplied public licensing key.
   The key is public verification material; no private signing key belongs in Git.
-- Set `auralift.admobAppId` and `auralift.rewardedAdId` to the production IDs only
-  for a deliberate release. Defaults leave release ads unavailable. Play **debug**
-  forcibly uses Google's official test app/ad IDs regardless of these properties.
+- For closed/internal testing, `auralift.testAds=true` forces Google's official
+  demo app ID and rewarded unit into both the release manifest and runtime config,
+  even if production IDs are supplied. Play **debug** also always uses test IDs.
+  For a public release set `auralift.testAds=false` and configure
+  `auralift.admobAppId` / `auralift.rewardedAdId`. With the flag off and no IDs,
+  release ads remain unavailable. Test ads plus `auralift.storeLive=true` is a build
+  error. This is a build-time guard, not automatic detection of a Play track:
+  do not promote the test-ad bundle into production.
 - Configure the one-hour in-app reward and relevant UMP Privacy & messaging forms
   in AdMob. Test accept, decline, privacy changes, no network and no fill. Privacy
   choices appear in Settings and Pro whenever UMP requires an entry point.

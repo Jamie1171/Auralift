@@ -1,5 +1,29 @@
 # Validation — Auralift
 
+## 0.5.9 closed-test rewarded ads — validation pending
+
+Version code 14 enables Google's official demo app and rewarded-unit IDs in the
+optimized Play release, controlled by the explicit `auralift.testAds=true` property.
+The runtime and manifest receive matching IDs. Test mode overrides supplied live
+IDs; disabling it restores the existing production-property/disabled behavior.
+The configuration rejects `testAds=true` with `storeLive=true`; CI now checks that
+rejection and its expected error. The guard cannot detect a Play Console track:
+this bundle is for internal/closed testing, not promotion into production.
+
+There are no reward/consent/audio/expiry code changes. The same UMP checks and SDK
+earned-reward callback grant one real hour, persisted across reopening; loading or
+closing an ad alone grants nothing. Existing tests cover duplicate rewards,
+failed claims, expiry, gain clamping, retained profiles and the ad audio gate.
+Owner remains a separate SDK-free package and payment configuration is unchanged.
+See Google's [test-ad instructions](https://developers.google.com/admob/android/next-gen/test-ads).
+
+- Local localization and whitespace checks passed.
+- Both prescribed local Gradle commands failed at the Gradle 8.13 download with
+  network unreachable. The required GitHub Actions checks are pending.
+- Actual ad loading/completion, consent UI and the one-hour timer must be checked
+  on an installed Free test account. No live inventory, revenue or account-side
+  AdMob readiness is claimed. No test purchase is required to earn a pass.
+
 ## 0.5.8 support email repair — built and signed
 
 Jamie reported a successful 0.5.7 Play test-card purchase and Pro unlock/restore.
@@ -34,7 +58,8 @@ and [sharing guidance](https://developer.android.com/develop/ui/compose/sharing/
 - Inspected the generated feedback screenshot: centered address and separation
   above the category controls are visible; the form and email action remain usable.
 - [Device workflow](https://github.com/Jamie1171/Auralift/actions/runs/35442256475):
-  Android 8 passed; Android 16 is still running at this checkpoint.
+  Android 8 passed; Android 16 later ended cancelled, so no successful Android 16
+  completion is claimed for this build.
 - [16 KB optimized runtime](https://github.com/Jamie1171/Auralift/actions/runs/35442256468):
   initial attempt failed during background checks. Logs show a native SIGSEGV in
   emulator `system_server` / SettingsProvider, followed by DeadSystemException in
@@ -57,6 +82,10 @@ and [sharing guidance](https://developer.android.com/develop/ui/compose/sharing/
 - Actual Gmail draft population and screenshot opening must be confirmed on the
   device after installation; automated intent tests do not prove client behavior.
   No email was sent and no Play Console upload/submission was performed.
+
+Subsequent user evidence: Jamie confirmed 0.5.8 on Pixel 9a / Android 17 populated
+the Gmail subject and message, included optional diagnostics, and attached the
+chosen screenshot. He then promoted the bundle to the closed track for review.
 
 ## 0.5.7 Play billing configuration — built and signed
 

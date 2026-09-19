@@ -1,5 +1,31 @@
 # Auralift closed-testing brief
 
+## 0.5.9 test-ad access
+
+Use version code 14 or newer with the explicit closed-test ad configuration.
+From a Free account, tap Prepare Ad Pass, complete any applicable privacy choices,
+then Watch ad. Google's test ad should identify itself as a test ad. Completing it
+through the SDK reward callback earns one real hour of Pro, including the floating
+player and themes; no purchase or reviewer unlock is needed. Loading or closing
+an ad alone must not grant a pass. When testing early dismissal, first ensure
+there is no active pass and close before the reward has been earned.
+
+After earning a pass, test the floating player while playing quietly: expand,
+minimise, Stop boost, restart boost and Close. Check the pass persists when leaving
+and reopening Auralift. At expiry the player should close and Pro controls lock,
+while external music continues; gain above +15 dB is capped. Renewing must not
+restore a previously higher gain. Use comfortable playback, not maximum gain.
+
+Permanent Pro owners and accounts with reviewer access do not see the Ad Pass
+offer. They need a separate eligible Free tester account to exercise this flow.
+Report unavailable/loading/consent errors rather than making a purchase. This
+tests the ad/reward integration, not production inventory, revenue or AdMob approval.
+
+Suggested first five prompts: boost effectiveness, background reliability, Ad Pass
+completion/unlock, floating-player behavior, and stop/restart. Rotate output changes,
+EQ persistence, general usability and support into later checkpoints as supported
+by the platform. Nobody needs to buy Pro to complete the ad/floating-player tests.
+
 The 14 September [human testing goals](HUMAN-TEST-GOALS.md) refine this brief for
 Jamie's planned group of 20, with device/player/output reporting and tests that
 complement the new automation. The historical exchange description below does

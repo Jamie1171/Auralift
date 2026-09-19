@@ -3,6 +3,16 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
 }
+// Explicit closed-test inventory; release builds must never silently fall back to test ads.
+val closedTestAds = providers.gradleProperty("auralift.testAds").orElse("false").get().toBooleanStrict()
+val publicStoreLive = providers.gradleProperty("auralift.storeLive").orElse("false").get().toBooleanStrict()
+require(!(closedTestAds && publicStoreLive)) {
+    "Disable auralift.testAds and configure production AdMob IDs before a public-store build."
+}
+val testAdAppId = "ca-app-pub-3940256099942544~3347511713"
+val testRewardedAdId = "ca-app-pub-3940256099942544/5224354917"
+val releaseAdAppId = if (closedTestAds) testAdAppId else providers.gradleProperty("auralift.admobAppId").orElse("").get()
+val releaseRewardedAdId = if (closedTestAds) testRewardedAdId else providers.gradleProperty("auralift.rewardedAdId").orElse("").get()
 android {
     namespace = "com.jamiewardle.auralift"
     compileSdk = 36
@@ -10,8 +20,8 @@ android {
         applicationId = "com.jamiewardle.auralift"
         minSdk = 26
         targetSdk = 36
-        versionCode = 13
-        versionName = "0.5.8"
+        versionCode = 14
+        versionName = "0.5.9"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     flavorDimensions += "distribution"
@@ -26,16 +36,16 @@ android {
             dimension = "distribution"
             resValue("string", "app_name", "Auralift")
             buildConfigField("String", "PLAY_PUBLIC_KEY", "\"${providers.gradleProperty("auralift.playPublicKey").orElse("").get()}\"")
-            buildConfigField("boolean", "STORE_LIVE", providers.gradleProperty("auralift.storeLive").orElse("false").get())
-            buildConfigField("String", "ADMOB_APP_ID", "\"${providers.gradleProperty("auralift.admobAppId").orElse("").get()}\"")
-            buildConfigField("String", "REWARDED_AD_ID", "\"${providers.gradleProperty("auralift.rewardedAdId").orElse("").get()}\"")
-            manifestPlaceholders["admobAppId"] = providers.gradleProperty("auralift.admobAppId").orElse("ca-app-pub-3940256099942544~3347511713").get()
+            buildConfigField("boolean", "STORE_LIVE", publicStoreLive.toString())
+            buildConfigField("String", "ADMOB_APP_ID", "\"$releaseAdAppId\"")
+            buildConfigField("String", "REWARDED_AD_ID", "\"$releaseRewardedAdId\"")
+            manifestPlaceholders["admobAppId"] = releaseAdAppId.ifBlank { testAdAppId }
         }
     }
     buildTypes {
         debug {
             // Always Google's test inventory in debug, regardless of local production properties.
-            manifestPlaceholders["admobAppId"] = "ca-app-pub-3940256099942544~3347511713"
+            manifestPlaceholders["admobAppId"] = testAdAppId
         }
         release { isMinifyEnabled = true; proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro") }
     }
