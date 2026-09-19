@@ -1,10 +1,11 @@
 # Auralift
 
-The current review branch is **0.5.7 / version code 12**. It configures the public
-Google Play receipt-verification key and the permanent Pro/Supporter purchase
-options for closed testing. Local checkout prices come from Google Play. Live ads
-remain disabled. Version 0.5.6 / code 11 was submitted for closed-track review;
-this update still requires Play installation and licence-tester purchase checks.
+The current review branch is **0.5.8 / version code 13**. It repairs support email
+drafts and screenshot sharing, and centers the support address with more spacing.
+Drafts use the installed email app; no server or automatic sending is involved.
+Jamie confirmed a 0.5.7 licence-test purchase unlocked Pro. Checkout prices still
+come from Google Play, and live ads remain disabled. The new email handoff still
+requires confirmation in an installed email client on Jamie's device.
 See [monetisation](docs/FEATURES-AND-MONETISATION.md) and
 [validation](docs/VALIDATION.md) for configuration and actual test evidence.
 

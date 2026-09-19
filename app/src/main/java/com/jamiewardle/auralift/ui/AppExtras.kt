@@ -30,6 +30,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.os.LocaleListCompat
@@ -392,7 +393,9 @@ internal fun Context.activity(): Activity? = when (this) { is Activity -> this; 
     val image = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { attachment = it?.toString() }
     PageHeading(stringResource(R.string.share_feedback), stringResource(R.string.feedback_subtitle))
     Panel {
-        Text(SupportEmail.ADDRESS, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.primary)
+        Text(SupportEmail.ADDRESS, modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp),
+            textAlign = TextAlign.Center, style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.primary)
         listOf(R.string.feedback_support, R.string.feedback_purchase, R.string.feedback_not_working,
             R.string.feedback_noise, R.string.feedback_stopping, R.string.feedback_idea).chunked(2).forEach { row ->
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) { row.forEach { item ->
@@ -407,7 +410,7 @@ internal fun Context.activity(): Activity? = when (this) { is Activity -> this; 
                 val intent = SupportEmail.draft(context, context.getString(category), message,
                     diagnostics = if (includeDetails) app.engine.value.diagnostics else null,
                     screenshot = attachment?.let(Uri::parse))
-                context.startActivity(intent)
+                context.startActivity(SupportEmail.chooser(context, intent, context.getString(R.string.choose_where_to_send)))
             } catch (_: ActivityNotFoundException) {
                 Toast.makeText(context, context.word(R.string.feedback_email_unavailable), Toast.LENGTH_LONG).show()
             } catch (_: SecurityException) {

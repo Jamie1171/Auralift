@@ -1,5 +1,33 @@
 # Validation — Auralift
 
+## 0.5.8 support email repair — validation pending
+
+Jamie reported a successful 0.5.7 Play test-card purchase and Pro unlock/restore.
+This is user-observed evidence, not a claim of testing Supporter, refunds or pending
+payments. The same device opened support drafts with only a recipient, and failed
+to open drafts containing a screenshot.
+
+Version code 13 uses ACTION_SEND for the complete draft, discovers email packages
+through a scoped mailto query, and targets their actual SEND activities. It removes
+the SENDTO selector from screenshot sharing. The chooser and its targets carry the
+image URI and temporary read permission. Message, subject and optional diagnostics
+remain together; requested device details have a fallback before the audio service
+has produced diagnostics. The form remains local and the user sends in their email
+app. No backend, automatic sending or broad package visibility is introduced.
+The address is centered with 12 dp spacing below it.
+
+Regression coverage checks text/Unicode preservation, the actual share activity,
+attachment access through the chooser, exclusion of non-email apps, unsupported
+clients, and optional diagnostic fallback. The implementation follows Android's
+[email intent guidance](https://developer.android.com/guide/components/intents-common#Email)
+and [sharing guidance](https://developer.android.com/develop/ui/compose/sharing/send).
+
+- Local localization and whitespace checks passed.
+- Both prescribed local Gradle invocations failed downloading Gradle 8.13 because
+  the network was unreachable. GitHub Actions gates are pending.
+- Actual Gmail draft population and screenshot opening must be confirmed on the
+  device after installation; automated intent tests do not prove client behavior.
+
 ## 0.5.7 Play billing configuration — built and signed
 
 Version code 12 configures Jamie's supplied RSA-2048 public licensing key.
