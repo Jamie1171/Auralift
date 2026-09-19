@@ -157,6 +157,7 @@ for the tester-exchange plan.
 
 ## Project documents
 
+- [AuraForge Labs future app strategy and new-chat handover](docs/FUTURE-APP-STRATEGY.md)
 - [Repository migration and provenance](docs/REPOSITORY-MIGRATION.md)
 - [Validation and artifact identity](docs/VALIDATION.md)
 - [Features and monetisation](docs/FEATURES-AND-MONETISATION.md)
