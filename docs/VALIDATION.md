@@ -1,61 +1,64 @@
 # Validation — Auralift
 
-## 0.5.10 ad-loading investigation — candidate, validation pending
+## 0.5.10 ad-loading investigation — automated gates passed
 
-Jamie subsequently supplied a screenshot of an actual test ad loading on his
-phone. This establishes device-specific ad delivery, not a universal outage or
-completed reward callback. Keep the original failure as an unconfirmed case.
+Candidate version 0.5.10 / code 15. Tested source:
+`c4caa2886cf20f46961b2e3b10f291d0e9c7ef0b`, [PR #4](https://github.com/Jamie1171/Auralift/pull/4).
+No signed upload bundle or Play Console rollout has been prepared in this change.
 
-Day-one tester feedback on 21 September: Ad Pass reports no ad available, preventing
-Pro/floating-player testing. The screenshot does not include installed version,
-device details or SDK error; its exact cause is not established. The 0.5.9 source
-uses the correct Google demo IDs. No live AdMob account issue is inferred.
+Day-one feedback reported an unavailable Ad Pass, blocking Pro/floating-player
+testing. Jamie then supplied a screenshot of a real test ad loading on his phone.
+This establishes device-specific delivery, not a universal outage or a completed
+reward callback. The failing tester's exact cause remains unconfirmed. The 0.5.9
+Google demo IDs were already correct and are unchanged.
 
-Repairs in this candidate:
-- Consent reading time no longer consumes the 60-second ad-loading budget. Separate
-  watchdogs cover consent-info networking and ad loading; a displayed consent form
-  has no application-imposed reading deadline.
-- On consent update/form errors, load only if UMP itself says canRequestAds=true,
-  as specified in Google's [UMP guide](https://developers.google.com/admob/android/next-gen/privacy).
-  No consent override or own cached-consent shortcut is introduced.
-- Failure invalidates late callbacks, and retry clears the prior support reference.
-- Network, timeout, configuration, no-fill and other SDK failures are distinguished
-  in English, Spanish and French. A stage/error reference is visible for voluntary
-  screenshots; it contains no advertising identifier, raw response or consent string.
-- Small injectable SDK boundaries support controller regression tests. Demo IDs,
-  opt-in/two-tap playback, earned-only rewards, expiry and ad-audio gate remain.
+Changes:
+- Separate consent-info and ad-loading watchdogs; time spent reading a consent
+  form does not consume the ad-loading deadline.
+- Consent update/form errors allow loading only when UMP itself reports valid
+  consent, following [Google's guidance](https://developers.google.com/admob/android/next-gen/privacy).
+- Failed/cancelled requests invalidate stale callbacks. Retry clears the old error.
+- English, Spanish and French distinguish network, timeout, configuration, no-fill
+  and other SDK failures. A stage/error reference can be included in a screenshot;
+  it contains no advertising identifier, raw response or consent string.
+- Review access requires the explicit `auralift.reviewAccess` option (default false,
+  enabled for this closed test). Public-store configuration rejects enabled review
+  access. Disabling it emits an empty verifier, hides the entry and invalidates old
+  review-only grants. Paid Pro and unexpired earned passes remain independent.
+- Existing End review access removes the fallback grant; no downgrade code added.
 
-Review access is now controlled by explicit `auralift.reviewAccess` (default false;
-true in the closed-test properties). A public-store build rejects that flag, and
-when false the generated verifier is empty, hiding the entry and invalidating
-previous review-only grants. Existing purchased/earned access is preserved.
-The CI guard is prepared but not run. Play track selection is external: production
-must use a fresh build with storeLive=true, testAds=false, reviewAccess=false,
-not promote this closed-test binary. Update Play Console review instructions when
-removing the former code. Existing End review access suffices for the failed-ad
-fallback; it intentionally does not revoke purchases or an unexpired earned pass.
-
-Candidate version 0.5.10 / code 15. No signed release or Play upload yet.
+Validation:
+- [Required build gate](https://github.com/Jamie1171/Auralift/actions/runs/35626161595)
+  passed both lint tasks, APK/AAB packaging, and both production configuration
+  guards (test ads and review access). No test failure was ignored.
+- XML reports inspected: API 35 Owner 71 / Play 82; API 26 Owner 48 / Play 60.
+  Total 261 test executions, zero failures, errors or skips. All seven new ad
+  controller regression tests passed on each SDK. These are simulated checks,
+  not real ad delivery or physical acoustic evidence.
+- [Android 8 and Android 16 emulator workflow](https://github.com/Jamie1171/Auralift/actions/runs/35626161511)
+  passed both jobs, including service, UI, permissions and screen-off checks.
+- [Optimized 16 KB runtime](https://github.com/Jamie1171/Auralift/actions/runs/35626161501)
+  passed on x86-64 with reported pageSize 16384. Existing ARM/physical limits remain.
 - Localization validation passed: 384 matching keys per locale, format arguments
-  and all six legal documents checked. git diff --check passed.
-- Both required Gradle invocations were attempted and failed before compilation
-  at the Gradle 8.13 download (network unreachable). No Android test pass claimed.
-- Seven new controller regression tests cover slow consent, UMP-approved fallback,
-  denied consent, form errors, timeouts, stale callbacks/retries and host destruction.
-  They have not executed in this environment.
-- Automatic approval review rejected pushing the candidate branch because the
-  current request was not considered authorization to publish repository contents.
-  Jamie subsequently explicitly authorized Git pushes on 21 September.
-  Remote validation is now being prepared.
-Initial Actions run 35625430728 compiled both editions and passed both build
-configuration guards. API 35 Play ran 82 cases; two new fixtures failed because
-GMA 1.4.0 lacks the Kotlin default-argument LoadAdError constructor at runtime.
-The retained XML identifies NoSuchMethodError at fixture construction, before
-controller assertions. Fixtures now pass all three constructor arguments explicitly;
-no assertion is removed and application sources are unchanged by this correction.
-Revalidation is pending.
+  and six legal documents. Whitespace checks passed.
+- Downloaded CI archive SHA-256 matches GitHub's digest:
+  `b54b9e691212ecf585a1643257cd5adb9b24f73740ffc22eab8ae1b45527a441`.
 
-The reported weak boost/crackling is a separate unresolved device/audio issue.
+The first gate (35625430728) had two new test-fixture failures: GMA 1.4.0 lacks the
+Kotlin default-argument LoadAdError constructor at runtime. The retained XML shows
+NoSuchMethodError at fixture construction, before controller assertions. Passing
+all constructor arguments explicitly fixed it; assertions and app behavior were
+unchanged. The successful rerun above includes every affected case. Local Gradle
+could not download its distribution, so Android validation ran in Actions instead.
+Jamie explicitly authorized Git pushes on 21 September after the first automatic
+approval review rejected publication.
+
+Before launch, build a fresh bundle with storeLive=true, testAds=false and
+reviewAccess=false; verify the optimized production artifact and update obsolete
+Play Console reviewer instructions. A build flag cannot detect the selected Play
+track, so do not promote this closed-test binary directly to production.
+Real installed ad completion/one-hour unlock and the failing tester's retry remain
+manual checks. Weak boost/crackling remains a separate unresolved audio report.
 
 ## 0.5.9 closed-test rewarded ads — built and signed
 
