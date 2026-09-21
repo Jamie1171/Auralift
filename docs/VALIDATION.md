@@ -1,5 +1,54 @@
 # Validation — Auralift
 
+## 0.5.10 ad-loading investigation — candidate, validation pending
+
+Jamie subsequently supplied a screenshot of an actual test ad loading on his
+phone. This establishes device-specific ad delivery, not a universal outage or
+completed reward callback. Keep the original failure as an unconfirmed case.
+
+Day-one tester feedback on 21 September: Ad Pass reports no ad available, preventing
+Pro/floating-player testing. The screenshot does not include installed version,
+device details or SDK error; its exact cause is not established. The 0.5.9 source
+uses the correct Google demo IDs. No live AdMob account issue is inferred.
+
+Repairs in this candidate:
+- Consent reading time no longer consumes the 60-second ad-loading budget. Separate
+  watchdogs cover consent-info networking and ad loading; a displayed consent form
+  has no application-imposed reading deadline.
+- On consent update/form errors, load only if UMP itself says canRequestAds=true,
+  as specified in Google's [UMP guide](https://developers.google.com/admob/android/next-gen/privacy).
+  No consent override or own cached-consent shortcut is introduced.
+- Failure invalidates late callbacks, and retry clears the prior support reference.
+- Network, timeout, configuration, no-fill and other SDK failures are distinguished
+  in English, Spanish and French. A stage/error reference is visible for voluntary
+  screenshots; it contains no advertising identifier, raw response or consent string.
+- Small injectable SDK boundaries support controller regression tests. Demo IDs,
+  opt-in/two-tap playback, earned-only rewards, expiry and ad-audio gate remain.
+
+Review access is now controlled by explicit `auralift.reviewAccess` (default false;
+true in the closed-test properties). A public-store build rejects that flag, and
+when false the generated verifier is empty, hiding the entry and invalidating
+previous review-only grants. Existing purchased/earned access is preserved.
+The CI guard is prepared but not run. Play track selection is external: production
+must use a fresh build with storeLive=true, testAds=false, reviewAccess=false,
+not promote this closed-test binary. Update Play Console review instructions when
+removing the former code. Existing End review access suffices for the failed-ad
+fallback; it intentionally does not revoke purchases or an unexpired earned pass.
+
+Candidate version 0.5.10 / code 15. No signed release or Play upload yet.
+- Localization validation passed: 384 matching keys per locale, format arguments
+  and all six legal documents checked. git diff --check passed.
+- Both required Gradle invocations were attempted and failed before compilation
+  at the Gradle 8.13 download (network unreachable). No Android test pass claimed.
+- Seven new controller regression tests cover slow consent, UMP-approved fallback,
+  denied consent, form errors, timeouts, stale callbacks/retries and host destruction.
+  They have not executed in this environment.
+- Automatic approval review rejected pushing the candidate branch because the
+  current request was not considered authorization to publish repository contents.
+  Jamie subsequently explicitly authorized Git pushes on 21 September.
+  Remote validation is now being prepared.
+The reported weak boost/crackling is a separate unresolved device/audio issue.
+
 ## 0.5.9 closed-test rewarded ads — built and signed
 
 Version code 14 enables Google's official demo app and rewarded-unit IDs in the

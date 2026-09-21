@@ -76,6 +76,8 @@ import kotlin.math.ceil
                 // Only AccessState decides whether to show an active entitlement.
                 if (message != 0 && message != R.string.ad_pass_intro && message != R.string.ad_rewarded) Text(stringResource(message),
                     style = MaterialTheme.typography.bodySmall, modifier = Modifier.padding(top = 10.dp))
+                if (ads.errorReference.isNotBlank()) Text(stringResource(R.string.ad_error_reference, ads.errorReference),
+                    style = MaterialTheme.typography.bodySmall, modifier = Modifier.padding(top = 6.dp))
             }
             if (onDetails != null) TextButton(onClick = onDetails, modifier = Modifier.align(Alignment.End)) {
                 Text(stringResource(R.string.ad_pass_details))

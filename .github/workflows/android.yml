@@ -33,6 +33,14 @@ jobs:
             exit 1
           fi
           python3 -c 'from pathlib import Path; assert "Disable auralift.testAds and configure production AdMob IDs" in Path("build/ad-config-guard.log").read_text(); print("Public-store/test-ad conflict rejected as expected")'
+      - name: Check public-store builds reject review access
+        run: |
+          mkdir -p build
+          if ./gradlew -Pauralift.testAds=false -Pauralift.reviewAccess=true -Pauralift.storeLive=true help > build/review-config-guard.log 2>&1; then
+            echo "Public-store build incorrectly accepted review access"
+            exit 1
+          fi
+          python3 -c 'from pathlib import Path; assert "Disable auralift.reviewAccess before a public-store build" in Path("build/review-config-guard.log").read_text(); print("Public-store/review-access conflict rejected as expected")'
       - name: Test, lint and package both editions
         run: >-
           ./gradlew :app:testOwnerDebugUnitTest :app:testPlayDebugUnitTest
@@ -63,6 +71,7 @@ jobs:
             app/build/screenshots/
             build/signing-tool/
             build/ad-config-guard.log
+            build/review-config-guard.log
 # Active at the root of Jamie1171/Auralift. CI debug keys are ephemeral; use the
 # backed-up personal key for Owner updates. No production signing or cloud device
 # lab is configured. Preserve available test reports even when verification fails.

@@ -1,5 +1,30 @@
 # Auralift closed-testing brief
 
+## Test access fallback and production removal
+
+Try and report the real test-ad flow before using the private existing review code.
+Settings > Auralift Pro > Review access > Unlock Pro for review enables ordinary
+Pro offline. Use End review access to remove that grant. Purchased Pro and remaining
+Ad Pass time survive; Free/ad testing requires neither to be active. Do not post
+the reusable code in the public repository or store listing.
+
+Public launch requires a fresh bundle built with auralift.storeLive=true,
+auralift.testAds=false and auralift.reviewAccess=false. The build rejects enabled
+test/review flags for public-store builds. The production verifier is empty, so
+saved review grants stop unlocking Pro and the review UI disappears. Verify the
+optimized production bundle and replace obsolete Play Console access instructions;
+a build flag cannot determine the track selected in Play Console.
+
+## Day-one ad blocker follow-up
+
+For the 0.5.10 candidate, report the installed version, phone/Android version,
+whether Prepare or Watch fails, and the full support reference shown beneath
+the message. Record whether it happens on Wi-Fi, mobile data or both; do not
+assume a network cause from the old generic message. Test a fresh Free session,
+complete any privacy form at a normal pace, then finish a Google test ad.
+Confirm one hour of Pro, floating-player access, and persistence after reopening.
+Early dismissal/failure must not earn a pass. Do not buy Pro to bypass this test.
+
 ## 0.5.9 test-ad access
 
 Use version code 14 or newer with the explicit closed-test ad configuration.
