@@ -47,6 +47,14 @@ Candidate version 0.5.10 / code 15. No signed release or Play upload yet.
   current request was not considered authorization to publish repository contents.
   Jamie subsequently explicitly authorized Git pushes on 21 September.
   Remote validation is now being prepared.
+Initial Actions run 35625430728 compiled both editions and passed both build
+configuration guards. API 35 Play ran 82 cases; two new fixtures failed because
+GMA 1.4.0 lacks the Kotlin default-argument LoadAdError constructor at runtime.
+The retained XML identifies NoSuchMethodError at fixture construction, before
+controller assertions. Fixtures now pass all three constructor arguments explicitly;
+no assertion is removed and application sources are unchanged by this correction.
+Revalidation is pending.
+
 The reported weak boost/crackling is a separate unresolved device/audio issue.
 
 ## 0.5.9 closed-test rewarded ads — built and signed

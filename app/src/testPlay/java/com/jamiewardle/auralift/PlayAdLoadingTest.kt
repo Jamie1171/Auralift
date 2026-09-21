@@ -36,6 +36,7 @@ class PlayAdLoadingTest {
         override fun form(activity: Activity, done: (Int?) -> Unit) { answered = done }
         override fun options(activity: Activity, done: (Int?) -> Unit) { answered = done }
     }
+    // Explicit SDK constructor arguments avoid its absent Kotlin default-argument bridge.
     private class FakeLoader : RewardedLoader {
         var initialized = 0
         val callbacks = mutableListOf<AdLoadCallback<RewardedAd>>()
@@ -118,15 +119,15 @@ class PlayAdLoadingTest {
     @Test fun sdkErrorsAreDistinguishedAndOldCallbackCannotOverwriteRetry() {
         load()
         val old = loader.callbacks.single()
-        old.onAdFailedToLoad(LoadAdError(LoadAdError.ErrorCode.NETWORK_ERROR, "offline"))
+        old.onAdFailedToLoad(LoadAdError(LoadAdError.ErrorCode.NETWORK_ERROR, "offline", null))
         assertEquals(R.string.ad_network_error, ads.state.value.message)
         assertEquals("AD_LOAD/NETWORK_ERROR", ads.state.value.errorReference)
         assertFalse(ads.state.value.busy)
         load()
-        old.onAdFailedToLoad(LoadAdError(LoadAdError.ErrorCode.NO_FILL, "late"))
+        old.onAdFailedToLoad(LoadAdError(LoadAdError.ErrorCode.NO_FILL, "late", null))
         assertTrue(ads.state.value.busy)
         assertEquals("", ads.state.value.errorReference)
-        loader.callbacks.last().onAdFailedToLoad(LoadAdError(LoadAdError.ErrorCode.INVALID_REQUEST, "bad unit"))
+        loader.callbacks.last().onAdFailedToLoad(LoadAdError(LoadAdError.ErrorCode.INVALID_REQUEST, "bad unit", null))
         assertEquals(R.string.ad_configuration_error, ads.state.value.message)
         assertFalse(app.access.state.value.pro)
         assertFalse(app.adAudio.blocked.value)
@@ -140,7 +141,7 @@ class PlayAdLoadingTest {
         assertEquals(0, loader.initialized)
         load()
         ads.activityDestroyed(activity)
-        loader.callbacks.single().onAdFailedToLoad(LoadAdError(LoadAdError.ErrorCode.NETWORK_ERROR, "late"))
+        loader.callbacks.single().onAdFailedToLoad(LoadAdError(LoadAdError.ErrorCode.NETWORK_ERROR, "late", null))
         assertEquals("", ads.state.value.errorReference)
         assertFalse(ads.state.value.busy)
         assertFalse(app.access.state.value.pro)
