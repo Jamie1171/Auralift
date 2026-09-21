@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.asStateFlow
 
 data class AdPassState(val available: Boolean = false, val busy: Boolean = false,
                        val ready: Boolean = false, val privacyRequired: Boolean = false,
-                       val message: Int = 0)
+                       val message: Int = 0, val errorReference: String = "")
 interface AdPasses {
     val state: StateFlow<AdPassState>
     fun onLaunch(activity: Activity)

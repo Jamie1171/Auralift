@@ -378,4 +378,9 @@
     <string name="document_language">Langue du document : %1$s</string>
     <string name="document_english">Lire en anglais</string>
     <string name="document_app_language">Utiliser la langue de l’application</string>
+    <string name="ad_network_error">Impossible de joindre le service publicitaire. Vérifiez votre connexion et réessayez.</string>
+    <string name="ad_timed_out">La préparation de la publicité a pris trop de temps. Veuillez réessayer.</string>
+    <string name="ad_configuration_error">Un problème de configuration publicitaire est survenu. Envoyez la référence ci-dessous via Commentaires et assistance.</string>
+    <string name="ad_load_failed">Impossible de charger ou de lire la publicité. Réessayez ou envoyez la référence ci-dessous via Commentaires et assistance.</string>
+    <string name="ad_error_reference">Référence pour l’assistance : %1$s</string>
 </resources>

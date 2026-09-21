@@ -9,6 +9,11 @@ val publicStoreLive = providers.gradleProperty("auralift.storeLive").orElse("fal
 require(!(closedTestAds && publicStoreLive)) {
     "Disable auralift.testAds and configure production AdMob IDs before a public-store build."
 }
+val reviewAccessEnabled = providers.gradleProperty("auralift.reviewAccess").orElse("false").get().toBooleanStrict()
+require(!(reviewAccessEnabled && publicStoreLive)) {
+    "Disable auralift.reviewAccess before a public-store build."
+}
+val reviewCodeSha256 = if (reviewAccessEnabled) "4250f81606678bbcf9232aed82b63665f6e1f2fa7ce54ea646e29835cac67e44" else ""
 val testAdAppId = "ca-app-pub-3940256099942544~3347511713"
 val testRewardedAdId = "ca-app-pub-3940256099942544/5224354917"
 val releaseAdAppId = if (closedTestAds) testAdAppId else providers.gradleProperty("auralift.admobAppId").orElse("").get()
@@ -20,8 +25,8 @@ android {
         applicationId = "com.jamiewardle.auralift"
         minSdk = 26
         targetSdk = 36
-        versionCode = 14
-        versionName = "0.5.9"
+        versionCode = 15
+        versionName = "0.5.10"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     flavorDimensions += "distribution"
@@ -37,6 +42,7 @@ android {
             resValue("string", "app_name", "Auralift")
             buildConfigField("String", "PLAY_PUBLIC_KEY", "\"${providers.gradleProperty("auralift.playPublicKey").orElse("").get()}\"")
             buildConfigField("boolean", "STORE_LIVE", publicStoreLive.toString())
+            buildConfigField("String", "REVIEW_CODE_SHA256", "\"$reviewCodeSha256\"")
             buildConfigField("String", "ADMOB_APP_ID", "\"$releaseAdAppId\"")
             buildConfigField("String", "REWARDED_AD_ID", "\"$releaseRewardedAdId\"")
             manifestPlaceholders["admobAppId"] = releaseAdAppId.ifBlank { testAdAppId }

@@ -1,5 +1,65 @@
 # Validation — Auralift
 
+## 0.5.10 ad-loading investigation — automated gates passed
+
+Candidate version 0.5.10 / code 15. Tested source:
+`c4caa2886cf20f46961b2e3b10f291d0e9c7ef0b`, [PR #4](https://github.com/Jamie1171/Auralift/pull/4).
+No signed upload bundle or Play Console rollout has been prepared in this change.
+
+Day-one feedback reported an unavailable Ad Pass, blocking Pro/floating-player
+testing. Jamie then supplied a screenshot of a real test ad loading on his phone.
+This establishes device-specific delivery, not a universal outage or a completed
+reward callback. The failing tester's exact cause remains unconfirmed. The 0.5.9
+Google demo IDs were already correct and are unchanged.
+
+Changes:
+- Separate consent-info and ad-loading watchdogs; time spent reading a consent
+  form does not consume the ad-loading deadline.
+- Consent update/form errors allow loading only when UMP itself reports valid
+  consent, following [Google's guidance](https://developers.google.com/admob/android/next-gen/privacy).
+- Failed/cancelled requests invalidate stale callbacks. Retry clears the old error.
+- English, Spanish and French distinguish network, timeout, configuration, no-fill
+  and other SDK failures. A stage/error reference can be included in a screenshot;
+  it contains no advertising identifier, raw response or consent string.
+- Review access requires the explicit `auralift.reviewAccess` option (default false,
+  enabled for this closed test). Public-store configuration rejects enabled review
+  access. Disabling it emits an empty verifier, hides the entry and invalidates old
+  review-only grants. Paid Pro and unexpired earned passes remain independent.
+- Existing End review access removes the fallback grant; no downgrade code added.
+
+Validation:
+- [Required build gate](https://github.com/Jamie1171/Auralift/actions/runs/35626161595)
+  passed both lint tasks, APK/AAB packaging, and both production configuration
+  guards (test ads and review access). No test failure was ignored.
+- XML reports inspected: API 35 Owner 71 / Play 82; API 26 Owner 48 / Play 60.
+  Total 261 test executions, zero failures, errors or skips. All seven new ad
+  controller regression tests passed on each SDK. These are simulated checks,
+  not real ad delivery or physical acoustic evidence.
+- [Android 8 and Android 16 emulator workflow](https://github.com/Jamie1171/Auralift/actions/runs/35626161511)
+  passed both jobs, including service, UI, permissions and screen-off checks.
+- [Optimized 16 KB runtime](https://github.com/Jamie1171/Auralift/actions/runs/35626161501)
+  passed on x86-64 with reported pageSize 16384. Existing ARM/physical limits remain.
+- Localization validation passed: 384 matching keys per locale, format arguments
+  and six legal documents. Whitespace checks passed.
+- Downloaded CI archive SHA-256 matches GitHub's digest:
+  `b54b9e691212ecf585a1643257cd5adb9b24f73740ffc22eab8ae1b45527a441`.
+
+The first gate (35625430728) had two new test-fixture failures: GMA 1.4.0 lacks the
+Kotlin default-argument LoadAdError constructor at runtime. The retained XML shows
+NoSuchMethodError at fixture construction, before controller assertions. Passing
+all constructor arguments explicitly fixed it; assertions and app behavior were
+unchanged. The successful rerun above includes every affected case. Local Gradle
+could not download its distribution, so Android validation ran in Actions instead.
+Jamie explicitly authorized Git pushes on 21 September after the first automatic
+approval review rejected publication.
+
+Before launch, build a fresh bundle with storeLive=true, testAds=false and
+reviewAccess=false; verify the optimized production artifact and update obsolete
+Play Console reviewer instructions. A build flag cannot detect the selected Play
+track, so do not promote this closed-test binary directly to production.
+Real installed ad completion/one-hour unlock and the failing tester's retry remain
+manual checks. Weak boost/crackling remains a separate unresolved audio report.
+
 ## 0.5.9 closed-test rewarded ads — built and signed
 
 Version code 14 enables Google's official demo app and rewarded-unit IDs in the

@@ -378,4 +378,9 @@
     <string name="document_language">Idioma del documento: %1$s</string>
     <string name="document_english">Leer en inglés</string>
     <string name="document_app_language">Usar el idioma de la app</string>
+    <string name="ad_network_error">No se pudo conectar con el servicio de anuncios. Comprueba tu conexión e inténtalo de nuevo.</string>
+    <string name="ad_timed_out">La preparación del anuncio tardó demasiado. Inténtalo de nuevo.</string>
+    <string name="ad_configuration_error">Hay un problema con la configuración de anuncios. Envía la referencia de abajo mediante Comentarios y soporte.</string>
+    <string name="ad_load_failed">No se pudo cargar o reproducir el anuncio. Inténtalo de nuevo o envía la referencia de abajo mediante Comentarios y soporte.</string>
+    <string name="ad_error_reference">Referencia para soporte: %1$s</string>
 </resources>
