@@ -31,6 +31,47 @@ import com.jamiewardle.auralift.controls.OverlayPermission
     }
 }
 
+/** Rechecks Android-owned permission when returning from system settings. */
+@Composable private fun overlayAllowed(): Boolean {
+    val context = LocalContext.current
+    val lifecycle = LocalLifecycleOwner.current.lifecycle
+    var allowed by remember { mutableStateOf(Settings.canDrawOverlays(context)) }
+    DisposableEffect(lifecycle, context) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_RESUME) allowed = Settings.canDrawOverlays(context)
+        }
+        lifecycle.addObserver(observer)
+        onDispose { lifecycle.removeObserver(observer) }
+    }
+    return allowed
+}
+
+private fun floatingStatus(pro: Boolean, enabled: Boolean, allowed: Boolean): Int = when {
+    !pro -> R.string.floating_locked
+    !allowed -> R.string.floating_status_permission
+    enabled -> R.string.floating_status_enabled
+    else -> R.string.floating_status_off
+}
+
+@Composable internal fun FloatingPlayerCard(app: AuraliftApplication, open: () -> Unit) {
+    val p by app.settings.state.collectAsStateWithLifecycle()
+    val access by app.access.state.collectAsStateWithLifecycle()
+    val allowed = overlayAllowed()
+    Surface(onClick = open, modifier = Modifier.fillMaxWidth(),
+        shape = MaterialTheme.shapes.large, color = MaterialTheme.colorScheme.surfaceVariant) {
+        Row(Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            Icon(Icons.Rounded.PictureInPictureAlt, null, tint = MaterialTheme.colorScheme.primary)
+            Column(Modifier.weight(1f)) {
+                Text(stringResource(R.string.floating_title), style = MaterialTheme.typography.titleMedium)
+                Text(stringResource(floatingStatus(access.pro, p.floatingControls, allowed)),
+                    style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            ProBadge()
+        }
+    }
+}
+
 @Composable internal fun FloatingPlayerScreen(app: AuraliftApplication, pro: () -> Unit, listen: () -> Unit) {
     val context = LocalContext.current
     val p by app.settings.state.collectAsStateWithLifecycle()
@@ -54,6 +95,9 @@ import com.jamiewardle.auralift.controls.OverlayPermission
             app.settings.update { it.copy(floatingControls = granted && app.access.state.value.pro) }
         }
         BoostService.showFloating(context)
+        if (enableRequested && granted && app.access.state.value.pro) {
+            Toast.makeText(context, R.string.floating_enabled_feedback, Toast.LENGTH_LONG).show()
+        }
         enableRequested = false; refresh++
     }
     ProBadge()
@@ -72,10 +116,17 @@ import com.jamiewardle.auralift.controls.OverlayPermission
             when {
                 !enabled -> app.settings.update { it.copy(floatingControls = false) }
                 !app.access.state.value.pro -> pro()
-                Settings.canDrawOverlays(context) -> { app.settings.update { it.copy(floatingControls = true) }; BoostService.showFloating(context) }
+                Settings.canDrawOverlays(context) -> {
+                    app.settings.update { it.copy(floatingControls = true) }
+                    BoostService.showFloating(context)
+                    Toast.makeText(context, R.string.floating_enabled_feedback, Toast.LENGTH_LONG).show()
+                }
                 else -> { enableRequested = true; disclosure = true }
             }
         }
+        Text(stringResource(floatingStatus(access.pro, p.floatingControls, allowed)),
+            Modifier.padding(top = 10.dp), style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.primary)
         if (!access.pro) Button(onClick = pro, modifier = Modifier.fillMaxWidth().padding(top = 12.dp)) { Text(stringResource(R.string.explore_pro)) }
     }
     Spacer(Modifier.height(16.dp))

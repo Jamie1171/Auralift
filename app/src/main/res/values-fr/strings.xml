@@ -101,7 +101,7 @@
     <string name="battery_guidance">Si l’amplification s’arrête, ouvrez Batterie ou Utilisation de la batterie et autorisez l’activité en arrière-plan. Les noms varient. Android peut toujours arrêter une session. Cela ne contourne pas Forcer l’arrêt.</string>
     <string name="floating_hint">Réglez le gain, le volume, les préréglages EQ et la lecture par-dessus les autres apps.</string>
     <string name="overlay_unavailable">Les fenêtres flottantes ne sont pas disponibles sur cet appareil. Utilisez la notification ou l’app.</string>
-    <string name="floating_instructions">Activez le lecteur puis quittez Auralift. Faites glisser le cercle pour le déplacer et touchez-le pour le développer. Réduire revient au cercle. Arrêter rétablit 0 dB et le son Équilibré ; × ferme le lecteur.</string>
+    <string name="floating_instructions">Activez le lecteur, puis quittez Auralift. Faites glisser le cercle pour le déplacer et appuyez dessus pour le déplier. Appuyez en dehors du panneau ou réduisez-le pour revenir au cercle. Maintenez les boutons de gain ou de volume pour un réglage continu. Arrêter remet le gain à 0 dB et le son sur Équilibré ; × ferme le lecteur.</string>
     <string name="language_subtitle">Les changements s’appliquent à toute l’interface native.</string>
     <string name="follow_system">Suivre le système</string>
     <string name="pro_heading">Un peu plus de possibilités.</string>
@@ -383,4 +383,8 @@
     <string name="ad_configuration_error">Un problème de configuration publicitaire est survenu. Envoyez la référence ci-dessous via Commentaires et assistance.</string>
     <string name="ad_load_failed">Impossible de charger ou de lire la publicité. Réessayez ou envoyez la référence ci-dessous via Commentaires et assistance.</string>
     <string name="ad_error_reference">Référence pour l’assistance : %1$s</string>
+    <string name="floating_status_permission">Autorisation requise · Appuyez pour configurer</string>
+    <string name="floating_status_enabled">Activé · Visible en dehors d’Auralift</string>
+    <string name="floating_status_off">Désactivé · Commandes par-dessus les autres apps</string>
+    <string name="floating_enabled_feedback">Lecteur flottant activé. Changez d’application ou revenez à l’écran d’accueil pour le voir.</string>
 </resources>

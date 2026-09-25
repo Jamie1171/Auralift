@@ -95,7 +95,7 @@ fun AuraliftScreen(app: AuraliftApplication, toggle: () -> Unit, mediaKey: (Int)
                         if (before != app.settings.state.value.gainDb) HapticTick.play(context, prefs.haptics)
                     }, {
                         if (!prefs.onboarded && !state.running) showIntro = true else toggle()
-                    }, mediaKey) { extra = "pro" }
+                    }, openFloating = { extra = "floating" }) { extra = "pro" }
                     1 -> { Sound(prefs, state, app); Spacer(Modifier.height(16.dp)); NamedSounds(app) { extra = "pro" } }
                     2 -> SettingsHub(app) { extra = it }
                 }
@@ -127,7 +127,7 @@ fun AuraliftScreen(app: AuraliftApplication, toggle: () -> Unit, mediaKey: (Int)
     }
 }
 
-@Composable private fun Listen(app: AuraliftApplication, p: Preferences, s: EngineState, update: ((Preferences) -> Preferences) -> Unit, toggle: () -> Unit, mediaKey: (Int) -> Unit, explorePro: () -> Unit) {
+@Composable private fun Listen(app: AuraliftApplication, p: Preferences, s: EngineState, update: ((Preferences) -> Preferences) -> Unit, toggle: () -> Unit, openFloating: () -> Unit, explorePro: () -> Unit) {
     val context = LocalContext.current
     Text(context.getString(R.string.ui_bring_sound_closer), fontSize = 26.sp, lineHeight = 32.sp, fontWeight = FontWeight.Medium, letterSpacing = (-0.8).sp)
     Text(context.getString(R.string.ui_more_clarity_on_your_terms), Modifier.padding(top = 8.dp, bottom = 20.dp), color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 14.sp)
@@ -173,19 +173,9 @@ fun AuraliftScreen(app: AuraliftApplication, toggle: () -> Unit, mediaKey: (Int)
     }
     MediaVolume()
     if (p.spectrum) { Spacer(Modifier.height(14.dp)); SpectrumPanel() }
-    Spacer(Modifier.height(14.dp))
-    Panel {
-        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-            Column(Modifier.weight(1f)) {
-                Text(context.getString(R.string.ui_your_media), fontSize = 16.sp, fontWeight = FontWeight.Medium)
-                Text(context.getString(R.string.ui_control_the_current_player), fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            }
-            SmallControl(Icons.Rounded.SkipPrevious, context.getString(R.string.previous_track)) { mediaKey(KeyEvent.KEYCODE_MEDIA_PREVIOUS) }
-            SmallControl(Icons.Rounded.PlayArrow, context.getString(R.string.play_pause)) { mediaKey(KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE) }
-            SmallControl(Icons.Rounded.SkipNext, context.getString(R.string.next_track)) { mediaKey(KeyEvent.KEYCODE_MEDIA_NEXT) }
-        }
-    }
     Spacer(Modifier.height(14.dp)); SleepTimer(s)
+    Spacer(Modifier.height(14.dp)); FloatingPlayerCard(app, openFloating)
+
 }
 
 @Composable private fun GainChoices(values: List<Float>, selected: Float, choose: (Float) -> Unit) {

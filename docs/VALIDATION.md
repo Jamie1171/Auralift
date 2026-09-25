@@ -1,3 +1,20 @@
+# Validation
+
+## 0.5.11 floating-player usability — 25 September 2026
+
+Candidate: Listen replaces Your media with a compact Floating player link below
+Sleep timer; Settings entry retained. Permission-aware persistent status and
+successful-enable toast explain visibility outside Auralift. Expanded overlay
+uses WATCH_OUTSIDE_TOUCH with NOT_TOUCH_MODAL, retaining its bounded window.
+Holding boost/volume repeats after the long-press delay, at 300/180 ms respectively;
+release/cancel, drag-out, detach and entitlement loss cancel repeat work.
+English, Spanish and French updated. Future EQ scope is documentation only in
+[FUTURE-EQUALISER.md](FUTURE-EQUALISER.md).
+
+Validation pending: required CI build gate, repeat cancellation regressions, UI
+navigation/screenshot and Android overlay test. Physical audio and touch behaviour
+on Jamie's phone remain to be verified with the delivered APK.
+
 # Validation — Auralift
 
 ## 0.5.10 ad-loading investigation — automated gates passed
