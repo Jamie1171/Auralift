@@ -40,6 +40,19 @@ class FloatingDeviceTest : DeviceHarness() {
         assertFalse(app.settings.state.value.floatingControls)
     }
 
+    @Test fun outsideTapCollapsesWithoutDisablingPlayerOrBoost() {
+        showBubble()
+        device.findObject(handle).click()
+        val minimise = By.desc(app.getString(R.string.minimise_floating))
+        assertTrue(device.wait(Until.hasObject(minimise), 5000))
+        // Tap well below the bounded overlay, without covering the underlying app.
+        device.click(device.displayWidth - 8, device.displayHeight - 150)
+        assertTrue(device.wait(Until.gone(minimise), 5000))
+        assertTrue(device.wait(Until.hasObject(handle), 5000))
+        assertTrue(app.settings.state.value.floatingControls)
+        assertTrue(app.engine.value.running)
+    }
+
     @Test fun stopResetsSoundKeepsPlayerAndCanRestartWithoutOpeningApp() {
         showBubble()
         val player = playerSession()

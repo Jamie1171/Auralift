@@ -1,15 +1,16 @@
 # Auralift
 
-The current review branch is **0.5.9 / version code 14**. Closed/internal-test
-release bundles now explicitly use Google's rewarded test ads, so testers can earn
-the one-hour Pro pass and test the floating player without a purchase. Consent,
-reward callbacks, audio suspension and expiry use the existing Play implementation.
-`auralift.testAds=true` is for testing only: switch it off and configure production
-IDs before a public launch. Building with both test ads and `storeLive=true` fails.
-Jamie confirmed the 0.5.7 licence-test Pro purchase and the repaired 0.5.8 Gmail
-drafts, diagnostics and screenshots on Pixel 9a. Live advertising remains disabled.
-See [monetisation](docs/FEATURES-AND-MONETISATION.md) and
-[validation](docs/VALIDATION.md) for configuration and actual test evidence.
+The current usability candidate is **0.5.11 / version code 16**. Listen now links
+to the floating player below Sleep timer, replacing the redundant Your media card.
+Enabling explains when the bubble appears; tap outside an expanded panel to
+collapse it, and hold boost/media-volume buttons for repeated adjustments.
+Settings access and floating playback controls remain. English, Spanish and French
+are included. See [validation](docs/VALIDATION.md) for actual checks and limits.
+
+The future five-band Free / ten-band Pro EQ and genre presets are documented in
+[the future equaliser plan](docs/FUTURE-EQUALISER.md), not implemented in this build.
+Closed-test ad inventory and review access remain testing-only; production requires
+a fresh build with both disabled and real advertising configuration.
 
 A native Android volume booster, written in **Kotlin, Jetpack Compose and Android
 audio APIs**. Version **0.5.2** adds a compact circular floating player, independent player/boost

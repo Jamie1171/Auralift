@@ -101,7 +101,7 @@
     <string name="battery_guidance">If boost stops unexpectedly, open Battery or App battery usage and allow background use. Names vary by phone. Android can still stop a session. Battery access never overrides Force stop.</string>
     <string name="floating_hint">Adjust boost, media volume, EQ presets and playback over other apps.</string>
     <string name="overlay_unavailable">Floating windows are unavailable on this device. Use the notification or app controls.</string>
-    <string name="floating_instructions">Enable the player, then leave Auralift. Drag the circle to move it and tap to expand. Minimise returns to the circle. Stop resets boost to 0 dB and Balanced sound; × closes the player.</string>
+    <string name="floating_instructions">Enable the player, then leave Auralift. Drag the circle to move it and tap to expand. Tap outside the panel or minimise to return to the circle. Hold the boost or volume buttons to adjust continuously. Stop resets boost to 0 dB and Balanced sound; × closes the player.</string>
     <string name="language_subtitle">Changes apply throughout the native interface.</string>
     <string name="follow_system">Follow system</string>
     <string name="pro_heading">A little more possibility.</string>
@@ -383,4 +383,8 @@
     <string name="ad_configuration_error">The ad setup needs attention. Please send the reference below through Feedback and support.</string>
     <string name="ad_load_failed">The ad could not load or play. Try again, or send the reference below through Feedback and support.</string>
     <string name="ad_error_reference">Support reference: %1$s</string>
+    <string name="floating_status_permission">Permission needed · Tap to set up</string>
+    <string name="floating_status_enabled">Enabled · Appears outside Auralift</string>
+    <string name="floating_status_off">Off · Controls over your other apps</string>
+    <string name="floating_enabled_feedback">Floating player enabled. Switch apps or go to your Home screen to see it.</string>
 </resources>

@@ -101,7 +101,7 @@
     <string name="battery_guidance">Si el refuerzo se detiene, abre Batería o Uso de batería y permite el uso en segundo plano. Los nombres varían. Android aún puede detener una sesión. Esto no anula Forzar detención.</string>
     <string name="floating_hint">Controla la ganancia, el volumen, los ajustes de EQ y la reproducción sobre otras apps.</string>
     <string name="overlay_unavailable">Las ventanas flotantes no están disponibles en este dispositivo. Usa la notificación o los controles de la app.</string>
-    <string name="floating_instructions">Activa el reproductor y sal de Auralift. Arrastra el círculo para moverlo y toca para expandirlo. Minimizar vuelve al círculo. Detener restablece 0 dB y el sonido Equilibrado; × cierra el reproductor.</string>
+    <string name="floating_instructions">Activa el reproductor y sal de Auralift. Arrastra el círculo para moverlo y tócalo para expandirlo. Toca fuera del panel o minimízalo para volver al círculo. Mantén pulsados los botones de refuerzo o volumen para ajustarlos de forma continua. Detener restablece el refuerzo a 0 dB y el sonido a Equilibrado; × cierra el reproductor.</string>
     <string name="language_subtitle">Los cambios se aplican en toda la interfaz nativa.</string>
     <string name="follow_system">Usar idioma del sistema</string>
     <string name="pro_heading">Un poco más de posibilidades.</string>
@@ -383,4 +383,8 @@
     <string name="ad_configuration_error">Hay un problema con la configuración de anuncios. Envía la referencia de abajo mediante Comentarios y soporte.</string>
     <string name="ad_load_failed">No se pudo cargar o reproducir el anuncio. Inténtalo de nuevo o envía la referencia de abajo mediante Comentarios y soporte.</string>
     <string name="ad_error_reference">Referencia para soporte: %1$s</string>
+    <string name="floating_status_permission">Permiso necesario · Toca para configurar</string>
+    <string name="floating_status_enabled">Activado · Aparece fuera de Auralift</string>
+    <string name="floating_status_off">Desactivado · Controles sobre otras apps</string>
+    <string name="floating_enabled_feedback">Reproductor flotante activado. Cambia de app o ve a la pantalla de inicio para verlo.</string>
 </resources>

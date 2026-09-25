@@ -104,6 +104,15 @@ class InterfaceTest {
         compose.onNodeWithText("One permission for Auralift").performScrollTo().assertIsDisplayed()
         compose.runOnIdle { assertFalse(app.settings.state.value.floatingControls) }
     }
+    @Test fun listenLinksToFloatingPlayerAndRemovesDuplicatePlaybackControls() {
+        compose.onNodeWithText("Your media").assertDoesNotExist()
+        compose.onNodeWithText("Floating player").performScrollTo().assertIsDisplayed()
+        screenshot("listen-floating-card")
+        compose.onNodeWithText("Floating player").performClick()
+        compose.onNodeWithContentDescription("Enable floating player").assertExists()
+        compose.onNodeWithText("Permission needed · Tap to set up").assertExists()
+        compose.runOnIdle { assertFalse(app.settings.state.value.floatingControls) }
+    }
     @Test fun floatingPermissionExplainsTheSingleAppGrantBeforeAndroidSettings() {
         compose.onNodeWithText("Settings", useUnmergedTree = true).performClick()
         compose.onNodeWithText("Floating player").performClick()

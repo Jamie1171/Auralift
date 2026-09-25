@@ -23,7 +23,10 @@ class OwnerInterfaceTest {
     @Before fun acceptTermsFixture() { compose.runOnIdle { assertTrue(app.terms.accept()) } }
     @Test fun ownerCanTestEarnedPassAndExpiryWithoutRaisingGain() {
         compose.runOnIdle { app.settings.update { it.copy(gainDb = 24f, accent = Accent.OCEAN) } }
-        compose.onNodeWithText("Pro").performClick()
+        // The Listen card also carries a Pro badge; select the header's button role.
+        compose.onNode(hasText("Pro") and SemanticsMatcher.expectValue(
+            androidx.compose.ui.semantics.SemanticsProperties.Role,
+            androidx.compose.ui.semantics.Role.Button)).performClick()
         screenshot("pro-owner")
         compose.onNodeWithText("Test Free").performScrollTo().performClick()
         compose.runOnIdle { assertFalse(app.access.state.value.pro); assertEquals(15f, app.settings.state.value.gainDb) }

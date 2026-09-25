@@ -84,6 +84,12 @@ class FloatingControls(private val context: Context, private val compare: () -> 
         val colors = appearance.colors
         val panel = LinearLayout(context.localized()).apply {
             orientation = LinearLayout.VERTICAL
+            setOnTouchListener { _, event ->
+                if (expanded && event.actionMasked == MotionEvent.ACTION_OUTSIDE) {
+                    resize(false)
+                    true
+                } else false
+            }
             if (expanded) {
                 setPadding(dp(8), dp(8), dp(8), dp(8))
                 background = shape(colors.surface.toArgb(), colors.outline.toArgb())
@@ -127,10 +133,10 @@ class FloatingControls(private val context: Context, private val compare: () -> 
             fun row(vararg controls: Button) = LinearLayout(context).also { r ->
                 controls.forEach { r.addView(it, LinearLayout.LayoutParams(0, dp(48), 1f).apply { setMargins(dp(2), dp(2), dp(2), dp(2)) }) }; body.addView(r)
             }
-            row(button("−", context.word(R.string.decrease_boost)) { adjustGain(-0.5f) },
-                button("+", context.word(R.string.increase_boost)) { adjustGain(0.5f) })
-            row(button(context.word(R.string.volume_down), context.word(R.string.volume_down)) { volume(-1) },
-                button(context.word(R.string.volume_up), context.word(R.string.volume_up)) { volume(1) })
+            row(button("−", context.word(R.string.decrease_boost), repeatMillis = 300L) { adjustGain(-0.5f) },
+                button("+", context.word(R.string.increase_boost), repeatMillis = 300L) { adjustGain(0.5f) })
+            row(button(context.word(R.string.volume_down), context.word(R.string.volume_down), repeatMillis = 180L) { volume(-1) },
+                button(context.word(R.string.volume_up), context.word(R.string.volume_up), repeatMillis = 180L) { volume(1) })
             compareButton = button(context.word(R.string.compare_original), context.word(R.string.compare_original), action = compare)
             row(compareButton!!)
             row(button("|◀", context.word(R.string.previous_track)) { MediaActions.send(context, KeyEvent.KEYCODE_MEDIA_PREVIOUS) },
@@ -153,7 +159,8 @@ class FloatingControls(private val context: Context, private val compare: () -> 
         val height = if (expanded) minOf(dp(500), context.resources.displayMetrics.heightPixels - dp(80)).coerceAtLeast(dp(140)) else dp(64)
         val p = WindowManager.LayoutParams(width, height,
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
-            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL or
+                (if (expanded) WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH else 0),
             android.graphics.PixelFormat.TRANSLUCENT).apply {
             gravity = Gravity.TOP or Gravity.LEFT
             x = this@FloatingControls.x.coerceIn(0, maxOf(0, context.resources.displayMetrics.widthPixels - width))
@@ -162,13 +169,18 @@ class FloatingControls(private val context: Context, private val compare: () -> 
         try { windows.addView(panel, p); view = panel; params = p }
         catch (_: RuntimeException) { app.settings.update { it.copy(floatingControls = false) }; dismiss() }
     }
-    private fun button(text: String, label: String, requiresPro: Boolean = true, action: () -> Unit) = Button(context.localized()).apply {
+    private fun button(text: String, label: String, requiresPro: Boolean = true, repeatMillis: Long? = null, action: () -> Unit) = Button(context.localized()).apply {
         this.text = text; contentDescription = label; isAllCaps = false; textSize = 13f
         minHeight = dp(48); minimumHeight = dp(48); minimumWidth = dp(48)
         setTextColor(appearance.colors.onSurface.toArgb())
         background = shape(appearance.colors.surfaceVariant.toArgb())
         setPadding(dp(6), 0, dp(6), 0)
         setOnClickListener { app.access.refresh(); if (!requiresPro || app.access.state.value.pro) action() else dismiss() }
+        if (repeatMillis != null) RepeatTouch.install(this, repeatMillis) {
+            app.access.refresh()
+            app.access.state.value.pro && app.settings.state.value.floatingControls &&
+                !app.activityVisible && !app.adAudio.blocked.value && Settings.canDrawOverlays(context)
+        }
     }
     private fun adjustGain(delta: Float) {
         app.settings.update { it.copy(gainDb = (it.gainDb + delta).coerceIn(0f, it.limitDb)) }

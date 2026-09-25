@@ -25,8 +25,8 @@ android {
         applicationId = "com.jamiewardle.auralift"
         minSdk = 26
         targetSdk = 36
-        versionCode = 15
-        versionName = "0.5.10"
+        versionCode = 16
+        versionName = "0.5.11"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     flavorDimensions += "distribution"

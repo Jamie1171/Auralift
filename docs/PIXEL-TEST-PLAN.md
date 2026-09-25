@@ -56,3 +56,26 @@ Pixel 9a. Record this as a positive general listening result. The exact Android
 build, media player, gain, output and completion of the individual checklist
 items have not been established, so the detailed rows remain pending. Use the
 [Android compatibility matrix](ANDROID-COMPATIBILITY.md) for wider testing.
+
+## 0.5.11 usability acceptance
+
+Use the Owner 0.5.11 APK alongside the installed Play edition. Stop boost in the
+other edition before listening; Owner starts with Pro access and separate settings.
+
+- On Listen, confirm Your media is gone, ordinary media volume remains, and the
+  compact Floating player card follows Sleep timer. Open it from both Listen and
+  Settings. Check narrow/large-font layout and the off/permission/enabled status.
+- With permission absent, enable, cancel permission and confirm no success message.
+  Enable again, grant it, and confirm guidance to leave the app. With permission
+  already granted, toggle off/on and confirm the same guidance.
+- Leave Auralift: circle appears. Return: it hides. This remains intentional.
+- Expand, tap outside: collapse only; underlying app still receives the tap.
+  Minus still collapses; × disables the player; Stop still resets boost without
+  closing the player or stopping the media app.
+- Tap boost +/-: one half-dB step. Hold: repeat after the delay, no acceleration.
+  Repeat volume +/- at comfortable volume. Release, drag off the button, collapse,
+  switch apps, revoke permission and expire simulated Pro; no continued changes.
+- Verify gain never exceeds the selected/entitled limit and Stop remains usable.
+
+Record actual phone/Android version and observations; do not infer acoustic results
+from the automated tests. Future EQ changes are not included.
