@@ -23,8 +23,8 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
       - name: Install Android SDK
         run: sdkmanager 'platforms;android-36' 'build-tools;35.0.0'
-      - name: Check held-button timing on oldest Android before full validation
-        run: ./gradlew -Pauralift.testSdk=26 :app:testOwnerDebugUnitTest --tests '*RepeatTouchTest'
+      - name: Check oldest Android controls before full validation
+        run: ./gradlew -Pauralift.testSdk=26 :app:testOwnerDebugUnitTest :app:testPlayDebugUnitTest
       - name: Check all shipped translations and legal archives
         run: python3 scripts/check-localization.py
       - name: Check public-store builds reject test ads

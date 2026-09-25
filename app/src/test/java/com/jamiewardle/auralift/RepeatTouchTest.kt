@@ -26,7 +26,13 @@ class RepeatTouchTest {
     private var allowed = true
     @Before fun setup() {
         val activity = controller.setup().get()
-        button = Button(activity).apply { setOnClickListener { clicks++ } }
+        button = Button(activity).apply {
+            // API 26 drawable/elevation animations advance Robolectric's clock
+            // during idleFor. Keep this input/timer fixture free of animations.
+            background = null
+            stateListAnimator = null
+            setOnClickListener { clicks++ }
+        }
         activity.setContentView(button)
         button.layout(0, 0, 100, 100)
         RepeatTouch.install(button, 300L) { allowed }
@@ -46,8 +52,7 @@ class RepeatTouchTest {
         val beforeDown = android.os.SystemClock.uptimeMillis()
         event(MotionEvent.ACTION_DOWN)
         val holdDelay = ViewConfiguration.getLongPressTimeout().toLong()
-        // SDK 26 can advance the framework clock during input dispatch. Check
-        // either side of the delay without relying on a one-millisecond boundary.
+        // Check both sides of the hold threshold and exact repeat/release counts.
         println("hold delay=$holdDelay beforeDown=$beforeDown afterDown=${android.os.SystemClock.uptimeMillis()} clicks=$clicks")
         assertEquals("No synchronous click on press", 0, clicks)
         advance(holdDelay / 2)
