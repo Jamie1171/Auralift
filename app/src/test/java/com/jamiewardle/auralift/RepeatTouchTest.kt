@@ -13,10 +13,12 @@ import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.Shadows.shadowOf
 import org.robolectric.annotation.Config
+import org.robolectric.annotation.LooperMode
 import java.time.Duration
 
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [26, 35])
+@LooperMode(LooperMode.Mode.PAUSED)
 class RepeatTouchTest {
     private val controller = Robolectric.buildActivity(Activity::class.java)
     private lateinit var button: Button
@@ -41,12 +43,15 @@ class RepeatTouchTest {
         button.performClick(); assertEquals(2, clicks)
     }
     @Test fun holdRepeatsAfterDelayWithoutExtraReleaseStep() {
+        val beforeDown = android.os.SystemClock.uptimeMillis()
         event(MotionEvent.ACTION_DOWN)
         val holdDelay = ViewConfiguration.getLongPressTimeout().toLong()
         // SDK 26 can advance the framework clock during input dispatch. Check
         // either side of the delay without relying on a one-millisecond boundary.
+        println("hold delay=$holdDelay beforeDown=$beforeDown afterDown=${android.os.SystemClock.uptimeMillis()} clicks=$clicks")
+        assertEquals("No synchronous click on press", 0, clicks)
         advance(holdDelay / 2)
-        assertEquals(0, clicks)
+        assertEquals("No repeat halfway through hold delay=$holdDelay at ${android.os.SystemClock.uptimeMillis()}", 0, clicks)
         advance(holdDelay - holdDelay / 2 + 10); assertEquals(1, clicks)
         advance(600); assertEquals(3, clicks)
         event(MotionEvent.ACTION_UP); advance(1000)
