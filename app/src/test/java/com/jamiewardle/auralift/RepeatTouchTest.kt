@@ -42,9 +42,12 @@ class RepeatTouchTest {
     }
     @Test fun holdRepeatsAfterDelayWithoutExtraReleaseStep() {
         event(MotionEvent.ACTION_DOWN)
-        advance(ViewConfiguration.getLongPressTimeout().toLong() - 1)
+        val holdDelay = ViewConfiguration.getLongPressTimeout().toLong()
+        // SDK 26 can advance the framework clock during input dispatch. Check
+        // either side of the delay without relying on a one-millisecond boundary.
+        advance(holdDelay / 2)
         assertEquals(0, clicks)
-        advance(1); assertEquals(1, clicks)
+        advance(holdDelay - holdDelay / 2 + 10); assertEquals(1, clicks)
         advance(600); assertEquals(3, clicks)
         event(MotionEvent.ACTION_UP); advance(1000)
         assertEquals(3, clicks)
