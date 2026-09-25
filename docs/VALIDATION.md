@@ -11,9 +11,53 @@ release/cancel, drag-out, detach and entitlement loss cancel repeat work.
 English, Spanish and French updated. Future EQ scope is documentation only in
 [FUTURE-EQUALISER.md](FUTURE-EQUALISER.md).
 
-Validation pending: required CI build gate, repeat cancellation regressions, UI
-navigation/screenshot and Android overlay test. Physical audio and touch behaviour
-on Jamie's phone remain to be verified with the delivered APK.
+Validation evidence:
+- The combined test/lint/package invocation passed on
+  [a7e7768](https://github.com/Jamie1171/Auralift/actions/runs/36150861090):
+  both Owner/Play API 35 suites, lintOwnerDebug, lintPlayRelease, Owner APK,
+  optimized Play APK and Play bundle. Both production configuration guards passed.
+- Inspected final XML: API 35 Owner 77 / Play 88; API 26 Owner 53 / Play 65.
+  Total 283 executions, zero failures, errors or skips. Final report archive
+  SHA-256 matches GitHub: `b6581408fdd699223001ff4fd1b2aca88c4941019b117e2f1af382d32eed8c0e`.
+- An initial Owner UI test selected two Pro labels after the Listen card added a
+  badge; its selector now targets the existing header button role. No product
+  behaviour was changed to satisfy the test.
+- The separate API 26 invocation exposed a Robolectric fixture issue: Button
+  drawable/elevation animations advanced the clock by 600 ms during a requested
+  250 ms idle. Merely widening the boundary did not fix it. Disabling those
+  animations in the test fixture fixed the early repeat assertion; runtime
+  buttons and exact repeat/release/cancellation/access-loss checks are unchanged.
+  Both full API 26 suites passed before and after the combined gate in
+  run 36150861090; the complete workflow is green.
+- Android 8 and Android 16 instrumented emulator jobs passed with these app
+  changes, including the new outside-tap collapse test:
+  https://github.com/Jamie1171/Auralift/actions/runs/36150861120
+- The optimized 16 KB emulator check passed:
+  https://github.com/Jamie1171/Auralift/actions/runs/36150861086
+- English/Spanish/French each have 388 matching resource keys, checked format
+  arguments and intact legal archives. Rendered Listen/floating-page screenshots
+  inspected at 412 dp; the compact player card follows Sleep timer.
+- Local Gradle could not bootstrap because services.gradle.org was unreachable;
+  the build/test evidence above comes from CI, not an unrun local build.
+
+Delivery:
+- `Auralift-0.5.11-Owner-Test.apk`, package `com.jamiewardle.auralift.owner`,
+  version `0.5.11-owner`, version code 16; 19,196,366 bytes.
+- Built in the successful combined invocation at c7d023c. Subsequent changes
+  only change test fixtures, CI ordering and documentation; app source is equal.
+- Downloaded archive digest verified against GitHub:
+  `773f91cd188624601e9712700bc1daafa9e1aa4f540dc09cb4f5941304263868`.
+- Signed locally with the existing private Owner development key; v2/v3 signatures
+  verified. Certificate SHA-256:
+  `7ba0540911fe9b3208e119d82a5710079d9ad982ea1c4259c500e0047a8f8f36`.
+- Delivered APK SHA-256:
+  `31fb5e74eebd77b0cf703a37e4e042be96244ed19bf8533b132f62f8ed56065c`.
+- Owner runs beside Play and has Pro by default; no ad/billing SDK or public
+  release is introduced. Temporary private key/password copies were removed.
+
+Physical audio and everyday touch behaviour on Jamie's phone remain to be
+verified using the 0.5.11 checklist in PIXEL-TEST-PLAN.md. Automated emulator
+success does not establish acoustic performance or universal device support.
 
 # Validation — Auralift
 
